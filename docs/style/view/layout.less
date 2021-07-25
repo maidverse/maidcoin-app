@@ -1,0 +1,52 @@
+.layout {
+    height             : 100%;
+    background-size    : cover;
+    background-position: center bottom;
+    background-repeat  : no-repeat;
+    display            : flex;
+    flex-direction     : column;
+
+    >header {
+        display: flex;
+        padding: 4px;
+
+        >.menu-button {
+            display: none;
+            padding: 8px;
+
+            @media @phone {
+                display: block;
+            }
+        }
+
+        h1 {
+            margin-top : 1px;
+            margin-left: 4px;
+        }
+
+        >nav {
+            @media @phone {
+                display: none;
+            }
+        }
+
+        >.span {
+            flex-grow: 1;
+        }
+
+        >.more-button {
+            padding: 4px;
+        }
+    }
+
+    >main {
+        flex-grow : 1;
+        overflow-y: auto;
+
+        >.content {
+            max-width: 960px;
+            padding  : 10px 20px;
+            margin   : auto;
+        }
+    }
+}
