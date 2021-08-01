@@ -3,7 +3,7 @@ import maids from "../../json/maids.json";
 
 export default class MaidBook extends DomNode {
 
-    constructor(private maidId: number) {
+    constructor(maidId: number) {
         super(".maid-book");
         const maidInfo = (maids as any)[maidId];
         this.style({

@@ -1,3 +1,15 @@
+@keyframes maid-view-slide-in {
+    0% {
+        opacity  : 0;
+        transform: translateX(2%);
+    }
+
+    100% {
+        opacity  : 1;
+        transform: translateX(0%);
+    }
+}
+
 .maid-view {
     >header {
         height             : 40px;
@@ -8,10 +20,14 @@
 
         >h2 {
             font-size: 25px;
+            animation: maid-view-slide-in 0.5s ease-out;
         }
 
         P {
-            color: #9e92a9;
+            opacity            : 0;
+            color              : #9e92a9;
+            animation          : maid-view-slide-in 0.5s 0.2s ease-out;
+            animation-fill-mode: forwards;
         }
     }
 

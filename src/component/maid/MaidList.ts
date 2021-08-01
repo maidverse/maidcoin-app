@@ -16,8 +16,12 @@ export default class MaidList extends DomNode {
     }
 
     private async loadMaids() {
-        SkyUtil.repeat(Config.maidCount, async (maidId) => {
-            new MaidBook(Config.maidCount - maidId - 1).appendTo(this.maidContainer);
+        SkyUtil.repeat(Config.maidCount, async (index) => {
+            setTimeout(() => {
+                if (this.deleted !== true) {
+                    new MaidBook(Config.maidCount - index - 1).appendTo(this.maidContainer);
+                }
+            }, index * 50);
         });
     }
 }
