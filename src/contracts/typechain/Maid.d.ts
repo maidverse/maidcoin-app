@@ -23,6 +23,7 @@ import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 interface MaidInterface extends ethers.utils.Interface {
   functions: {
     "DOMAIN_SEPARATOR()": FunctionFragment;
+    "MAX_MAID_COUNT()": FunctionFragment;
     "PERMIT_ALL_TYPEHASH()": FunctionFragment;
     "PERMIT_TYPEHASH()": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
@@ -60,6 +61,10 @@ interface MaidInterface extends ethers.utils.Interface {
 
   encodeFunctionData(
     functionFragment: "DOMAIN_SEPARATOR",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "MAX_MAID_COUNT",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -193,6 +198,10 @@ interface MaidInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "MAX_MAID_COUNT",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "PERMIT_ALL_TYPEHASH",
     data: BytesLike
   ): Result;
@@ -313,6 +322,10 @@ export class Maid extends Contract {
     DOMAIN_SEPARATOR(overrides?: CallOverrides): Promise<[string]>;
 
     "DOMAIN_SEPARATOR()"(overrides?: CallOverrides): Promise<[string]>;
+
+    MAX_MAID_COUNT(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "MAX_MAID_COUNT()"(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     PERMIT_ALL_TYPEHASH(overrides?: CallOverrides): Promise<[string]>;
 
@@ -644,6 +657,10 @@ export class Maid extends Contract {
 
   "DOMAIN_SEPARATOR()"(overrides?: CallOverrides): Promise<string>;
 
+  MAX_MAID_COUNT(overrides?: CallOverrides): Promise<BigNumber>;
+
+  "MAX_MAID_COUNT()"(overrides?: CallOverrides): Promise<BigNumber>;
+
   PERMIT_ALL_TYPEHASH(overrides?: CallOverrides): Promise<string>;
 
   "PERMIT_ALL_TYPEHASH()"(overrides?: CallOverrides): Promise<string>;
@@ -967,6 +984,10 @@ export class Maid extends Contract {
     DOMAIN_SEPARATOR(overrides?: CallOverrides): Promise<string>;
 
     "DOMAIN_SEPARATOR()"(overrides?: CallOverrides): Promise<string>;
+
+    MAX_MAID_COUNT(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "MAX_MAID_COUNT()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     PERMIT_ALL_TYPEHASH(overrides?: CallOverrides): Promise<string>;
 
@@ -1321,6 +1342,10 @@ export class Maid extends Contract {
 
     "DOMAIN_SEPARATOR()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+    MAX_MAID_COUNT(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "MAX_MAID_COUNT()"(overrides?: CallOverrides): Promise<BigNumber>;
+
     PERMIT_ALL_TYPEHASH(overrides?: CallOverrides): Promise<BigNumber>;
 
     "PERMIT_ALL_TYPEHASH()"(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1635,6 +1660,12 @@ export class Maid extends Contract {
     DOMAIN_SEPARATOR(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     "DOMAIN_SEPARATOR()"(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    MAX_MAID_COUNT(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "MAX_MAID_COUNT()"(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
