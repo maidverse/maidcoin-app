@@ -209,7 +209,7 @@ body {
 }
 .layout > main > .content {
   max-width: 960px;
-  padding: 10px 20px;
+  padding: 10px 20px 50px;
   margin: auto;
 }
 .maid-view > header {
@@ -225,6 +225,18 @@ body {
 .maid-view > header P {
   color: #9e92a9;
 }
+.maid-view .maid-list {
+  margin-top: 20px;
+}
+.loading {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 113.5px;
+  height: 140px;
+  margin-left: -56.75px;
+  margin-top: -70px;
+}
 .user-info {
   padding: 4px;
 }
@@ -237,5 +249,55 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+.maid-list {
+  margin-left: -8px;
+}
+.maid-list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.maid-list .maid-container {
+  margin: auto;
+}
+@media only screen and (max-width: 719px) {
+  .maid-list .maid-container {
+    width: 345px;
+  }
+}
+@media only screen and (min-width: 720px) and (max-width: 959px) {
+  .maid-list .maid-container {
+    width: 690px;
+  }
+}
+.maid-list .maid-book {
+  float: left;
+  margin-left: 4px;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+.maid-book {
+  position: relative;
+  width: 111px;
+  height: 148px;
+  background-size: contain;
+}
+.maid-book > .name {
+  position: absolute;
+  bottom: -30px;
+  width: 107.5px;
+  height: 23.5px;
+  background-image: url(/images/component/maid-book/name-background.png);
+  background-size: contain;
+  text-align: center;
+  padding-top: 1px;
+  padding-right: 4px;
+  font-size: 16px;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
 }
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"MasterCoinContract.js","sourceRoot":"","sources":["../../src/contracts/MasterCoinContract.ts"],"names":[],"mappings":";;;;;AAAA,uDAA+B;AAC/B,2GAAsF;AACtF,6EAAqD;AAGrD,MAAM,kBAAmB,SAAQ,uBAAyB;IAEtD;QACI,KAAK,CAAC,gBAAM,CAAC,SAAS,CAAC,UAAU,EAAE,yBAAkB,CAAC,GAAG,EAAE,EAAE,CAAC,CAAC;IACnE,CAAC;CACJ;AAED,kBAAe,IAAI,kBAAkB,EAAE,CAAC"}

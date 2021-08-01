@@ -1,6 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
+import MaidList from "../component/maid/MaidList";
 import Layout from "./Layout";
 
 export default class Maid implements View {
@@ -14,6 +15,7 @@ export default class Maid implements View {
                 el("h2", "Maids"),
                 el("p", "Maids helps humanity fight the Nurse."),
             ),
+            new MaidList(),
         ));
     }
 

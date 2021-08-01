@@ -1,0 +1,67 @@
+{
+    "0": {
+        "external_url": "https://maidcoin.org/clonenurse/0",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/P1.png",
+        "name": "P1"
+    },
+    "1": {
+        "external_url": "https://maidcoin.org/clonenurse/1",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/P2.png",
+        "name": "P2"
+    },
+    "2": {
+        "external_url": "https://maidcoin.org/clonenurse/2",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/P3.png",
+        "name": "P3"
+    },
+    "3": {
+        "external_url": "https://maidcoin.org/clonenurse/3",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/P4.png",
+        "name": "P4"
+    },
+    "4": {
+        "external_url": "https://maidcoin.org/clonenurse/4",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/P5.png",
+        "name": "P5"
+    },
+    "5": {
+        "external_url": "https://maidcoin.org/clonenurse/5",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/N1.png",
+        "name": "N1"
+    },
+    "6": {
+        "external_url": "https://maidcoin.org/clonenurse/6",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/N2.png",
+        "name": "N2"
+    },
+    "7": {
+        "external_url": "https://maidcoin.org/clonenurse/7",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/N3.png",
+        "name": "N3"
+    },
+    "8": {
+        "external_url": "https://maidcoin.org/clonenurse/8",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/N4.png",
+        "name": "N4"
+    },
+    "9": {
+        "external_url": "https://maidcoin.org/clonenurse/9",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/N5.png",
+        "name": "N5"
+    },
+    "10": {
+        "external_url": "https://maidcoin.org/clonenurse/10",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/N6.png",
+        "name": "N6"
+    },
+    "11": {
+        "external_url": "https://maidcoin.org/clonenurse/11",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/N7.png",
+        "name": "N7"
+    },
+    "12": {
+        "external_url": "https://maidcoin.org/clonenurse/12",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/N8.png",
+        "name": "N8"
+    }
+}
