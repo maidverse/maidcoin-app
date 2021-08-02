@@ -19,7 +19,7 @@ export default class Layout implements View {
                 el("a.menu-button", el("img", { src: "/images/view/layout/menu-button.png", height: "16" }), {
                     click: (event, button) => {
                         const rect = button.rect;
-                        new MobileMenu({ left: rect.left, top: rect.top }).appendTo(BodyNode);
+                        new MobileMenu({ left: rect.left - 4, top: rect.top - 4 }).appendTo(BodyNode);
                     },
                 }),
                 el("h1",

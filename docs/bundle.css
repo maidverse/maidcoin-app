@@ -352,6 +352,37 @@ body {
 .mobile-menu .menu-icon {
   margin: 8px;
 }
+.mobile-menu .top-menu,
+.mobile-menu .bottom-menu {
+  padding: 10px;
+}
+.mobile-menu .top-menu > a,
+.mobile-menu .bottom-menu > a {
+  margin-top: 10px;
+  display: block;
+  color: #9e92a9;
+  width: 130px;
+  height: 28px;
+  text-align: center;
+  padding-top: 8px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.mobile-menu .top-menu > a.on,
+.mobile-menu .bottom-menu > a.on {
+  color: #f0e9f3;
+  background-image: url(/images/component/mobile-menu/current.png);
+  background-size: contain;
+}
+.mobile-menu .icon-menu {
+  display: flex;
+}
+.mobile-menu .icon-menu > a {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .more-menu {
   position: fixed;
   z-index: 999;

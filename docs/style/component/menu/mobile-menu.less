@@ -9,4 +9,38 @@
     .menu-icon {
         margin: 8px;
     }
+
+    .top-menu,
+    .bottom-menu {
+        padding: 10px;
+
+        >a {
+            margin-top     : 10px;
+            display        : block;
+            color          : #9e92a9;
+            width          : 130px;
+            height         : 28px;
+            text-align     : center;
+            padding-top    : 8px;
+            font-size      : 13px;
+            text-decoration: none;
+
+            &.on {
+                color           : #f0e9f3;
+                background-image: url(/images/component/mobile-menu/current.png);
+                background-size : contain;
+            }
+        }
+    }
+
+    .icon-menu {
+        display: flex;
+
+        >a {
+            padding        : 10px;
+            display        : flex;
+            flex-direction : column;
+            justify-content: center;
+        }
+    }
 }
