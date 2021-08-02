@@ -1,0 +1,61 @@
+.admin-view {
+    padding: 60px 0;
+
+    >h2 {
+        font-size    : 48px;
+        font-weight  : bold;
+        margin-bottom: 20px;
+    }
+
+    >p {
+        color: #9e92a9;
+    }
+
+    >.current-block {
+        margin-bottom: 50px;
+    }
+
+    >.admin-form {
+        margin-bottom: 50px;
+
+        >h3 {
+            font-size    : 30px;
+            font-weight  : bold;
+            margin-bottom: 20px;
+        }
+
+        >label {
+            display      : block;
+            margin-bottom: 10px;
+            color        : #9e92a9;
+            font-weight  : bold;
+
+            >input {
+                margin-top   : 5px;
+                display      : block;
+                width        : 100%;
+                padding      : 5px 10px;
+                border       : 1px solid #bcb5bc;
+                border-radius: 5px;
+            }
+        }
+
+        >.action-button-container {
+            .float-wrapper();
+
+            >.action-button {
+                float           : left;
+                background-color: #dfdcd7;
+                border          : 1px solid #363138;
+                color           : #363138;
+                padding         : 10px 20px;
+                border-radius   : 50px;
+
+                &:hover {
+                    background-color: #363138;
+                    color           : #dfdcd7;
+                }
+            }
+        }
+    }
+}

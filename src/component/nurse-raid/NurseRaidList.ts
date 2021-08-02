@@ -6,7 +6,7 @@ import NurseRaid from "./NurseRaid";
 
 export default class NurseRaidList extends DomNode {
 
-    private loading: DomNode;
+    private loading: Loading;
     private raidContainer: DomNode;
 
     constructor() {
@@ -14,6 +14,9 @@ export default class NurseRaidList extends DomNode {
         this.append(
             this.loading = new Loading(),
             this.raidContainer = el(".raid-container"),
+            el(".test", { style: { backgroundImage: "url(/images/component/nurse-raid/background.png", height: 155, backgroundSize: "auto 100%" } },
+                el("img", { src: "/images/test/NoelAttack.png", height: "87.5" }),
+            ),
         );
         this.loadRaids();
     }

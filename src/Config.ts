@@ -5,8 +5,6 @@ export default {
     chainId: 42,
     infuraId: INFURA_ID,
 
-    maidCount: 30,
-
     // Kovan
     endpoint: `wss://kovan.infura.io/ws/v3/${INFURA_ID}`,
 

@@ -1,7 +1,6 @@
 declare const _default: {
     chainId: number;
     infuraId: string;
-    maidCount: number;
     endpoint: string;
     contracts: {
         LPToken: string;

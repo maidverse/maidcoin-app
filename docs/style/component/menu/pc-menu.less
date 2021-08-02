@@ -1,0 +1,22 @@
+.pc-menu {
+    margin-left: 10px;
+    display    : flex;
+    padding    : 6px;
+
+    @media @tablet-and-phone {
+        display: none;
+    }
+
+    >a {
+        width       : 91px;
+        height      : 19px;
+        margin-right: 10px;
+        text-align  : center;
+        padding-top : 3px;
+
+        &.on {
+            background-image: url(/images/component/pc-menu/current.png);
+            background-size : contain;
+        }
+    }
+}
