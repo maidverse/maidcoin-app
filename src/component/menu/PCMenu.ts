@@ -6,10 +6,11 @@ export default class PCMenu extends DomNode {
     constructor() {
         super(".pc-menu");
         this.load();
-        window.addEventListener("popstate", this.load);
+        SkyRouter.on("go", this.load);
     }
 
     private load = () => {
+        console.log(location.pathname);
         this.empty().append(
             el(`a${location.pathname === "/" ? ".on" : ""}`, "Dashboard", { click: () => SkyRouter.go("/") }),
             el(`a${location.pathname === "/maid" ? ".on" : ""}`, "Maid", { click: () => SkyRouter.go("/maid") }),
@@ -20,7 +21,7 @@ export default class PCMenu extends DomNode {
     };
 
     public delete() {
-        window.removeEventListener("popstate", this.load);
+        SkyRouter.off("go", this.load);
         super.delete();
     }
 }

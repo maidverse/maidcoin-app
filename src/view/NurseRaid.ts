@@ -4,7 +4,6 @@ import { ViewParams } from "skyrouter/lib/View";
 import NurseRaidList from "../component/nurse-raid/NurseRaidList";
 import Layout from "./Layout";
 
-
 export default class NurseRaid implements View {
 
     private container: DomNode;

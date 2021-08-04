@@ -1,12 +1,18 @@
 import { SkyRouter } from "skyrouter";
-import TestAdmin from "./view/test/TestAdmin";
+import Dashboard from "./view/Dashboard";
+import Earn from "./view/Earn";
 import Layout from "./view/Layout";
 import Maid from "./view/Maid";
+import Nursefactory from "./view/NurseFactory";
 import NurseRaid from "./view/NurseRaid";
+import TestAdmin from "./view/test/TestAdmin";
 
 SkyRouter.route("**", Layout);
+SkyRouter.route("", Dashboard);
 SkyRouter.route("maid", Maid);
 SkyRouter.route("nurseraid", NurseRaid);
+SkyRouter.route("nursefactory", Nursefactory);
+SkyRouter.route("earn", Earn);
 
 // test
 SkyRouter.route("test/admin", TestAdmin);
