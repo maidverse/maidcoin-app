@@ -6241,6 +6241,17 @@ eval("var isHexPrefixed = __webpack_require__(/*! is-hex-prefixed */ \"./node_mo
 
 /***/ }),
 
+/***/ "./src/CommonUtil.ts":
+/*!***************************!*\
+  !*** ./src/CommonUtil.ts ***!
+  \***************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nclass CommonUtil {\r\n    shortenAddress(address) {\r\n        return `${address.substring(0, 6)}...${address.substring(38)}`;\r\n    }\r\n}\r\nexports.default = new CommonUtil();\r\n\n\n//# sourceURL=webpack:///./src/CommonUtil.ts?");
+
+/***/ }),
+
 /***/ "./src/Config.ts":
 /*!***********************!*\
   !*** ./src/Config.ts ***!
@@ -6267,10 +6278,10 @@ eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\n
 /*!***********************************!*\
   !*** ./src/component/UserInfo.ts ***!
   \***********************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nclass UserInfo extends skynode_1.DomNode {\r\n    constructor() {\r\n        super(\".user-info\");\r\n        this.append(skynode_1.el(\"a.connect-button\", \"Connect\", {}));\r\n    }\r\n}\r\nexports.default = UserInfo;\r\n\n\n//# sourceURL=webpack:///./src/component/UserInfo.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nconst ethers_1 = __webpack_require__(/*! ethers */ \"./node_modules/ethers/lib.esm/index.js\");\r\nconst CommonUtil_1 = __importDefault(__webpack_require__(/*! ../CommonUtil */ \"./src/CommonUtil.ts\"));\r\nconst MaidCoinContract_1 = __importDefault(__webpack_require__(/*! ../contracts/MaidCoinContract */ \"./src/contracts/MaidCoinContract.ts\"));\r\nconst Wallet_1 = __importDefault(__webpack_require__(/*! ../ethereum/Wallet */ \"./src/ethereum/Wallet.ts\"));\r\nclass UserInfo extends skynode_1.DomNode {\r\n    constructor() {\r\n        super(\".user-info\");\r\n        this.connectHandler = () => {\r\n            this.loadUserInfo();\r\n            this.loadMaidCoin();\r\n        };\r\n        this.transferHandler = async (from, to, amount) => {\r\n            const address = await Wallet_1.default.loadAddress();\r\n            if (from === address || to === address) {\r\n                this.loadMaidCoin();\r\n            }\r\n        };\r\n        this.append(this.ownerPanel = skynode_1.el(\".owner\"), this.maidCoinPanel = skynode_1.el(\".maid-coin\"), this.connectButton = skynode_1.el(\"a.connect-button\", \"Connect\", {\r\n            click: () => Wallet_1.default.connect(),\r\n        }));\r\n        this.ownerPanel.style({ display: \"none\" });\r\n        this.maidCoinPanel.style({ display: \"none\" });\r\n        this.connectButton.style({ display: \"none\" });\r\n        this.loadUserInfo();\r\n        this.loadMaidCoin();\r\n        Wallet_1.default.on(\"connect\", this.connectHandler);\r\n        MaidCoinContract_1.default.on(\"Transfer\", this.transferHandler);\r\n    }\r\n    async loadUserInfo() {\r\n        const owner = await Wallet_1.default.loadAddress();\r\n        if (owner === undefined) {\r\n            this.ownerPanel.style({ display: \"none\" });\r\n            this.maidCoinPanel.style({ display: \"none\" });\r\n            this.connectButton.style({ display: \"flex\" });\r\n        }\r\n        else {\r\n            this.ownerPanel.style({ display: \"block\" });\r\n            this.maidCoinPanel.style({ display: \"block\" });\r\n            this.connectButton.style({ display: \"none\" });\r\n            this.ownerPanel.empty().append(skynode_1.el(\".address\", `Owner: ${CommonUtil_1.default.shortenAddress(owner)}`));\r\n        }\r\n    }\r\n    async loadMaidCoin() {\r\n        const owner = await Wallet_1.default.loadAddress();\r\n        if (owner !== undefined) {\r\n            const balance = await MaidCoinContract_1.default.balanceOf(owner);\r\n            this.maidCoinPanel.empty().append(skynode_1.el(\"img.icon\", { src: \"/images/maidcoin.png\", height: \"21\" }), skynode_1.el(\".balance\", ethers_1.utils.formatEther(balance)));\r\n        }\r\n    }\r\n    delete() {\r\n        Wallet_1.default.off(\"connect\", this.connectHandler);\r\n        MaidCoinContract_1.default.off(\"Transfer\", this.transferHandler);\r\n        super.delete();\r\n    }\r\n}\r\nexports.default = UserInfo;\r\n\n\n//# sourceURL=webpack:///./src/component/UserInfo.ts?");
 
 /***/ }),
 

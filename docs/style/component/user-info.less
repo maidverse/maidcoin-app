@@ -1,5 +1,64 @@
 .user-info {
     padding: 4px;
+    .float-wrapper();
+
+    >.owner {
+        margin-top      : 2px;
+        position        : relative;
+        float           : left;
+        height          : 19px;
+        background-image: url(/images/component/user-info/background.png);
+        background-size : auto 100%;
+        font-family     : "refrigerator-deluxe";
+        line-height     : 19px;
+        font-size       : 14px;
+        padding         : 0 4px;
+
+        &:before {
+            content         : " ";
+            position        : absolute;
+            left            : -2.5px;
+            top             : 0;
+            width           : 2.5px;
+            height          : 19px;
+            background-image: url(/images/component/user-info/background-left.png);
+            background-size : auto 100%;
+        }
+    }
+
+    >.maid-coin {
+        margin-top      : 2px;
+        margin-right    : 6px;
+        position        : relative;
+        float           : right;
+        height          : 19px;
+        background-image: url(/images/component/user-info/background.png);
+        background-size : auto 100%;
+
+        >.icon {
+            float: left;
+        }
+
+        >.balance {
+            float      : right;
+            font-family: "refrigerator-deluxe";
+            line-height: 19px;
+            font-size  : 14px;
+            padding    : 0 4px;
+        }
+
+        &:after {
+            content         : " ";
+            clear           : both;
+            position        : absolute;
+            right           : -6.5px;
+            top             : 0;
+            width           : 6.5px;
+            height          : 19px;
+            background-image: url(/images/component/user-info/background-right.png);
+            background-size : auto 100%;
+        }
+    }
 
     >.connect-button {
         background-image: url(/images/component/user-info/connect-button.png);

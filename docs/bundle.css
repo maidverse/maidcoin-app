@@ -310,6 +310,66 @@ body {
 .user-info {
   padding: 4px;
 }
+.user-info:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.user-info > .owner {
+  margin-top: 2px;
+  position: relative;
+  float: left;
+  height: 19px;
+  background-image: url(/images/component/user-info/background.png);
+  background-size: auto 100%;
+  font-family: "refrigerator-deluxe";
+  line-height: 19px;
+  font-size: 14px;
+  padding: 0 4px;
+}
+.user-info > .owner:before {
+  content: " ";
+  position: absolute;
+  left: -2.5px;
+  top: 0;
+  width: 2.5px;
+  height: 19px;
+  background-image: url(/images/component/user-info/background-left.png);
+  background-size: auto 100%;
+}
+.user-info > .maid-coin {
+  margin-top: 2px;
+  margin-right: 6px;
+  position: relative;
+  float: right;
+  height: 19px;
+  background-image: url(/images/component/user-info/background.png);
+  background-size: auto 100%;
+}
+.user-info > .maid-coin > .icon {
+  float: left;
+}
+.user-info > .maid-coin > .balance {
+  float: right;
+  font-family: "refrigerator-deluxe";
+  line-height: 19px;
+  font-size: 14px;
+  padding: 0 4px;
+}
+.user-info > .maid-coin:after {
+  content: " ";
+  clear: both;
+  position: absolute;
+  right: -6.5px;
+  top: 0;
+  width: 6.5px;
+  height: 19px;
+  background-image: url(/images/component/user-info/background-right.png);
+  background-size: auto 100%;
+}
 .user-info > .connect-button {
   background-image: url(/images/component/user-info/connect-button.png);
   background-size: 100% 100%;
