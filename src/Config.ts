@@ -2,14 +2,21 @@ const INFURA_ID = "5a8a61181115416ebffd2ec0fef74592";
 
 export default {
 
-    chainId: 42,
-    infuraId: INFURA_ID,
+    // Mainnet
+    //chainId: 1,
+    //blockTimeSecond: 15,
 
     // Kovan
-    endpoint: `wss://kovan.infura.io/ws/v3/${INFURA_ID}`,
+    chainId: 42,
+    blockTimeSecond: 4,
+
+    infuraId: INFURA_ID,
 
     // Mainnet
     //endpoint: `wss://mainnet.infura.io/ws/v3/${INFURA_ID}`,
+
+    // Kovan
+    endpoint: `wss://kovan.infura.io/ws/v3/${INFURA_ID}`,
 
     contracts: {
         // Kovan

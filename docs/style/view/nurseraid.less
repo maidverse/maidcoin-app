@@ -1,0 +1,25 @@
+.nurse-raid-view {
+    >header {
+        height             : 40px;
+        background-image   : url(/images/view/title.png);
+        background-position: left center;
+        background-repeat  : repeat-y;
+        background-size    : auto 100%;
+
+        >h2 {
+            font-size: 25px;
+            animation: maid-view-slide-in 0.5s ease-out;
+        }
+
+        P {
+            opacity            : 0;
+            color              : #9e92a9;
+            animation          : maid-view-slide-in 0.5s 0.2s ease-out;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    .nurse-raid-list {
+        margin-top: 20px;
+    }
+}

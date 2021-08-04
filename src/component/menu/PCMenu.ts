@@ -10,7 +10,6 @@ export default class PCMenu extends DomNode {
     }
 
     private load = () => {
-        console.log(location.pathname);
         this.empty().append(
             el(`a${location.pathname === "/" ? ".on" : ""}`, "Dashboard", { click: () => SkyRouter.go("/") }),
             el(`a${location.pathname === "/maid" ? ".on" : ""}`, "Maid", { click: () => SkyRouter.go("/maid") }),

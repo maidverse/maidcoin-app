@@ -298,6 +298,26 @@ body {
   background-color: #363138;
   color: #dfdcd7;
 }
+.nurse-raid-view > header {
+  height: 40px;
+  background-image: url(/images/view/title.png);
+  background-position: left center;
+  background-repeat: repeat-y;
+  background-size: auto 100%;
+}
+.nurse-raid-view > header > h2 {
+  font-size: 25px;
+  animation: maid-view-slide-in 0.5s ease-out;
+}
+.nurse-raid-view > header P {
+  opacity: 0;
+  color: #9e92a9;
+  animation: maid-view-slide-in 0.5s 0.2s ease-out;
+  animation-fill-mode: forwards;
+}
+.nurse-raid-view .nurse-raid-list {
+  margin-top: 20px;
+}
 .loading {
   position: fixed;
   left: 50%;
@@ -528,5 +548,133 @@ body {
   font-size: 16px;
   font-family: "refrigerator-deluxe";
   font-weight: bold;
+}
+@keyframes nurse-raid-show {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes nurse-raid-element-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.nurse-raid {
+  position: relative;
+  max-width: 403px;
+  height: 188.5px;
+  animation: nurse-raid-show 0.5s ease-out;
+}
+.nurse-raid > .background {
+  position: absolute;
+  left: 21.5px;
+  top: 0;
+  width: calc(100% - 43px);
+  height: 188.5px;
+  background-image: url(/images/component/nurse-raid/background-center.png);
+  background-size: auto 100%;
+}
+.nurse-raid > .background:before {
+  content: " ";
+  position: absolute;
+  left: -21.5px;
+  top: 0;
+  width: 21.5px;
+  height: 188.5px;
+  background-image: url(/images/component/nurse-raid/background-left.png);
+  background-size: auto 100%;
+}
+.nurse-raid > .background:after {
+  content: " ";
+  position: absolute;
+  right: -21.5px;
+  top: 0;
+  width: 21.5px;
+  height: 188.5px;
+  background-image: url(/images/component/nurse-raid/background-right.png);
+  background-size: auto 100%;
+}
+.nurse-raid > .content {
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: calc(100% - 6px);
+  height: 155px;
+  background-image: url(/images/component/nurse-raid/background.png);
+  background-size: auto 100%;
+}
+.nurse-raid > .content > .name {
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 166px;
+  height: 100%;
+  background-image: url(/images/component/nurse-raid/name-background.png);
+  background-size: auto 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
+  font-size: 24px;
+  animation: nurse-raid-element-fade-in 0.5s ease-out;
+}
+.nurse-raid > .content > .image {
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 140px;
+  height: 100%;
+  background-size: 100% auto;
+  background-position: 0 calc(50% + 56px);
+  background-repeat: no-repeat;
+  animation: nurse-raid-element-fade-in 0.5s ease-out;
+}
+.nurse-raid > .content > .end-time {
+  position: absolute;
+  right: 5px;
+  top: 4px;
+  font-family: "refrigerator-deluxe";
+  font-size: 18px;
+  color: #d3f8ff;
+  animation: nurse-raid-element-fade-in 0.5s ease-out;
+}
+.nurse-raid > .content > .character {
+  position: absolute;
+  right: 44px;
+  bottom: 34px;
+  animation: nurse-raid-element-fade-in 0.5s ease-out;
+}
+.nurse-raid > .content > .duration {
+  position: absolute;
+  right: 20px;
+  bottom: 6px;
+  font-family: "refrigerator-deluxe";
+  font-size: 22px;
+  color: #ec4977;
+  animation: nurse-raid-element-fade-in 0.5s ease-out;
+}
+.nurse-raid > .content > .duration > .title {
+  color: #e4eaed;
+  margin-right: 5px;
+}
+.nurse-raid > .content > .progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 6px;
+  width: 100%;
+  background-color: #1f3b42;
+  animation: nurse-raid-element-fade-in 0.5s ease-out;
+}
+.nurse-raid > .content > .progress > .bar {
+  background-color: #4dd2b4;
 }
 
