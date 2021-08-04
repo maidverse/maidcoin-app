@@ -212,6 +212,26 @@ body {
   padding: 10px 20px 50px;
   margin: auto;
 }
+.dashboard-view > header {
+  height: 40px;
+  background-image: url(/images/view/title.png);
+  background-position: left center;
+  background-repeat: repeat-y;
+  background-size: auto 100%;
+}
+.dashboard-view > header > h2 {
+  font-size: 25px;
+  animation: maid-view-slide-in 0.5s ease-out;
+}
+.dashboard-view > header P {
+  opacity: 0;
+  color: #9e92a9;
+  animation: maid-view-slide-in 0.5s 0.2s ease-out;
+  animation-fill-mode: forwards;
+}
+.dashboard-view .owned-maid-list {
+  margin-top: 20px;
+}
 @keyframes maid-view-slide-in {
   0% {
     opacity: 0;
@@ -548,6 +568,39 @@ body {
   font-size: 16px;
   font-family: "refrigerator-deluxe";
   font-weight: bold;
+}
+.maid-summary {
+  position: relative;
+  height: 262.5px;
+}
+.maid-summary > .background {
+  position: absolute;
+  left: 28px;
+  top: 0;
+  width: calc(100% - 35px);
+  height: 262.5px;
+  background-image: url(/images/component/maid-summary/background-center.png);
+  background-size: auto 100%;
+}
+.maid-summary > .background:before {
+  content: " ";
+  position: absolute;
+  left: -28px;
+  top: 0;
+  width: 28px;
+  height: 262.5px;
+  background-image: url(/images/component/maid-summary/background-left.png);
+  background-size: auto 100%;
+}
+.maid-summary > .background:after {
+  content: " ";
+  position: absolute;
+  right: -7px;
+  top: 0;
+  width: 7px;
+  height: 262.5px;
+  background-image: url(/images/component/maid-summary/background-right.png);
+  background-size: auto 100%;
 }
 @keyframes nurse-raid-show {
   0% {

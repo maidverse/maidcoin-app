@@ -24,10 +24,16 @@ export default class NurseRaidList extends DomNode {
         const raidCount = (await NurseRaidContract.getRaidCount()).toNumber();
         const currentBlockNumber = await NetworkProvider.getBlockNumber();
 
+        let index = 0;
         SkyUtil.repeat(raidCount, async (raidId) => {
-            const raid = await NurseRaidContract.getRaid(raidId);
-            if (currentBlockNumber < raid.endBlock) {
-                new NurseRaid(raid, currentBlockNumber).appendTo(this.raidContainer);
+            if (this.deleted !== true) {
+                const raid = await NurseRaidContract.getRaid(raidId);
+                if (currentBlockNumber < raid.endBlock) {
+                    setTimeout(() => {
+                        new NurseRaid(raid, currentBlockNumber).appendTo(this.raidContainer);
+                    }, index * 50);
+                    index += 1;
+                }
             }
         });
 

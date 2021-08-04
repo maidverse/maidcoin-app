@@ -1,5 +1,5 @@
 import { BigNumber, BigNumberish } from "ethers";
-import ERC721Contract from "./standard/ERC721Contract";
+import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 import { CloneNurse } from "./typechain";
 interface NurseType {
     partCount: number;
@@ -9,7 +9,7 @@ interface NurseType {
 interface NurseInfo {
     nurseType: number;
 }
-declare class CloneNurseContract extends ERC721Contract<CloneNurse> {
+declare class CloneNurseContract extends ERC721EnumerableContract<CloneNurse> {
     constructor();
     getNurseTypeCount(): Promise<BigNumber>;
     addNurseType(partCount: BigNumberish, destroyReturn: BigNumber, power: BigNumberish): Promise<void>;

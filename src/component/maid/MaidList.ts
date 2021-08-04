@@ -1,6 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
-import Config from "../../Config";
 import MaidContract from "../../contracts/MaidContract";
 import Loading from "../Loading";
 import MaidBook from "./MaidBook";

@@ -3,7 +3,7 @@ import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
 import MaidArtifact from "./artifacts/contracts/Maid.sol/Maid.json";
 import LPTokenContract from "./LPTokenContract";
-import ERC721Contract from "./standard/ERC721Contract";
+import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 import { Maid } from "./typechain";
 
 export interface MaidInfo {
@@ -11,7 +11,7 @@ export interface MaidInfo {
     supportedLPTokenAmount: BigNumber;
 }
 
-class MaidContract extends ERC721Contract<Maid> {
+class MaidContract extends ERC721EnumerableContract<Maid> {
 
     constructor() {
         super(Config.contracts.Maid, MaidArtifact.abi, [

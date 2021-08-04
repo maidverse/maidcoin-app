@@ -1,11 +1,11 @@
 import { BigNumber, BigNumberish } from "ethers";
-import ERC721Contract from "./standard/ERC721Contract";
+import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 import { Maid } from "./typechain";
 export interface MaidInfo {
     originPower: number;
     supportedLPTokenAmount: BigNumber;
 }
-declare class MaidContract extends ERC721Contract<Maid> {
+declare class MaidContract extends ERC721EnumerableContract<Maid> {
     constructor();
     getMaid(maidId: number): Promise<MaidInfo>;
     ownerOf(nurseId: number): Promise<string>;

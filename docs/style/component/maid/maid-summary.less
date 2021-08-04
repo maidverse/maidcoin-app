@@ -1,0 +1,36 @@
+.maid-summary {
+    position: relative;
+    height  : 262.5px;
+
+    >.background {
+        position        : absolute;
+        left            : 28px;
+        top             : 0;
+        width           : calc(100% - 35px);
+        height          : 262.5px;
+        background-image: url(/images/component/maid-summary/background-center.png);
+        background-size : auto 100%;
+
+        &:before {
+            content         : " ";
+            position        : absolute;
+            left            : -28px;
+            top             : 0;
+            width           : 28px;
+            height          : 262.5px;
+            background-image: url(/images/component/maid-summary/background-left.png);
+            background-size : auto 100%;
+        }
+
+        &:after {
+            content         : " ";
+            position        : absolute;
+            right           : -7px;
+            top             : 0;
+            width           : 7px;
+            height          : 262.5px;
+            background-image: url(/images/component/maid-summary/background-right.png);
+            background-size : auto 100%;
+        }
+    }
+}

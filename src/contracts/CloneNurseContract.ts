@@ -3,7 +3,7 @@ import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
 import CloneNurseArtifact from "./artifacts/contracts/CloneNurse.sol/CloneNurse.json";
 import NursePartContract from "./NursePartContract";
-import ERC721Contract from "./standard/ERC721Contract";
+import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 import { CloneNurse } from "./typechain";
 
 interface NurseType {
@@ -16,7 +16,7 @@ interface NurseInfo {
     nurseType: number;
 }
 
-class CloneNurseContract extends ERC721Contract<CloneNurse> {
+class CloneNurseContract extends ERC721EnumerableContract<CloneNurse> {
 
     constructor() {
         super(Config.contracts.CloneNurse, CloneNurseArtifact.abi, [
