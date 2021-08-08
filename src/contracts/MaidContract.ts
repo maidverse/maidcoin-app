@@ -29,8 +29,12 @@ class MaidContract extends ERC721EnumerableContract<Maid> {
         };
     }
 
-    public async ownerOf(nurseId: number): Promise<string> {
-        return await this.contract.ownerOf(nurseId);
+    public async ownerOf(maidId: number): Promise<string> {
+        return await this.contract.ownerOf(maidId);
+    }
+
+    public async powerOf(maidId: number): Promise<number> {
+        return (await this.contract.powerOf(maidId)).toNumber();
     }
 
     public async mint(power: BigNumberish) {

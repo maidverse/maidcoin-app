@@ -1,8 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
-import NurseRaidContract, { RaidInfo } from "../../contracts/NurseRaidContract";
-import NetworkProvider from "../../ethereum/NetworkProvider";
+import { RaidInfo } from "../../contracts/NurseRaidContract";
 
 export default class NurseRaid extends DomNode {
 
@@ -24,11 +23,7 @@ export default class NurseRaid extends DomNode {
 
         this.content.empty().append(
             el(".name", tokenInfo.name),
-            el(".image", {
-                style: {
-                    backgroundImage: `url(${tokenInfo.image})`,
-                },
-            }),
+            el(".image", { style: { backgroundImage: `url(${tokenInfo.image})` } }),
             el(".end-time", `End ${CommonUtil.displayBlockDuration(this.raid.endBlock - this.currentBlockNumber)}`),
             el(".character",
                 el("img", { src: "/images/test/NoelIdle.png", height: "85" }),
