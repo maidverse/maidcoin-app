@@ -28,14 +28,16 @@ We use [yarn](https://yarnpkg.com) in our infrastructure, so we decided to go wi
 Please install yarn globally if you haven't already.
 
 ### Environment variables
-The app grabs environment variables from the `.env` file. Copy our template to your own local file:
+The app grabs environment variables from the `secure.json` file. Copy our template to your own local file:
 ```
-cp .env.example .env
+cp secure.json.example secure.json
 ```
 
-To execute transactions, you'll need to create an [Infura](https://infura.io) project and set the project ID in the `.env` you've just created:
+To execute transactions, you'll need to create an [Infura](https://infura.io) project and set the project ID in the `secure.json` you've just created:
 ```
-INFURA_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+{
+  "infuraId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+}
 ```
 Once done, you'll need to restart the app if it's already running.
 
