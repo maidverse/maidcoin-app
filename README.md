@@ -18,20 +18,60 @@ An open source app for Maidcoin -- an upcoming DeFi project with elements of NFT
 * Discord: https://discord.gg/ZMWNjs6F3V
 * OnePager: https://uploads-ssl.webflow.com/60ccaa29429d9f0872f405d8/6109541722fc1c9a912452bc_MaidCoinOnePager.pdf
 
-## Accessing the Maidcoin App
-To access the Maidcoin App, visit https://app.maidcoin.org.
+## Getting Started
 
-## Technology Stack
-*Language:* [Typescript](https://www.typescriptlang.org/)
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-*Package management:* [Yarn](https://yarnpkg.com/)
+### Prerequisites
 
-*Toolchain:* [Webpack](https://webpack.js.org/)
+We use [yarn](https://yarnpkg.com) in our infrastructure, so we decided to go with yarn in the README.
+Please install yarn globally if you haven't already.
 
-*Libraries:*
-* [Ethers](https://ethers.org/)
-* [WalletConnect](https://walletconnect.org/)
-* [Less](https://lesscss.org/)
+### Environment variables
+The app grabs environment variables from the `.env` file. Copy our template to your own local file:
+```
+cp .env.example .env
+```
+
+To execute transactions, you'll need to create an [Infura](https://infura.io) project and set the project ID in the `.env` you've just created:
+```
+INFURA_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```
+Once done, you'll need to restart the app if it's already running.
+
+### Installing and running
+
+Install dependencies for the project:
+```
+yarn install
+```
+
+To start in development environment:
+```
+yarn webpack-dev
+```
+
+To start in development environment:
+```
+yarn webpack-prod
+```
+
+## Built With
+
+### [SkyNode](https://github.com/Hanul/skynode)
+A JS library for building user interfaces that supports customized DOM manipulation
+  
+### [Typescript](https://www.typescriptlang.org/)
+TypeScript is an open-source language which builds on JavaScript, one of the world's most used tools, by adding static type definitions.
+
+### [Webpack](https://webpack.js.org/)
+Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
+
+### [Ethers](https://ethers.org/)
+The ethers.js library aims to be a complete and compact library for interacting with the Ethereum Blockchain and its ecosystem.
+
+### [WalletConnect](https://walletconnect.org/)
+WalletConnect is an open source protocol for connecting decentralised applications to mobile wallets with QR code scanning or deep linking.
 
 ## License
 [MIT](LICENSE)
