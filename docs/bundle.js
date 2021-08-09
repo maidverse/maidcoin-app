@@ -6429,10 +6429,10 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 /*!***********************!*\
   !*** ./src/Config.ts ***!
   \***********************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst INFURA_ID = \"5a8a61181115416ebffd2ec0fef74592\";\r\nexports.default = {\r\n    chainId: 42,\r\n    blockTimeSecond: 4,\r\n    infuraId: INFURA_ID,\r\n    endpoint: `wss://kovan.infura.io/ws/v3/${INFURA_ID}`,\r\n    contracts: {\r\n        LPToken: \"0x56ac87553c4dBcd877cA7E4fba54959f091CaEdE\",\r\n        MaidCoin: \"0x6AE9F1044e16ffc04CB14Eb678D3BB44DFcB869C\",\r\n        TheMaster: \"0x0D6B37d42aaD236f3a74de033c75bca307B8714e\",\r\n        Maid: \"0x155F42236410b6d71c19C313Ce31F7A67c1A66c7\",\r\n        MasterCoin: \"0x88a9040Eb542754996Df2A52a803bEBb24F701f2\",\r\n        NursePart: \"0x67d7a6e0CA121A64540B2c6fc28c0AD25cc73c94\",\r\n        NurseRaid: \"0xD1729B09eE55DeE3757695FEe2E591e31aed90B2\",\r\n        CloneNurse: \"0x63A81967B7217201852A07897Be67035a638787E\",\r\n    },\r\n};\r\n\n\n//# sourceURL=webpack:///./src/Config.ts?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst secure = __webpack_require__(/*! ../secure.json */ \"./secure.json\");\r\nconst INFURA_ID = secure.infuraId;\r\nexports.default = {\r\n    chainId: 42,\r\n    blockTimeSecond: 4,\r\n    infuraId: INFURA_ID,\r\n    endpoint: `wss://kovan.infura.io/ws/v3/${INFURA_ID}`,\r\n    contracts: {\r\n        LPToken: \"0x56ac87553c4dBcd877cA7E4fba54959f091CaEdE\",\r\n        MaidCoin: \"0x6AE9F1044e16ffc04CB14Eb678D3BB44DFcB869C\",\r\n        TheMaster: \"0x0D6B37d42aaD236f3a74de033c75bca307B8714e\",\r\n        Maid: \"0x155F42236410b6d71c19C313Ce31F7A67c1A66c7\",\r\n        MasterCoin: \"0x88a9040Eb542754996Df2A52a803bEBb24F701f2\",\r\n        NursePart: \"0x67d7a6e0CA121A64540B2c6fc28c0AD25cc73c94\",\r\n        NurseRaid: \"0xD1729B09eE55DeE3757695FEe2E591e31aed90B2\",\r\n        CloneNurse: \"0x63A81967B7217201852A07897Be67035a638787E\",\r\n    },\r\n};\r\n\n\n//# sourceURL=webpack:///./src/Config.ts?");
 
 /***/ }),
 
@@ -7150,6 +7150,17 @@ eval("/* provided dependency */ var process = __webpack_require__(/*! process/br
 /***/ ((module) => {
 
 eval("module.exports = extend\n\nvar hasOwnProperty = Object.prototype.hasOwnProperty;\n\nfunction extend() {\n    var target = {}\n\n    for (var i = 0; i < arguments.length; i++) {\n        var source = arguments[i]\n\n        for (var key in source) {\n            if (hasOwnProperty.call(source, key)) {\n                target[key] = source[key]\n            }\n        }\n    }\n\n    return target\n}\n\n\n//# sourceURL=webpack:///./node_modules/xtend/immutable.js?");
+
+/***/ }),
+
+/***/ "./secure.json":
+/*!*********************!*\
+  !*** ./secure.json ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+eval("module.exports = JSON.parse('{\"infuraId\":\"5a8a61181115416ebffd2ec0fef74592\"}');\n\n//# sourceURL=webpack:///./secure.json?");
 
 /***/ }),
 
