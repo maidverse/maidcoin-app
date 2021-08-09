@@ -1,4 +1,5 @@
-const INFURA_ID = "5a8a61181115416ebffd2ec0fef74592";
+const secure = require("../secure.json");
+const INFURA_ID = secure.infuraId;
 
 export default {
 
