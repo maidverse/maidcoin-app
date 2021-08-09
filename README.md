@@ -21,5 +21,17 @@ An open source app for Maidcoin -- an upcoming DeFi project with elements of NFT
 ## Accessing the Maidcoin App
 To access the Maidcoin App, visit https://app.maidcoin.org.
 
+## Technology Stack
+*Language:* [Typescript](https://www.typescriptlang.org/)
+
+*Package management:* [Yarn](https://yarnpkg.com/)
+
+*Toolchain:* [Webpack](https://webpack.js.org/)
+
+*Libraries:*
+* [Ethers](https://ethers.org/)
+* [WalletConnect](https://walletconnect.org/)
+* [Less](https://lesscss.org/)
+
 ## License
 [MIT](LICENSE)
