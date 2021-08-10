@@ -4,9 +4,12 @@
 <a href="https://discord.gg/ZMWNjs6F3V">
     <img src="https://img.shields.io/discord/862948397354582026?logo=discord"
         alt="chat on Discord"></a>
+<a href="https://t.me/maidcoingroup">
+    <img src="https://img.shields.io/badge/Chat%20on-Telegram-brightgreen.svg"
+        alt="chat on Telegram"></a>
 <a href="https://twitter.com/intent/follow?screen_name=maid_coin">
     <img src="https://img.shields.io/twitter/follow/maid_coin?style=social&logo=twitter"
-        alt="follow on Twitter"></a>
+        alt="follow on Twitter"></a>  
 
 An open source app for Maidcoin -- an upcoming DeFi project with elements of NFT collecting and gamification.
 * Website: https://www.maidcoin.org
@@ -16,6 +19,7 @@ An open source app for Maidcoin -- an upcoming DeFi project with elements of NFT
 * Reddit: https://www.reddit.com/r/Maidcoin/
 * Email: contact@maidcoin.org
 * Discord: https://discord.gg/ZMWNjs6F3V
+* Telegram: https://t.me/maidcoingroup
 * OnePager: https://uploads-ssl.webflow.com/60ccaa29429d9f0872f405d8/6109541722fc1c9a912452bc_MaidCoinOnePager.pdf
 
 ## Getting Started
