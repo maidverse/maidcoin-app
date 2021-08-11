@@ -1,7 +1,6 @@
 import { SkyRouter } from "skyrouter";
-import Alert from "./component/dialogue/Alert";
 import Dashboard from "./view/Dashboard";
-import Earn from "./view/Earn";
+import Farm from "./view/Farm";
 import Layout from "./view/Layout";
 import Maid from "./view/Maid";
 import Nursefactory from "./view/NurseFactory";
@@ -13,7 +12,7 @@ SkyRouter.route("", Dashboard);
 SkyRouter.route("maid", Maid);
 SkyRouter.route("nurseraid", NurseRaid);
 SkyRouter.route("nursefactory", Nursefactory);
-SkyRouter.route("earn", Earn);
+SkyRouter.route("farm", Farm);
 
 // test
 SkyRouter.route("test/admin", TestAdmin);

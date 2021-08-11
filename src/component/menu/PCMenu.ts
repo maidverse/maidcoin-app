@@ -15,7 +15,7 @@ export default class PCMenu extends DomNode {
             el(`a${location.pathname === "/maid" ? ".on" : ""}`, "Maid", { click: () => SkyRouter.go("/maid") }),
             el(`a${location.pathname === "/nurseraid" ? ".on" : ""}`, "Nurse Raid", { click: () => SkyRouter.go("/nurseraid") }),
             el(`a${location.pathname === "/nursefactory" ? ".on" : ""}`, "Nurse Factory", { click: () => SkyRouter.go("/nursefactory") }),
-            el(`a${location.pathname === "/earn" ? ".on" : ""}`, "Earn", { click: () => SkyRouter.go("/earn") }),
+            el(`a${location.pathname === "/farm" ? ".on" : ""}`, "Farm", { click: () => SkyRouter.go("/farm") }),
         );
     };
 

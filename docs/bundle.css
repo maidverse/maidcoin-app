@@ -338,6 +338,26 @@ body {
 .nurse-raid-view .nurse-raid-list {
   margin-top: 20px;
 }
+.nurse-factory-view > header {
+  height: 40px;
+  background-image: url(/images/view/title.png);
+  background-position: left center;
+  background-repeat: repeat-y;
+  background-size: auto 100%;
+}
+.nurse-factory-view > header > h2 {
+  font-size: 25px;
+  animation: maid-view-slide-in 0.5s ease-out;
+}
+.nurse-factory-view > header P {
+  opacity: 0;
+  color: #9e92a9;
+  animation: maid-view-slide-in 0.5s 0.2s ease-out;
+  animation-fill-mode: forwards;
+}
+.nurse-factory-view .nurse-factory-list {
+  margin-top: 20px;
+}
 .loading {
   position: fixed;
   left: 50%;
@@ -766,6 +786,7 @@ body {
   height: 155px;
   background-image: url(/images/component/nurse-raid/background.png);
   background-size: auto 100%;
+  background-position: center center;
 }
 .nurse-raid > .content > .name {
   position: absolute;
@@ -832,6 +853,154 @@ body {
 }
 .nurse-raid > .content > .progress > .bar {
   background-color: #4dd2b4;
+}
+@keyframes nurse-factory-show {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes nurse-factory-element-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.nurse-factory {
+  position: relative;
+  max-width: 403px;
+  height: 188.5px;
+  animation: nurse-factory-show 0.5s ease-out;
+}
+.nurse-factory > .background {
+  position: absolute;
+  left: 21.5px;
+  top: 0;
+  width: calc(100% - 43px);
+  height: 188.5px;
+  background-image: url(/images/component/nurse-factory/background-center.png);
+  background-size: auto 100%;
+}
+.nurse-factory > .background:before {
+  content: " ";
+  position: absolute;
+  left: -21.5px;
+  top: 0;
+  width: 21.5px;
+  height: 188.5px;
+  background-image: url(/images/component/nurse-factory/background-left.png);
+  background-size: auto 100%;
+}
+.nurse-factory > .background:after {
+  content: " ";
+  position: absolute;
+  right: -21.5px;
+  top: 0;
+  width: 21.5px;
+  height: 188.5px;
+  background-image: url(/images/component/nurse-factory/background-right.png);
+  background-size: auto 100%;
+}
+.nurse-factory > .content {
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: calc(100% - 6px);
+  height: 155px;
+  background-image: url(/images/component/nurse-factory/background.png);
+  background-size: auto 100%;
+  background-position: center center;
+}
+.nurse-factory > .content > .name {
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 166px;
+  height: 100%;
+  background-image: url(/images/component/nurse-factory/name-background.png);
+  background-size: auto 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
+  font-size: 24px;
+  animation: nurse-factory-element-fade-in 0.5s ease-out;
+}
+.nurse-factory > .content > .image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 140px;
+  height: 100%;
+  background-size: 100% auto;
+  background-position: 0 calc(50% + 56px);
+  background-repeat: no-repeat;
+  animation: nurse-factory-element-fade-in 0.5s ease-out;
+}
+.nurse-factory > .content > .part {
+  position: absolute;
+  right: 18px;
+  top: 64px;
+}
+.nurse-factory > .content > .part-count {
+  position: absolute;
+  right: 18px;
+  top: 128px;
+  width: 65px;
+  height: 20.5px;
+  background-image: url(/images/component/nurse-factory/amount-background.png);
+  background-size: auto 100%;
+  font-family: "refrigerator-deluxe";
+  color: #d3f8ff;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20.5px;
+}
+.nurse-factory > .content > .part-count > .balance {
+  color: #d72e62;
+}
+.nurse-factory > footer {
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 40px;
+  padding-right: 3px;
+}
+.nurse-factory > footer:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.nurse-factory > footer > .name {
+  float: left;
+  font-family: "refrigerator-deluxe";
+  font-size: 22px;
+  padding-top: 4px;
+  padding-left: 26px;
+}
+.nurse-factory > footer > .create-button {
+  float: right;
+  width: 103.5px;
+  height: 33px;
+  background-image: url(/images/component/nurse-factory/create-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
 }
 .dialogue-background {
   position: fixed;
@@ -903,6 +1072,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  line-height: 24px;
 }
 .alert > .cancel-button {
   display: none;
@@ -915,6 +1085,7 @@ body {
   font-size: 18px;
   text-align: center;
   padding: 20px 0;
+  line-height: 24px;
 }
 .slide-prompt > .input {
   display: block;
