@@ -1,11 +1,8 @@
-import { DomNode, el, Popup } from "@hanul/skynode";
+import Dialogue from "./Dialogue";
 
-export default class Prompt extends Popup {
+export default class Prompt extends Dialogue {
 
-    public content: DomNode;
-
-    constructor() {
-        super(".background");
-        this.append(this.content = el(".prompt"));
+    constructor(title: string, confirmTitle: string, confirm: () => void) {
+        super(".prompt", title, confirmTitle, confirm);
     }
 }

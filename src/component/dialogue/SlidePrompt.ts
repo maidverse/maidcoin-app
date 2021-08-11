@@ -1,11 +1,24 @@
-import { DomNode, el, Popup } from "@hanul/skynode";
+import { DomNode, el } from "@hanul/skynode";
+import Dialogue from "./Dialogue";
 
-export default class SlidePrompt extends Popup {
+export default class SlidePrompt extends Dialogue {
 
-    public content: DomNode;
+    private input: DomNode<HTMLInputElement>;
+    private range: DomNode<HTMLInputElement>;
 
-    constructor() {
-        super(".background");
-        this.append(this.content = el(".slide-prompt"));
+    constructor(
+        title: string,
+        message: string,
+        confirmTitle: string,
+        confirm: (value: number) => void,
+    ) {
+        super(".slide-prompt", title, confirmTitle, () => {
+
+        });
+        this.content.append(
+            el("p", message),
+            this.input = el("input.input"),
+            this.range = el("input.range", { type: "range" }),
+        );
     }
 }

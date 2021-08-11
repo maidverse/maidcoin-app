@@ -1,0 +1,1 @@
+{"version":3,"file":"SlidePrompt.d.ts","sourceRoot":"","sources":["../../../src/component/dialogue/SlidePrompt.ts"],"names":[],"mappings":"AACA,OAAO,QAAQ,MAAM,YAAY,CAAC;AAElC,MAAM,CAAC,OAAO,OAAO,WAAY,SAAQ,QAAQ;IAE7C,OAAO,CAAC,KAAK,CAA4B;IACzC,OAAO,CAAC,KAAK,CAA4B;gBAGrC,KAAK,EAAE,MAAM,EACb,OAAO,EAAE,MAAM,EACf,YAAY,EAAE,MAAM,EACpB,OAAO,EAAE,CAAC,KAAK,EAAE,MAAM,KAAK,IAAI;CAWvC"}

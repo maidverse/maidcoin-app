@@ -1,7 +1,7 @@
 declare const _default: {
     chainId: number;
     blockTimeSecond: number;
-    infuraId: string;
+    infuraId: any;
     endpoint: string;
     contracts: {
         LPToken: string;

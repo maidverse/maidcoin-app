@@ -1,11 +1,21 @@
-import { DomNode, el, Popup } from "@hanul/skynode";
+import { el } from "@hanul/skynode";
+import Dialogue from "./Dialogue";
 
-export default class Alert extends Popup {
+export default class Alert extends Dialogue {
 
-    public content: DomNode;
-
-    constructor() {
-        super(".background");
-        this.append(this.content = el(".alert"));
+    constructor(
+        title: string,
+        message: string,
+        confirmTitle: string,
+        confirm?: () => void,
+    ) {
+        super(".alert", title, confirmTitle, () => {
+            if (confirm !== undefined) {
+                confirm();
+            }
+        });
+        this.content.append(
+            el("p", message),
+        );
     }
 }

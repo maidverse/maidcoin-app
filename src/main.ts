@@ -1,4 +1,5 @@
 import { SkyRouter } from "skyrouter";
+import Alert from "./component/dialogue/Alert";
 import Dashboard from "./view/Dashboard";
 import Earn from "./view/Earn";
 import Layout from "./view/Layout";
