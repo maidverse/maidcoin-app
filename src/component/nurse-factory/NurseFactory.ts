@@ -17,7 +17,12 @@ export default class NurseFactory extends DomNode {
             this.footer = el("footer"),
         );
         this.load();
+        Wallet.on("connect", this.connectHandler);
     }
+
+    private connectHandler = () => {
+        this.load();
+    };
 
     private async load() {
 
@@ -45,5 +50,10 @@ export default class NurseFactory extends DomNode {
                 }),
             );
         }
+    }
+
+    public delete(): void {
+        Wallet.off("connect", this.connectHandler);
+        super.delete();
     }
 }

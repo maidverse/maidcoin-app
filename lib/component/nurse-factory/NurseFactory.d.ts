@@ -4,6 +4,8 @@ export default class NurseFactory extends DomNode {
     private content;
     private footer;
     constructor(nurseType: number);
+    private connectHandler;
     private load;
+    delete(): void;
 }
 //# sourceMappingURL=NurseFactory.d.ts.map
