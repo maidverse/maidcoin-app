@@ -21,8 +21,6 @@ export default class OwnedMaidList extends DomNode {
 
     private async loadMaids() {
 
-        new MaidSummary(0).appendTo(this.maidContainer);
-
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 

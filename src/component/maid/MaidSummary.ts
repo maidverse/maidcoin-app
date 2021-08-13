@@ -19,7 +19,6 @@ export default class MaidSummary extends DomNode {
             this.footer = el("footer"),
         );
         this.load();
-
         this.content.onDom("click", () => new MaidDetail(maidId));
     }
 

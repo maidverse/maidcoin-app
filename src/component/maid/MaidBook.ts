@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import maids from "../../json/maids.json";
+import MaidDetail from "./MaidDetail";
 
 export default class MaidBook extends DomNode {
 
@@ -10,5 +11,6 @@ export default class MaidBook extends DomNode {
             backgroundImage: `url(https://storage.googleapis.com/maidcoin/Catalog/${maidInfo.name}Catalog.png)`,
         });
         this.append(el("a.name", maidInfo.name));
+        this.onDom("click", () => new MaidDetail(maidId));
     }
 }
