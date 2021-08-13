@@ -690,12 +690,23 @@ body {
   right: 16px;
   bottom: 14px;
   text-align: right;
-  font-size: 18px;
+  font-size: 20px;
   font-family: "refrigerator-deluxe";
-  line-height: 22px;
+  line-height: 26px;
+}
+.maid-summary > .content > .properties > .power {
+  color: #d8448a;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+.maid-summary > .content > .properties > .power > img {
+  margin-right: 12px;
 }
 .maid-summary > .content > .properties > .property > span {
   color: #ffde00;
+}
+.maid-summary > .content > .properties > .property.lp-amount > span {
+  color: #7a8dff;
 }
 .maid-summary > footer {
   position: absolute;
@@ -711,11 +722,143 @@ body {
   clear: both;
   visibility: hidden;
 }
-.maid-summary > footer > .support-button {
+.maid-summary > footer > .power-up-button {
   float: left;
-  width: 104px;
+  width: 112px;
   height: 33.5px;
-  background-image: url(/images/component/maid-summary/button.png);
+  background-image: url(/images/component/maid-summary/power-up-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
+.maid-summary > footer > .power-down-button {
+  float: left;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/maid-summary/power-down-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
+.maid-detail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 25, 29, 0.9);
+  overflow-y: scroll;
+}
+.maid-detail > .back-button {
+  position: absolute;
+  left: 16px;
+  top: 10px;
+}
+.maid-detail > .content > .image {
+  position: absolute;
+  left: 20px;
+  top: 120px;
+  z-index: 1;
+  height: 550px;
+}
+.maid-detail > .content > .image2 {
+  position: absolute;
+  right: 10px;
+  top: 480px;
+  height: 500px;
+  filter: brightness(0.5);
+}
+.maid-detail > .content > header {
+  position: absolute;
+  left: 30px;
+  top: 48px;
+  width: 169.5px;
+  height: 28px;
+  background-image: url(/images/component/maid-summary/name-background.png);
+  background-size: auto 100%;
+  padding: 5px;
+}
+.maid-detail > .content > header > .name {
+  margin-top: -15px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.maid-detail > .content > header > .cv {
+  font-size: 14px;
+  font-weight: normal;
+}
+.maid-detail > .content > .owner {
+  position: absolute;
+  left: 31px;
+  top: 76px;
+  background-image: url(/images/component/maid-summary/owner-background.png);
+  font-size: 14px;
+  font-family: "refrigerator-deluxe";
+  padding: 2px 5px;
+}
+.maid-detail > .content > .speak-button {
+  position: absolute;
+  right: 16px;
+  top: 10px;
+}
+.maid-detail > .content > .properties {
+  position: absolute;
+  right: 24px;
+  top: 58px;
+  text-align: right;
+  font-size: 20px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+}
+.maid-detail > .content > .properties > .power {
+  color: #d8448a;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+.maid-detail > .content > .properties > .power > img {
+  margin-right: 12px;
+}
+.maid-detail > .content > .properties > .property > span {
+  color: #ffde00;
+}
+.maid-detail > .content > .properties > .property.lp-amount > span {
+  color: #7a8dff;
+}
+.maid-detail > .content > .controller {
+  position: absolute;
+  right: 20px;
+  top: 188px;
+}
+.maid-detail > .content > .controller > .power-up-button {
+  display: block;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/maid-summary/power-up-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
+.maid-detail > .content > .controller > .power-down-button {
+  display: block;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/maid-summary/power-down-button.png);
   background-size: auto 100%;
   color: #000000;
   font-size: 13px;
@@ -990,7 +1133,7 @@ body {
 }
 .nurse-factory > footer > .create-button {
   float: right;
-  width: 103.5px;
+  width: 112px;
   height: 33px;
   background-image: url(/images/component/nurse-factory/create-button.png);
   background-size: auto 100%;
@@ -1052,7 +1195,7 @@ body {
   position: absolute;
   right: 8px;
   bottom: 10px;
-  width: 104px;
+  width: 112px;
   height: 33.5px;
   background-image: url(/images/component/dialogue/confirm-button.png);
   background-size: auto 100%;
@@ -1078,7 +1221,7 @@ body {
   display: none;
 }
 .alert > .confirm-button {
-  right: 120px !important;
+  right: 110px !important;
 }
 .slide-prompt > p {
   color: #3b3e4a;

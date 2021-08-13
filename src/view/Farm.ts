@@ -7,7 +7,7 @@ export default class Farm implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.changeBackground("/images/view/earn/background.jpg");
+        Layout.current.changeBackground("/images/view/farm/background.jpg");
         Layout.current.content.append(this.container = el(".farm-view",
         ));
     }

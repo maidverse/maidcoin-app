@@ -9,7 +9,7 @@ export default class NurseRaid implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.changeBackground("/images/view/nurseraid/background.jpg");
+        Layout.current.changeBackground("/images/view/nurse-raid/background.jpg");
         Layout.current.content.append(this.container = el(".nurse-raid-view",
             el("header",
                 el("h2", "Nurse Raid"),

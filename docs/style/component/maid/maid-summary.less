@@ -108,13 +108,27 @@
             right      : 16px;
             bottom     : 14px;
             text-align : right;
-            font-size  : 18px;
+            font-size  : 20px;
             font-family: "refrigerator-deluxe";
-            line-height: 22px;
+            line-height: 26px;
+
+            >.power {
+                color        : #d8448a;
+                font-size    : 30px;
+                margin-bottom: 8px;
+
+                >img {
+                    margin-right: 12px;
+                }
+            }
 
             >.property {
                 >span {
                     color: #ffde00;
+                }
+
+                &.lp-amount>span {
+                    color: #7a8dff;
                 }
             }
         }
@@ -127,11 +141,26 @@
         height  : 40px;
         .float-wrapper();
 
-        >.support-button {
+        >.power-up-button {
             float           : left;
-            width           : 104px;
+            width           : 112px;
             height          : 33.5px;
-            background-image: url(/images/component/maid-summary/button.png);
+            background-image: url(/images/component/maid-summary/power-up-button.png);
+            background-size : auto 100%;
+            color           : #000000;
+            font-size       : 13px;
+            text-transform  : uppercase;
+            text-align      : center;
+            font-weight     : bold;
+            padding-top     : 8px;
+            padding-left    : 1px;
+        }
+
+        >.power-down-button {
+            float           : left;
+            width           : 112px;
+            height          : 33.5px;
+            background-image: url(/images/component/maid-summary/power-down-button.png);
             background-size : auto 100%;
             color           : #000000;
             font-size       : 13px;

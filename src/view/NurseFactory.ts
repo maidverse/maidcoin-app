@@ -8,7 +8,7 @@ export default class Nursefactory implements View {
     private container: DomNode;
 
     constructor() {
-        Layout.current.changeBackground("/images/view/nursefactory/background.jpg");
+        Layout.current.changeBackground("/images/view/nurse-factory/background.jpg");
         Layout.current.content.append(this.container = el(".nurse-factory-view",
             el("header",
                 el("h2", "Nurse Factory"),
