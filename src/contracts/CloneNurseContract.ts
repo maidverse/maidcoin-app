@@ -54,7 +54,7 @@ class CloneNurseContract extends ERC721EnumerableContract<CloneNurse> {
         return await this.contract.ownerOf(nurseId);
     }
 
-    public async getNurse(nurseId: number): Promise<NurseInfo> {
+    public async getNurse(nurseId: BigNumberish): Promise<NurseInfo> {
         const nurseType = await this.contract.nurses(nurseId);
         return {
             nurseType: nurseType.toNumber(),

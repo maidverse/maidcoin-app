@@ -6612,14 +6612,25 @@ eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod)
 
 /***/ }),
 
+/***/ "./src/component/nurse-pool/NursePool.ts":
+/*!***********************************************!*\
+  !*** ./src/component/nurse-pool/NursePool.ts ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nconst superagent_1 = __importDefault(__webpack_require__(/*! superagent */ \"./node_modules/superagent/lib/client.js\"));\r\nclass NursePool extends skynode_1.DomNode {\r\n    constructor(nurseType, nurseIds) {\r\n        super(\".nurse-pool\");\r\n        this.nurseType = nurseType;\r\n        this.append(skynode_1.el(\".background\"), this.content = skynode_1.el(\".content\"));\r\n        this.load();\r\n    }\r\n    async load() {\r\n        const result = await superagent_1.default.post(`https://api.maidcoin.org/nursetype/${this.nurseType}`);\r\n        const tokenInfo = result.body;\r\n        this.content.empty().append(skynode_1.el(\"header\", skynode_1.el(\"h3\", tokenInfo.name)));\r\n    }\r\n}\r\nexports.default = NursePool;\r\n\n\n//# sourceURL=webpack:///./src/component/nurse-pool/NursePool.ts?");
+
+/***/ }),
+
 /***/ "./src/component/nurse-pool/NursePoolList.ts":
 /*!***************************************************!*\
   !*** ./src/component/nurse-pool/NursePoolList.ts ***!
   \***************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nclass NursePoolList extends skynode_1.DomNode {\r\n    constructor() {\r\n        super(\".nurse-pool-list\");\r\n        this.loadNursePools();\r\n    }\r\n    async loadNursePools() {\r\n    }\r\n}\r\nexports.default = NursePoolList;\r\n\n\n//# sourceURL=webpack:///./src/component/nurse-pool/NursePoolList.ts?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nconst skynode_1 = __webpack_require__(/*! @hanul/skynode */ \"./node_modules/@hanul/skynode/lib/index.js\");\r\nconst skyutil_1 = __importDefault(__webpack_require__(/*! skyutil */ \"./node_modules/skyutil/SkyUtil.js\"));\r\nconst CloneNurseContract_1 = __importDefault(__webpack_require__(/*! ../../contracts/CloneNurseContract */ \"./src/contracts/CloneNurseContract.ts\"));\r\nconst Wallet_1 = __importDefault(__webpack_require__(/*! ../../ethereum/Wallet */ \"./src/ethereum/Wallet.ts\"));\r\nconst NursePool_1 = __importDefault(__webpack_require__(/*! ./NursePool */ \"./src/component/nurse-pool/NursePool.ts\"));\r\nclass NursePoolList extends skynode_1.DomNode {\r\n    constructor() {\r\n        super(\".nurse-pool-list\");\r\n        this.loadNursePools();\r\n    }\r\n    async loadNursePools() {\r\n        const owner = await Wallet_1.default.loadAddress();\r\n        if (owner !== undefined) {\r\n            const nurses = {};\r\n            const nurseCount = (await CloneNurseContract_1.default.balanceOf(owner)).toNumber();\r\n            const promises = [];\r\n            skyutil_1.default.repeat(nurseCount, (index) => {\r\n                promises.push((async () => {\r\n                    const nurseId = (await CloneNurseContract_1.default.getTokenOfOwnerByIndex(owner, index)).toNumber();\r\n                    const nurseInfo = await CloneNurseContract_1.default.getNurse(nurseId);\r\n                    if (nurses[nurseInfo.nurseType] === undefined) {\r\n                        nurses[nurseInfo.nurseType] = [];\r\n                    }\r\n                    nurses[nurseInfo.nurseType].push(nurseId);\r\n                })());\r\n            });\r\n            await Promise.all(promises);\r\n            for (const [nurseType, nurseIds] of Object.entries(nurses)) {\r\n                this.append(new NursePool_1.default(parseInt(nurseType, 10), nurseIds));\r\n            }\r\n        }\r\n    }\r\n}\r\nexports.default = NursePoolList;\r\n\n\n//# sourceURL=webpack:///./src/component/nurse-pool/NursePoolList.ts?");
 
 /***/ }),
 

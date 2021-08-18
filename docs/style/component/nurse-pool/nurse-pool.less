@@ -1,0 +1,48 @@
+.nurse-pool {
+    position : relative;
+    max-width: 403px;
+    height   : 161px;
+
+    >.background {
+        position        : absolute;
+        left            : 3.5px;
+        top             : 0;
+        width           : calc(100% - 7px);
+        height          : 161px;
+        background-image: url(/images/component/nurse-pool/background-center.png);
+        background-size : auto 100%;
+
+        &:before {
+            content         : " ";
+            position        : absolute;
+            left            : -3.5px;
+            top             : 0;
+            width           : 3.5px;
+            height          : 161px;
+            background-image: url(/images/component/nurse-pool/background-left.png);
+            background-size : auto 100%;
+        }
+
+        &:after {
+            content         : " ";
+            position        : absolute;
+            right           : -3.5px;
+            top             : 0;
+            width           : 3.5px;
+            height          : 161px;
+            background-image: url(/images/component/nurse-pool/background-right.png);
+            background-size : auto 100%;
+        }
+    }
+
+    >.content {
+        position           : absolute;
+        left               : 3px;
+        top                : 0;
+        width              : calc(100% - 6px);
+        height             : 155.5px;
+        background-image   : url(/images/component/nurse-pool/background.png);
+        background-size    : auto 100%;
+        background-position: center center;
+    }
+}
