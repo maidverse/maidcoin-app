@@ -7,7 +7,7 @@ import MaidSummary from "./MaidSummary";
 
 export default class OwnedMaidList extends DomNode {
 
-    private loading: Loading;
+    private loading: Loading | undefined;
     private maidContainer: DomNode;
 
     constructor() {
@@ -17,7 +17,14 @@ export default class OwnedMaidList extends DomNode {
             this.maidContainer = el(".maid-container"),
         );
         this.loadMaids();
+        Wallet.on("connect", this.connectHandler);
     }
+
+    private connectHandler = () => {
+        if (this.loading === undefined) {
+            this.loadMaids();
+        }
+    };
 
     private async loadMaids() {
 
@@ -37,6 +44,12 @@ export default class OwnedMaidList extends DomNode {
             });
         }
 
-        this.loading.delete();
+        this.loading?.delete();
+        this.loading = undefined;
+    }
+
+    public delete(): void {
+        Wallet.off("connect", this.connectHandler);
+        super.delete();
     }
 }

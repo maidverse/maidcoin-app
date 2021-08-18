@@ -19,7 +19,76 @@
         }
     }
 
-    .owned-maid-list {
+    >section {
         margin-top: 20px;
+
+        >h3 {
+            width           : 216.5px;
+            height          : 17.5px;
+            background-image: url(/images/view/dashboard/section-title.png);
+            background-size : auto 100%;
+            margin-left     : 3.5px;
+            font-size       : 18px;
+            line-height     : 17.5px;
+            color           : #b8aabe;
+        }
+
+        >.owned-maid-list {
+            margin-top: -3px;
+        }
+
+        >.any-housekeeper-list,
+        >.nurse-part-list {
+            position : relative;
+            max-width: 403px;
+            height   : 161px;
+
+            >.background {
+                position        : absolute;
+                left            : 3.5px;
+                top             : 0;
+                width           : calc(100% - 7px);
+                height          : 161px;
+                background-image: url(/images/view/dashboard/section-background.png);
+                background-size : auto 100%;
+
+                &:before {
+                    content         : " ";
+                    position        : absolute;
+                    left            : -3.5px;
+                    top             : 0;
+                    width           : 3.5px;
+                    height          : 161px;
+                    background-image: url(/images/view/dashboard/section-background-left.png);
+                    background-size : auto 100%;
+                }
+
+                &:after {
+                    content         : " ";
+                    position        : absolute;
+                    right           : -3.5px;
+                    top             : 0;
+                    width           : 3.5px;
+                    height          : 161px;
+                    background-image: url(/images/view/dashboard/section-background-right.png);
+                    background-size : auto 100%;
+                }
+            }
+
+            >.content {
+                position  : absolute;
+                left      : 3.5px;
+                top       : 0;
+                width     : calc(100% - 7px);
+                height    : 161px;
+                overflow-y: scroll;
+                .float-wrapper();
+
+                >.nurse-part,
+                >.any-housekeeper {
+                    float: left;
+                }
+            }
+        }
     }
 }

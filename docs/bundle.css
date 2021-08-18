@@ -229,8 +229,83 @@ body {
   animation: maid-view-slide-in 0.5s 0.2s ease-out;
   animation-fill-mode: forwards;
 }
-.dashboard-view .owned-maid-list {
+.dashboard-view > section {
   margin-top: 20px;
+}
+.dashboard-view > section > h3 {
+  width: 216.5px;
+  height: 17.5px;
+  background-image: url(/images/view/dashboard/section-title.png);
+  background-size: auto 100%;
+  margin-left: 3.5px;
+  font-size: 18px;
+  line-height: 17.5px;
+  color: #b8aabe;
+}
+.dashboard-view > section > .owned-maid-list {
+  margin-top: -3px;
+}
+.dashboard-view > section > .any-housekeeper-list,
+.dashboard-view > section > .nurse-part-list {
+  position: relative;
+  max-width: 403px;
+  height: 161px;
+}
+.dashboard-view > section > .any-housekeeper-list > .background,
+.dashboard-view > section > .nurse-part-list > .background {
+  position: absolute;
+  left: 3.5px;
+  top: 0;
+  width: calc(100% - 7px);
+  height: 161px;
+  background-image: url(/images/view/dashboard/section-background.png);
+  background-size: auto 100%;
+}
+.dashboard-view > section > .any-housekeeper-list > .background:before,
+.dashboard-view > section > .nurse-part-list > .background:before {
+  content: " ";
+  position: absolute;
+  left: -3.5px;
+  top: 0;
+  width: 3.5px;
+  height: 161px;
+  background-image: url(/images/view/dashboard/section-background-left.png);
+  background-size: auto 100%;
+}
+.dashboard-view > section > .any-housekeeper-list > .background:after,
+.dashboard-view > section > .nurse-part-list > .background:after {
+  content: " ";
+  position: absolute;
+  right: -3.5px;
+  top: 0;
+  width: 3.5px;
+  height: 161px;
+  background-image: url(/images/view/dashboard/section-background-right.png);
+  background-size: auto 100%;
+}
+.dashboard-view > section > .any-housekeeper-list > .content,
+.dashboard-view > section > .nurse-part-list > .content {
+  position: absolute;
+  left: 3.5px;
+  top: 0;
+  width: calc(100% - 7px);
+  height: 161px;
+  overflow-y: scroll;
+}
+.dashboard-view > section > .any-housekeeper-list > .content:after,
+.dashboard-view > section > .nurse-part-list > .content:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.dashboard-view > section > .any-housekeeper-list > .content > .nurse-part,
+.dashboard-view > section > .nurse-part-list > .content > .nurse-part,
+.dashboard-view > section > .any-housekeeper-list > .content > .any-housekeeper,
+.dashboard-view > section > .nurse-part-list > .content > .any-housekeeper {
+  float: left;
 }
 @keyframes maid-view-slide-in {
   0% {
@@ -997,6 +1072,68 @@ body {
 .nurse-raid > .content > .progress > .bar {
   background-color: #4dd2b4;
 }
+.nurse-raid > footer {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  height: 28px;
+  padding-right: 3px;
+  display: flex;
+}
+.nurse-raid > footer > .reward {
+  font-family: "refrigerator-deluxe";
+  font-size: 16px;
+  display: flex;
+  width: 154.5px;
+  height: 28px;
+  background-image: url(/images/component/nurse-raid/reward-background.png);
+  background-size: auto 100%;
+}
+.nurse-raid > footer > .reward > h3 {
+  flex-grow: 1;
+  line-height: 28px;
+  text-align: right;
+  padding-right: 10px;
+}
+.nurse-raid > footer > .reward > .count {
+  line-height: 28px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.nurse-raid > footer > .start-button {
+  width: 130px;
+  height: 33.5px;
+  background-image: url(/images/component/nurse-raid/start-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-left: 1px;
+  display: flex;
+  line-height: 21px;
+  justify-content: center;
+}
+.nurse-raid > footer > .start-button > .icon {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.nurse-raid > footer > .cancel-button {
+  float: right;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/nurse-raid/cancel-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
 @keyframes nurse-factory-show {
   0% {
     transform: translateY(-10px);
@@ -1134,7 +1271,7 @@ body {
 .nurse-factory > footer > .create-button {
   float: right;
   width: 112px;
-  height: 33px;
+  height: 33.5px;
   background-image: url(/images/component/nurse-factory/create-button.png);
   background-size: auto 100%;
   color: #000000;
@@ -1144,6 +1281,27 @@ body {
   font-weight: bold;
   padding-top: 8px;
   padding-left: 1px;
+}
+.nurse-part {
+  position: relative;
+  width: 76.5px;
+  height: 76.5px;
+  background-image: url(/images/component/nurse-part/slot.png);
+  background-size: auto 100%;
+}
+.nurse-part > .part {
+  position: absolute;
+  left: 7px;
+  top: 7px;
+}
+.nurse-part > .count {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  font-family: "refrigerator-deluxe";
+  color: #15151d;
+  font-weight: bold;
+  font-size: 18px;
 }
 .dialogue-background {
   position: fixed;

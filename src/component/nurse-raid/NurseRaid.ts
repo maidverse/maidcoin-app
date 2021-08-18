@@ -1,17 +1,21 @@
 import { DomNode, el } from "@hanul/skynode";
+import { utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
-import { RaidInfo } from "../../contracts/NurseRaidContract";
+import NurseRaidContract, { RaidInfo } from "../../contracts/NurseRaidContract";
+import Wallet from "../../ethereum/Wallet";
 
 export default class NurseRaid extends DomNode {
 
     private content: DomNode;
+    private footer: DomNode;
 
-    constructor(private raid: RaidInfo, private currentBlockNumber: number) {
+    constructor(private raidId: number, private raid: RaidInfo, private currentBlockNumber: number) {
         super(".nurse-raid");
         this.append(
             el(".background"),
             this.content = el(".content"),
+            this.footer = el("footer"),
         );
         this.load();
     }
@@ -34,5 +38,33 @@ export default class NurseRaid extends DomNode {
             ),
             el(".progress"),
         );
+
+        const owner = await Wallet.loadAddress();
+        if (owner !== undefined) {
+
+            const challenger = await NurseRaidContract.getChallenger(this.raidId, owner);
+
+            this.footer.empty().append(
+                el(".reward",
+                    el("h3", "Rewards"),
+                    el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${this.raid.nursePart}.png`, height: "28" }),
+                    el(".count", `x 1 ~ ${this.raid.maxRewardCount}`),
+                ),
+                challenger.enterBlock === 0 ? el("a.start-button",
+                    utils.formatEther(this.raid.entranceFee),
+                    el("img.icon", { src: "/images/maidcoin.png", height: "21" }),
+                    "Start",
+                    {
+                        click: async () => {
+                            await NurseRaidContract.enter(this.raidId);
+                        },
+                    },
+                ) : el("a.cancel-button", "Cancel", {
+                    click: async () => {
+                        await NurseRaidContract.exit(this.raidId);
+                    },
+                }),
+            );
+        }
     }
 }

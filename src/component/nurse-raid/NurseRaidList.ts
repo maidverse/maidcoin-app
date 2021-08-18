@@ -30,7 +30,7 @@ export default class NurseRaidList extends DomNode {
                 const raid = await NurseRaidContract.getRaid(raidId);
                 if (currentBlockNumber < raid.endBlock) {
                     setTimeout(() => {
-                        new NurseRaid(raid, currentBlockNumber).appendTo(this.raidContainer);
+                        new NurseRaid(raidId, raid, currentBlockNumber).appendTo(this.raidContainer);
                     }, index * 50);
                     index += 1;
                 }
