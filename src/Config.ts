@@ -29,5 +29,6 @@ export default {
         NursePart: "0x67d7a6e0CA121A64540B2c6fc28c0AD25cc73c94",
         NurseRaid: "0xD1729B09eE55DeE3757695FEe2E591e31aed90B2",
         CloneNurse: "0x63A81967B7217201852A07897Be67035a638787E",
+        SushiGirl: "0x25CFD98F9b7c8a7DFc782f046d4e3A3DecF0E4E1",
     },
 };

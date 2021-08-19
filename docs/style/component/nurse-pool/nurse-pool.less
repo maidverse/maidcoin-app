@@ -44,5 +44,36 @@
         background-image   : url(/images/component/nurse-pool/background.png);
         background-size    : auto 100%;
         background-position: center center;
+
+        >header {
+            >.background {
+                position        : absolute;
+                left            : 102px;
+                top             : 0;
+                width           : calc(100% - 102px);
+                height          : 63px;
+                background-image: url(/images/component/nurse-pool/header-background.png);
+                background-size : auto 100%;
+
+                &:before {
+                    content         : " ";
+                    position        : absolute;
+                    left            : -102px;
+                    top             : 0;
+                    width           : 102px;
+                    height          : 63px;
+                    background-image: url(/images/component/nurse-pool/header-background-left.png);
+                    background-size : auto 100%;
+                }
+            }
+
+            >h3 {
+                position   : absolute;
+                left       : 60px;
+                top        : 2px;
+                font-weight: bold;
+                font-size  : 18px;
+            }
+        }
     }
 }

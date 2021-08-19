@@ -21,6 +21,7 @@ export default class NursePool extends DomNode {
 
         this.content.empty().append(
             el("header",
+                el(".background"),
                 el("h3", tokenInfo.name),
             ),
         );
