@@ -32,7 +32,7 @@ export default class NurseFactory extends DomNode {
             const nurseType = await CloneNurseContract.getNurseType(this.nurseType);
             const balance = await NursePartContract.balanceOf(owner, this.nurseType);
 
-            const result = await superagent.post(`https://api.maidcoin.org/nursetype/${this.nurseType}`);
+            const result = await superagent.post(`https://api.maidcoin.org/nursetypes/${this.nurseType}`);
             const tokenInfo = result.body;
 
             this.content.empty().append(
