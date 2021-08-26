@@ -1,6 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
-import SushiGirlContract from "../../contracts/SushiGirlContract";
+import SushiGirlsContract from "../../contracts/SushiGirlsContract";
 import Wallet from "../../ethereum/Wallet";
 import AnyHousekeeper from "./AnyHousekeeper";
 
@@ -26,10 +26,10 @@ export default class AnyHousekeeperList extends DomNode {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 
-            const sushiGirlCount = await SushiGirlContract.balanceOf(owner);
+            const sushiGirlCount = await SushiGirlsContract.balanceOf(owner);
 
             SkyUtil.repeat(sushiGirlCount.toNumber(), async (index) => {
-                const sushiGirlId = (await SushiGirlContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
+                const sushiGirlId = (await SushiGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
                 new AnyHousekeeper("SushiGirl", sushiGirlId).appendTo(this.content);
             });
         }

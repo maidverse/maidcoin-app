@@ -1,40 +1,40 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
-import SushiGirlArtifact from "./artifacts/contracts/SushiGirl.sol/SushiGirl.json";
+import SushiGirlsArtifact from "./artifacts/contracts/SushiGirls.sol/SushiGirls.json";
 import LPTokenContract from "./LPTokenContract";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
-import { SushiGirl } from "./typechain";
+import { SushiGirls } from "./typechain";
 
-export interface SushiGirlInfo {
+export interface SushiGirlsInfo {
     originPower: number;
     supportedLPTokenAmount: BigNumber;
 }
 
-class SushiGirlContract extends ERC721EnumerableContract<SushiGirl> {
+class SushiGirlsContract extends ERC721EnumerableContract<SushiGirls> {
 
     constructor() {
-        super(Config.contracts.SushiGirl, SushiGirlArtifact.abi, [
+        super(Config.contracts.SushiGirls, SushiGirlsArtifact.abi, [
             "ChangeLPTokenToSushiGirlPower",
             "Support",
             "Desupport",
         ]);
     }
 
-    public async getSushiGirl(sushiGirlId: number): Promise<SushiGirlInfo> {
-        const [originPower, supportedLPTokenAmount] = await this.contract.sushiGirls(sushiGirlId);
+    public async getSushiGirls(sushiGirlsId: number): Promise<SushiGirlsInfo> {
+        const [originPower, supportedLPTokenAmount] = await this.contract.sushiGirlss(sushiGirlsId);
         return {
             originPower: originPower.toNumber(),
             supportedLPTokenAmount,
         };
     }
 
-    public async ownerOf(sushiGirlId: number): Promise<string> {
-        return await this.contract.ownerOf(sushiGirlId);
+    public async ownerOf(sushiGirlsId: number): Promise<string> {
+        return await this.contract.ownerOf(sushiGirlsId);
     }
 
-    public async powerOf(sushiGirlId: number): Promise<number> {
-        return (await this.contract.powerOf(sushiGirlId)).toNumber();
+    public async powerOf(sushiGirlsId: number): Promise<number> {
+        return (await this.contract.powerOf(sushiGirlsId)).toNumber();
     }
 
     public async mint(power: BigNumberish) {
@@ -71,4 +71,4 @@ class SushiGirlContract extends ERC721EnumerableContract<SushiGirl> {
     }
 }
 
-export default new SushiGirlContract();
+export default new SushiGirlsContract();
