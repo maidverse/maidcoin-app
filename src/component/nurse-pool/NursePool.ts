@@ -5,7 +5,7 @@ export default class NursePool extends DomNode {
 
     private content: DomNode;
 
-    constructor(private nurseType: number, nurseIds: number[]) {
+    constructor(private nurseType: number, private nurseIds: number[]) {
         super(".nurse-pool");
         this.append(
             el(".background"),
@@ -18,6 +18,8 @@ export default class NursePool extends DomNode {
 
         const result = await superagent.post(`https://api.maidcoin.org/nursetypes/${this.nurseType}`);
         const tokenInfo = result.body;
+
+        console.log(this.nurseIds);
 
         this.content.empty().append(
             el("header",

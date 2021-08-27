@@ -3,9 +3,15 @@ import superagent from "superagent";
 
 export default class AnyHousekeeper extends DomNode {
 
-    constructor(private type: string, private id: number) {
+    constructor(public type: string, public id: number, private selectable: boolean) {
         super(".any-housekeeper");
         this.load();
+        if (selectable === true) {
+            this.onDom("click", () => {
+                this.addClass("selected");
+                this.fireEvent("select");
+            });
+        }
     }
 
     private async load() {
@@ -17,5 +23,9 @@ export default class AnyHousekeeper extends DomNode {
                 el(".name", tokenInfo.name),
             );
         }
+    }
+
+    public deselect() {
+        this.deleteClass("selected");
     }
 }

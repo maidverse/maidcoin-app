@@ -37,7 +37,7 @@ class CloneNurseContract extends ERC721EnumerableContract<CloneNurse> {
         destroyReturn: BigNumber,
         power: BigNumberish
     ) {
-        const contract = await this.loadWalletContract();
+        const contract = await this.connectAndGetWalletContract();
         await contract?.addNurseType(partCount, destroyReturn, power);
     }
 
@@ -75,7 +75,7 @@ class CloneNurseContract extends ERC721EnumerableContract<CloneNurse> {
 
     public async assemble(nurseType: number) {
 
-        const contract = await this.loadWalletContract();
+        const contract = await this.connectAndGetWalletContract();
         const owner = await Wallet.loadAddress();
         if (contract !== undefined && owner !== undefined) {
 
@@ -106,7 +106,7 @@ class CloneNurseContract extends ERC721EnumerableContract<CloneNurse> {
     }
 
     public async claim(nurseId: BigNumberish) {
-        const contract = await this.loadWalletContract();
+        const contract = await this.connectAndGetWalletContract();
         await contract?.claim(nurseId);
     }
 }

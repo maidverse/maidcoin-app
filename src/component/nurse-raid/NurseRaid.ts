@@ -4,6 +4,7 @@ import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import NurseRaidContract, { RaidInfo } from "../../contracts/NurseRaidContract";
 import Wallet from "../../ethereum/Wallet";
+import SelectMaidPopup from "../select-maid-popup/SelectMaidPopup";
 
 export default class NurseRaid extends DomNode {
 
@@ -55,11 +56,9 @@ export default class NurseRaid extends DomNode {
                     el("img.icon", { src: "/images/maidcoin.png", height: "21" }),
                     "Start",
                     {
-                        click: async () => {
-                            await NurseRaidContract.enter(this.raidId);
-                        },
+                        click: () => new SelectMaidPopup(this.raidId, this.raid),
                     },
-                ) : el("a.cancel-button", "Cancel", {
+                ) : el("a.cancel-button", await NurseRaidContract.checkDone(this.raidId) === true ? "Exit" : "Cancel", {
                     click: async () => {
                         await NurseRaidContract.exit(this.raidId);
                     },

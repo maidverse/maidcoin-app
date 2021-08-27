@@ -20,7 +20,16 @@ export default abstract class Contract<CT extends ethers.Contract> extends Event
         Wallet.on("chainChanged", () => this.walletContract = undefined);
     }
 
-    public async loadWalletContract() {
+    public async getWalletContract() {
+        if (await Wallet.loadChainId() === Config.chainId && await Wallet.connected() === true) {
+            if (this.walletContract === undefined && Wallet.signer !== undefined) {
+                this.walletContract = new ethers.Contract(this.address, this.abi, Wallet.provider).connect(Wallet.signer) as CT;
+            }
+            return this.walletContract;
+        }
+    }
+
+    public async connectAndGetWalletContract() {
         if (await Wallet.loadChainId() !== Config.chainId) {
             alert("Wrong Network");
         } else {

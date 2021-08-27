@@ -7,8 +7,9 @@ import AnyHousekeeper from "./AnyHousekeeper";
 export default class AnyHousekeeperList extends DomNode {
 
     private content: DomNode;
+    public selectedHousekeeper: AnyHousekeeper | undefined;
 
-    constructor() {
+    constructor(private selectable = false) {
         super(".any-housekeeper-list");
         this.append(
             el(".background"),
@@ -30,8 +31,23 @@ export default class AnyHousekeeperList extends DomNode {
 
             SkyUtil.repeat(sushiGirlCount.toNumber(), async (index) => {
                 const sushiGirlId = (await SushiGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
-                new AnyHousekeeper("SushiGirl", sushiGirlId).appendTo(this.content);
+                const housekeeper = new AnyHousekeeper("SushiGirl", sushiGirlId, this.selectable).appendTo(this.content);
+                housekeeper.on("select", () => {
+                    if (housekeeper === this.selectedHousekeeper) {
+                        this.deselectHousekeeper();
+                        this.fireEvent("deselect");
+                    } else {
+                        this.selectedHousekeeper?.deselect();
+                        this.selectedHousekeeper = housekeeper;
+                        this.fireEvent("select", "SushiGirl", sushiGirlId);
+                    }
+                });
             });
         }
+    }
+
+    public deselectHousekeeper() {
+        this.selectedHousekeeper?.deselect();
+        this.selectedHousekeeper = undefined;
     }
 }

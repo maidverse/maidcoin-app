@@ -15,7 +15,7 @@ declare class CloneNurseContract extends ERC721EnumerableContract<CloneNurse> {
     addNurseType(partCount: BigNumberish, destroyReturn: BigNumber, power: BigNumberish): Promise<void>;
     getNurseType(nurseType: number): Promise<NurseType>;
     ownerOf(nurseId: number): Promise<string>;
-    getNurse(nurseId: number): Promise<NurseInfo>;
+    getNurse(nurseId: BigNumberish): Promise<NurseInfo>;
     getSupportedPower(nurseId: number): Promise<BigNumber>;
     getSupportingTo(supporter: string): Promise<BigNumber>;
     getPendigReward(nurseId: BigNumberish): Promise<BigNumber>;

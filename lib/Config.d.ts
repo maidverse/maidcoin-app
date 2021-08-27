@@ -12,6 +12,7 @@ declare const _default: {
         NursePart: string;
         NurseRaid: string;
         CloneNurse: string;
+        SushiGirls: string;
     };
 };
 export default _default;

@@ -1,0 +1,81 @@
+.select-maid-popup {
+    position        : relative;
+    width           : 365px;
+    margin          : auto;
+    height          : 423px;
+    background-image: url(/images/component/select-maid-popup/background.png);
+    background-size : auto 100%;
+
+    >h1 {
+        padding-left: 6px;
+        padding-top : 4px;
+        font-size   : 18px;
+    }
+
+    >.close-button {
+        position: absolute;
+        right   : 13px;
+        top     : 0;
+    }
+
+    >main {
+        margin-top: 5px;
+        height    : 340px;
+        overflow-y: scroll;
+
+        >section {
+            padding: 10px;
+
+            >h2 {
+                color      : #72687a;
+                font-family: "refrigerator-deluxe";
+                font-size  : 24px;
+                font-weight: bold;
+            }
+
+            >.any-housekeeper-list {
+                margin-top: 2px;
+                position  : relative;
+
+                >.content {
+                    .float-wrapper();
+
+                    >.any-housekeeper {
+                        float: left;
+                    }
+                }
+            }
+        }
+    }
+
+    >footer {
+        position: absolute;
+        left    : 0;
+        width   : 100%;
+        bottom  : 20px;
+        height  : 28px;
+
+        >.start-button {
+            margin          : auto;
+            width           : 176.5px;
+            height          : 33.5px;
+            background-image: url(/images/component/select-maid-popup/start-button.png);
+            background-size : auto 100%;
+            color           : #000000;
+            font-size       : 13px;
+            text-transform  : uppercase;
+            text-align      : center;
+            font-weight     : bold;
+            padding-top     : 4px;
+            padding-left    : 1px;
+            display         : flex;
+            line-height     : 21px;
+            justify-content : center;
+
+            >.icon {
+                margin-left : 5px;
+                margin-right: 5px;
+            }
+        }
+    }
+}

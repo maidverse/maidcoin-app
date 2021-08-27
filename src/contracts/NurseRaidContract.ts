@@ -55,7 +55,8 @@ class NurseRaidContract extends Contract<NurseRaid> {
     }
 
     public async checkDone(raidId: number): Promise<boolean | undefined> {
-        return await this.walletContract?.checkDone(raidId);
+        const contract = await this.getWalletContract();
+        return await contract?.checkDone(raidId);
     }
 
     public async create(
@@ -65,13 +66,13 @@ class NurseRaidContract extends Contract<NurseRaid> {
         duration: BigNumberish,
         endBlock: BigNumberish,
     ) {
-        const contract = await this.loadWalletContract();
+        const contract = await this.connectAndGetWalletContract();
         await contract?.create(entranceFee, nursePart, maxRewardCount, duration, endBlock);
     }
 
     public async enter(raidId: number, maid?: number) {
 
-        const contract = await this.loadWalletContract();
+        const contract = await this.connectAndGetWalletContract();
         const owner = await Wallet.loadAddress();
         if (contract !== undefined && owner !== undefined) {
 
@@ -122,7 +123,7 @@ class NurseRaidContract extends Contract<NurseRaid> {
     }
 
     public async exit(raidId: number) {
-        const contract = await this.loadWalletContract();
+        const contract = await this.connectAndGetWalletContract();
         await contract?.exit(raidId);
     }
 }

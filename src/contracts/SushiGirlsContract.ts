@@ -38,13 +38,13 @@ class SushiGirlsContract extends ERC721EnumerableContract<SushiGirls> {
     }
 
     public async mint(power: BigNumberish) {
-        const contract = await this.loadWalletContract();
+        const contract = await this.connectAndGetWalletContract();
         await contract?.mint(power);
     }
 
     public async support(id: BigNumberish, lpTokenAmount: BigNumberish) {
 
-        const contract = await this.loadWalletContract();
+        const contract = await this.connectAndGetWalletContract();
         const owner = await Wallet.loadAddress();
         if (contract !== undefined && owner !== undefined) {
 

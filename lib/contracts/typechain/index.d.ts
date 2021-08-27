@@ -40,6 +40,7 @@ export type { TheMaster } from "./TheMaster";
 export type { IUniswapV2ERC20 } from "./IUniswapV2ERC20";
 export type { IUniswapV2Pair } from "./IUniswapV2Pair";
 export type { UniswapV2ERC20 } from "./UniswapV2ERC20";
+export type { SushiGirls } from "./SushiGirls";
 export { Ownable__factory } from "./factories/Ownable__factory";
 export { IERC1155MetadataURI__factory } from "./factories/IERC1155MetadataURI__factory";
 export { IERC1155__factory } from "./factories/IERC1155__factory";

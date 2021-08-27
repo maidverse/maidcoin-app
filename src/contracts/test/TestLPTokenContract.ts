@@ -13,7 +13,7 @@ class TestLPTokenContract extends ERC20Contract<TestLPToken> {
     }
 
     public async mint(amount: BigNumberish) {
-        const contract = await this.loadWalletContract();
+        const contract = await this.connectAndGetWalletContract();
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
             await contract?.mint(owner, amount);
