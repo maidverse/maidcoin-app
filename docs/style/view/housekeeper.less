@@ -1,0 +1,41 @@
+.housekeeper-view {
+    >.category-area {
+        position        : absolute;
+        left            : 0;
+        top             : 50px;
+        width           : 100%;
+        overflow-x      : auto;
+        background-color: rgba(49, 19, 54, 0.8);
+
+        >.category-list {
+            max-width: 960px;
+            padding  : 0 20px;
+            margin   : auto;
+            .float-wrapper();
+
+            >.category {
+                float      : left;
+                width      : 76px;
+                height     : 19px;
+                font-family: "refrigerator-deluxe";
+                font-size  : 16px;
+                line-height: 19px;
+                text-align : center;
+
+                &.on {
+                    background-image: url(/images/view/housekeeper/category-on.png);
+                    background-size : auto 100%;
+                }
+            }
+        }
+    }
+
+    >.sushigirl-list {
+        padding-top: 24px;
+        .float-wrapper();
+
+        >.sushigirl {
+            float: left;
+        }
+    }
+}

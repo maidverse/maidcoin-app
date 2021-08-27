@@ -1,5 +1,7 @@
 import { DomNode } from "@hanul/skynode";
 export default class SushiGirl extends DomNode {
-    constructor();
+    private sushiGirlId;
+    constructor(sushiGirlId: number);
+    private load;
 }
 //# sourceMappingURL=SushiGirl.d.ts.map

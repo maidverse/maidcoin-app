@@ -1,13 +1,13 @@
 import { BigNumber, BigNumberish } from "ethers";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 import { SushiGirls } from "./typechain";
-export interface SushiGirlsInfo {
+export interface SushiGirlInfo {
     originPower: number;
     supportedLPTokenAmount: BigNumber;
 }
 declare class SushiGirlsContract extends ERC721EnumerableContract<SushiGirls> {
     constructor();
-    getSushiGirls(sushiGirlsId: number): Promise<SushiGirlsInfo>;
+    getSushiGirl(sushiGirlsId: number): Promise<SushiGirlInfo>;
     ownerOf(sushiGirlsId: number): Promise<string>;
     powerOf(sushiGirlsId: number): Promise<number>;
     mint(power: BigNumberish): Promise<void>;

@@ -1,21 +1,21 @@
 import { DomNode } from "@hanul/skynode";
+import SkyUtil from "skyutil";
 import SushiGirlsContract from "../../../contracts/SushiGirlsContract";
-import Wallet from "../../../ethereum/Wallet";
+import SushiGirl from "./SushiGirl";
 
 export default class SushiGirlList extends DomNode {
 
     constructor() {
-        super(".sushi-girl-list");
+        super(".sushigirl-list");
         this.loadSushiGirls();
     }
 
     private async loadSushiGirls() {
 
-        const owner = await Wallet.loadAddress();
-        if (owner !== undefined) {
+        const sushiGirlCount = (await SushiGirlsContract.getTotalSupply()).toNumber();
 
-            const sushiGirlCount = (await SushiGirlsContract.balanceOf(owner)).toNumber();
-            console.log(sushiGirlCount);
-        }
+        SkyUtil.repeat(sushiGirlCount, async (sushiGirlId) => {
+            new SushiGirl(sushiGirlId).appendTo(this);
+        });
     }
 }

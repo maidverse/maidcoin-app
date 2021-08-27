@@ -6,7 +6,7 @@ import LPTokenContract from "./LPTokenContract";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 import { SushiGirls } from "./typechain";
 
-export interface SushiGirlsInfo {
+export interface SushiGirlInfo {
     originPower: number;
     supportedLPTokenAmount: BigNumber;
 }
@@ -21,8 +21,8 @@ class SushiGirlsContract extends ERC721EnumerableContract<SushiGirls> {
         ]);
     }
 
-    public async getSushiGirls(sushiGirlsId: number): Promise<SushiGirlsInfo> {
-        const [originPower, supportedLPTokenAmount] = await this.contract.sushiGirlss(sushiGirlsId);
+    public async getSushiGirl(sushiGirlsId: number): Promise<SushiGirlInfo> {
+        const [originPower, supportedLPTokenAmount] = await this.contract.sushiGirls(sushiGirlsId);
         return {
             originPower: originPower.toNumber(),
             supportedLPTokenAmount,

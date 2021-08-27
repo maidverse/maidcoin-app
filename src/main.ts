@@ -11,7 +11,7 @@ import TestAdmin from "./view/test/TestAdmin";
 SkyRouter.route("**", Layout);
 SkyRouter.route("", Dashboard);
 SkyRouter.route("maid", Maid);
-SkyRouter.route("housekeeper", Housekeeper);
+SkyRouter.route(["housekeeper", "housekeeper/{type}"], Housekeeper);
 SkyRouter.route("nurseraid", NurseRaid);
 SkyRouter.route("nursefactory", Nursefactory);
 SkyRouter.route("farm", Farm);

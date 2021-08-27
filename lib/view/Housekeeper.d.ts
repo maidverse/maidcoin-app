@@ -1,7 +1,10 @@
 import { View, ViewParams } from "skyrouter";
 export default class Housekeeper implements View {
     private container;
-    constructor();
+    private categoryList;
+    private housekeeperList;
+    constructor(params: ViewParams);
+    private load;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
 }
