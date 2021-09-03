@@ -17,6 +17,7 @@ export default class Maid extends DomNode {
         const tokenInfo = result.body;
 
         this.empty().append(
+            el("img.image", { src: `https://storage.googleapis.com/maidcoin/Maid/Face/${this.maidId}.png` }),
             el(".name", tokenInfo.name),
         );
     }

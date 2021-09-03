@@ -1431,12 +1431,190 @@ body {
   background-image: url(/images/component/nurse-pool/header-background-left.png);
   background-size: auto 100%;
 }
+.nurse-pool > .content > header > .image {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  height: 62px;
+}
 .nurse-pool > .content > header > h3 {
   position: absolute;
-  left: 60px;
+  left: 70px;
   top: 2px;
   font-weight: bold;
   font-size: 18px;
+}
+.nurse-pool > .content > .nurse-list {
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+}
+.nurse-pool .nurse {
+  text-align: center;
+  position: relative;
+}
+.nurse-pool .nurse > .claim-button {
+  position: absolute;
+  left: calc(50% - 30.5px);
+  top: -64px;
+  width: 61px;
+  height: 60.5px;
+  background-image: url(/images/component/nurse-pool/claim-button.png);
+  background-size: auto 100%;
+  padding-top: 2px;
+}
+.nurse-pool .nurse > .claim-button > .coin-image {
+  display: block;
+  margin: auto;
+  height: 29.5px;
+}
+.nurse-pool .nurse > .claim-button > .amount {
+  text-align: center;
+  color: #2e000f;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
+  font-size: 12px;
+}
+.nurse-detail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 25, 29, 0.9);
+  overflow-y: scroll;
+}
+.nurse-detail > .back-button {
+  position: absolute;
+  left: 16px;
+  top: 10px;
+}
+.nurse-detail > .content > .image {
+  display: block;
+  margin: auto;
+  margin-top: 120px;
+  height: 550px;
+}
+.nurse-detail > .content > .name {
+  position: absolute;
+  left: 30px;
+  top: 48px;
+  z-index: 2;
+  width: 169.5px;
+  height: 28px;
+  background-image: url(/images/component/maid-summary/name-background.png);
+  background-size: auto 100%;
+  padding: 5px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.nurse-detail > .content > .owner {
+  position: absolute;
+  left: 31px;
+  top: 76px;
+  z-index: 2;
+  background-image: url(/images/component/maid-summary/owner-background.png);
+  font-size: 14px;
+  font-family: "refrigerator-deluxe";
+  padding: 2px 5px;
+}
+.nurse-detail > .content > .character {
+  position: absolute;
+  right: 24px;
+  bottom: 170px;
+  text-align: center;
+}
+.nurse-detail > .content > .character > .claim-button {
+  position: absolute;
+  right: 0;
+  top: -64px;
+  width: 61px;
+  height: 60.5px;
+  background-image: url(/images/component/nurse-pool/claim-button.png);
+  background-size: auto 100%;
+  padding-top: 2px;
+}
+.nurse-detail > .content > .character > .claim-button > .coin-image {
+  display: block;
+  margin: auto;
+  height: 29.5px;
+}
+.nurse-detail > .content > .character > .claim-button > .amount {
+  text-align: center;
+  color: #2e000f;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
+  font-size: 12px;
+}
+.nurse-detail > .content > .properties {
+  position: absolute;
+  right: 24px;
+  bottom: 64px;
+  z-index: 2;
+  text-align: right;
+  font-size: 20px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
+}
+.nurse-detail > .content > .properties > .power {
+  color: #d8448a;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+.nurse-detail > .content > .properties > .power > img {
+  margin-right: 12px;
+}
+.nurse-detail > .content > .properties > .property > span {
+  color: #ffde00;
+}
+.nurse-detail > .content > .properties > .property.lp-amount > span {
+  color: #7a8dff;
+}
+.nurse-detail > .content > .controller {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+}
+.nurse-detail > .content > .controller:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.nurse-detail > .content > .controller > .power-up-button {
+  float: left;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/maid-summary/power-up-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
+.nurse-detail > .content > .controller > .power-down-button {
+  float: left;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/maid-summary/power-down-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
 }
 .any-housekeeper {
   position: relative;
@@ -1797,6 +1975,13 @@ body {
   height: 85px;
   background-image: url(/images/component/select-maid-popup/slot.png);
   background-size: auto 100%;
+}
+.select-maid-popup .maid > .image {
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  height: 70px;
+  border-radius: 3px;
 }
 .select-maid-popup .maid > .name {
   position: absolute;

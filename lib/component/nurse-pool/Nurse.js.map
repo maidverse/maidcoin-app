@@ -1,1 +1,1 @@
-{"version":3,"file":"Nurse.js","sourceRoot":"","sources":["../../../src/component/nurse-pool/Nurse.ts"],"names":[],"mappings":";;AAAA,4CAAyC;AAEzC,MAAqB,KAAM,SAAQ,iBAAO;IAEtC;QACI,KAAK,CAAC,QAAQ,CAAC,CAAC;IACpB,CAAC;CACJ;AALD,wBAKC"}
+{"version":3,"file":"Nurse.js","sourceRoot":"","sources":["../../../src/component/nurse-pool/Nurse.ts"],"names":[],"mappings":";;AAAA,4CAAyC;AAEzC,MAAqB,KAAM,SAAQ,iBAAO;IAEtC,YAAoB,OAAe;QAC/B,KAAK,CAAC,QAAQ,CAAC,CAAC;QADA,YAAO,GAAP,OAAO,CAAQ;QAE/B,IAAI,CAAC,UAAU,CAAC,OAAO,CAAC,CAAC;IAC7B,CAAC;CACJ;AAND,wBAMC"}

@@ -20,6 +20,12 @@ class CommonUtil {
 
         return day === 0 ? `${hour}h ${minute}m` : `${day}d ${hour}h ${minute}m`;
     }
+
+    public numberWithCommas(x: string) {
+        const parts = String(+(+x).toFixed(3)).split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return parts.join(".");
+    }
 }
 
 export default new CommonUtil();

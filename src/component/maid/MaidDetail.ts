@@ -46,7 +46,7 @@ export default class MaidDetail extends Popup {
 
         this.content.empty().append(
             this.image1 = el("img.image", { src: tokenInfo.image }),
-            this.image2 = el("img.image2", { src: `https://storage.googleapis.com/maidcoin/Illust/Ultimate/${tokenInfo.name}Ultimate.png` }),
+            this.image2 = el("img.image2", { src: `https://storage.googleapis.com/maidcoin/Maid/Ultimate/${tokenInfo.name}Ultimate.png` }),
             el("header",
                 el(".name", tokenInfo.name),
                 el(".cv", `CV. ${tokenInfo.character_voice}`),
@@ -58,7 +58,7 @@ export default class MaidDetail extends Popup {
                     click: (event: MouseEvent) => {
                         event.stopPropagation();
                         new Sound({
-                            wav: `https://storage.googleapis.com/maidcoin/Voice/${tokenInfo.name}/${tokenInfo.name}LobbyTap${this.getRandomInt(1, 2)}.wav`,
+                            wav: `https://storage.googleapis.com/maidcoin/Maid/Voice/${tokenInfo.name}/${tokenInfo.name}LobbyTap${this.getRandomInt(1, 2)}.wav`,
                         }).play();
                     },
                 },

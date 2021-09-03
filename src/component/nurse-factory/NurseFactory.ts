@@ -36,8 +36,8 @@ export default class NurseFactory extends DomNode {
             const tokenInfo = result.body;
 
             this.content.empty().append(
-                el(".image", { style: { backgroundImage: `url(${tokenInfo.image})` } }),
-                el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${this.nurseType}.png`, height: "60" }),
+                el(".image", { style: { backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${tokenInfo.name}.png)` } }),
+                el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${tokenInfo.name}.png`, height: "60" }),
                 el(".part-count", el("span.balance", balance.toString()), ` / ${nurseType.partCount}`),
             );
 

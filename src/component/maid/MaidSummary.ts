@@ -38,8 +38,8 @@ export default class MaidSummary extends DomNode {
         const tokenInfo = result.body;
 
         this.content.empty().append(
-            el(".background", { style: { backgroundImage: `url(https://storage.googleapis.com/maidcoin/Illust/Ultimate/${tokenInfo.name}Ultimate.png)` } }),
-            el(".image", { style: { backgroundImage: `url(${tokenInfo.image})` } }),
+            el(".background", { style: { backgroundImage: `url(https://storage.googleapis.com/maidcoin/Maid/Ultimate/${tokenInfo.name}Ultimate.png)` } }),
+            el(".image", { style: { backgroundImage: `url(https://storage.googleapis.com/maidcoin/Maid/Dialogue/${tokenInfo.name}Dialogue.png)` } }),
             el("header",
                 el(".name", tokenInfo.name),
                 el(".cv", `CV. ${tokenInfo.character_voice}`),
@@ -51,7 +51,7 @@ export default class MaidSummary extends DomNode {
                     click: (event: MouseEvent) => {
                         event.stopPropagation();
                         new Sound({
-                            wav: `https://storage.googleapis.com/maidcoin/Voice/${tokenInfo.name}/${tokenInfo.name}LobbyTap${this.getRandomInt(1, 2)}.wav`,
+                            wav: `https://storage.googleapis.com/maidcoin/Maid/Voice/${tokenInfo.name}/${tokenInfo.name}LobbyTap${this.getRandomInt(1, 2)}.wav`,
                         }).play();
                     },
                 },

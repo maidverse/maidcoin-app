@@ -20,7 +20,7 @@ export default class AnyHousekeeper extends DomNode {
             const tokenInfo = result.body;
 
             this.empty().append(
-                el("img.image", { src: tokenInfo.face_image }),
+                el("img.image", { src: `https://storage.googleapis.com/maidcoin/SushiGirl/Face/${this.id}.png` }),
                 el(".name", tokenInfo.name),
             );
         }
