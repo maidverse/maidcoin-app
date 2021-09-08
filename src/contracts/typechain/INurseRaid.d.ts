@@ -24,12 +24,13 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   functions: {
     "checkDone(uint256)": FunctionFragment;
     "create(uint256,uint256,uint256,uint256,uint256)": FunctionFragment;
-    "enter(uint256,uint256)": FunctionFragment;
-    "enterWithPermitAll(uint256,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)": FunctionFragment;
+    "enter(uint256,address,uint256)": FunctionFragment;
+    "enterWithPermitAll(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)": FunctionFragment;
     "exit(uint256)": FunctionFragment;
-    "maid()": FunctionFragment;
+    "maidCafe()": FunctionFragment;
     "maidCoin()": FunctionFragment;
     "maidPowerToRaidReducedBlock()": FunctionFragment;
+    "maidsApproved(address)": FunctionFragment;
     "nursePart()": FunctionFragment;
     "raidCount()": FunctionFragment;
     "rng()": FunctionFragment;
@@ -51,12 +52,13 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "enter",
-    values: [BigNumberish, BigNumberish]
+    values: [BigNumberish, string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "enterWithPermitAll",
     values: [
       BigNumberish,
+      string,
       BigNumberish,
       BigNumberish,
       BigNumberish,
@@ -68,11 +70,15 @@ interface INurseRaidInterface extends ethers.utils.Interface {
     ]
   ): string;
   encodeFunctionData(functionFragment: "exit", values: [BigNumberish]): string;
-  encodeFunctionData(functionFragment: "maid", values?: undefined): string;
+  encodeFunctionData(functionFragment: "maidCafe", values?: undefined): string;
   encodeFunctionData(functionFragment: "maidCoin", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "maidPowerToRaidReducedBlock",
     values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "maidsApproved",
+    values: [string]
   ): string;
   encodeFunctionData(functionFragment: "nursePart", values?: undefined): string;
   encodeFunctionData(functionFragment: "raidCount", values?: undefined): string;
@@ -86,10 +92,14 @@ interface INurseRaidInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "exit", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "maid", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "maidCafe", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "maidCoin", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "maidPowerToRaidReducedBlock",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "maidsApproved",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "nursePart", data: BytesLike): Result;
@@ -99,7 +109,7 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   events: {
     "ChangeMaidPowerToRaidReducedBlock(uint256)": EventFragment;
     "Create(uint256,uint256,uint256,uint256,uint256,uint256)": EventFragment;
-    "Enter(address,uint256,uint256)": EventFragment;
+    "Enter(address,uint256,address,uint256)": EventFragment;
     "Exit(address,uint256)": EventFragment;
   };
 
@@ -152,19 +162,22 @@ export class INurseRaid extends Contract {
 
     enter(
       id: BigNumberish,
-      maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "enter(uint256,uint256)"(
+    "enter(uint256,address,uint256)"(
       id: BigNumberish,
-      maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
     enterWithPermitAll(
       id: BigNumberish,
-      _maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       deadline: BigNumberish,
       v1: BigNumberish,
       r1: BytesLike,
@@ -175,9 +188,10 @@ export class INurseRaid extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "enterWithPermitAll(uint256,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
+    "enterWithPermitAll(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
       id: BigNumberish,
-      _maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       deadline: BigNumberish,
       v1: BigNumberish,
       r1: BytesLike,
@@ -195,9 +209,9 @@ export class INurseRaid extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    maid(overrides?: CallOverrides): Promise<[string]>;
+    maidCafe(overrides?: CallOverrides): Promise<[string]>;
 
-    "maid()"(overrides?: CallOverrides): Promise<[string]>;
+    "maidCafe()"(overrides?: CallOverrides): Promise<[string]>;
 
     maidCoin(overrides?: CallOverrides): Promise<[string]>;
 
@@ -210,6 +224,13 @@ export class INurseRaid extends Contract {
     "maidPowerToRaidReducedBlock()"(
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
+
+    maidsApproved(maids: string, overrides?: CallOverrides): Promise<[boolean]>;
+
+    "maidsApproved(address)"(
+      maids: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
 
     nursePart(overrides?: CallOverrides): Promise<[string]>;
 
@@ -251,19 +272,22 @@ export class INurseRaid extends Contract {
 
   enter(
     id: BigNumberish,
-    maid: BigNumberish,
+    maids: string,
+    maidId: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "enter(uint256,uint256)"(
+  "enter(uint256,address,uint256)"(
     id: BigNumberish,
-    maid: BigNumberish,
+    maids: string,
+    maidId: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
   enterWithPermitAll(
     id: BigNumberish,
-    _maid: BigNumberish,
+    maids: string,
+    maidId: BigNumberish,
     deadline: BigNumberish,
     v1: BigNumberish,
     r1: BytesLike,
@@ -274,9 +298,10 @@ export class INurseRaid extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "enterWithPermitAll(uint256,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
+  "enterWithPermitAll(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
     id: BigNumberish,
-    _maid: BigNumberish,
+    maids: string,
+    maidId: BigNumberish,
     deadline: BigNumberish,
     v1: BigNumberish,
     r1: BytesLike,
@@ -294,9 +319,9 @@ export class INurseRaid extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  maid(overrides?: CallOverrides): Promise<string>;
+  maidCafe(overrides?: CallOverrides): Promise<string>;
 
-  "maid()"(overrides?: CallOverrides): Promise<string>;
+  "maidCafe()"(overrides?: CallOverrides): Promise<string>;
 
   maidCoin(overrides?: CallOverrides): Promise<string>;
 
@@ -307,6 +332,13 @@ export class INurseRaid extends Contract {
   "maidPowerToRaidReducedBlock()"(
     overrides?: CallOverrides
   ): Promise<BigNumber>;
+
+  maidsApproved(maids: string, overrides?: CallOverrides): Promise<boolean>;
+
+  "maidsApproved(address)"(
+    maids: string,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
 
   nursePart(overrides?: CallOverrides): Promise<string>;
 
@@ -348,19 +380,22 @@ export class INurseRaid extends Contract {
 
     enter(
       id: BigNumberish,
-      maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "enter(uint256,uint256)"(
+    "enter(uint256,address,uint256)"(
       id: BigNumberish,
-      maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
     enterWithPermitAll(
       id: BigNumberish,
-      _maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       deadline: BigNumberish,
       v1: BigNumberish,
       r1: BytesLike,
@@ -371,9 +406,10 @@ export class INurseRaid extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "enterWithPermitAll(uint256,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
+    "enterWithPermitAll(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
       id: BigNumberish,
-      _maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       deadline: BigNumberish,
       v1: BigNumberish,
       r1: BytesLike,
@@ -388,9 +424,9 @@ export class INurseRaid extends Contract {
 
     "exit(uint256)"(id: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
-    maid(overrides?: CallOverrides): Promise<string>;
+    maidCafe(overrides?: CallOverrides): Promise<string>;
 
-    "maid()"(overrides?: CallOverrides): Promise<string>;
+    "maidCafe()"(overrides?: CallOverrides): Promise<string>;
 
     maidCoin(overrides?: CallOverrides): Promise<string>;
 
@@ -401,6 +437,13 @@ export class INurseRaid extends Contract {
     "maidPowerToRaidReducedBlock()"(
       overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    maidsApproved(maids: string, overrides?: CallOverrides): Promise<boolean>;
+
+    "maidsApproved(address)"(
+      maids: string,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
 
     nursePart(overrides?: CallOverrides): Promise<string>;
 
@@ -430,7 +473,8 @@ export class INurseRaid extends Contract {
     Enter(
       challenger: string | null,
       id: BigNumberish | null,
-      maid: BigNumberish | null
+      maids: string | null,
+      maidId: null
     ): EventFilter;
 
     Exit(challenger: string | null, id: BigNumberish | null): EventFilter;
@@ -464,19 +508,22 @@ export class INurseRaid extends Contract {
 
     enter(
       id: BigNumberish,
-      maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "enter(uint256,uint256)"(
+    "enter(uint256,address,uint256)"(
       id: BigNumberish,
-      maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
     enterWithPermitAll(
       id: BigNumberish,
-      _maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       deadline: BigNumberish,
       v1: BigNumberish,
       r1: BytesLike,
@@ -487,9 +534,10 @@ export class INurseRaid extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "enterWithPermitAll(uint256,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
+    "enterWithPermitAll(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
       id: BigNumberish,
-      _maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       deadline: BigNumberish,
       v1: BigNumberish,
       r1: BytesLike,
@@ -507,9 +555,9 @@ export class INurseRaid extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    maid(overrides?: CallOverrides): Promise<BigNumber>;
+    maidCafe(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "maid()"(overrides?: CallOverrides): Promise<BigNumber>;
+    "maidCafe()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     maidCoin(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -518,6 +566,13 @@ export class INurseRaid extends Contract {
     maidPowerToRaidReducedBlock(overrides?: CallOverrides): Promise<BigNumber>;
 
     "maidPowerToRaidReducedBlock()"(
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    maidsApproved(maids: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "maidsApproved(address)"(
+      maids: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -565,19 +620,22 @@ export class INurseRaid extends Contract {
 
     enter(
       id: BigNumberish,
-      maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "enter(uint256,uint256)"(
+    "enter(uint256,address,uint256)"(
       id: BigNumberish,
-      maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
     enterWithPermitAll(
       id: BigNumberish,
-      _maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       deadline: BigNumberish,
       v1: BigNumberish,
       r1: BytesLike,
@@ -588,9 +646,10 @@ export class INurseRaid extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "enterWithPermitAll(uint256,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
+    "enterWithPermitAll(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)"(
       id: BigNumberish,
-      _maid: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
       deadline: BigNumberish,
       v1: BigNumberish,
       r1: BytesLike,
@@ -611,9 +670,9 @@ export class INurseRaid extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    maid(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    maidCafe(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "maid()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    "maidCafe()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     maidCoin(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -624,6 +683,16 @@ export class INurseRaid extends Contract {
     ): Promise<PopulatedTransaction>;
 
     "maidPowerToRaidReducedBlock()"(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    maidsApproved(
+      maids: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "maidsApproved(address)"(
+      maids: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 

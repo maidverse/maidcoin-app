@@ -268,6 +268,19 @@ const _abi = [
     type: "event",
   },
   {
+    inputs: [],
+    name: "accSushiPerShare",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "address",
@@ -314,6 +327,19 @@ const _abi = [
       },
     ],
     name: "changeRewardCalculator",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+    ],
+    name: "claimSushiReward",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -499,12 +525,38 @@ const _abi = [
   },
   {
     inputs: [],
+    name: "lpToken",
+    outputs: [
+      {
+        internalType: "contract IUniswapV2Pair",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "maidCoin",
     outputs: [
       {
         internalType: "contract IMaidCoin",
         name: "",
         type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "masterChefPid",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -561,6 +613,25 @@ const _abi = [
       },
     ],
     name: "pendingReward",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+    ],
+    name: "pendingSushiReward",
     outputs: [
       {
         internalType: "uint256",
@@ -802,6 +873,45 @@ const _abi = [
     name: "supportWithPermitMax",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "sushi",
+    outputs: [
+      {
+        internalType: "contract IERC20",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "sushiLastRewardBlock",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "sushiMasterChef",
+    outputs: [
+      {
+        internalType: "contract IMasterChef",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {

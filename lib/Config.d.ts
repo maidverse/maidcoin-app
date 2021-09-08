@@ -6,12 +6,13 @@ declare const _default: {
     contracts: {
         LPToken: string;
         MaidCoin: string;
+        Sushi: string;
         TheMaster: string;
-        Maid: string;
+        Maids: string;
         MasterCoin: string;
         NursePart: string;
         NurseRaid: string;
-        CloneNurse: string;
+        CloneNurses: string;
         SushiGirls: string;
     };
 };

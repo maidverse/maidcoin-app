@@ -1,6 +1,6 @@
 import { DomNode } from "@hanul/skynode";
 import SkyUtil from "skyutil";
-import CloneNurseContract from "../../contracts/CloneNurseContract";
+import CloneNursesContract from "../../contracts/CloneNursesContract";
 import Wallet from "../../ethereum/Wallet";
 import NursePool from "./NursePool";
 
@@ -19,13 +19,13 @@ export default class NursePoolList extends DomNode {
             // nurseType => nurse ids
             const nurses: { [nurseType: number]: number[] } = {};
 
-            const nurseCount = (await CloneNurseContract.balanceOf(owner)).toNumber();
+            const nurseCount = (await CloneNursesContract.balanceOf(owner)).toNumber();
 
             const promises: Promise<any>[] = [];
             SkyUtil.repeat(nurseCount, (index) => {
                 promises.push((async () => {
-                    const nurseId = (await CloneNurseContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
-                    const nurseInfo = await CloneNurseContract.getNurse(nurseId);
+                    const nurseId = (await CloneNursesContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
+                    const nurseInfo = await CloneNursesContract.getNurse(nurseId);
                     if (nurses[nurseInfo.nurseType] === undefined) {
                         nurses[nurseInfo.nurseType] = [];
                     }

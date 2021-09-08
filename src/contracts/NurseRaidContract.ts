@@ -4,7 +4,7 @@ import Wallet from "../ethereum/Wallet";
 import NurseRaidArtifact from "./artifacts/contracts/NurseRaid.sol/NurseRaid.json";
 import Contract from "./Contract";
 import MaidCoinContract from "./MaidCoinContract";
-import MaidContract from "./MaidContract";
+import MaidsContract from "./MaidsContract";
 import { NurseRaid } from "./typechain";
 
 export interface RaidInfo {
@@ -17,7 +17,8 @@ export interface RaidInfo {
 
 export interface ChallengerInfo {
     enterBlock: number;
-    maid: BigNumber;
+    maids: string;
+    maidId: BigNumber;
 }
 
 class NurseRaidContract extends Contract<NurseRaid> {
@@ -47,10 +48,11 @@ class NurseRaidContract extends Contract<NurseRaid> {
     }
 
     public async getChallenger(raidId: number, owner: string): Promise<ChallengerInfo> {
-        const [enterBlock, maid] = await this.contract.challengers(raidId, owner);
+        const [enterBlock, maids, maidId] = await this.contract.challengers(raidId, owner);
         return {
             enterBlock: enterBlock.toNumber(),
-            maid,
+            maids,
+            maidId,
         };
     }
 
@@ -70,7 +72,7 @@ class NurseRaidContract extends Contract<NurseRaid> {
         await contract?.create(entranceFee, nursePart, maxRewardCount, duration, endBlock);
     }
 
-    public async enter(raidId: number, maid?: number) {
+    public async enter(raidId: number, maids: string, maidId?: number) {
 
         const contract = await this.connectAndGetWalletContract();
         const owner = await Wallet.loadAddress();
@@ -80,7 +82,7 @@ class NurseRaidContract extends Contract<NurseRaid> {
 
             if (
                 (await MaidCoinContract.allowance(owner, this.address)).lt(raid.entranceFee) ||
-                await MaidContract.isApprovedForAll(owner, this.address) !== true
+                await MaidsContract.isApprovedForAll(owner, this.address) !== true
             ) {
                 const deadline = Math.ceil(Date.now() / 1000) + 1000000;
 
@@ -98,17 +100,17 @@ class NurseRaidContract extends Contract<NurseRaid> {
 
                 const maidSigned = await Wallet.signERC721PermitAll(
 
-                    await MaidContract.getName(),
+                    await MaidsContract.getName(),
                     "1",
-                    MaidContract.address,
+                    MaidsContract.address,
 
                     this.address,
-                    await MaidContract.getNonceForAll(owner),
+                    await MaidsContract.getNonceForAll(owner),
                     deadline,
                 );
 
                 await contract.enterWithPermitAll(
-                    raidId, maid === undefined ? constants.MaxUint256 : maid, deadline,
+                    raidId, maids, maidId === undefined ? constants.MaxUint256 : maidId, deadline,
                     maidCoinSigned.v, maidCoinSigned.r, maidCoinSigned.s,
                     maidSigned.v, maidSigned.r, maidSigned.s,
                 );
@@ -116,7 +118,7 @@ class NurseRaidContract extends Contract<NurseRaid> {
 
             else {
                 await contract.enter(
-                    raidId, maid === undefined ? constants.MaxUint256 : maid,
+                    raidId, maids, maidId === undefined ? constants.MaxUint256 : maidId,
                 );
             }
         }

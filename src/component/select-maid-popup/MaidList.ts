@@ -1,6 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
-import MaidContract from "../../contracts/MaidContract";
+import MaidsContract from "../../contracts/MaidsContract";
 import Wallet from "../../ethereum/Wallet";
 import Maid from "./Maid";
 
@@ -23,12 +23,12 @@ export default class MaidList extends DomNode {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 
-            const maidCount = (await MaidContract.balanceOf(owner)).toNumber();
+            const maidCount = (await MaidsContract.balanceOf(owner)).toNumber();
 
             SkyUtil.repeat(maidCount, async (index) => {
                 if (this.deleted !== true) {
                     const maidIndex = maidCount - index - 1;
-                    const maidId = (await MaidContract.getTokenOfOwnerByIndex(owner, maidIndex)).toNumber();
+                    const maidId = (await MaidsContract.getTokenOfOwnerByIndex(owner, maidIndex)).toNumber();
                     const maid = new Maid(maidId).appendTo(this.content);
                     maid.on("select", () => {
                         if (maid === this.selectedMaid) {

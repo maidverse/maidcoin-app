@@ -3,7 +3,7 @@ import { utils } from "ethers";
 import SkyUtil from "skyutil";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
-import CloneNurseContract from "../../contracts/CloneNurseContract";
+import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NurseDetail from "./NurseDetail";
 
 export default class Nurse extends DomNode {
@@ -15,7 +15,7 @@ export default class Nurse extends DomNode {
     }
 
     private async load() {
-        const { nurseType } = await CloneNurseContract.getNurse(this.nurseId);
+        const { nurseType } = await CloneNursesContract.getNurse(this.nurseId);
         const result = await superagent.post(`https://api.maidcoin.org/nursetypes/${nurseType}`);
         const tokenInfo = result.body;
 
@@ -24,7 +24,7 @@ export default class Nurse extends DomNode {
             image.style({ transform: "scaleX(-1)" })
         }
 
-        const pendingReward = await CloneNurseContract.getPendigReward(this.nurseId);
+        const pendingReward = await CloneNursesContract.getPendigReward(this.nurseId);
 
         this.append(
             el("a.claim-button",

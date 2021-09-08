@@ -90,8 +90,14 @@ const _abi = [
       },
       {
         indexed: true,
+        internalType: "contract IMaids",
+        name: "maids",
+        type: "address",
+      },
+      {
+        indexed: false,
         internalType: "uint256",
-        name: "maid",
+        name: "maidId",
         type: "uint256",
       },
     ],
@@ -183,8 +189,13 @@ const _abi = [
         type: "uint256",
       },
       {
+        internalType: "contract IMaids",
+        name: "maids",
+        type: "address",
+      },
+      {
         internalType: "uint256",
-        name: "maid",
+        name: "maidId",
         type: "uint256",
       },
     ],
@@ -201,8 +212,13 @@ const _abi = [
         type: "uint256",
       },
       {
+        internalType: "contract IMaids",
+        name: "maids",
+        type: "address",
+      },
+      {
         internalType: "uint256",
-        name: "_maid",
+        name: "maidId",
         type: "uint256",
       },
       {
@@ -261,10 +277,10 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "maid",
+    name: "maidCafe",
     outputs: [
       {
-        internalType: "contract IMaid",
+        internalType: "contract IMaidCafe",
         name: "",
         type: "address",
       },
@@ -293,6 +309,25 @@ const _abi = [
         internalType: "uint256",
         name: "",
         type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "contract IMaids",
+        name: "maids",
+        type: "address",
+      },
+    ],
+    name: "maidsApproved",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
       },
     ],
     stateMutability: "view",

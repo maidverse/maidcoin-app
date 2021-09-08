@@ -1,6 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import superagent from "superagent";
-import CloneNurseContract from "../../contracts/CloneNurseContract";
+import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NursePartContract from "../../contracts/NursePartContract";
 import Wallet from "../../ethereum/Wallet";
 
@@ -29,7 +29,7 @@ export default class NurseFactory extends DomNode {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 
-            const nurseType = await CloneNurseContract.getNurseType(this.nurseType);
+            const nurseType = await CloneNursesContract.getNurseType(this.nurseType);
             const balance = await NursePartContract.balanceOf(owner, this.nurseType);
 
             const result = await superagent.post(`https://api.maidcoin.org/nursetypes/${this.nurseType}`);
@@ -45,7 +45,7 @@ export default class NurseFactory extends DomNode {
                 el(".name", tokenInfo.name),
                 el("a.create-button", "Create", {
                     click: async () => {
-                        await CloneNurseContract.assemble(this.nurseType);
+                        await CloneNursesContract.assemble(this.nurseType);
                     },
                 }),
             );

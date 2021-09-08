@@ -28,6 +28,7 @@ interface MaidInterface extends ethers.utils.Interface {
     "PERMIT_TYPEHASH()": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
+    "batchMint(uint256[])": FunctionFragment;
     "changeLPTokenToMaidPower(uint256)": FunctionFragment;
     "desupport(uint256,uint256)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
@@ -80,6 +81,10 @@ interface MaidInterface extends ethers.utils.Interface {
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "batchMint",
+    values: [BigNumberish[]]
+  ): string;
   encodeFunctionData(
     functionFragment: "changeLPTokenToMaidPower",
     values: [BigNumberish]
@@ -211,6 +216,7 @@ interface MaidInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "batchMint", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "changeLPTokenToMaidPower",
     data: BytesLike
@@ -353,6 +359,16 @@ export class Maid extends Contract {
       owner: string,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
+
+    batchMint(
+      powers: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "batchMint(uint256[])"(
+      powers: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
 
     changeLPTokenToMaidPower(
       value: BigNumberish,
@@ -688,6 +704,16 @@ export class Maid extends Contract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
+  batchMint(
+    powers: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "batchMint(uint256[])"(
+    powers: BigNumberish[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   changeLPTokenToMaidPower(
     value: BigNumberish,
     overrides?: Overrides
@@ -1015,6 +1041,13 @@ export class Maid extends Contract {
       owner: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    batchMint(powers: BigNumberish[], overrides?: CallOverrides): Promise<void>;
+
+    "batchMint(uint256[])"(
+      powers: BigNumberish[],
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     changeLPTokenToMaidPower(
       value: BigNumberish,
@@ -1373,6 +1406,16 @@ export class Maid extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    batchMint(
+      powers: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "batchMint(uint256[])"(
+      powers: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
     changeLPTokenToMaidPower(
       value: BigNumberish,
       overrides?: Overrides
@@ -1703,6 +1746,16 @@ export class Maid extends Contract {
     "balanceOf(address)"(
       owner: string,
       overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    batchMint(
+      powers: BigNumberish[],
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "batchMint(uint256[])"(
+      powers: BigNumberish[],
+      overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
     changeLPTokenToMaidPower(

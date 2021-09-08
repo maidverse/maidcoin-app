@@ -10,7 +10,8 @@ export interface RaidInfo {
 }
 export interface ChallengerInfo {
     enterBlock: number;
-    maid: BigNumber;
+    maids: string;
+    maidId: BigNumber;
 }
 declare class NurseRaidContract extends Contract<NurseRaid> {
     constructor();
@@ -19,7 +20,7 @@ declare class NurseRaidContract extends Contract<NurseRaid> {
     getChallenger(raidId: number, owner: string): Promise<ChallengerInfo>;
     checkDone(raidId: number): Promise<boolean | undefined>;
     create(entranceFee: BigNumberish, nursePart: BigNumberish, maxRewardCount: BigNumberish, duration: BigNumberish, endBlock: BigNumberish): Promise<void>;
-    enter(raidId: number, maid?: number): Promise<void>;
+    enter(raidId: number, maids: string, maidId?: number): Promise<void>;
     exit(raidId: number): Promise<void>;
 }
 declare const _default: NurseRaidContract;

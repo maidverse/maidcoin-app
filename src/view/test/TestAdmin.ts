@@ -2,8 +2,8 @@ import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
-import CloneNurseContract from "../../contracts/CloneNurseContract";
-import MaidContract from "../../contracts/MaidContract";
+import CloneNursesContract from "../../contracts/CloneNursesContract";
+import MaidsContract from "../../contracts/MaidsContract";
 import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
 import Layout from "../Layout";
@@ -36,7 +36,7 @@ export default class Admin implements View {
                         click: async () => {
                             const power = prompt("Please enter the maid's power", "50");
                             if (power) {
-                                await MaidContract.mint(power);
+                                await MaidsContract.mint(power);
                             }
                         },
                     }),
@@ -56,7 +56,7 @@ export default class Admin implements View {
                 el(".action-button-container",
                     el("a.action-button.create-nurse-type-button", "Create Nurse Type", {
                         click: async () => {
-                            await CloneNurseContract.addNurseType(
+                            await CloneNursesContract.addNurseType(
                                 parseInt(partCountInput.domElement.value, 10),
                                 utils.parseEther(destroyReturnInput.domElement.value),
                                 parseInt(powerInput.domElement.value, 10),

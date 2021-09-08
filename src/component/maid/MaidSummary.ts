@@ -2,7 +2,7 @@ import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
-import MaidContract from "../../contracts/MaidContract";
+import MaidsContract from "../../contracts/MaidsContract";
 import MaidDetail from "./MaidDetail";
 import Sound from "./Sound";
 
@@ -30,9 +30,9 @@ export default class MaidSummary extends DomNode {
 
     private async load() {
 
-        const maid = await MaidContract.getMaid(this.maidId);
-        const maidOwner = await MaidContract.ownerOf(this.maidId);
-        const maidPower = await MaidContract.powerOf(this.maidId);
+        const maid = await MaidsContract.getMaid(this.maidId);
+        const maidOwner = await MaidsContract.ownerOf(this.maidId);
+        const maidPower = await MaidsContract.powerOf(this.maidId);
 
         const result = await superagent.post(`https://api.maidcoin.org/maids/${this.maidId}`);
         const tokenInfo = result.body;
@@ -70,7 +70,7 @@ export default class MaidSummary extends DomNode {
                     event.stopPropagation();
                     const amount = prompt("How much amount to support?", "10");
                     if (amount) {
-                        await MaidContract.support(this.maidId, utils.parseEther(amount));
+                        await MaidsContract.support(this.maidId, utils.parseEther(amount));
                     }
                 },
             }),

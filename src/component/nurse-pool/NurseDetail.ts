@@ -2,7 +2,7 @@ import { DomNode, el, Popup } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
-import CloneNurseContract from "../../contracts/CloneNurseContract";
+import CloneNursesContract from "../../contracts/CloneNursesContract";
 import TheMasterContract from "../../contracts/TheMasterContract";
 import Wallet from "../../ethereum/Wallet";
 
@@ -25,18 +25,18 @@ export default class NurseDetail extends Popup {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 
-            const nurse = await CloneNurseContract.getNurse(this.nurseId);
-            const nurseOwner = await CloneNurseContract.ownerOf(this.nurseId);
-            const nurseType = await CloneNurseContract.getNurseType(nurse.nurseType);
-            const supportedPower = await CloneNurseContract.getSupportedPower(this.nurseId);
+            const nurse = await CloneNursesContract.getNurse(this.nurseId);
+            const nurseOwner = await CloneNursesContract.ownerOf(this.nurseId);
+            const nurseType = await CloneNursesContract.getNurseType(nurse.nurseType);
+            const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
 
-            const supportingTo = (await CloneNurseContract.getSupportingTo(owner)).toNumber();
+            const supportingTo = (await CloneNursesContract.getSupportingTo(owner)).toNumber();
             const supportingAmount = supportingTo !== this.nurseId ? BigNumber.from(0) : await TheMasterContract.getSupportingAmount(owner);
 
             const result = await superagent.post(`https://api.maidcoin.org/clonenurses/${this.nurseId}`);
             const tokenInfo = result.body;
 
-            const pendingReward = await CloneNurseContract.getPendigReward(this.nurseId);
+            const pendingReward = await CloneNursesContract.getPendigReward(this.nurseId);
 
             this.content.empty().append(
                 el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/Illust/${tokenInfo.name}.png` }),

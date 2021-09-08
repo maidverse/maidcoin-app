@@ -1,6 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
-import MaidContract from "../../contracts/MaidContract";
+import MaidsContract from "../../contracts/MaidsContract";
 import Loading from "../Loading";
 import MaidBook from "./MaidBook";
 
@@ -20,7 +20,7 @@ export default class MaidList extends DomNode {
 
     private async loadMaids() {
 
-        const maidCount = (await MaidContract.getTotalSupply()).toNumber();
+        const maidCount = (await MaidsContract.getTotalSupply()).toNumber();
 
         SkyUtil.repeat(maidCount, async (index) => {
             setTimeout(() => {

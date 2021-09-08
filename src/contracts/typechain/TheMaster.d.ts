@@ -22,8 +22,11 @@ import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 
 interface TheMasterInterface extends ethers.utils.Interface {
   functions: {
+    "accSushiPerShare()": FunctionFragment;
     "add(address,bool,bool,address,uint8,uint256)": FunctionFragment;
     "changeRewardCalculator(address)": FunctionFragment;
+    "claimAllReward(uint256)": FunctionFragment;
+    "claimSushiReward(uint256)": FunctionFragment;
     "decreasingInterval()": FunctionFragment;
     "deposit(uint256,uint256,uint256)": FunctionFragment;
     "depositWithPermit(uint256,uint256,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
@@ -32,21 +35,28 @@ interface TheMasterInterface extends ethers.utils.Interface {
     "emergencyDesupport(uint256)": FunctionFragment;
     "emergencyWithdraw(uint256)": FunctionFragment;
     "initialRewardPerBlock()": FunctionFragment;
+    "lpToken()": FunctionFragment;
     "maidCoin()": FunctionFragment;
+    "masterChefPid()": FunctionFragment;
     "mint(address,uint256)": FunctionFragment;
     "mintableByAddr(address)": FunctionFragment;
     "owner()": FunctionFragment;
     "pendingReward(uint256,uint256)": FunctionFragment;
+    "pendingSushiReward(uint256)": FunctionFragment;
     "poolCount()": FunctionFragment;
     "poolInfo(uint256)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "rewardCalculator()": FunctionFragment;
     "rewardPerBlock()": FunctionFragment;
     "set(uint256,uint256)": FunctionFragment;
+    "setSushiMasterChef(address,uint256)": FunctionFragment;
     "startBlock()": FunctionFragment;
     "support(uint256,uint256,uint256)": FunctionFragment;
     "supportWithPermit(uint256,uint256,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
     "supportWithPermitMax(uint256,uint256,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
+    "sushi()": FunctionFragment;
+    "sushiLastRewardBlock()": FunctionFragment;
+    "sushiMasterChef()": FunctionFragment;
     "totalAllocPoint()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "userInfo(uint256,uint256)": FunctionFragment;
@@ -54,12 +64,24 @@ interface TheMasterInterface extends ethers.utils.Interface {
   };
 
   encodeFunctionData(
+    functionFragment: "accSushiPerShare",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "add",
     values: [string, boolean, boolean, string, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "changeRewardCalculator",
     values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "claimAllReward",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "claimSushiReward",
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "decreasingInterval",
@@ -109,7 +131,12 @@ interface TheMasterInterface extends ethers.utils.Interface {
     functionFragment: "initialRewardPerBlock",
     values?: undefined
   ): string;
+  encodeFunctionData(functionFragment: "lpToken", values?: undefined): string;
   encodeFunctionData(functionFragment: "maidCoin", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "masterChefPid",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "mint",
     values: [string, BigNumberish]
@@ -122,6 +149,10 @@ interface TheMasterInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "pendingReward",
     values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "pendingSushiReward",
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "poolCount", values?: undefined): string;
   encodeFunctionData(
@@ -143,6 +174,10 @@ interface TheMasterInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "set",
     values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setSushiMasterChef",
+    values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "startBlock",
@@ -176,6 +211,15 @@ interface TheMasterInterface extends ethers.utils.Interface {
       BytesLike
     ]
   ): string;
+  encodeFunctionData(functionFragment: "sushi", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "sushiLastRewardBlock",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "sushiMasterChef",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "totalAllocPoint",
     values?: undefined
@@ -193,9 +237,21 @@ interface TheMasterInterface extends ethers.utils.Interface {
     values: [BigNumberish, BigNumberish, BigNumberish]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "accSushiPerShare",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "add", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "changeRewardCalculator",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "claimAllReward",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "claimSushiReward",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -224,7 +280,12 @@ interface TheMasterInterface extends ethers.utils.Interface {
     functionFragment: "initialRewardPerBlock",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "lpToken", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "maidCoin", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "masterChefPid",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "mintableByAddr",
@@ -233,6 +294,10 @@ interface TheMasterInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "pendingReward",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "pendingSushiReward",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "poolCount", data: BytesLike): Result;
@@ -250,6 +315,10 @@ interface TheMasterInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "set", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "setSushiMasterChef",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "startBlock", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "support", data: BytesLike): Result;
   decodeFunctionResult(
@@ -258,6 +327,15 @@ interface TheMasterInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "supportWithPermitMax",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "sushi", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "sushiLastRewardBlock",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "sushiMasterChef",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -312,6 +390,10 @@ export class TheMaster extends Contract {
   interface: TheMasterInterface;
 
   functions: {
+    accSushiPerShare(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "accSushiPerShare()"(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     add(
       addr: string,
       delegate: boolean,
@@ -339,6 +421,26 @@ export class TheMaster extends Contract {
 
     "changeRewardCalculator(address)"(
       addr: string,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    claimAllReward(
+      pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "claimAllReward(uint256)"(
+      pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    claimSushiReward(
+      pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "claimSushiReward(uint256)"(
+      pid: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -440,9 +542,17 @@ export class TheMaster extends Contract {
 
     "initialRewardPerBlock()"(overrides?: CallOverrides): Promise<[BigNumber]>;
 
+    lpToken(overrides?: CallOverrides): Promise<[string]>;
+
+    "lpToken()"(overrides?: CallOverrides): Promise<[string]>;
+
     maidCoin(overrides?: CallOverrides): Promise<[string]>;
 
     "maidCoin()"(overrides?: CallOverrides): Promise<[string]>;
+
+    masterChefPid(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "masterChefPid()"(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     mint(
       to: string,
@@ -476,6 +586,16 @@ export class TheMaster extends Contract {
     "pendingReward(uint256,uint256)"(
       pid: BigNumberish,
       userId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    pendingSushiReward(
+      pid: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    "pendingSushiReward(uint256)"(
+      pid: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
@@ -557,6 +677,18 @@ export class TheMaster extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
+    setSushiMasterChef(
+      _masterChef: string,
+      _pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "setSushiMasterChef(address,uint256)"(
+      _masterChef: string,
+      _pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
     startBlock(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     "startBlock()"(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -619,6 +751,18 @@ export class TheMaster extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
+    sushi(overrides?: CallOverrides): Promise<[string]>;
+
+    "sushi()"(overrides?: CallOverrides): Promise<[string]>;
+
+    sushiLastRewardBlock(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "sushiLastRewardBlock()"(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    sushiMasterChef(overrides?: CallOverrides): Promise<[string]>;
+
+    "sushiMasterChef()"(overrides?: CallOverrides): Promise<[string]>;
+
     totalAllocPoint(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     "totalAllocPoint()"(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -664,6 +808,10 @@ export class TheMaster extends Contract {
     ): Promise<ContractTransaction>;
   };
 
+  accSushiPerShare(overrides?: CallOverrides): Promise<BigNumber>;
+
+  "accSushiPerShare()"(overrides?: CallOverrides): Promise<BigNumber>;
+
   add(
     addr: string,
     delegate: boolean,
@@ -691,6 +839,26 @@ export class TheMaster extends Contract {
 
   "changeRewardCalculator(address)"(
     addr: string,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  claimAllReward(
+    pid: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "claimAllReward(uint256)"(
+    pid: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  claimSushiReward(
+    pid: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "claimSushiReward(uint256)"(
+    pid: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -792,9 +960,17 @@ export class TheMaster extends Contract {
 
   "initialRewardPerBlock()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+  lpToken(overrides?: CallOverrides): Promise<string>;
+
+  "lpToken()"(overrides?: CallOverrides): Promise<string>;
+
   maidCoin(overrides?: CallOverrides): Promise<string>;
 
   "maidCoin()"(overrides?: CallOverrides): Promise<string>;
+
+  masterChefPid(overrides?: CallOverrides): Promise<BigNumber>;
+
+  "masterChefPid()"(overrides?: CallOverrides): Promise<BigNumber>;
 
   mint(
     to: string,
@@ -828,6 +1004,16 @@ export class TheMaster extends Contract {
   "pendingReward(uint256,uint256)"(
     pid: BigNumberish,
     userId: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  pendingSushiReward(
+    pid: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  "pendingSushiReward(uint256)"(
+    pid: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
@@ -909,6 +1095,18 @@ export class TheMaster extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  setSushiMasterChef(
+    _masterChef: string,
+    _pid: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "setSushiMasterChef(address,uint256)"(
+    _masterChef: string,
+    _pid: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   startBlock(overrides?: CallOverrides): Promise<BigNumber>;
 
   "startBlock()"(overrides?: CallOverrides): Promise<BigNumber>;
@@ -971,6 +1169,18 @@ export class TheMaster extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  sushi(overrides?: CallOverrides): Promise<string>;
+
+  "sushi()"(overrides?: CallOverrides): Promise<string>;
+
+  sushiLastRewardBlock(overrides?: CallOverrides): Promise<BigNumber>;
+
+  "sushiLastRewardBlock()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+  sushiMasterChef(overrides?: CallOverrides): Promise<string>;
+
+  "sushiMasterChef()"(overrides?: CallOverrides): Promise<string>;
+
   totalAllocPoint(overrides?: CallOverrides): Promise<BigNumber>;
 
   "totalAllocPoint()"(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1016,6 +1226,10 @@ export class TheMaster extends Contract {
   ): Promise<ContractTransaction>;
 
   callStatic: {
+    accSushiPerShare(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "accSushiPerShare()"(overrides?: CallOverrides): Promise<BigNumber>;
+
     add(
       addr: string,
       delegate: boolean,
@@ -1043,6 +1257,23 @@ export class TheMaster extends Contract {
 
     "changeRewardCalculator(address)"(
       addr: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    claimAllReward(pid: BigNumberish, overrides?: CallOverrides): Promise<void>;
+
+    "claimAllReward(uint256)"(
+      pid: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    claimSushiReward(
+      pid: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "claimSushiReward(uint256)"(
+      pid: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1144,9 +1375,17 @@ export class TheMaster extends Contract {
 
     "initialRewardPerBlock()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+    lpToken(overrides?: CallOverrides): Promise<string>;
+
+    "lpToken()"(overrides?: CallOverrides): Promise<string>;
+
     maidCoin(overrides?: CallOverrides): Promise<string>;
 
     "maidCoin()"(overrides?: CallOverrides): Promise<string>;
+
+    masterChefPid(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "masterChefPid()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     mint(
       to: string,
@@ -1180,6 +1419,16 @@ export class TheMaster extends Contract {
     "pendingReward(uint256,uint256)"(
       pid: BigNumberish,
       userId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    pendingSushiReward(
+      pid: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "pendingSushiReward(uint256)"(
+      pid: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1261,6 +1510,18 @@ export class TheMaster extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    setSushiMasterChef(
+      _masterChef: string,
+      _pid: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "setSushiMasterChef(address,uint256)"(
+      _masterChef: string,
+      _pid: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     startBlock(overrides?: CallOverrides): Promise<BigNumber>;
 
     "startBlock()"(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1322,6 +1583,18 @@ export class TheMaster extends Contract {
       s: BytesLike,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    sushi(overrides?: CallOverrides): Promise<string>;
+
+    "sushi()"(overrides?: CallOverrides): Promise<string>;
+
+    sushiLastRewardBlock(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "sushiLastRewardBlock()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    sushiMasterChef(overrides?: CallOverrides): Promise<string>;
+
+    "sushiMasterChef()"(overrides?: CallOverrides): Promise<string>;
 
     totalAllocPoint(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1431,6 +1704,10 @@ export class TheMaster extends Contract {
   };
 
   estimateGas: {
+    accSushiPerShare(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "accSushiPerShare()"(overrides?: CallOverrides): Promise<BigNumber>;
+
     add(
       addr: string,
       delegate: boolean,
@@ -1458,6 +1735,26 @@ export class TheMaster extends Contract {
 
     "changeRewardCalculator(address)"(
       addr: string,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    claimAllReward(
+      pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "claimAllReward(uint256)"(
+      pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    claimSushiReward(
+      pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "claimSushiReward(uint256)"(
+      pid: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1559,9 +1856,17 @@ export class TheMaster extends Contract {
 
     "initialRewardPerBlock()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+    lpToken(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "lpToken()"(overrides?: CallOverrides): Promise<BigNumber>;
+
     maidCoin(overrides?: CallOverrides): Promise<BigNumber>;
 
     "maidCoin()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    masterChefPid(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "masterChefPid()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     mint(
       to: string,
@@ -1598,6 +1903,16 @@ export class TheMaster extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    pendingSushiReward(
+      pid: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "pendingSushiReward(uint256)"(
+      pid: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     poolCount(overrides?: CallOverrides): Promise<BigNumber>;
 
     "poolCount()"(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1630,6 +1945,18 @@ export class TheMaster extends Contract {
     "set(uint256,uint256)"(
       pid: BigNumberish,
       allocPoint: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    setSushiMasterChef(
+      _masterChef: string,
+      _pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "setSushiMasterChef(address,uint256)"(
+      _masterChef: string,
+      _pid: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1695,6 +2022,18 @@ export class TheMaster extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
+    sushi(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "sushi()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    sushiLastRewardBlock(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "sushiLastRewardBlock()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    sushiMasterChef(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "sushiMasterChef()"(overrides?: CallOverrides): Promise<BigNumber>;
+
     totalAllocPoint(overrides?: CallOverrides): Promise<BigNumber>;
 
     "totalAllocPoint()"(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1737,6 +2076,12 @@ export class TheMaster extends Contract {
   };
 
   populateTransaction: {
+    accSushiPerShare(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "accSushiPerShare()"(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     add(
       addr: string,
       delegate: boolean,
@@ -1764,6 +2109,26 @@ export class TheMaster extends Contract {
 
     "changeRewardCalculator(address)"(
       addr: string,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    claimAllReward(
+      pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "claimAllReward(uint256)"(
+      pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    claimSushiReward(
+      pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "claimSushiReward(uint256)"(
+      pid: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -1873,9 +2238,17 @@ export class TheMaster extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    lpToken(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "lpToken()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     maidCoin(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     "maidCoin()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    masterChefPid(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "masterChefPid()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     mint(
       to: string,
@@ -1912,6 +2285,16 @@ export class TheMaster extends Contract {
     "pendingReward(uint256,uint256)"(
       pid: BigNumberish,
       userId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    pendingSushiReward(
+      pid: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "pendingSushiReward(uint256)"(
+      pid: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -1954,6 +2337,18 @@ export class TheMaster extends Contract {
     "set(uint256,uint256)"(
       pid: BigNumberish,
       allocPoint: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    setSushiMasterChef(
+      _masterChef: string,
+      _pid: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "setSushiMasterChef(address,uint256)"(
+      _masterChef: string,
+      _pid: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -2017,6 +2412,24 @@ export class TheMaster extends Contract {
       r: BytesLike,
       s: BytesLike,
       overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    sushi(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "sushi()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    sushiLastRewardBlock(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "sushiLastRewardBlock()"(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    sushiMasterChef(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "sushiMasterChef()"(
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     totalAllocPoint(overrides?: CallOverrides): Promise<PopulatedTransaction>;

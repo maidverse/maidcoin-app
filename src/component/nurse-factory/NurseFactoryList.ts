@@ -1,6 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
-import CloneNurseContract from "../../contracts/CloneNurseContract";
+import CloneNursesContract from "../../contracts/CloneNursesContract";
 import Loading from "../Loading";
 import NurseFactory from "./NurseFactory";
 
@@ -20,7 +20,7 @@ export default class NurseFactoryList extends DomNode {
 
     private async loadFactories() {
 
-        const nurseTypeCount = await CloneNurseContract.getNurseTypeCount();
+        const nurseTypeCount = await CloneNursesContract.getNurseTypeCount();
 
         SkyUtil.repeat(nurseTypeCount.toNumber(), async (nurseType) => {
             new NurseFactory(nurseType).appendTo(this.factoryContainer);
