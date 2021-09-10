@@ -34,9 +34,11 @@ interface NursePartInterface extends ethers.utils.Interface {
     "owner()": FunctionFragment;
     "permit(address,address,uint256,uint8,bytes32,bytes32)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
+    "royaltyInfo(uint256,uint256)": FunctionFragment;
     "safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)": FunctionFragment;
     "safeTransferFrom(address,address,uint256,uint256,bytes)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
+    "setRoyaltyInfo(address,uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "uri(uint256)": FunctionFragment;
@@ -82,6 +84,10 @@ interface NursePartInterface extends ethers.utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "royaltyInfo",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "safeBatchTransferFrom",
     values: [string, string, BigNumberish[], BigNumberish[], BytesLike]
   ): string;
@@ -92,6 +98,10 @@ interface NursePartInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "setApprovalForAll",
     values: [string, boolean]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setRoyaltyInfo",
+    values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "supportsInterface",
@@ -131,6 +141,10 @@ interface NursePartInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "royaltyInfo",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "safeBatchTransferFrom",
     data: BytesLike
   ): Result;
@@ -140,6 +154,10 @@ interface NursePartInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setApprovalForAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setRoyaltyInfo",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -290,6 +308,18 @@ export class NursePart extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
     safeBatchTransferFrom(
       from: string,
       to: string,
@@ -335,6 +365,18 @@ export class NursePart extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -475,6 +517,18 @@ export class NursePart extends Contract {
 
   "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
 
+  royaltyInfo(
+    arg0: BigNumberish,
+    _salePrice: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<[string, BigNumber]>;
+
+  "royaltyInfo(uint256,uint256)"(
+    arg0: BigNumberish,
+    _salePrice: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<[string, BigNumber]>;
+
   safeBatchTransferFrom(
     from: string,
     to: string,
@@ -520,6 +574,18 @@ export class NursePart extends Contract {
   "setApprovalForAll(address,bool)"(
     operator: string,
     approved: boolean,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  setRoyaltyInfo(
+    _receiver: string,
+    _royaltyFee: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "setRoyaltyInfo(address,uint256)"(
+    _receiver: string,
+    _royaltyFee: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -660,6 +726,18 @@ export class NursePart extends Contract {
 
     "renounceOwnership()"(overrides?: CallOverrides): Promise<void>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
     safeBatchTransferFrom(
       from: string,
       to: string,
@@ -705,6 +783,18 @@ export class NursePart extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -877,6 +967,18 @@ export class NursePart extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<BigNumber>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     safeBatchTransferFrom(
       from: string,
       to: string,
@@ -922,6 +1024,18 @@ export class NursePart extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1070,6 +1184,18 @@ export class NursePart extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<PopulatedTransaction>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     safeBatchTransferFrom(
       from: string,
       to: string,
@@ -1115,6 +1241,18 @@ export class NursePart extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 

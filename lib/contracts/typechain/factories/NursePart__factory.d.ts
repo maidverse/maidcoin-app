@@ -4,8 +4,8 @@ import { ContractFactory, Overrides } from "@ethersproject/contracts";
 import type { NursePart } from "../NursePart";
 export declare class NursePart__factory extends ContractFactory {
     constructor(signer?: Signer);
-    deploy(overrides?: Overrides): Promise<NursePart>;
-    getDeployTransaction(overrides?: Overrides): TransactionRequest;
+    deploy(_royaltyReceiver: string, overrides?: Overrides): Promise<NursePart>;
+    getDeployTransaction(_royaltyReceiver: string, overrides?: Overrides): TransactionRequest;
     attach(address: string): NursePart;
     connect(signer: Signer): NursePart__factory;
     static connect(address: string, signerOrProvider: Signer | Provider): NursePart;

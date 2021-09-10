@@ -18,6 +18,7 @@ export default class Admin implements View {
         let partCountInput: DomNode<HTMLInputElement>;
         let destroyReturnInput: DomNode<HTMLInputElement>;
         let powerInput: DomNode<HTMLInputElement>;
+        let lifetimeInput: DomNode<HTMLInputElement>;
 
         let entranceFeeInput: DomNode<HTMLInputElement>;
         let nursePartInput: DomNode<HTMLInputElement>;
@@ -53,6 +54,9 @@ export default class Admin implements View {
                 el("label", "Power",
                     powerInput = el("input", { placeholder: "Power" }),
                 ),
+                el("label", "Lifetime",
+                    lifetimeInput = el("input", { placeholder: "Power" }),
+                ),
                 el(".action-button-container",
                     el("a.action-button.create-nurse-type-button", "Create Nurse Type", {
                         click: async () => {
@@ -60,6 +64,7 @@ export default class Admin implements View {
                                 parseInt(partCountInput.domElement.value, 10),
                                 utils.parseEther(destroyReturnInput.domElement.value),
                                 parseInt(powerInput.domElement.value, 10),
+                                parseInt(lifetimeInput.domElement.value, 10),
                             );
                         },
                     }),

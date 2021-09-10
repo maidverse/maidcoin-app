@@ -23,13 +23,14 @@ import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 interface ICloneNursesInterface extends ethers.utils.Interface {
   functions: {
     "approve(address,uint256)": FunctionFragment;
-    "assemble(uint256)": FunctionFragment;
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
+    "assemble(uint256,uint256)": FunctionFragment;
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
     "changeSupportedPower(address,int256)": FunctionFragment;
     "checkSupportingRoute(address)": FunctionFragment;
     "claim(uint256)": FunctionFragment;
     "destroy(uint256,uint256)": FunctionFragment;
+    "elongateLifetime(uint256,uint256)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "maidCoin()": FunctionFragment;
@@ -64,11 +65,18 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "assemble",
-    values: [BigNumberish]
+    values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "assembleWithPermit",
-    values: [BigNumberish, BigNumberish, BigNumberish, BytesLike, BytesLike]
+    values: [
+      BigNumberish,
+      BigNumberish,
+      BigNumberish,
+      BigNumberish,
+      BytesLike,
+      BytesLike
+    ]
   ): string;
   encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
   encodeFunctionData(
@@ -82,6 +90,10 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "claim", values: [BigNumberish]): string;
   encodeFunctionData(
     functionFragment: "destroy",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "elongateLifetime",
     values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
@@ -191,6 +203,10 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "destroy", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "elongateLifetime",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "getApproved",
     data: BytesLike
@@ -318,16 +334,19 @@ export class ICloneNurses extends Contract {
 
     assemble(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "assemble(uint256)"(
+    "assemble(uint256,uint256)"(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
     assembleWithPermit(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -335,8 +354,9 @@ export class ICloneNurses extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -398,6 +418,18 @@ export class ICloneNurses extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
+    elongateLifetime(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "elongateLifetime(uint256,uint256)"(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
     getApproved(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -440,10 +472,11 @@ export class ICloneNurses extends Contract {
       typeId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [BigNumber, BigNumber, BigNumber] & {
+      [BigNumber, BigNumber, BigNumber, BigNumber] & {
         partCount: BigNumber;
         destroyReturn: BigNumber;
         power: BigNumber;
+        lifetime: BigNumber;
       }
     >;
 
@@ -451,22 +484,35 @@ export class ICloneNurses extends Contract {
       typeId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [BigNumber, BigNumber, BigNumber] & {
+      [BigNumber, BigNumber, BigNumber, BigNumber] & {
         partCount: BigNumber;
         destroyReturn: BigNumber;
         power: BigNumber;
+        lifetime: BigNumber;
       }
     >;
 
     nurses(
       id: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { nurseType: BigNumber }>;
+    ): Promise<
+      [BigNumber, BigNumber, BigNumber] & {
+        nurseType: BigNumber;
+        endBlock: BigNumber;
+        lastClaimedBlock: BigNumber;
+      }
+    >;
 
     "nurses(uint256)"(
       id: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { nurseType: BigNumber }>;
+    ): Promise<
+      [BigNumber, BigNumber, BigNumber] & {
+        nurseType: BigNumber;
+        endBlock: BigNumber;
+        lastClaimedBlock: BigNumber;
+      }
+    >;
 
     ownerOf(
       tokenId: BigNumberish,
@@ -666,16 +712,19 @@ export class ICloneNurses extends Contract {
 
   assemble(
     nurseType: BigNumberish,
+    parts: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "assemble(uint256)"(
+  "assemble(uint256,uint256)"(
     nurseType: BigNumberish,
+    parts: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
   assembleWithPermit(
     nurseType: BigNumberish,
+    parts: BigNumberish,
     deadline: BigNumberish,
     v: BigNumberish,
     r: BytesLike,
@@ -683,8 +732,9 @@ export class ICloneNurses extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+  "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
     nurseType: BigNumberish,
+    parts: BigNumberish,
     deadline: BigNumberish,
     v: BigNumberish,
     r: BytesLike,
@@ -740,6 +790,18 @@ export class ICloneNurses extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  elongateLifetime(
+    id: BigNumberish,
+    parts: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "elongateLifetime(uint256,uint256)"(
+    id: BigNumberish,
+    parts: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   getApproved(
     tokenId: BigNumberish,
     overrides?: CallOverrides
@@ -782,10 +844,11 @@ export class ICloneNurses extends Contract {
     typeId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<
-    [BigNumber, BigNumber, BigNumber] & {
+    [BigNumber, BigNumber, BigNumber, BigNumber] & {
       partCount: BigNumber;
       destroyReturn: BigNumber;
       power: BigNumber;
+      lifetime: BigNumber;
     }
   >;
 
@@ -793,19 +856,35 @@ export class ICloneNurses extends Contract {
     typeId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<
-    [BigNumber, BigNumber, BigNumber] & {
+    [BigNumber, BigNumber, BigNumber, BigNumber] & {
       partCount: BigNumber;
       destroyReturn: BigNumber;
       power: BigNumber;
+      lifetime: BigNumber;
     }
   >;
 
-  nurses(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+  nurses(
+    id: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<
+    [BigNumber, BigNumber, BigNumber] & {
+      nurseType: BigNumber;
+      endBlock: BigNumber;
+      lastClaimedBlock: BigNumber;
+    }
+  >;
 
   "nurses(uint256)"(
     id: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<
+    [BigNumber, BigNumber, BigNumber] & {
+      nurseType: BigNumber;
+      endBlock: BigNumber;
+      lastClaimedBlock: BigNumber;
+    }
+  >;
 
   ownerOf(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
@@ -997,15 +1076,21 @@ export class ICloneNurses extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    assemble(nurseType: BigNumberish, overrides?: CallOverrides): Promise<void>;
-
-    "assemble(uint256)"(
+    assemble(
       nurseType: BigNumberish,
+      parts: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "assemble(uint256,uint256)"(
+      nurseType: BigNumberish,
+      parts: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
     assembleWithPermit(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1013,8 +1098,9 @@ export class ICloneNurses extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1070,6 +1156,18 @@ export class ICloneNurses extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    elongateLifetime(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "elongateLifetime(uint256,uint256)"(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     getApproved(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -1112,10 +1210,11 @@ export class ICloneNurses extends Contract {
       typeId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [BigNumber, BigNumber, BigNumber] & {
+      [BigNumber, BigNumber, BigNumber, BigNumber] & {
         partCount: BigNumber;
         destroyReturn: BigNumber;
         power: BigNumber;
+        lifetime: BigNumber;
       }
     >;
 
@@ -1123,19 +1222,35 @@ export class ICloneNurses extends Contract {
       typeId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [BigNumber, BigNumber, BigNumber] & {
+      [BigNumber, BigNumber, BigNumber, BigNumber] & {
         partCount: BigNumber;
         destroyReturn: BigNumber;
         power: BigNumber;
+        lifetime: BigNumber;
       }
     >;
 
-    nurses(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    nurses(
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<
+      [BigNumber, BigNumber, BigNumber] & {
+        nurseType: BigNumber;
+        endBlock: BigNumber;
+        lastClaimedBlock: BigNumber;
+      }
+    >;
 
     "nurses(uint256)"(
       id: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<
+      [BigNumber, BigNumber, BigNumber] & {
+        nurseType: BigNumber;
+        endBlock: BigNumber;
+        lastClaimedBlock: BigNumber;
+      }
+    >;
 
     ownerOf(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
@@ -1381,16 +1496,19 @@ export class ICloneNurses extends Contract {
 
     assemble(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "assemble(uint256)"(
+    "assemble(uint256,uint256)"(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
     assembleWithPermit(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1398,8 +1516,9 @@ export class ICloneNurses extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1452,6 +1571,18 @@ export class ICloneNurses extends Contract {
     "destroy(uint256,uint256)"(
       id: BigNumberish,
       toId: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    elongateLifetime(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "elongateLifetime(uint256,uint256)"(
+      id: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1709,16 +1840,19 @@ export class ICloneNurses extends Contract {
 
     assemble(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "assemble(uint256)"(
+    "assemble(uint256,uint256)"(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
     assembleWithPermit(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1726,8 +1860,9 @@ export class ICloneNurses extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
       nurseType: BigNumberish,
+      parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1786,6 +1921,18 @@ export class ICloneNurses extends Contract {
     "destroy(uint256,uint256)"(
       id: BigNumberish,
       toId: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    elongateLifetime(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "elongateLifetime(uint256,uint256)"(
+      id: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 

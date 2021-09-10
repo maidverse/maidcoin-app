@@ -50,8 +50,10 @@ interface MaidsInterface extends ethers.utils.Interface {
     "permitAll(address,address,uint256,uint8,bytes32,bytes32)": FunctionFragment;
     "powerOf(uint256)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
+    "royaltyInfo(uint256,uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
+    "setRoyaltyInfo(address,uint256)": FunctionFragment;
     "setSushiMasterChef(address,uint256)": FunctionFragment;
     "support(uint256,uint256)": FunctionFragment;
     "supportWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
@@ -170,12 +172,20 @@ interface MaidsInterface extends ethers.utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "royaltyInfo",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "safeTransferFrom",
     values: [string, string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "setApprovalForAll",
     values: [string, boolean]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setRoyaltyInfo",
+    values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "setSushiMasterChef",
@@ -306,11 +316,19 @@ interface MaidsInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "royaltyInfo",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "safeTransferFrom",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
     functionFragment: "setApprovalForAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setRoyaltyInfo",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -633,6 +651,18 @@ export class Maids extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
     "safeTransferFrom(address,address,uint256)"(
       from: string,
       to: string,
@@ -657,6 +687,18 @@ export class Maids extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -1030,6 +1072,18 @@ export class Maids extends Contract {
 
   "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
 
+  royaltyInfo(
+    arg0: BigNumberish,
+    _salePrice: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<[string, BigNumber]>;
+
+  "royaltyInfo(uint256,uint256)"(
+    arg0: BigNumberish,
+    _salePrice: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<[string, BigNumber]>;
+
   "safeTransferFrom(address,address,uint256)"(
     from: string,
     to: string,
@@ -1054,6 +1108,18 @@ export class Maids extends Contract {
   "setApprovalForAll(address,bool)"(
     operator: string,
     approved: boolean,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  setRoyaltyInfo(
+    _receiver: string,
+    _royaltyFee: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "setRoyaltyInfo(address,uint256)"(
+    _receiver: string,
+    _royaltyFee: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -1421,6 +1487,18 @@ export class Maids extends Contract {
 
     "renounceOwnership()"(overrides?: CallOverrides): Promise<void>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
     "safeTransferFrom(address,address,uint256)"(
       from: string,
       to: string,
@@ -1445,6 +1523,18 @@ export class Maids extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1832,6 +1922,18 @@ export class Maids extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<BigNumber>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     "safeTransferFrom(address,address,uint256)"(
       from: string,
       to: string,
@@ -1856,6 +1958,18 @@ export class Maids extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -2249,6 +2363,18 @@ export class Maids extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<PopulatedTransaction>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     "safeTransferFrom(address,address,uint256)"(
       from: string,
       to: string,
@@ -2273,6 +2399,18 @@ export class Maids extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 

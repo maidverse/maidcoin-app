@@ -224,6 +224,11 @@ const _abi = [
         name: "nurseType",
         type: "uint256",
       },
+      {
+        internalType: "uint256",
+        name: "parts",
+        type: "uint256",
+      },
     ],
     name: "assemble",
     outputs: [],
@@ -235,6 +240,11 @@ const _abi = [
       {
         internalType: "uint256",
         name: "nurseType",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "parts",
         type: "uint256",
       },
       {
@@ -359,6 +369,24 @@ const _abi = [
     inputs: [
       {
         internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "parts",
+        type: "uint256",
+      },
+    ],
+    name: "elongateLifetime",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
         name: "tokenId",
         type: "uint256",
       },
@@ -475,6 +503,11 @@ const _abi = [
         name: "power",
         type: "uint256",
       },
+      {
+        internalType: "uint256",
+        name: "lifetime",
+        type: "uint256",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -492,6 +525,16 @@ const _abi = [
       {
         internalType: "uint256",
         name: "nurseType",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "endBlock",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "lastClaimedBlock",
         type: "uint256",
       },
     ],

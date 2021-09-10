@@ -12,14 +12,14 @@ interface NurseInfo {
 declare class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
     constructor();
     getNurseTypeCount(): Promise<BigNumber>;
-    addNurseType(partCount: BigNumberish, destroyReturn: BigNumber, power: BigNumberish): Promise<void>;
+    addNurseType(partCount: BigNumberish, destroyReturn: BigNumber, power: BigNumberish, lifetime: BigNumberish): Promise<void>;
     getNurseType(nurseType: number): Promise<NurseType>;
     ownerOf(nurseId: number): Promise<string>;
     getNurse(nurseId: BigNumberish): Promise<NurseInfo>;
     getSupportedPower(nurseId: number): Promise<BigNumber>;
     getSupportingTo(supporter: string): Promise<BigNumber>;
     getPendigReward(nurseId: BigNumberish): Promise<BigNumber>;
-    assemble(nurseType: number): Promise<void>;
+    assemble(nurseType: number, partCount: number): Promise<void>;
     claim(nurseId: BigNumberish): Promise<void>;
 }
 declare const _default: CloneNursesContract;

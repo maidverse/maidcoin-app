@@ -35,10 +35,11 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
     public async addNurseType(
         partCount: BigNumberish,
         destroyReturn: BigNumber,
-        power: BigNumberish
+        power: BigNumberish,
+        lifetime: BigNumberish
     ) {
         const contract = await this.connectAndGetWalletContract();
-        await contract?.addNurseType(partCount, destroyReturn, power);
+        await contract?.addNurseType(partCount, destroyReturn, power, lifetime);
     }
 
     public async getNurseType(nurseType: number): Promise<NurseType> {
@@ -55,7 +56,7 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
     }
 
     public async getNurse(nurseId: BigNumberish): Promise<NurseInfo> {
-        const nurseType = await this.contract.nurses(nurseId);
+        const [nurseType] = await this.contract.nurses(nurseId);
         return {
             nurseType: nurseType.toNumber(),
         };
@@ -73,7 +74,7 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
         return await this.contract.pendingReward(nurseId);
     }
 
-    public async assemble(nurseType: number) {
+    public async assemble(nurseType: number, partCount: number) {
 
         const contract = await this.connectAndGetWalletContract();
         const owner = await Wallet.loadAddress();
@@ -94,13 +95,13 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
                 );
 
                 await contract.assembleWithPermit(
-                    nurseType, deadline,
+                    nurseType, partCount, deadline,
                     nursePartSigned.v, nursePartSigned.r, nursePartSigned.s,
                 );
             }
 
             else {
-                await contract.assemble(nurseType);
+                await contract.assemble(nurseType, partCount);
             }
         }
     }

@@ -29,7 +29,7 @@ interface INurseRaidInterface extends ethers.utils.Interface {
     "exit(uint256)": FunctionFragment;
     "maidCafe()": FunctionFragment;
     "maidCoin()": FunctionFragment;
-    "maidPowerToRaidReducedBlock()": FunctionFragment;
+    "maidEfficacy()": FunctionFragment;
     "maidsApproved(address)": FunctionFragment;
     "nursePart()": FunctionFragment;
     "raidCount()": FunctionFragment;
@@ -73,7 +73,7 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "maidCafe", values?: undefined): string;
   encodeFunctionData(functionFragment: "maidCoin", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "maidPowerToRaidReducedBlock",
+    functionFragment: "maidEfficacy",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -95,7 +95,7 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "maidCafe", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "maidCoin", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "maidPowerToRaidReducedBlock",
+    functionFragment: "maidEfficacy",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -107,15 +107,13 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "rng", data: BytesLike): Result;
 
   events: {
-    "ChangeMaidPowerToRaidReducedBlock(uint256)": EventFragment;
+    "ChangeMaidEfficacy(uint256,uint256)": EventFragment;
     "Create(uint256,uint256,uint256,uint256,uint256,uint256)": EventFragment;
     "Enter(address,uint256,address,uint256)": EventFragment;
     "Exit(address,uint256)": EventFragment;
   };
 
-  getEvent(
-    nameOrSignatureOrTopic: "ChangeMaidPowerToRaidReducedBlock"
-  ): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ChangeMaidEfficacy"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Create"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Enter"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Exit"): EventFragment;
@@ -217,13 +215,11 @@ export class INurseRaid extends Contract {
 
     "maidCoin()"(overrides?: CallOverrides): Promise<[string]>;
 
-    maidPowerToRaidReducedBlock(
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    maidEfficacy(overrides?: CallOverrides): Promise<[BigNumber, BigNumber]>;
 
-    "maidPowerToRaidReducedBlock()"(
+    "maidEfficacy()"(
       overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    ): Promise<[BigNumber, BigNumber]>;
 
     maidsApproved(maids: string, overrides?: CallOverrides): Promise<[boolean]>;
 
@@ -327,11 +323,9 @@ export class INurseRaid extends Contract {
 
   "maidCoin()"(overrides?: CallOverrides): Promise<string>;
 
-  maidPowerToRaidReducedBlock(overrides?: CallOverrides): Promise<BigNumber>;
+  maidEfficacy(overrides?: CallOverrides): Promise<[BigNumber, BigNumber]>;
 
-  "maidPowerToRaidReducedBlock()"(
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  "maidEfficacy()"(overrides?: CallOverrides): Promise<[BigNumber, BigNumber]>;
 
   maidsApproved(maids: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -432,11 +426,11 @@ export class INurseRaid extends Contract {
 
     "maidCoin()"(overrides?: CallOverrides): Promise<string>;
 
-    maidPowerToRaidReducedBlock(overrides?: CallOverrides): Promise<BigNumber>;
+    maidEfficacy(overrides?: CallOverrides): Promise<[BigNumber, BigNumber]>;
 
-    "maidPowerToRaidReducedBlock()"(
+    "maidEfficacy()"(
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<[BigNumber, BigNumber]>;
 
     maidsApproved(maids: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -459,7 +453,7 @@ export class INurseRaid extends Contract {
   };
 
   filters: {
-    ChangeMaidPowerToRaidReducedBlock(value: null): EventFilter;
+    ChangeMaidEfficacy(numerator: null, denominator: null): EventFilter;
 
     Create(
       id: BigNumberish | null,
@@ -563,11 +557,9 @@ export class INurseRaid extends Contract {
 
     "maidCoin()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    maidPowerToRaidReducedBlock(overrides?: CallOverrides): Promise<BigNumber>;
+    maidEfficacy(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "maidPowerToRaidReducedBlock()"(
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    "maidEfficacy()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     maidsApproved(maids: string, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -678,13 +670,9 @@ export class INurseRaid extends Contract {
 
     "maidCoin()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    maidPowerToRaidReducedBlock(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    maidEfficacy(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "maidPowerToRaidReducedBlock()"(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    "maidEfficacy()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     maidsApproved(
       maids: string,

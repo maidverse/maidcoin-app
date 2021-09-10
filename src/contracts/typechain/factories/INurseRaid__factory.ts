@@ -23,11 +23,17 @@ const _abi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "value",
+        name: "numerator",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "denominator",
         type: "uint256",
       },
     ],
-    name: "ChangeMaidPowerToRaidReducedBlock",
+    name: "ChangeMaidEfficacy",
     type: "event",
   },
   {
@@ -303,8 +309,13 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "maidPowerToRaidReducedBlock",
+    name: "maidEfficacy",
     outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
       {
         internalType: "uint256",
         name: "",

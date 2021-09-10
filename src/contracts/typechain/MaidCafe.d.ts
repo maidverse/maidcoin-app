@@ -33,10 +33,14 @@ interface MaidCafeInterface extends ethers.utils.Interface {
     "leave(uint256)": FunctionFragment;
     "maidCoin()": FunctionFragment;
     "name()": FunctionFragment;
+    "owner()": FunctionFragment;
+    "renounceOwnership()": FunctionFragment;
+    "swap(address,address,address[],uint256,uint256)": FunctionFragment;
     "symbol()": FunctionFragment;
     "totalSupply()": FunctionFragment;
     "transfer(address,uint256)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
+    "transferOwnership(address)": FunctionFragment;
   };
 
   encodeFunctionData(
@@ -65,6 +69,15 @@ interface MaidCafeInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "leave", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "maidCoin", values?: undefined): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
+  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "renounceOwnership",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "swap",
+    values: [string, string, string[], BigNumberish, BigNumberish]
+  ): string;
   encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "totalSupply",
@@ -77,6 +90,10 @@ interface MaidCafeInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "transferFrom",
     values: [string, string, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transferOwnership",
+    values: [string]
   ): string;
 
   decodeFunctionResult(functionFragment: "allowance", data: BytesLike): Result;
@@ -99,6 +116,12 @@ interface MaidCafeInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "leave", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "maidCoin", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "renounceOwnership",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "swap", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "totalSupply",
@@ -109,17 +132,23 @@ interface MaidCafeInterface extends ethers.utils.Interface {
     functionFragment: "transferFrom",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "transferOwnership",
+    data: BytesLike
+  ): Result;
 
   events: {
     "Approval(address,address,uint256)": EventFragment;
     "Enter(address,uint256)": EventFragment;
     "Leave(address,uint256)": EventFragment;
+    "OwnershipTransferred(address,address)": EventFragment;
     "Transfer(address,address,uint256)": EventFragment;
   };
 
   getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Enter"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Leave"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
 }
 
@@ -242,6 +271,32 @@ export class MaidCafe extends Contract {
 
     "name()"(overrides?: CallOverrides): Promise<[string]>;
 
+    owner(overrides?: CallOverrides): Promise<[string]>;
+
+    "owner()"(overrides?: CallOverrides): Promise<[string]>;
+
+    renounceOwnership(overrides?: Overrides): Promise<ContractTransaction>;
+
+    "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
+
+    swap(
+      token: string,
+      router: string,
+      path: string[],
+      amountOutMin: BigNumberish,
+      deadline: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "swap(address,address,address[],uint256,uint256)"(
+      token: string,
+      router: string,
+      path: string[],
+      amountOutMin: BigNumberish,
+      deadline: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
     symbol(overrides?: CallOverrides): Promise<[string]>;
 
     "symbol()"(overrides?: CallOverrides): Promise<[string]>;
@@ -273,6 +328,16 @@ export class MaidCafe extends Contract {
       sender: string,
       recipient: string,
       amount: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    transferOwnership(
+      newOwner: string,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "transferOwnership(address)"(
+      newOwner: string,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
   };
@@ -382,6 +447,32 @@ export class MaidCafe extends Contract {
 
   "name()"(overrides?: CallOverrides): Promise<string>;
 
+  owner(overrides?: CallOverrides): Promise<string>;
+
+  "owner()"(overrides?: CallOverrides): Promise<string>;
+
+  renounceOwnership(overrides?: Overrides): Promise<ContractTransaction>;
+
+  "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
+
+  swap(
+    token: string,
+    router: string,
+    path: string[],
+    amountOutMin: BigNumberish,
+    deadline: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "swap(address,address,address[],uint256,uint256)"(
+    token: string,
+    router: string,
+    path: string[],
+    amountOutMin: BigNumberish,
+    deadline: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   symbol(overrides?: CallOverrides): Promise<string>;
 
   "symbol()"(overrides?: CallOverrides): Promise<string>;
@@ -413,6 +504,16 @@ export class MaidCafe extends Contract {
     sender: string,
     recipient: string,
     amount: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  transferOwnership(
+    newOwner: string,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "transferOwnership(address)"(
+    newOwner: string,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -516,6 +617,32 @@ export class MaidCafe extends Contract {
 
     "name()"(overrides?: CallOverrides): Promise<string>;
 
+    owner(overrides?: CallOverrides): Promise<string>;
+
+    "owner()"(overrides?: CallOverrides): Promise<string>;
+
+    renounceOwnership(overrides?: CallOverrides): Promise<void>;
+
+    "renounceOwnership()"(overrides?: CallOverrides): Promise<void>;
+
+    swap(
+      token: string,
+      router: string,
+      path: string[],
+      amountOutMin: BigNumberish,
+      deadline: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "swap(address,address,address[],uint256,uint256)"(
+      token: string,
+      router: string,
+      path: string[],
+      amountOutMin: BigNumberish,
+      deadline: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     symbol(overrides?: CallOverrides): Promise<string>;
 
     "symbol()"(overrides?: CallOverrides): Promise<string>;
@@ -549,6 +676,16 @@ export class MaidCafe extends Contract {
       amount: BigNumberish,
       overrides?: CallOverrides
     ): Promise<boolean>;
+
+    transferOwnership(
+      newOwner: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "transferOwnership(address)"(
+      newOwner: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
   };
 
   filters: {
@@ -561,6 +698,11 @@ export class MaidCafe extends Contract {
     Enter(user: string | null, amount: null): EventFilter;
 
     Leave(user: string | null, share: null): EventFilter;
+
+    OwnershipTransferred(
+      previousOwner: string | null,
+      newOwner: string | null
+    ): EventFilter;
 
     Transfer(from: string | null, to: string | null, value: null): EventFilter;
   };
@@ -665,6 +807,32 @@ export class MaidCafe extends Contract {
 
     "name()"(overrides?: CallOverrides): Promise<BigNumber>;
 
+    owner(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "owner()"(overrides?: CallOverrides): Promise<BigNumber>;
+
+    renounceOwnership(overrides?: Overrides): Promise<BigNumber>;
+
+    "renounceOwnership()"(overrides?: Overrides): Promise<BigNumber>;
+
+    swap(
+      token: string,
+      router: string,
+      path: string[],
+      amountOutMin: BigNumberish,
+      deadline: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "swap(address,address,address[],uint256,uint256)"(
+      token: string,
+      router: string,
+      path: string[],
+      amountOutMin: BigNumberish,
+      deadline: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
     symbol(overrides?: CallOverrides): Promise<BigNumber>;
 
     "symbol()"(overrides?: CallOverrides): Promise<BigNumber>;
@@ -696,6 +864,16 @@ export class MaidCafe extends Contract {
       sender: string,
       recipient: string,
       amount: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    transferOwnership(
+      newOwner: string,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "transferOwnership(address)"(
+      newOwner: string,
       overrides?: Overrides
     ): Promise<BigNumber>;
   };
@@ -809,6 +987,32 @@ export class MaidCafe extends Contract {
 
     "name()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
+    owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "owner()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    renounceOwnership(overrides?: Overrides): Promise<PopulatedTransaction>;
+
+    "renounceOwnership()"(overrides?: Overrides): Promise<PopulatedTransaction>;
+
+    swap(
+      token: string,
+      router: string,
+      path: string[],
+      amountOutMin: BigNumberish,
+      deadline: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "swap(address,address,address[],uint256,uint256)"(
+      token: string,
+      router: string,
+      path: string[],
+      amountOutMin: BigNumberish,
+      deadline: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
     symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     "symbol()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -840,6 +1044,16 @@ export class MaidCafe extends Contract {
       sender: string,
       recipient: string,
       amount: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    transferOwnership(
+      newOwner: string,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "transferOwnership(address)"(
+      newOwner: string,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
   };

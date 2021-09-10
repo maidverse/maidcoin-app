@@ -45,7 +45,7 @@ export default class NurseFactory extends DomNode {
                 el(".name", tokenInfo.name),
                 el("a.create-button", "Create", {
                     click: async () => {
-                        await CloneNursesContract.assemble(this.nurseType);
+                        //await CloneNursesContract.assemble(this.nurseType);
                     },
                 }),
             );

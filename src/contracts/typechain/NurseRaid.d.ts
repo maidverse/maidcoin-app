@@ -24,7 +24,7 @@ interface NurseRaidInterface extends ethers.utils.Interface {
   functions: {
     "approveMaids(address)": FunctionFragment;
     "challengers(uint256,address)": FunctionFragment;
-    "changeMaidPowerToRaidReducedBlock(uint256)": FunctionFragment;
+    "changeMaidEfficacy(uint256,uint256)": FunctionFragment;
     "changeRNG(address)": FunctionFragment;
     "checkDone(uint256)": FunctionFragment;
     "create(uint256,uint256,uint256,uint256,uint256)": FunctionFragment;
@@ -34,7 +34,7 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     "exit(uint256)": FunctionFragment;
     "maidCafe()": FunctionFragment;
     "maidCoin()": FunctionFragment;
-    "maidPowerToRaidReducedBlock()": FunctionFragment;
+    "maidEfficacy()": FunctionFragment;
     "maidsApproved(address)": FunctionFragment;
     "nursePart()": FunctionFragment;
     "owner()": FunctionFragment;
@@ -55,8 +55,8 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     values: [BigNumberish, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "changeMaidPowerToRaidReducedBlock",
-    values: [BigNumberish]
+    functionFragment: "changeMaidEfficacy",
+    values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "changeRNG", values: [string]): string;
   encodeFunctionData(
@@ -100,7 +100,7 @@ interface NurseRaidInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "maidCafe", values?: undefined): string;
   encodeFunctionData(functionFragment: "maidCoin", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "maidPowerToRaidReducedBlock",
+    functionFragment: "maidEfficacy",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -131,7 +131,7 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "changeMaidPowerToRaidReducedBlock",
+    functionFragment: "changeMaidEfficacy",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "changeRNG", data: BytesLike): Result;
@@ -150,7 +150,7 @@ interface NurseRaidInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "maidCafe", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "maidCoin", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "maidPowerToRaidReducedBlock",
+    functionFragment: "maidEfficacy",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -176,16 +176,14 @@ interface NurseRaidInterface extends ethers.utils.Interface {
   ): Result;
 
   events: {
-    "ChangeMaidPowerToRaidReducedBlock(uint256)": EventFragment;
+    "ChangeMaidEfficacy(uint256,uint256)": EventFragment;
     "Create(uint256,uint256,uint256,uint256,uint256,uint256)": EventFragment;
     "Enter(address,uint256,address,uint256)": EventFragment;
     "Exit(address,uint256)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
   };
 
-  getEvent(
-    nameOrSignatureOrTopic: "ChangeMaidPowerToRaidReducedBlock"
-  ): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ChangeMaidEfficacy"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Create"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Enter"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Exit"): EventFragment;
@@ -240,13 +238,15 @@ export class NurseRaid extends Contract {
       }
     >;
 
-    changeMaidPowerToRaidReducedBlock(
-      value: BigNumberish,
+    changeMaidEfficacy(
+      _numerator: BigNumberish,
+      _denominator: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "changeMaidPowerToRaidReducedBlock(uint256)"(
-      value: BigNumberish,
+    "changeMaidEfficacy(uint256,uint256)"(
+      _numerator: BigNumberish,
+      _denominator: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -352,13 +352,17 @@ export class NurseRaid extends Contract {
 
     "maidCoin()"(overrides?: CallOverrides): Promise<[string]>;
 
-    maidPowerToRaidReducedBlock(
+    maidEfficacy(
       overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    ): Promise<
+      [BigNumber, BigNumber] & { numerator: BigNumber; denominator: BigNumber }
+    >;
 
-    "maidPowerToRaidReducedBlock()"(
+    "maidEfficacy()"(
       overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    ): Promise<
+      [BigNumber, BigNumber] & { numerator: BigNumber; denominator: BigNumber }
+    >;
 
     maidsApproved(arg0: string, overrides?: CallOverrides): Promise<[boolean]>;
 
@@ -468,13 +472,15 @@ export class NurseRaid extends Contract {
     }
   >;
 
-  changeMaidPowerToRaidReducedBlock(
-    value: BigNumberish,
+  changeMaidEfficacy(
+    _numerator: BigNumberish,
+    _denominator: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "changeMaidPowerToRaidReducedBlock(uint256)"(
-    value: BigNumberish,
+  "changeMaidEfficacy(uint256,uint256)"(
+    _numerator: BigNumberish,
+    _denominator: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -577,11 +583,17 @@ export class NurseRaid extends Contract {
 
   "maidCoin()"(overrides?: CallOverrides): Promise<string>;
 
-  maidPowerToRaidReducedBlock(overrides?: CallOverrides): Promise<BigNumber>;
-
-  "maidPowerToRaidReducedBlock()"(
+  maidEfficacy(
     overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<
+    [BigNumber, BigNumber] & { numerator: BigNumber; denominator: BigNumber }
+  >;
+
+  "maidEfficacy()"(
+    overrides?: CallOverrides
+  ): Promise<
+    [BigNumber, BigNumber] & { numerator: BigNumber; denominator: BigNumber }
+  >;
 
   maidsApproved(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -688,13 +700,15 @@ export class NurseRaid extends Contract {
       }
     >;
 
-    changeMaidPowerToRaidReducedBlock(
-      value: BigNumberish,
+    changeMaidEfficacy(
+      _numerator: BigNumberish,
+      _denominator: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "changeMaidPowerToRaidReducedBlock(uint256)"(
-      value: BigNumberish,
+    "changeMaidEfficacy(uint256,uint256)"(
+      _numerator: BigNumberish,
+      _denominator: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -791,11 +805,17 @@ export class NurseRaid extends Contract {
 
     "maidCoin()"(overrides?: CallOverrides): Promise<string>;
 
-    maidPowerToRaidReducedBlock(overrides?: CallOverrides): Promise<BigNumber>;
-
-    "maidPowerToRaidReducedBlock()"(
+    maidEfficacy(
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<
+      [BigNumber, BigNumber] & { numerator: BigNumber; denominator: BigNumber }
+    >;
+
+    "maidEfficacy()"(
+      overrides?: CallOverrides
+    ): Promise<
+      [BigNumber, BigNumber] & { numerator: BigNumber; denominator: BigNumber }
+    >;
 
     maidsApproved(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -869,7 +889,7 @@ export class NurseRaid extends Contract {
   };
 
   filters: {
-    ChangeMaidPowerToRaidReducedBlock(value: null): EventFilter;
+    ChangeMaidEfficacy(numerator: null, denominator: null): EventFilter;
 
     Create(
       id: BigNumberish | null,
@@ -915,13 +935,15 @@ export class NurseRaid extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    changeMaidPowerToRaidReducedBlock(
-      value: BigNumberish,
+    changeMaidEfficacy(
+      _numerator: BigNumberish,
+      _denominator: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "changeMaidPowerToRaidReducedBlock(uint256)"(
-      value: BigNumberish,
+    "changeMaidEfficacy(uint256,uint256)"(
+      _numerator: BigNumberish,
+      _denominator: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1021,11 +1043,9 @@ export class NurseRaid extends Contract {
 
     "maidCoin()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    maidPowerToRaidReducedBlock(overrides?: CallOverrides): Promise<BigNumber>;
+    maidEfficacy(overrides?: CallOverrides): Promise<BigNumber>;
 
-    "maidPowerToRaidReducedBlock()"(
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    "maidEfficacy()"(overrides?: CallOverrides): Promise<BigNumber>;
 
     maidsApproved(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1102,13 +1122,15 @@ export class NurseRaid extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    changeMaidPowerToRaidReducedBlock(
-      value: BigNumberish,
+    changeMaidEfficacy(
+      _numerator: BigNumberish,
+      _denominator: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "changeMaidPowerToRaidReducedBlock(uint256)"(
-      value: BigNumberish,
+    "changeMaidEfficacy(uint256,uint256)"(
+      _numerator: BigNumberish,
+      _denominator: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -1220,13 +1242,9 @@ export class NurseRaid extends Contract {
 
     "maidCoin()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    maidPowerToRaidReducedBlock(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    maidEfficacy(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    "maidPowerToRaidReducedBlock()"(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    "maidEfficacy()"(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     maidsApproved(
       arg0: string,

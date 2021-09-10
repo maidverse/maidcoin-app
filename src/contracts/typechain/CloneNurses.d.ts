@@ -22,15 +22,16 @@ import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 
 interface CloneNursesInterface extends ethers.utils.Interface {
   functions: {
-    "addNurseType(uint256,uint256,uint256)": FunctionFragment;
+    "addNurseType(uint256,uint256,uint256,uint256)": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
-    "assemble(uint256)": FunctionFragment;
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
+    "assemble(uint256,uint256)": FunctionFragment;
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
     "changeSupportedPower(address,int256)": FunctionFragment;
     "checkSupportingRoute(address)": FunctionFragment;
     "claim(uint256)": FunctionFragment;
     "destroy(uint256,uint256)": FunctionFragment;
+    "elongateLifetime(uint256,uint256)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "maidCoin()": FunctionFragment;
@@ -45,8 +46,10 @@ interface CloneNursesInterface extends ethers.utils.Interface {
     "ownerOf(uint256)": FunctionFragment;
     "pendingReward(uint256)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
+    "royaltyInfo(uint256,uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
+    "setRoyaltyInfo(address,uint256)": FunctionFragment;
     "setSupportingTo(address,uint256,uint256)": FunctionFragment;
     "shareRewards(uint256,address,uint8)": FunctionFragment;
     "supportedPower(uint256)": FunctionFragment;
@@ -66,7 +69,7 @@ interface CloneNursesInterface extends ethers.utils.Interface {
 
   encodeFunctionData(
     functionFragment: "addNurseType",
-    values: [BigNumberish, BigNumberish, BigNumberish]
+    values: [BigNumberish, BigNumberish, BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "approve",
@@ -74,11 +77,18 @@ interface CloneNursesInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "assemble",
-    values: [BigNumberish]
+    values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "assembleWithPermit",
-    values: [BigNumberish, BigNumberish, BigNumberish, BytesLike, BytesLike]
+    values: [
+      BigNumberish,
+      BigNumberish,
+      BigNumberish,
+      BigNumberish,
+      BytesLike,
+      BytesLike
+    ]
   ): string;
   encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
   encodeFunctionData(
@@ -92,6 +102,10 @@ interface CloneNursesInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "claim", values: [BigNumberish]): string;
   encodeFunctionData(
     functionFragment: "destroy",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "elongateLifetime",
     values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
@@ -139,12 +153,20 @@ interface CloneNursesInterface extends ethers.utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "royaltyInfo",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "safeTransferFrom",
     values: [string, string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "setApprovalForAll",
     values: [string, boolean]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setRoyaltyInfo",
+    values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "setSupportingTo",
@@ -223,6 +245,10 @@ interface CloneNursesInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "destroy", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "elongateLifetime",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "getApproved",
     data: BytesLike
   ): Result;
@@ -258,11 +284,19 @@ interface CloneNursesInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "royaltyInfo",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "safeTransferFrom",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
     functionFragment: "setApprovalForAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setRoyaltyInfo",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -358,13 +392,15 @@ export class CloneNurses extends Contract {
       partCount: BigNumberish,
       destroyReturn: BigNumberish,
       power: BigNumberish,
+      lifetime: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "addNurseType(uint256,uint256,uint256)"(
+    "addNurseType(uint256,uint256,uint256,uint256)"(
       partCount: BigNumberish,
       destroyReturn: BigNumberish,
       power: BigNumberish,
+      lifetime: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -382,16 +418,19 @@ export class CloneNurses extends Contract {
 
     assemble(
       _nurseType: BigNumberish,
+      _parts: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "assemble(uint256)"(
+    "assemble(uint256,uint256)"(
       _nurseType: BigNumberish,
+      _parts: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
     assembleWithPermit(
       nurseType: BigNumberish,
+      _parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -399,8 +438,9 @@ export class CloneNurses extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
       nurseType: BigNumberish,
+      _parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -459,6 +499,18 @@ export class CloneNurses extends Contract {
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
+    elongateLifetime(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "elongateLifetime(uint256,uint256)"(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
     getApproved(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -501,10 +553,11 @@ export class CloneNurses extends Contract {
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [BigNumber, BigNumber, BigNumber] & {
+      [BigNumber, BigNumber, BigNumber, BigNumber] & {
         partCount: BigNumber;
         destroyReturn: BigNumber;
         power: BigNumber;
+        lifetime: BigNumber;
       }
     >;
 
@@ -512,22 +565,35 @@ export class CloneNurses extends Contract {
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [BigNumber, BigNumber, BigNumber] & {
+      [BigNumber, BigNumber, BigNumber, BigNumber] & {
         partCount: BigNumber;
         destroyReturn: BigNumber;
         power: BigNumber;
+        lifetime: BigNumber;
       }
     >;
 
     nurses(
       arg0: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { nurseType: BigNumber }>;
+    ): Promise<
+      [BigNumber, BigNumber, BigNumber] & {
+        nurseType: BigNumber;
+        endBlock: BigNumber;
+        lastClaimedBlock: BigNumber;
+      }
+    >;
 
     "nurses(uint256)"(
       arg0: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { nurseType: BigNumber }>;
+    ): Promise<
+      [BigNumber, BigNumber, BigNumber] & {
+        nurseType: BigNumber;
+        endBlock: BigNumber;
+        lastClaimedBlock: BigNumber;
+      }
+    >;
 
     onERC1155BatchReceived(
       arg0: string,
@@ -582,16 +648,28 @@ export class CloneNurses extends Contract {
     pendingReward(
       id: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    ): Promise<[BigNumber] & { claimableReward: BigNumber }>;
 
     "pendingReward(uint256)"(
       id: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    ): Promise<[BigNumber] & { claimableReward: BigNumber }>;
 
     renounceOwnership(overrides?: Overrides): Promise<ContractTransaction>;
 
     "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
+
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
 
     "safeTransferFrom(address,address,uint256)"(
       from: string,
@@ -617,6 +695,18 @@ export class CloneNurses extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -768,13 +858,15 @@ export class CloneNurses extends Contract {
     partCount: BigNumberish,
     destroyReturn: BigNumberish,
     power: BigNumberish,
+    lifetime: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "addNurseType(uint256,uint256,uint256)"(
+  "addNurseType(uint256,uint256,uint256,uint256)"(
     partCount: BigNumberish,
     destroyReturn: BigNumberish,
     power: BigNumberish,
+    lifetime: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -792,16 +884,19 @@ export class CloneNurses extends Contract {
 
   assemble(
     _nurseType: BigNumberish,
+    _parts: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "assemble(uint256)"(
+  "assemble(uint256,uint256)"(
     _nurseType: BigNumberish,
+    _parts: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
   assembleWithPermit(
     nurseType: BigNumberish,
+    _parts: BigNumberish,
     deadline: BigNumberish,
     v: BigNumberish,
     r: BytesLike,
@@ -809,8 +904,9 @@ export class CloneNurses extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+  "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
     nurseType: BigNumberish,
+    _parts: BigNumberish,
     deadline: BigNumberish,
     v: BigNumberish,
     r: BytesLike,
@@ -866,6 +962,18 @@ export class CloneNurses extends Contract {
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
+  elongateLifetime(
+    id: BigNumberish,
+    parts: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "elongateLifetime(uint256,uint256)"(
+    id: BigNumberish,
+    parts: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
   getApproved(
     tokenId: BigNumberish,
     overrides?: CallOverrides
@@ -908,10 +1016,11 @@ export class CloneNurses extends Contract {
     arg0: BigNumberish,
     overrides?: CallOverrides
   ): Promise<
-    [BigNumber, BigNumber, BigNumber] & {
+    [BigNumber, BigNumber, BigNumber, BigNumber] & {
       partCount: BigNumber;
       destroyReturn: BigNumber;
       power: BigNumber;
+      lifetime: BigNumber;
     }
   >;
 
@@ -919,19 +1028,35 @@ export class CloneNurses extends Contract {
     arg0: BigNumberish,
     overrides?: CallOverrides
   ): Promise<
-    [BigNumber, BigNumber, BigNumber] & {
+    [BigNumber, BigNumber, BigNumber, BigNumber] & {
       partCount: BigNumber;
       destroyReturn: BigNumber;
       power: BigNumber;
+      lifetime: BigNumber;
     }
   >;
 
-  nurses(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+  nurses(
+    arg0: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<
+    [BigNumber, BigNumber, BigNumber] & {
+      nurseType: BigNumber;
+      endBlock: BigNumber;
+      lastClaimedBlock: BigNumber;
+    }
+  >;
 
   "nurses(uint256)"(
     arg0: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<
+    [BigNumber, BigNumber, BigNumber] & {
+      nurseType: BigNumber;
+      endBlock: BigNumber;
+      lastClaimedBlock: BigNumber;
+    }
+  >;
 
   onERC1155BatchReceived(
     arg0: string,
@@ -994,6 +1119,18 @@ export class CloneNurses extends Contract {
 
   "renounceOwnership()"(overrides?: Overrides): Promise<ContractTransaction>;
 
+  royaltyInfo(
+    arg0: BigNumberish,
+    _salePrice: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<[string, BigNumber]>;
+
+  "royaltyInfo(uint256,uint256)"(
+    arg0: BigNumberish,
+    _salePrice: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<[string, BigNumber]>;
+
   "safeTransferFrom(address,address,uint256)"(
     from: string,
     to: string,
@@ -1018,6 +1155,18 @@ export class CloneNurses extends Contract {
   "setApprovalForAll(address,bool)"(
     operator: string,
     approved: boolean,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  setRoyaltyInfo(
+    _receiver: string,
+    _royaltyFee: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "setRoyaltyInfo(address,uint256)"(
+    _receiver: string,
+    _royaltyFee: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -1166,13 +1315,15 @@ export class CloneNurses extends Contract {
       partCount: BigNumberish,
       destroyReturn: BigNumberish,
       power: BigNumberish,
+      lifetime: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "addNurseType(uint256,uint256,uint256)"(
+    "addNurseType(uint256,uint256,uint256,uint256)"(
       partCount: BigNumberish,
       destroyReturn: BigNumberish,
       power: BigNumberish,
+      lifetime: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1190,16 +1341,19 @@ export class CloneNurses extends Contract {
 
     assemble(
       _nurseType: BigNumberish,
+      _parts: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "assemble(uint256)"(
+    "assemble(uint256,uint256)"(
       _nurseType: BigNumberish,
+      _parts: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
     assembleWithPermit(
       nurseType: BigNumberish,
+      _parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1207,8 +1361,9 @@ export class CloneNurses extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
       nurseType: BigNumberish,
+      _parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1264,6 +1419,18 @@ export class CloneNurses extends Contract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    elongateLifetime(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "elongateLifetime(uint256,uint256)"(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     getApproved(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -1306,10 +1473,11 @@ export class CloneNurses extends Contract {
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [BigNumber, BigNumber, BigNumber] & {
+      [BigNumber, BigNumber, BigNumber, BigNumber] & {
         partCount: BigNumber;
         destroyReturn: BigNumber;
         power: BigNumber;
+        lifetime: BigNumber;
       }
     >;
 
@@ -1317,19 +1485,35 @@ export class CloneNurses extends Contract {
       arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [BigNumber, BigNumber, BigNumber] & {
+      [BigNumber, BigNumber, BigNumber, BigNumber] & {
         partCount: BigNumber;
         destroyReturn: BigNumber;
         power: BigNumber;
+        lifetime: BigNumber;
       }
     >;
 
-    nurses(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    nurses(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<
+      [BigNumber, BigNumber, BigNumber] & {
+        nurseType: BigNumber;
+        endBlock: BigNumber;
+        lastClaimedBlock: BigNumber;
+      }
+    >;
 
     "nurses(uint256)"(
       arg0: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<
+      [BigNumber, BigNumber, BigNumber] & {
+        nurseType: BigNumber;
+        endBlock: BigNumber;
+        lastClaimedBlock: BigNumber;
+      }
+    >;
 
     onERC1155BatchReceived(
       arg0: string,
@@ -1392,6 +1576,18 @@ export class CloneNurses extends Contract {
 
     "renounceOwnership()"(overrides?: CallOverrides): Promise<void>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
     "safeTransferFrom(address,address,uint256)"(
       from: string,
       to: string,
@@ -1416,6 +1612,18 @@ export class CloneNurses extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1621,13 +1829,15 @@ export class CloneNurses extends Contract {
       partCount: BigNumberish,
       destroyReturn: BigNumberish,
       power: BigNumberish,
+      lifetime: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "addNurseType(uint256,uint256,uint256)"(
+    "addNurseType(uint256,uint256,uint256,uint256)"(
       partCount: BigNumberish,
       destroyReturn: BigNumberish,
       power: BigNumberish,
+      lifetime: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1645,16 +1855,19 @@ export class CloneNurses extends Contract {
 
     assemble(
       _nurseType: BigNumberish,
+      _parts: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "assemble(uint256)"(
+    "assemble(uint256,uint256)"(
       _nurseType: BigNumberish,
+      _parts: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
     assembleWithPermit(
       nurseType: BigNumberish,
+      _parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1662,8 +1875,9 @@ export class CloneNurses extends Contract {
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
       nurseType: BigNumberish,
+      _parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -1716,6 +1930,18 @@ export class CloneNurses extends Contract {
     "destroy(uint256,uint256)"(
       id: BigNumberish,
       toId: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    elongateLifetime(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "elongateLifetime(uint256,uint256)"(
+      id: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1838,6 +2064,18 @@ export class CloneNurses extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<BigNumber>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     "safeTransferFrom(address,address,uint256)"(
       from: string,
       to: string,
@@ -1862,6 +2100,18 @@ export class CloneNurses extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -2014,13 +2264,15 @@ export class CloneNurses extends Contract {
       partCount: BigNumberish,
       destroyReturn: BigNumberish,
       power: BigNumberish,
+      lifetime: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "addNurseType(uint256,uint256,uint256)"(
+    "addNurseType(uint256,uint256,uint256,uint256)"(
       partCount: BigNumberish,
       destroyReturn: BigNumberish,
       power: BigNumberish,
+      lifetime: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -2038,16 +2290,19 @@ export class CloneNurses extends Contract {
 
     assemble(
       _nurseType: BigNumberish,
+      _parts: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "assemble(uint256)"(
+    "assemble(uint256,uint256)"(
       _nurseType: BigNumberish,
+      _parts: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
     assembleWithPermit(
       nurseType: BigNumberish,
+      _parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -2055,8 +2310,9 @@ export class CloneNurses extends Contract {
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "assembleWithPermit(uint256,uint256,uint8,bytes32,bytes32)"(
+    "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)"(
       nurseType: BigNumberish,
+      _parts: BigNumberish,
       deadline: BigNumberish,
       v: BigNumberish,
       r: BytesLike,
@@ -2115,6 +2371,18 @@ export class CloneNurses extends Contract {
     "destroy(uint256,uint256)"(
       id: BigNumberish,
       toId: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    elongateLifetime(
+      id: BigNumberish,
+      parts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "elongateLifetime(uint256,uint256)"(
+      id: BigNumberish,
+      parts: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -2242,6 +2510,18 @@ export class CloneNurses extends Contract {
 
     "renounceOwnership()"(overrides?: Overrides): Promise<PopulatedTransaction>;
 
+    royaltyInfo(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "royaltyInfo(uint256,uint256)"(
+      arg0: BigNumberish,
+      _salePrice: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     "safeTransferFrom(address,address,uint256)"(
       from: string,
       to: string,
@@ -2266,6 +2546,18 @@ export class CloneNurses extends Contract {
     "setApprovalForAll(address,bool)"(
       operator: string,
       approved: boolean,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    setRoyaltyInfo(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "setRoyaltyInfo(address,uint256)"(
+      _receiver: string,
+      _royaltyFee: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
