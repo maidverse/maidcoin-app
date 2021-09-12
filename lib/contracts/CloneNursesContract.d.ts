@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish } from "ethers";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
-import { CloneNurses } from "./typechain";
+import { CloneNurses } from "./maidcoin/typechain";
 interface NurseType {
     partCount: number;
     destroyReturn: BigNumber;

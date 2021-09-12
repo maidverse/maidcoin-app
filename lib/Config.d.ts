@@ -5,8 +5,9 @@ declare const _default: {
     endpoint: string;
     contracts: {
         LPToken: string;
-        MaidCoin: string;
         Sushi: string;
+        MaidCoin: string;
+        MaidCafe: string;
         TheMaster: string;
         Maids: string;
         MasterCoin: string;
@@ -14,6 +15,7 @@ declare const _default: {
         NurseRaid: string;
         CloneNurses: string;
         SushiGirls: string;
+        LingerieGirls: string;
     };
 };
 export default _default;

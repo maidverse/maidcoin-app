@@ -1,10 +1,10 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
-import TheMasterArtifact from "./artifacts/contracts/TheMaster.sol/TheMaster.json";
+import TheMasterArtifact from "./maidcoin/artifacts/contracts/TheMaster.sol/TheMaster.json";
 import Contract from "./Contract";
 import LPTokenContract from "./LPTokenContract";
-import { TheMaster } from "./typechain";
+import { TheMaster } from "./maidcoin/typechain";
 
 export interface PoolInfo {
     addr: string;

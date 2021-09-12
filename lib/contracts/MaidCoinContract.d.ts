@@ -1,5 +1,5 @@
 import ERC20Contract from "./standard/ERC20Contract";
-import { MaidCoin } from "./typechain";
+import { MaidCoin } from "./maidcoin/typechain";
 declare class MaidCoinContract extends ERC20Contract<MaidCoin> {
     constructor();
 }

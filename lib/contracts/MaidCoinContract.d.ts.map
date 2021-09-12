@@ -1,1 +1,1 @@
-{"version":3,"file":"MaidCoinContract.d.ts","sourceRoot":"","sources":["../../src/contracts/MaidCoinContract.ts"],"names":[],"mappings":"AAEA,OAAO,aAAa,MAAM,0BAA0B,CAAC;AACrD,OAAO,EAAE,QAAQ,EAAE,MAAM,aAAa,CAAC;AAEvC,cAAM,gBAAiB,SAAQ,aAAa,CAAC,QAAQ,CAAC;;CAKrD;;AAED,wBAAsC"}
+{"version":3,"file":"MaidCoinContract.d.ts","sourceRoot":"","sources":["../../src/contracts/MaidCoinContract.ts"],"names":[],"mappings":"AAEA,OAAO,aAAa,MAAM,0BAA0B,CAAC;AACrD,OAAO,EAAE,QAAQ,EAAE,MAAM,sBAAsB,CAAC;AAEhD,cAAM,gBAAiB,SAAQ,aAAa,CAAC,QAAQ,CAAC;;CAKrD;;AAED,wBAAsC"}

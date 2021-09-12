@@ -1,10 +1,10 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
-import MaidsArtifact from "./artifacts/contracts/Maids.sol/Maids.json";
+import MaidsArtifact from "./maidcoin/artifacts/contracts/Maids.sol/Maids.json";
 import LPTokenContract from "./LPTokenContract";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
-import { Maids } from "./typechain";
+import { Maids } from "./maidcoin/typechain";
 
 export interface MaidInfo {
     originPower: number;

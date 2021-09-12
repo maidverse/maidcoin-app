@@ -1,5 +1,5 @@
 import ERC20Contract from "./standard/ERC20Contract";
-import { UniswapV2ERC20 } from "./typechain";
+import { UniswapV2ERC20 } from "./maidcoin/typechain";
 declare class LPTokenContract extends ERC20Contract<UniswapV2ERC20> {
     constructor();
 }

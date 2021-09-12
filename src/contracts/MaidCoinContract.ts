@@ -1,7 +1,7 @@
 import Config from "../Config";
-import MaidCoinArtifact from "./artifacts/contracts/MaidCoin.sol/MaidCoin.json";
+import MaidCoinArtifact from "./maidcoin/artifacts/contracts/MaidCoin.sol/MaidCoin.json";
 import ERC20Contract from "./standard/ERC20Contract";
-import { MaidCoin } from "./typechain";
+import { MaidCoin } from "./maidcoin/typechain";
 
 class MaidCoinContract extends ERC20Contract<MaidCoin> {
 

@@ -1,9 +1,9 @@
 import { BigNumberish } from "ethers";
 import Config from "../../Config";
 import Wallet from "../../ethereum/Wallet";
-import TestLPTokenArtifact from "../artifacts/contracts/test/TestLPToken.sol/TestLPToken.json";
+import TestLPTokenArtifact from "../maidcoin/artifacts/contracts/test/TestLPToken.sol/TestLPToken.json";
 import ERC20Contract from "../standard/ERC20Contract";
-import { TestLPToken } from "../typechain";
+import { TestLPToken } from "../maidcoin/typechain";
 
 class TestLPTokenContract extends ERC20Contract<TestLPToken> {
 

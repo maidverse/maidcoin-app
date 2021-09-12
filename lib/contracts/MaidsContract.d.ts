@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish } from "ethers";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
-import { Maids } from "./typechain";
+import { Maids } from "./maidcoin/typechain";
 export interface MaidInfo {
     originPower: number;
     supportedLPTokenAmount: BigNumber;

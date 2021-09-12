@@ -1,1 +1,1 @@
-{"version":3,"file":"LPTokenContract.d.ts","sourceRoot":"","sources":["../../src/contracts/LPTokenContract.ts"],"names":[],"mappings":"AAEA,OAAO,aAAa,MAAM,0BAA0B,CAAC;AACrD,OAAO,EAAE,cAAc,EAAE,MAAM,aAAa,CAAC;AAE7C,cAAM,eAAgB,SAAQ,aAAa,CAAC,cAAc,CAAC;;CAK1D;;AAED,wBAAqC"}
+{"version":3,"file":"LPTokenContract.d.ts","sourceRoot":"","sources":["../../src/contracts/LPTokenContract.ts"],"names":[],"mappings":"AAEA,OAAO,aAAa,MAAM,0BAA0B,CAAC;AACrD,OAAO,EAAE,cAAc,EAAE,MAAM,sBAAsB,CAAC;AAEtD,cAAM,eAAgB,SAAQ,aAAa,CAAC,cAAc,CAAC;;CAK1D;;AAED,wBAAqC"}

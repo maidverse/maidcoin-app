@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Contract from "./Contract";
-import { NurseRaid } from "./typechain";
+import { NurseRaid } from "./maidcoin/typechain";
 export interface RaidInfo {
     entranceFee: BigNumber;
     nursePart: number;

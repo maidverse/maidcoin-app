@@ -1,1 +1,1 @@
-{"version":3,"file":"MasterCoinContract.d.ts","sourceRoot":"","sources":["../../src/contracts/MasterCoinContract.ts"],"names":[],"mappings":"AAEA,OAAO,aAAa,MAAM,0BAA0B,CAAC;AACrD,OAAO,EAAE,UAAU,EAAE,MAAM,aAAa,CAAC;AAEzC,cAAM,kBAAmB,SAAQ,aAAa,CAAC,UAAU,CAAC;;CAKzD;;AAED,wBAAwC"}
+{"version":3,"file":"MasterCoinContract.d.ts","sourceRoot":"","sources":["../../src/contracts/MasterCoinContract.ts"],"names":[],"mappings":"AAEA,OAAO,aAAa,MAAM,0BAA0B,CAAC;AACrD,OAAO,EAAE,UAAU,EAAE,MAAM,sBAAsB,CAAC;AAElD,cAAM,kBAAmB,SAAQ,aAAa,CAAC,UAAU,CAAC;;CAKzD;;AAED,wBAAwC"}

@@ -1,1 +1,1 @@
-{"version":3,"file":"NursePartContract.d.ts","sourceRoot":"","sources":["../../src/contracts/NursePartContract.ts"],"names":[],"mappings":"AAEA,OAAO,eAAe,MAAM,4BAA4B,CAAC;AACzD,OAAO,EAAE,SAAS,EAAE,MAAM,aAAa,CAAC;AAExC,cAAM,iBAAkB,SAAQ,eAAe,CAAC,SAAS,CAAC;;CAKzD;;AAED,wBAAuC"}
+{"version":3,"file":"NursePartContract.d.ts","sourceRoot":"","sources":["../../src/contracts/NursePartContract.ts"],"names":[],"mappings":"AAEA,OAAO,eAAe,MAAM,4BAA4B,CAAC;AACzD,OAAO,EAAE,SAAS,EAAE,MAAM,sBAAsB,CAAC;AAEjD,cAAM,iBAAkB,SAAQ,eAAe,CAAC,SAAS,CAAC;;CAKzD;;AAED,wBAAuC"}

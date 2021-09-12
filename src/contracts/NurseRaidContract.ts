@@ -1,11 +1,11 @@
 import { BigNumber, BigNumberish, constants } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
-import NurseRaidArtifact from "./artifacts/contracts/NurseRaid.sol/NurseRaid.json";
+import NurseRaidArtifact from "./maidcoin/artifacts/contracts/NurseRaid.sol/NurseRaid.json";
 import Contract from "./Contract";
 import MaidCoinContract from "./MaidCoinContract";
 import MaidsContract from "./MaidsContract";
-import { NurseRaid } from "./typechain";
+import { NurseRaid } from "./maidcoin/typechain";
 
 export interface RaidInfo {
     entranceFee: BigNumber;

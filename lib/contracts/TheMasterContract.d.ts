@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Contract from "./Contract";
-import { TheMaster } from "./typechain";
+import { TheMaster } from "./maidcoin/typechain";
 export interface PoolInfo {
     addr: string;
     delegate: boolean;

@@ -1,7 +1,7 @@
 import Config from "../Config";
-import NursePartArtifact from "./artifacts/contracts/NursePart.sol/NursePart.json";
+import NursePartArtifact from "./maidcoin/artifacts/contracts/NursePart.sol/NursePart.json";
 import ERC1155Contract from "./standard/ERC1155Contract";
-import { NursePart } from "./typechain";
+import { NursePart } from "./maidcoin/typechain";
 
 class NursePartContract extends ERC1155Contract<NursePart> {
 

@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish } from "ethers";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
-import { SushiGirls } from "./typechain";
+import { SushiGirls } from "./sushigirls/typechain";
 export interface SushiGirlInfo {
     originPower: number;
     supportedLPTokenAmount: BigNumber;

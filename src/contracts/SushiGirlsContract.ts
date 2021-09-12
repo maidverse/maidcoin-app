@@ -1,10 +1,10 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
-import SushiGirlsArtifact from "./artifacts/contracts/SushiGirls.sol/SushiGirls.json";
+import SushiGirlsArtifact from "./sushigirls/artifacts/contracts/SushiGirls.sol/SushiGirls.json";
 import LPTokenContract from "./LPTokenContract";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
-import { SushiGirls } from "./typechain";
+import { SushiGirls } from "./sushigirls/typechain";
 
 export interface SushiGirlInfo {
     originPower: number;

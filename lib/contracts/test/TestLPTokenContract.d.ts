@@ -1,6 +1,6 @@
 import { BigNumberish } from "ethers";
 import ERC20Contract from "../standard/ERC20Contract";
-import { TestLPToken } from "../typechain";
+import { TestLPToken } from "../maidcoin/typechain";
 declare class TestLPTokenContract extends ERC20Contract<TestLPToken> {
     constructor();
     mint(amount: BigNumberish): Promise<void>;

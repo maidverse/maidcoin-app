@@ -1,10 +1,10 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
-import CloneNursesArtifact from "./artifacts/contracts/CloneNurses.sol/CloneNurses.json";
+import CloneNursesArtifact from "./maidcoin/artifacts/contracts/CloneNurses.sol/CloneNurses.json";
 import NursePartContract from "./NursePartContract";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
-import { CloneNurses } from "./typechain";
+import { CloneNurses } from "./maidcoin/typechain";
 
 interface NurseType {
     partCount: number;
