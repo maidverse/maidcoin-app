@@ -7,10 +7,9 @@ export interface SushiGirlInfo {
 }
 declare class SushiGirlsContract extends ERC721EnumerableContract<SushiGirls> {
     constructor();
-    getSushiGirl(sushiGirlsId: number): Promise<SushiGirlInfo>;
-    ownerOf(sushiGirlsId: number): Promise<string>;
-    powerOf(sushiGirlsId: number): Promise<number>;
-    mint(power: BigNumberish): Promise<void>;
+    getSushiGirl(id: number): Promise<SushiGirlInfo>;
+    ownerOf(id: number): Promise<string>;
+    powerOf(id: number): Promise<number>;
     support(id: BigNumberish, lpTokenAmount: BigNumberish): Promise<void>;
 }
 declare const _default: SushiGirlsContract;

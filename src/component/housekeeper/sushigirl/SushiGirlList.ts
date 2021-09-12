@@ -12,10 +12,10 @@ export default class SushiGirlList extends DomNode {
 
     private async loadSushiGirls() {
 
-        const sushiGirlCount = (await SushiGirlsContract.getTotalSupply()).toNumber();
+        const count = (await SushiGirlsContract.getTotalSupply()).toNumber();
 
-        SkyUtil.repeat(sushiGirlCount, async (sushiGirlId) => {
-            new SushiGirl(sushiGirlId).appendTo(this);
+        SkyUtil.repeat(count, async (id) => {
+            new SushiGirl(id).appendTo(this);
         });
     }
 }

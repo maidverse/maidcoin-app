@@ -28,7 +28,7 @@ class NurseRaidContract extends Contract<NurseRaid> {
             "Create",
             "Enter",
             "Exit",
-            "ChangeMaidPowerToRaidReducedBlock",
+            "ChangeMaidEfficacy",
         ]);
     }
 

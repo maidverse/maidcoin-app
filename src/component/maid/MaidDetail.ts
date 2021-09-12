@@ -45,7 +45,7 @@ export default class MaidDetail extends Popup {
         const tokenInfo = result.body;
 
         this.content.empty().append(
-            this.image1 = el("img.image", { src: tokenInfo.image }),
+            this.image1 = el("img.image", { src: `https://storage.googleapis.com/maidcoin/Maid/Dialogue/${tokenInfo.name}Dialogue.png` }),
             this.image2 = el("img.image2", { src: `https://storage.googleapis.com/maidcoin/Maid/Ultimate/${tokenInfo.name}Ultimate.png` }),
             el("header",
                 el(".name", tokenInfo.name),

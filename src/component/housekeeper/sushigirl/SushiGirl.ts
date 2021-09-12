@@ -4,18 +4,18 @@ import SushiGirlDetail from "./SushiGirlDetail";
 
 export default class SushiGirl extends DomNode {
 
-    constructor(private sushiGirlId: number) {
+    constructor(private id: number) {
         super(".sushigirl");
         this.load();
-        this.onDom("click", () => new SushiGirlDetail(sushiGirlId));
+        this.onDom("click", () => new SushiGirlDetail(id));
     }
 
     private async load() {
-        const result = await superagent.post(`https://api.maidcoin.org/sushigirls/${this.sushiGirlId}`);
+        const result = await superagent.post(`https://api.maidcoin.org/sushigirls/${this.id}`);
         const tokenInfo = result.body;
 
         this.empty().append(
-            el("img.image", { src: tokenInfo.face_image }),
+            el("img.image", { src: `https://storage.googleapis.com/maidcoin/SushiGirl/Face/${this.id}.png` }),
             el(".name", tokenInfo.name),
         );
     }

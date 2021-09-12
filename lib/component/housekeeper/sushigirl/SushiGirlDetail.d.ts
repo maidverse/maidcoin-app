@@ -1,8 +1,8 @@
 import { DomNode, Popup } from "@hanul/skynode";
 export default class SushiGirlDetail extends Popup {
-    private sushiGirlId;
+    private id;
     content: DomNode;
-    constructor(sushiGirlId: number);
+    constructor(id: number);
     private load;
 }
 //# sourceMappingURL=SushiGirlDetail.d.ts.map

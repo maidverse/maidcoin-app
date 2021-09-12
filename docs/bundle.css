@@ -437,6 +437,7 @@ body {
   position: absolute;
   left: 0;
   top: 50px;
+  z-index: 1;
   width: 100%;
   overflow-x: auto;
   background-color: rgba(49, 19, 54, 0.8);
@@ -479,6 +480,20 @@ body {
   visibility: hidden;
 }
 .housekeeper-view > .sushigirl-list > .sushigirl {
+  float: left;
+}
+.housekeeper-view > .lingeriegirl-list {
+  padding-top: 24px;
+}
+.housekeeper-view > .lingeriegirl-list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.housekeeper-view > .lingeriegirl-list > .lingeriegirl {
   float: left;
 }
 .loading {
@@ -574,7 +589,8 @@ body {
   background-color: rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  overflow-y: scroll;
+  padding: 20px 0;
 }
 .pc-menu {
   margin-left: 10px;
@@ -1770,6 +1786,140 @@ body {
   padding-left: 1px;
 }
 .sushigirl-detail > .content > .controller > .power-down-button {
+  float: left;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/maid-summary/power-down-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
+.lingeriegirl {
+  position: relative;
+  width: 76.5px;
+  height: 85px;
+  background-image: url(/images/component/housekeeper-list/slot.png);
+  background-size: auto 100%;
+}
+.lingeriegirl > .image {
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  height: 70px;
+  border-radius: 3px;
+}
+.lingeriegirl > .name {
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+}
+.lingeriegirl-detail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 25, 29, 0.9);
+  overflow-y: scroll;
+}
+.lingeriegirl-detail > .back-button {
+  position: absolute;
+  left: 16px;
+  top: 10px;
+}
+.lingeriegirl-detail > .content > .image {
+  display: block;
+  margin: auto;
+  margin-top: 120px;
+  height: 550px;
+}
+.lingeriegirl-detail > .content > .name {
+  position: absolute;
+  left: 30px;
+  top: 48px;
+  z-index: 2;
+  width: 169.5px;
+  height: 28px;
+  background-image: url(/images/component/maid-summary/name-background.png);
+  background-size: auto 100%;
+  padding: 5px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.lingeriegirl-detail > .content > .owner {
+  position: absolute;
+  left: 31px;
+  top: 76px;
+  z-index: 2;
+  background-image: url(/images/component/maid-summary/owner-background.png);
+  font-size: 14px;
+  font-family: "refrigerator-deluxe";
+  padding: 2px 5px;
+}
+.lingeriegirl-detail > .content > .properties {
+  position: absolute;
+  right: 24px;
+  bottom: 64px;
+  z-index: 2;
+  text-align: right;
+  font-size: 20px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
+}
+.lingeriegirl-detail > .content > .properties > .power {
+  color: #d8448a;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+.lingeriegirl-detail > .content > .properties > .power > img {
+  margin-right: 12px;
+}
+.lingeriegirl-detail > .content > .properties > .property > span {
+  color: #ffde00;
+}
+.lingeriegirl-detail > .content > .properties > .property.lp-amount > span {
+  color: #7a8dff;
+}
+.lingeriegirl-detail > .content > .controller {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+}
+.lingeriegirl-detail > .content > .controller:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.lingeriegirl-detail > .content > .controller > .power-up-button {
+  float: left;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/maid-summary/power-up-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
+.lingeriegirl-detail > .content > .controller > .power-down-button {
   float: left;
   width: 112px;
   height: 33.5px;

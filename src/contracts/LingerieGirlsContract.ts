@@ -6,7 +6,7 @@ import LPTokenContract from "./LPTokenContract";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 import { LingerieGirls } from "./lingeriegirls/typechain";
 
-export interface SushiGirlInfo {
+export interface LingerieGirlInfo {
     originPower: number;
     supportedLPTokenAmount: BigNumber;
 }
@@ -15,31 +15,26 @@ class LingerieGirlsContract extends ERC721EnumerableContract<LingerieGirls> {
 
     constructor() {
         super(Config.contracts.LingerieGirls, LingerieGirlsArtifact.abi, [
-            "ChangeLPTokenToSushiGirlPower",
+            "ChangeLPTokenToLingerieGirlPower",
             "Support",
             "Desupport",
         ]);
     }
 
-    public async getSushiGirl(sushiGirlsId: number): Promise<SushiGirlInfo> {
-        const [originPower, supportedLPTokenAmount] = await this.contract.sushiGirls(sushiGirlsId);
+    public async getLingerieGirl(id: number): Promise<LingerieGirlInfo> {
+        const [originPower, supportedLPTokenAmount] = await this.contract.lingerieGirls(id);
         return {
             originPower: originPower.toNumber(),
             supportedLPTokenAmount,
         };
     }
 
-    public async ownerOf(sushiGirlsId: number): Promise<string> {
-        return await this.contract.ownerOf(sushiGirlsId);
+    public async ownerOf(id: number): Promise<string> {
+        return await this.contract.ownerOf(id);
     }
 
-    public async powerOf(sushiGirlsId: number): Promise<number> {
-        return (await this.contract.powerOf(sushiGirlsId)).toNumber();
-    }
-
-    public async mint(power: BigNumberish) {
-        const contract = await this.connectAndGetWalletContract();
-        await contract?.mint(power);
+    public async powerOf(id: number): Promise<number> {
+        return (await this.contract.powerOf(id)).toNumber();
     }
 
     public async support(id: BigNumberish, lpTokenAmount: BigNumberish) {

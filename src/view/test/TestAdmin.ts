@@ -3,6 +3,7 @@ import { utils } from "ethers";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
+import LingerieGirlsContract from "../../contracts/LingerieGirlsContract";
 import MaidsContract from "../../contracts/MaidsContract";
 import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
@@ -31,11 +32,11 @@ export default class Admin implements View {
             el("h2", "Admin Console"),
             this.currentBlock = el(".current-block", "Current Block: Loading..."),
             el(".admin-form.maid-form",
-                el("h3", "Maid"),
+                el("h3", "Maids"),
                 el(".action-button-container",
                     el("a.action-button.mint-maid-button", "Mint Maid", {
                         click: async () => {
-                            const power = prompt("Please enter the maid's power", "50");
+                            const power = prompt("Please enter power", "50");
                             if (power) {
                                 await MaidsContract.mint(power);
                             }

@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
+import LingerieGirlsContract from "../../contracts/LingerieGirlsContract";
 import SushiGirlsContract from "../../contracts/SushiGirlsContract";
 import Wallet from "../../ethereum/Wallet";
 import AnyHousekeeper from "./AnyHousekeeper";
@@ -19,31 +20,51 @@ export default class AnyHousekeeperList extends DomNode {
     }
 
     private async loadHousekeepers() {
-        this.loadSushiGirls();
-    }
-
-    private async loadSushiGirls() {
-
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
-
-            const sushiGirlCount = await SushiGirlsContract.balanceOf(owner);
-
-            SkyUtil.repeat(sushiGirlCount.toNumber(), async (index) => {
-                const sushiGirlId = (await SushiGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
-                const housekeeper = new AnyHousekeeper("SushiGirl", sushiGirlId, this.selectable).appendTo(this.content);
-                housekeeper.on("select", () => {
-                    if (housekeeper === this.selectedHousekeeper) {
-                        this.deselectHousekeeper();
-                        this.fireEvent("deselect");
-                    } else {
-                        this.selectedHousekeeper?.deselect();
-                        this.selectedHousekeeper = housekeeper;
-                        this.fireEvent("select", "SushiGirl", sushiGirlId);
-                    }
-                });
-            });
+            this.loadLingerieGirls(owner);
+            this.loadSushiGirls(owner);
         }
+    }
+
+    private async loadLingerieGirls(owner: string) {
+
+        const count = await LingerieGirlsContract.balanceOf(owner);
+
+        SkyUtil.repeat(count.toNumber(), async (index) => {
+            const id = (await LingerieGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
+            const housekeeper = new AnyHousekeeper("LingerieGirl", id, this.selectable).appendTo(this.content);
+            housekeeper.on("select", () => {
+                if (housekeeper === this.selectedHousekeeper) {
+                    this.deselectHousekeeper();
+                    this.fireEvent("deselect");
+                } else {
+                    this.selectedHousekeeper?.deselect();
+                    this.selectedHousekeeper = housekeeper;
+                    this.fireEvent("select", "LingerieGirl", id);
+                }
+            });
+        });
+    }
+
+    private async loadSushiGirls(owner: string) {
+
+        const count = await SushiGirlsContract.balanceOf(owner);
+
+        SkyUtil.repeat(count.toNumber(), async (index) => {
+            const id = (await SushiGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
+            const housekeeper = new AnyHousekeeper("SushiGirl", id, this.selectable).appendTo(this.content);
+            housekeeper.on("select", () => {
+                if (housekeeper === this.selectedHousekeeper) {
+                    this.deselectHousekeeper();
+                    this.fireEvent("deselect");
+                } else {
+                    this.selectedHousekeeper?.deselect();
+                    this.selectedHousekeeper = housekeeper;
+                    this.fireEvent("select", "SushiGirl", id);
+                }
+            });
+        });
     }
 
     public deselectHousekeeper() {

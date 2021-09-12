@@ -8,7 +8,7 @@ export default class SushiGirlDetail extends Popup {
 
     public content: DomNode;
 
-    constructor(private sushiGirlId: number) {
+    constructor(private id: number) {
         super(".sushigirl-detail");
         this.append(
             el("a.back-button", el("img", { src: "/images/component/housekeeper-detail/back-button.png", height: "19.5" }), {
@@ -21,15 +21,15 @@ export default class SushiGirlDetail extends Popup {
 
     private async load() {
 
-        const sushiGirl = await SushiGirlsContract.getSushiGirl(this.sushiGirlId);
-        const sushiGirlOwner = await SushiGirlsContract.ownerOf(this.sushiGirlId);
-        const sushiGirlPower = await SushiGirlsContract.powerOf(this.sushiGirlId);
+        const sushiGirl = await SushiGirlsContract.getSushiGirl(this.id);
+        const sushiGirlOwner = await SushiGirlsContract.ownerOf(this.id);
+        const sushiGirlPower = await SushiGirlsContract.powerOf(this.id);
 
-        const result = await superagent.post(`https://api.maidcoin.org/sushigirls/${this.sushiGirlId}`);
+        const result = await superagent.post(`https://api.maidcoin.org/sushigirls/${this.id}`);
         const tokenInfo = result.body;
 
         this.content.empty().append(
-            el("img.image", { src: tokenInfo.character_image }),
+            el("img.image", { src: `https://storage.googleapis.com/maidcoin/SushiGirl/Character/${this.id}.png` }),
             el(".name", tokenInfo.name),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(sushiGirlOwner)}`),
             el(".properties",
@@ -44,7 +44,7 @@ export default class SushiGirlDetail extends Popup {
                         event.stopPropagation();
                         const amount = prompt("How much amount to support?", "10");
                         if (amount) {
-                            await SushiGirlsContract.support(this.sushiGirlId, utils.parseEther(amount));
+                            await SushiGirlsContract.support(this.id, utils.parseEther(amount));
                         }
                     },
                 }),

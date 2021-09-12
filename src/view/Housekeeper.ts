@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { SkyRouter, View, ViewParams } from "skyrouter";
+import LingerieGirlList from "../component/housekeeper/lingeriegirl/LingerieGirlList";
 import SushiGirlList from "../component/housekeeper/sushigirl/SushiGirlList";
 import Layout from "./Layout";
 
@@ -31,7 +32,14 @@ export default class Housekeeper implements View {
         );
 
         this.housekeeperList?.delete();
-        if (type === "sushigirls") {
+
+        if (type === "lingeriegirls") {
+            this.container.append(
+                this.housekeeperList = new LingerieGirlList(),
+            );
+        }
+
+        else if (type === "sushigirls") {
             this.container.append(
                 this.housekeeperList = new SushiGirlList(),
             );

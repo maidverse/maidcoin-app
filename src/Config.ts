@@ -37,6 +37,6 @@ export default {
         CloneNurses: "0xb2d3FD3D4b23e5FB37c1eec4bf63fd948a0188fF",
 
         SushiGirls: "0xd48ec06ee1e1016c159415262A2dFa233E325C2F",
-        LingerieGirls: "0x34d69387e413AEDC72e8dE96a6CfA1860d6015EF",
+        LingerieGirls: "0xB555cA9C88CeB8ece57b9223AA6D7407dD273656",
     },
 };

@@ -15,7 +15,18 @@ export default class AnyHousekeeper extends DomNode {
     }
 
     private async load() {
-        if (this.type === "SushiGirl") {
+
+        if (this.type === "LingerieGirl") {
+            const result = await superagent.post(`https://api.maidcoin.org/lingeriegirls/${this.id}`);
+            const tokenInfo = result.body;
+
+            this.empty().append(
+                el("img.image", { src: `https://storage.googleapis.com/maidcoin/LingerieGirl/Face/${this.id}.png` }),
+                el(".name", tokenInfo.name),
+            );
+        }
+
+        else if (this.type === "SushiGirl") {
             const result = await superagent.post(`https://api.maidcoin.org/sushigirls/${this.id}`);
             const tokenInfo = result.body;
 
