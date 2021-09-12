@@ -281,6 +281,7 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
     "ChangeSupportedPower(uint256,int256)": EventFragment;
     "ChangeSupportingRoute(uint256,uint256)": EventFragment;
     "Claim(uint256,address,uint256)": EventFragment;
+    "ElongateLifetime(uint256,uint256,uint256,uint256)": EventFragment;
     "SupportTo(address,uint256)": EventFragment;
     "Transfer(address,address,uint256)": EventFragment;
     "TransferSupportingRewards(address,uint256,uint256)": EventFragment;
@@ -291,6 +292,7 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
   getEvent(nameOrSignatureOrTopic: "ChangeSupportedPower"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ChangeSupportingRoute"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Claim"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ElongateLifetime"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SupportTo"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "TransferSupportingRewards"): EventFragment;
@@ -942,6 +944,21 @@ export class ICloneNurses extends BaseContract {
     ): TypedEventFilter<
       [BigNumber, string, BigNumber],
       { id: BigNumber; claimer: string; reward: BigNumber }
+    >;
+
+    ElongateLifetime(
+      id?: BigNumberish | null,
+      rechargedLifetime?: null,
+      lastEndBlock?: null,
+      newEndBlock?: null
+    ): TypedEventFilter<
+      [BigNumber, BigNumber, BigNumber, BigNumber],
+      {
+        id: BigNumber;
+        rechargedLifetime: BigNumber;
+        lastEndBlock: BigNumber;
+        newEndBlock: BigNumber;
+      }
     >;
 
     SupportTo(

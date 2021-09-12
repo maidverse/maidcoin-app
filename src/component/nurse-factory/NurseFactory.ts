@@ -3,6 +3,7 @@ import superagent from "superagent";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NursePartContract from "../../contracts/NursePartContract";
 import Wallet from "../../ethereum/Wallet";
+import NurseBatteryPopup from "./NurseBatteryPopup";
 
 export default class NurseFactory extends DomNode {
 
@@ -44,9 +45,7 @@ export default class NurseFactory extends DomNode {
             this.footer.empty().append(
                 el(".name", tokenInfo.name),
                 el("a.create-button", "Create", {
-                    click: async () => {
-                        //await CloneNursesContract.assemble(this.nurseType);
-                    },
+                    click: () => new NurseBatteryPopup(this.nurseType),
                 }),
             );
         }

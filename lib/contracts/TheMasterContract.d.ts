@@ -15,6 +15,7 @@ declare class TheMasterContract extends Contract<TheMaster> {
     constructor();
     getPoolCount(): Promise<BigNumber>;
     getPool(poolId: BigNumberish): Promise<PoolInfo>;
+    getLPAmount(pid: BigNumberish, user: string): Promise<BigNumber>;
     getSupportingAmount(user: string): Promise<BigNumber>;
     getPendingReward(pid: BigNumberish, user: string): Promise<BigNumber>;
     support(pid: BigNumberish, lpTokenAmount: BigNumberish, supportTo: BigNumberish): Promise<void>;

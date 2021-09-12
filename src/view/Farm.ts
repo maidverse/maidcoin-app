@@ -1,5 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import MaidCorp from "../component/maid-corp/MaidCorp";
+import NurseFarm from "../component/nurse-farm/NurseFarm";
 import Layout from "./Layout";
 
 export default class Farm implements View {
@@ -9,6 +11,12 @@ export default class Farm implements View {
     constructor() {
         Layout.current.changeBackground("/images/view/farm/background.jpg");
         Layout.current.content.append(this.container = el(".farm-view",
+            el("header",
+                el("h2", "Farm"),
+                el("p", "Earn $MAID!"),
+            ),
+            new MaidCorp(),
+            new NurseFarm(),
         ));
     }
 

@@ -66,7 +66,7 @@ export default class SelectMaidPopup extends Popup {
             this.footer.empty().append(
                 el("a.start-button",
                     utils.formatEther(this.raid.entranceFee),
-                    el("img.icon", { src: "/images/maidcoin.png", height: "21" }),
+                    el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
                     "Start",
                     {
                         click: async () => {

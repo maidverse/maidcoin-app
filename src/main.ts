@@ -4,6 +4,7 @@ import Farm from "./view/Farm";
 import Housekeeper from "./view/Housekeeper";
 import Layout from "./view/Layout";
 import Maid from "./view/Maid";
+import MaidCafe from "./view/MaidCafe";
 import Nursefactory from "./view/NurseFactory";
 import NurseRaid from "./view/NurseRaid";
 import TestAdmin from "./view/test/TestAdmin";
@@ -15,6 +16,7 @@ SkyRouter.route(["housekeeper", "housekeeper/{type}"], Housekeeper);
 SkyRouter.route("nurseraid", NurseRaid);
 SkyRouter.route("nursefactory", Nursefactory);
 SkyRouter.route("farm", Farm);
+SkyRouter.route("cafe", MaidCafe);
 
 // test
 SkyRouter.route("test/admin", TestAdmin);

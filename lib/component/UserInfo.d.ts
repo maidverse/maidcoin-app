@@ -7,7 +7,7 @@ export default class UserInfo extends DomNode {
     private connectHandler;
     private transferHandler;
     private loadUserInfo;
-    private loadMaidCoin;
+    private loadBalances;
     delete(): void;
 }
 //# sourceMappingURL=UserInfo.d.ts.map

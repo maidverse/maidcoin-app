@@ -17,6 +17,7 @@ export default class MobileMenu extends ClosableFloatingDomNode {
                 el(`a${location.pathname === "/nurseraid" ? ".on" : ""}`, "Nurse Raid", { click: () => SkyRouter.go("/nurseraid") }),
                 el(`a${location.pathname === "/nursefactory" ? ".on" : ""}`, "Nurse Factory", { click: () => SkyRouter.go("/nursefactory") }),
                 el(`a${location.pathname === "/farm" ? ".on" : ""}`, "Farm", { click: () => SkyRouter.go("/farm") }),
+                el(`a${location.pathname === "/cafe" ? ".on" : ""}`, "Maid Cafe", { click: () => SkyRouter.go("/cafe") }),
             ),
             el(".bottom-menu",
                 Config.chainId !== 1 ? el("a", "Test LP Token", { click: () => SkyRouter.go("/test-lp-token") }) : undefined,

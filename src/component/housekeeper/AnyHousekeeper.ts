@@ -1,5 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import superagent from "superagent";
+import LingerieGirlDetail from "./lingeriegirl/LingerieGirlDetail";
+import SushiGirlDetail from "./sushigirl/SushiGirlDetail";
 
 export default class AnyHousekeeper extends DomNode {
 
@@ -19,21 +21,21 @@ export default class AnyHousekeeper extends DomNode {
         if (this.type === "LingerieGirl") {
             const result = await superagent.post(`https://api.maidcoin.org/lingeriegirls/${this.id}`);
             const tokenInfo = result.body;
-
-            this.empty().append(
+            this.append(
                 el("img.image", { src: `https://storage.googleapis.com/maidcoin/LingerieGirl/Face/${this.id}.png` }),
                 el(".name", tokenInfo.name),
             );
+            this.onDom("click", () => new SushiGirlDetail(this.id));
         }
 
         else if (this.type === "SushiGirl") {
             const result = await superagent.post(`https://api.maidcoin.org/sushigirls/${this.id}`);
             const tokenInfo = result.body;
-
-            this.empty().append(
+            this.append(
                 el("img.image", { src: `https://storage.googleapis.com/maidcoin/SushiGirl/Face/${this.id}.png` }),
                 el(".name", tokenInfo.name),
             );
+            this.onDom("click", () => new LingerieGirlDetail(this.id));
         }
     }
 

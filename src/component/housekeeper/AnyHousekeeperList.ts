@@ -33,17 +33,20 @@ export default class AnyHousekeeperList extends DomNode {
 
         SkyUtil.repeat(count.toNumber(), async (index) => {
             const id = (await LingerieGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
-            const housekeeper = new AnyHousekeeper("LingerieGirl", id, this.selectable).appendTo(this.content);
-            housekeeper.on("select", () => {
-                if (housekeeper === this.selectedHousekeeper) {
-                    this.deselectHousekeeper();
-                    this.fireEvent("deselect");
-                } else {
-                    this.selectedHousekeeper?.deselect();
-                    this.selectedHousekeeper = housekeeper;
-                    this.fireEvent("select", "LingerieGirl", id);
-                }
-            });
+
+            if (this.deleted !== true) {
+                const housekeeper = new AnyHousekeeper("LingerieGirl", id, this.selectable).appendTo(this.content);
+                housekeeper.on("select", () => {
+                    if (housekeeper === this.selectedHousekeeper) {
+                        this.deselectHousekeeper();
+                        this.fireEvent("deselect");
+                    } else {
+                        this.selectedHousekeeper?.deselect();
+                        this.selectedHousekeeper = housekeeper;
+                        this.fireEvent("select", "LingerieGirl", id);
+                    }
+                });
+            }
         });
     }
 
@@ -53,17 +56,20 @@ export default class AnyHousekeeperList extends DomNode {
 
         SkyUtil.repeat(count.toNumber(), async (index) => {
             const id = (await SushiGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
-            const housekeeper = new AnyHousekeeper("SushiGirl", id, this.selectable).appendTo(this.content);
-            housekeeper.on("select", () => {
-                if (housekeeper === this.selectedHousekeeper) {
-                    this.deselectHousekeeper();
-                    this.fireEvent("deselect");
-                } else {
-                    this.selectedHousekeeper?.deselect();
-                    this.selectedHousekeeper = housekeeper;
-                    this.fireEvent("select", "SushiGirl", id);
-                }
-            });
+
+            if (this.deleted !== true) {
+                const housekeeper = new AnyHousekeeper("SushiGirl", id, this.selectable).appendTo(this.content);
+                housekeeper.on("select", () => {
+                    if (housekeeper === this.selectedHousekeeper) {
+                        this.deselectHousekeeper();
+                        this.fireEvent("deselect");
+                    } else {
+                        this.selectedHousekeeper?.deselect();
+                        this.selectedHousekeeper = housekeeper;
+                        this.fireEvent("select", "SushiGirl", id);
+                    }
+                });
+            }
         });
     }
 

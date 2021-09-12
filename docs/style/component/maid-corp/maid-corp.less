@@ -1,0 +1,171 @@
+.maid-corp {
+    position : relative;
+    max-width: 403px;
+    height   : 257px;
+
+    >.background {
+        position        : absolute;
+        left            : 21.5px;
+        top             : 0;
+        width           : calc(100% - 43px);
+        height          : 257px;
+        background-image: url(/images/component/maid-corp/background-center.png);
+        background-size : auto 100%;
+
+        &:before {
+            content         : " ";
+            position        : absolute;
+            left            : -21.5px;
+            top             : 0;
+            width           : 21.5px;
+            height          : 257px;
+            background-image: url(/images/component/maid-corp/background-left.png);
+            background-size : auto 100%;
+        }
+
+        &:after {
+            content         : " ";
+            position        : absolute;
+            right           : -21.5px;
+            top             : 0;
+            width           : 21.5px;
+            height          : 257px;
+            background-image: url(/images/component/maid-corp/background-right.png);
+            background-size : auto 100%;
+        }
+    }
+
+    >.name {
+        position           : absolute;
+        left               : 3px;
+        top                : 0;
+        z-index            : 1;
+        min-width          : 264.5px;
+        height             : 223px;
+        background-image   : url(/images/component/maid-corp/name-background.png);
+        background-size    : auto 100%;
+        background-position: 0 0;
+        background-repeat  : no-repeat;
+        font-family        : "refrigerator-deluxe";
+        font-weight        : bold;
+        font-size          : 24px;
+    }
+
+    >.ada {
+        position: absolute;
+        left    : calc(50% - 80px);
+        bottom  : 34px;
+        z-index : 1;
+    }
+
+    >.content {
+        position           : absolute;
+        left               : 3px;
+        top                : 0;
+        width              : calc(100% - 6px);
+        height             : 223px;
+        background-image   : url(/images/component/maid-corp/background.png);
+        background-size    : auto 100%;
+        background-position: center center;
+
+        >.claim-button {
+            position           : absolute;
+            right              : 0;
+            top                : 0;
+            z-index            : 2;
+            width              : 161px;
+            height             : 60px;
+            background-image   : url(/images/component/maid-corp/claim-button.png);
+            background-size    : auto 100%;
+            background-position: center center;
+            display            : flex;
+
+            >.maidcoin {
+                margin-top : 5px;
+                margin-left: 10px;
+            }
+
+            >.reward {
+                flex-grow      : 1;
+                display        : flex;
+                flex-direction : column;
+                justify-content: center;
+                height         : 40px;
+                text-align     : center;
+                color          : #2e000f;
+                font-family    : "refrigerator-deluxe";
+                font-weight    : bold;
+                font-size      : 12px;
+            }
+        }
+
+        >.withdraw-button {
+            position        : absolute;
+            left            : 0;
+            bottom          : -5px;
+            z-index         : 2;
+            width           : 112px;
+            height          : 33.5px;
+            background-image: url(/images/component/maid-corp/withdraw-button.png);
+            background-size : auto 100%;
+            color           : #000000;
+            font-size       : 13px;
+            text-transform  : uppercase;
+            text-align      : center;
+            font-weight     : bold;
+            padding-top     : 8px;
+            padding-left    : 1px;
+        }
+
+        >.deposit-button {
+            position        : absolute;
+            right           : 0;
+            bottom          : -5px;
+            z-index         : 2;
+            width           : 112px;
+            height          : 33.5px;
+            background-image: url(/images/component/maid-corp/deposit-button.png);
+            background-size : auto 100%;
+            color           : #000000;
+            font-size       : 13px;
+            text-transform  : uppercase;
+            text-align      : center;
+            font-weight     : bold;
+            padding-top     : 8px;
+            padding-left    : 1px;
+        }
+    }
+
+    >footer {
+        position: absolute;
+        left    : 0;
+        bottom  : 0;
+        width   : 100%;
+        height  : 34px;
+        padding : 2px 6px 0 22px;
+        .float-wrapper();
+
+        font-size  : 20px;
+        font-family: "refrigerator-deluxe";
+        line-height: 26px;
+        text-shadow: #000000 0 0 5px;
+
+        >.property {
+            >span {
+                color: #ffde00;
+            }
+
+            &.lp-amount {
+                float: left;
+
+                >span {
+                    color: #7a8dff;
+                }
+            }
+
+            &.apr {
+                float: right;
+            }
+        }
+    }
+}

@@ -26,8 +26,10 @@ export default class NursePartList extends DomNode {
             const nurseTypeCount = (await CloneNursesContract.getNurseTypeCount()).toNumber();
             SkyUtil.repeat(nurseTypeCount, async (nurseType) => {
                 const nursePartCount = (await NursePartContract.balanceOf(owner, nurseType)).toNumber();
-                
-                this.content.append(new NursePart(nurseType, nursePartCount));
+
+                if (this.deleted !== true && nursePartCount > 0) {
+                    this.content.append(new NursePart(nurseType, nursePartCount));
+                }
             });
         }
     }

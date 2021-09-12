@@ -35,17 +35,20 @@ export default class OwnedMaidList extends DomNode {
 
             SkyUtil.repeat(maidCount, (index) => {
                 setTimeout(async () => {
+                    const maidIndex = maidCount - index - 1;
+                    const maidId = (await MaidsContract.getTokenOfOwnerByIndex(owner, maidIndex)).toNumber();
+
                     if (this.deleted !== true) {
-                        const maidIndex = maidCount - index - 1;
-                        const maidId = (await MaidsContract.getTokenOfOwnerByIndex(owner, maidIndex)).toNumber();
                         new MaidSummary(maidId).appendTo(this.maidContainer);
                     }
                 }, index * 50);
             });
         }
 
-        this.loading?.delete();
-        this.loading = undefined;
+        if (this.deleted !== true) {
+            this.loading?.delete();
+            this.loading = undefined;
+        }
     }
 
     public delete(): void {

@@ -188,9 +188,23 @@ body {
     display: block;
   }
 }
-.layout > header h1 {
-  margin-top: 1px;
-  margin-left: 4px;
+@media only screen and (min-width: 960px) {
+  .layout > header h1 {
+    margin-top: 1px;
+    margin-left: 4px;
+  }
+  .layout > header h1 > a > .mobile-logo {
+    display: none;
+  }
+}
+@media only screen and (max-width: 959px) {
+  .layout > header h1 {
+    margin-top: 2px;
+    margin-left: 6px;
+  }
+  .layout > header h1 > a > .pc-logo {
+    display: none;
+  }
 }
 .layout > header > .span {
   flex-grow: 1;
@@ -496,6 +510,44 @@ body {
 .housekeeper-view > .lingeriegirl-list > .lingeriegirl {
   float: left;
 }
+.farm-view > header {
+  height: 40px;
+  background-image: url(/images/view/title.png);
+  background-position: left center;
+  background-repeat: repeat-y;
+  background-size: auto 100%;
+}
+.farm-view > header > h2 {
+  font-size: 25px;
+  animation: maid-view-slide-in 0.5s ease-out;
+}
+.farm-view > header P {
+  opacity: 0;
+  color: #9e92a9;
+  animation: maid-view-slide-in 0.5s 0.2s ease-out;
+  animation-fill-mode: forwards;
+}
+.farm-view > .maid-corp,
+.farm-view > .nurse-farm {
+  margin-top: 20px;
+}
+.maid-cafe-view > header {
+  height: 40px;
+  background-image: url(/images/view/title.png);
+  background-position: left center;
+  background-repeat: repeat-y;
+  background-size: auto 100%;
+}
+.maid-cafe-view > header > h2 {
+  font-size: 25px;
+  animation: maid-view-slide-in 0.5s ease-out;
+}
+.maid-cafe-view > header P {
+  opacity: 0;
+  color: #9e92a9;
+  animation: maid-view-slide-in 0.5s 0.2s ease-out;
+  animation-fill-mode: forwards;
+}
 .loading {
   position: fixed;
   left: 50%;
@@ -548,10 +600,13 @@ body {
   background-image: url(/images/component/user-info/background.png);
   background-size: auto 100%;
 }
-.user-info > .maid-coin > .icon {
+.user-info > .maid-coin > .balance {
   float: left;
 }
-.user-info > .maid-coin > .balance {
+.user-info > .maid-coin > .balance > .icon {
+  float: left;
+}
+.user-info > .maid-coin > .balance > .amount {
   float: right;
   font-family: "refrigerator-deluxe";
   line-height: 19px;
@@ -1363,6 +1418,24 @@ body {
   padding-top: 8px;
   padding-left: 1px;
 }
+.nurse-battery-popup {
+  position: relative;
+  width: 390px;
+  margin: auto;
+  height: 665px;
+  background-image: url(/images/component/nurse-battery-popup/background.png);
+  background-size: auto 100%;
+}
+.nurse-battery-popup > h1 {
+  padding-left: 6px;
+  padding-top: 4px;
+  font-size: 18px;
+}
+.nurse-battery-popup > .close-button {
+  position: absolute;
+  right: 13px;
+  top: 0;
+}
 .nurse-part {
   position: relative;
   width: 76.5px;
@@ -2151,5 +2224,276 @@ body {
   height: 87.5px;
   background-image: url(/images/component/select-maid-popup/selected.png);
   background-size: auto 100%;
+}
+.maid-corp {
+  position: relative;
+  max-width: 403px;
+  height: 257px;
+}
+.maid-corp > .background {
+  position: absolute;
+  left: 21.5px;
+  top: 0;
+  width: calc(100% - 43px);
+  height: 257px;
+  background-image: url(/images/component/maid-corp/background-center.png);
+  background-size: auto 100%;
+}
+.maid-corp > .background:before {
+  content: " ";
+  position: absolute;
+  left: -21.5px;
+  top: 0;
+  width: 21.5px;
+  height: 257px;
+  background-image: url(/images/component/maid-corp/background-left.png);
+  background-size: auto 100%;
+}
+.maid-corp > .background:after {
+  content: " ";
+  position: absolute;
+  right: -21.5px;
+  top: 0;
+  width: 21.5px;
+  height: 257px;
+  background-image: url(/images/component/maid-corp/background-right.png);
+  background-size: auto 100%;
+}
+.maid-corp > .name {
+  position: absolute;
+  left: 3px;
+  top: 0;
+  z-index: 1;
+  min-width: 264.5px;
+  height: 223px;
+  background-image: url(/images/component/maid-corp/name-background.png);
+  background-size: auto 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
+  font-size: 24px;
+}
+.maid-corp > .ada {
+  position: absolute;
+  left: calc(50% - 80px);
+  bottom: 34px;
+  z-index: 1;
+}
+.maid-corp > .content {
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: calc(100% - 6px);
+  height: 223px;
+  background-image: url(/images/component/maid-corp/background.png);
+  background-size: auto 100%;
+  background-position: center center;
+}
+.maid-corp > .content > .claim-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  width: 161px;
+  height: 60px;
+  background-image: url(/images/component/maid-corp/claim-button.png);
+  background-size: auto 100%;
+  background-position: center center;
+  display: flex;
+}
+.maid-corp > .content > .claim-button > .maidcoin {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+.maid-corp > .content > .claim-button > .reward {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40px;
+  text-align: center;
+  color: #2e000f;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
+  font-size: 12px;
+}
+.maid-corp > .content > .withdraw-button {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  z-index: 2;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/maid-corp/withdraw-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
+.maid-corp > .content > .deposit-button {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  z-index: 2;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/maid-corp/deposit-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
+.maid-corp > footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 34px;
+  padding: 2px 6px 0 22px;
+  font-size: 20px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
+}
+.maid-corp > footer:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.maid-corp > footer > .property > span {
+  color: #ffde00;
+}
+.maid-corp > footer > .property.lp-amount {
+  float: left;
+}
+.maid-corp > footer > .property.lp-amount > span {
+  color: #7a8dff;
+}
+.maid-corp > footer > .property.apr {
+  float: right;
+}
+.nurse-farm {
+  position: relative;
+  max-width: 403px;
+  height: 257px;
+}
+.nurse-farm > .background {
+  position: absolute;
+  left: 21.5px;
+  top: 0;
+  width: calc(100% - 43px);
+  height: 257px;
+  background-image: url(/images/component/nurse-farm/background-center.png);
+  background-size: auto 100%;
+}
+.nurse-farm > .background:before {
+  content: " ";
+  position: absolute;
+  left: -21.5px;
+  top: 0;
+  width: 21.5px;
+  height: 257px;
+  background-image: url(/images/component/nurse-farm/background-left.png);
+  background-size: auto 100%;
+}
+.nurse-farm > .background:after {
+  content: " ";
+  position: absolute;
+  right: -21.5px;
+  top: 0;
+  width: 21.5px;
+  height: 257px;
+  background-image: url(/images/component/nurse-farm/background-right.png);
+  background-size: auto 100%;
+}
+.nurse-farm > .content {
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: calc(100% - 6px);
+  height: 223px;
+  background-image: url(/images/component/nurse-farm/background.png);
+  background-size: auto 100%;
+  background-position: center center;
+}
+.nurse-farm.empty > .content {
+  background-image: none;
+}
+.nurse-farm.empty > .content > .name {
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  z-index: 1;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
+  font-size: 24px;
+}
+.nurse-farm.empty > .content > .add-button {
+  position: absolute;
+  left: calc(50% - 66.75px);
+  top: calc(111.5px - 66.25px);
+  z-index: 1;
+}
+.nurse-farm > footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 34px;
+  padding: 2px 6px 0 22px;
+  font-size: 20px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
+}
+.nurse-farm > footer:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.nurse-farm > footer > .property > span {
+  color: #ffde00;
+}
+.nurse-farm > footer > .property.lp-amount {
+  float: left;
+}
+.nurse-farm > footer > .property.lp-amount > span {
+  color: #7a8dff;
+}
+.nurse-farm > footer > .property.apr {
+  float: right;
+}
+.select-nurse-popup {
+  position: relative;
+  width: 352px;
+  margin: auto;
+  height: 601px;
+  background-image: url(/images/component/select-nurse-popup/background.png);
+  background-size: auto 100%;
+}
+.select-nurse-popup > h1 {
+  padding-left: 6px;
+  padding-top: 4px;
+  font-size: 18px;
+}
+.select-nurse-popup > .close-button {
+  position: absolute;
+  right: 13px;
+  top: 0;
 }
 

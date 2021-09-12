@@ -1,0 +1,1 @@
+{"version":3,"file":"NurseBatteryPopup.d.ts","sourceRoot":"","sources":["../../../src/component/nurse-factory/NurseBatteryPopup.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAM,KAAK,EAAE,MAAM,gBAAgB,CAAC;AAEpD,MAAM,CAAC,OAAO,OAAO,iBAAkB,SAAQ,KAAK;IAIpC,OAAO,CAAC,SAAS;IAFtB,OAAO,EAAE,OAAO,CAAC;gBAEJ,SAAS,EAAE,MAAM;YAWvB,IAAI;CAErB"}

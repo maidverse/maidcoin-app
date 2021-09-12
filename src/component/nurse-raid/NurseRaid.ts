@@ -28,10 +28,10 @@ export default class NurseRaid extends DomNode {
 
         this.content.empty().append(
             el(".name", tokenInfo.name),
-            el(".image", { style: { backgroundImage: `url(${tokenInfo.image})` } }),
+            el(".image", { style: { backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${tokenInfo.name}.png)` } }),
             el(".end-time", `End ${CommonUtil.displayBlockDuration(this.raid.endBlock - this.currentBlockNumber)}`),
             el(".character",
-                el("img", { src: "/images/test/NoelIdle.png", height: "85" }),
+                el("img", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${tokenInfo.name}Idle.png`, height: "85" }),
             ),
             el(".duration",
                 el("span.title", "Duration"),
@@ -48,12 +48,12 @@ export default class NurseRaid extends DomNode {
             this.footer.empty().append(
                 el(".reward",
                     el("h3", "Rewards"),
-                    el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${this.raid.nursePart}.png`, height: "28" }),
+                    el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${tokenInfo.name}.png`, height: "28" }),
                     el(".count", `x 1 ~ ${this.raid.maxRewardCount}`),
                 ),
                 challenger.enterBlock === 0 ? el("a.start-button",
                     utils.formatEther(this.raid.entranceFee),
-                    el("img.icon", { src: "/images/maidcoin.png", height: "21" }),
+                    el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
                     "Start",
                     {
                         click: () => new SelectMaidPopup(this.raidId, this.raid),

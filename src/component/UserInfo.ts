@@ -1,6 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
 import CommonUtil from "../CommonUtil";
+import LPTokenContract from "../contracts/LPTokenContract";
 import MaidCoinContract from "../contracts/MaidCoinContract";
 import Wallet from "../ethereum/Wallet";
 
@@ -25,7 +26,7 @@ export default class UserInfo extends DomNode {
         this.connectButton.style({ display: "none" });
 
         this.loadUserInfo();
-        this.loadMaidCoin();
+        this.loadBalances();
 
         Wallet.on("connect", this.connectHandler);
         MaidCoinContract.on("Transfer", this.transferHandler);
@@ -33,13 +34,13 @@ export default class UserInfo extends DomNode {
 
     private connectHandler = () => {
         this.loadUserInfo();
-        this.loadMaidCoin();
+        this.loadBalances();
     };
 
     private transferHandler = async (from: string, to: string, amount: BigNumber) => {
         const address = await Wallet.loadAddress();
         if (from === address || to === address) {
-            this.loadMaidCoin();
+            this.loadBalances();
         }
     };
 
@@ -63,13 +64,20 @@ export default class UserInfo extends DomNode {
         }
     }
 
-    private async loadMaidCoin() {
+    private async loadBalances() {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
-            const balance = await MaidCoinContract.balanceOf(owner);
+            const lpBalance = await LPTokenContract.balanceOf(owner);
+            const maidBalance = await MaidCoinContract.balanceOf(owner);
             this.maidCoinPanel.empty().append(
-                el("img.icon", { src: "/images/maidcoin.png", height: "21" }),
-                el(".balance", utils.formatEther(balance)),
+                el(".balance",
+                    el("img.icon", { src: "/images/lptoken.png", height: "20.5" }),
+                    el(".amount", utils.formatEther(lpBalance)),
+                ),
+                el(".balance",
+                    el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
+                    el(".amount", utils.formatEther(maidBalance)),
+                ),
             );
         }
     }

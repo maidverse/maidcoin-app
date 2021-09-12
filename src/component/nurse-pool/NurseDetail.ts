@@ -45,7 +45,7 @@ export default class NurseDetail extends Popup {
                 el(".character",
                     el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${tokenInfo.name}Idle.png`, height: "120" }),
                     el("a.claim-button",
-                        el("img.coin-image", { src: "/images/maidcoin-claim.png" }),
+                        el("img.coin-image", { src: "/images/component/nurse-detail/maidcoin.png", height: "29" }),
                         el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),
                     ),
                 ),

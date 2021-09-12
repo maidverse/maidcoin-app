@@ -28,7 +28,7 @@ export default class Nurse extends DomNode {
 
         this.append(
             el("a.claim-button",
-                el("img.coin-image", { src: "/images/maidcoin-claim.png" }),
+                el("img.coin-image", { src: "/images/component/nurse-pool/maidcoin.png", height: "29" }),
                 el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),
             ),
         );
