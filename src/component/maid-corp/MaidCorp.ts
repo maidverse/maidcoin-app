@@ -1,10 +1,9 @@
 import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
-import superagent from "superagent";
-import CloneNursesContract from "../../contracts/CloneNursesContract";
-import NursePartContract from "../../contracts/NursePartContract";
+import LPTokenContract from "../../contracts/LPTokenContract";
 import TheMasterContract from "../../contracts/TheMasterContract";
 import Wallet from "../../ethereum/Wallet";
+import TokenPrompt from "../dialogue/TokenPrompt";
 
 export default class MaidCorp extends DomNode {
 
@@ -35,6 +34,7 @@ export default class MaidCorp extends DomNode {
 
             const lpAmount = await TheMasterContract.getLPAmount(1, owner);
             const reward = await TheMasterContract.getPendingReward(1, owner);
+            const lpBalance = await LPTokenContract.balanceOf(owner);
 
             this.content.empty().append(
                 el("a.claim-button",
@@ -42,20 +42,26 @@ export default class MaidCorp extends DomNode {
                     el("span.reward", utils.formatEther(reward)),
                 ),
                 el("a.withdraw-button", "Withdraw", {
-                    click: async () => {
-                        const amount = prompt("How much amount to withdraw?", "10");
-                        if (amount) {
-                            await TheMasterContract.withdraw(1, utils.parseEther(amount));
-                        }
-                    },
+                    click: () => new TokenPrompt(
+                        "Withdraw from MaidCorp",
+                        "How much amount to withdraw?",
+                        "Withdraw",
+                        0, lpBalance,
+                        async (amount) => {
+                            await TheMasterContract.withdraw(1, amount);
+                        },
+                    ),
                 }),
                 el("a.deposit-button", "Deposit", {
-                    click: async () => {
-                        const amount = prompt("How much amount to deposit?", "10");
-                        if (amount) {
-                            await TheMasterContract.deposit(1, utils.parseEther(amount));
-                        }
-                    },
+                    click: () => new TokenPrompt(
+                        "Deposit to MaidCorp",
+                        "How much amount to deposit?",
+                        "Deposit",
+                        0, lpBalance,
+                        async (amount) => {
+                            await TheMasterContract.deposit(1, amount);
+                        },
+                    ),
                 }),
             );
 

@@ -1436,6 +1436,32 @@ body {
   right: 13px;
   top: 0;
 }
+.nurse-battery-popup > main > .range {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  appearance: none;
+  width: 298px;
+  height: 8px;
+  background: transparent;
+  background-image: url(/images/component/dialogue/slider.png);
+  background-size: auto 100%;
+}
+.nurse-battery-popup > main > .range::-webkit-slider-thumb {
+  appearance: none;
+  width: 26px;
+  height: 27.5px;
+  background: transparent;
+  background-image: url(/images/component/dialogue/slider-button.png);
+  background-size: auto 100%;
+}
+.nurse-battery-popup > main > .range::-moz-range-thumb {
+  width: 26px;
+  height: 27.5px;
+  background: transparent;
+  background-image: url(/images/component/dialogue/slider-button.png);
+  background-size: auto 100%;
+}
 .nurse-part {
   position: relative;
   width: 76.5px;
@@ -2072,14 +2098,17 @@ body {
 .alert > .confirm-button {
   right: 110px !important;
 }
-.slide-prompt > p {
+.token-prompt > p {
   color: #3b3e4a;
   font-size: 18px;
   text-align: center;
-  padding: 20px 0;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   line-height: 24px;
 }
-.slide-prompt > .input {
+.token-prompt > .input {
   display: block;
   margin: auto;
   text-align: center;
@@ -2090,32 +2119,6 @@ body {
   background-size: auto 100%;
   color: #3b3e4a;
   font-size: 18px;
-}
-.slide-prompt > .range {
-  display: block;
-  margin: auto;
-  margin-top: 20px;
-  appearance: none;
-  width: 298px;
-  height: 8px;
-  background: transparent;
-  background-image: url(/images/component/dialogue/slider.png);
-  background-size: auto 100%;
-}
-.slide-prompt > .range::-webkit-slider-thumb {
-  appearance: none;
-  width: 26px;
-  height: 27.5px;
-  background: transparent;
-  background-image: url(/images/component/dialogue/slider-button.png);
-  background-size: auto 100%;
-}
-.slide-prompt > .range::-moz-range-thumb {
-  width: 26px;
-  height: 27.5px;
-  background: transparent;
-  background-image: url(/images/component/dialogue/slider-button.png);
-  background-size: auto 100%;
 }
 .select-maid-popup {
   position: relative;

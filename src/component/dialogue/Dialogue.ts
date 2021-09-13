@@ -8,7 +8,7 @@ export default class Dialogue extends Popup {
         tag: string,
         title: string,
         confirmTitle: string,
-        confirm: () => void,
+        confirm: () => void | boolean,
     ) {
         super(".popup-background");
         this.append(
@@ -22,8 +22,9 @@ export default class Dialogue extends Popup {
                 }),
                 el("a.confirm-button", confirmTitle, {
                     click: () => {
-                        confirm();
-                        this.delete();
+                        if (confirm() !== false) {
+                            this.delete();
+                        }
                     },
                 }),
             ),

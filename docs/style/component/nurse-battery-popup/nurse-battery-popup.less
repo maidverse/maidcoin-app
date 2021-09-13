@@ -18,7 +18,37 @@
         top     : 0;
     }
 
-    >main {}
+    >main {
+
+        >.range {
+            display         : block;
+            margin          : auto;
+            margin-top      : 20px;
+            appearance      : none;
+            width           : 298px;
+            height          : 8px;
+            background      : transparent;
+            background-image: url(/images/component/dialogue/slider.png);
+            background-size : auto 100%;
+
+            &::-webkit-slider-thumb {
+                appearance      : none;
+                width           : 26px;
+                height          : 27.5px;
+                background      : transparent;
+                background-image: url(/images/component/dialogue/slider-button.png);
+                background-size : auto 100%;
+            }
+
+            &::-moz-range-thumb {
+                width           : 26px;
+                height          : 27.5px;
+                background      : transparent;
+                background-image: url(/images/component/dialogue/slider-button.png);
+                background-size : auto 100%;
+            }
+        }
+    }
 
     >footer {}
 }
