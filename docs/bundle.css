@@ -2109,9 +2109,10 @@ body {
   line-height: 24px;
 }
 .token-prompt > .input {
+  position: absolute;
+  left: calc(50% - 149px);
+  bottom: 70px;
   display: block;
-  margin: auto;
-  text-align: center;
   width: 298px;
   height: 38px;
   background: transparent;
@@ -2119,6 +2120,22 @@ body {
   background-size: auto 100%;
   color: #3b3e4a;
   font-size: 18px;
+  padding: 0 10px;
+}
+.token-prompt > .max-button {
+  position: absolute;
+  right: 35px;
+  bottom: 73px;
+  width: 57px;
+  height: 29.5px;
+  background-image: url(/images/component/dialogue/max-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 6px;
 }
 .select-maid-popup {
   position: relative;

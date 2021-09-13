@@ -13,7 +13,7 @@ export default class TokenPrompt extends Dialogue {
         message: string,
         confirmTitle: string,
         min: BigNumberish,
-        max: BigNumberish,
+        balance: BigNumberish,
         confirm: (value: BigNumber) => void,
     ) {
         super(".token-prompt", title, confirmTitle, () => {
@@ -21,8 +21,8 @@ export default class TokenPrompt extends Dialogue {
             if (value.lt(min)) {
                 new Alert("Error", `Minimum value is ${utils.formatEther(min)}`, "Confirm");
                 return false;
-            } else if (value.gt(max)) {
-                new Alert("Error", `Maximum value is ${utils.formatEther(max)}`, "Confirm");
+            } else if (value.gt(balance)) {
+                new Alert("Error", `Balance is ${utils.formatEther(balance)}`, "Confirm");
                 return false;
             } else {
                 confirm(value);
@@ -30,8 +30,11 @@ export default class TokenPrompt extends Dialogue {
         });
         this.content.append(
             el("p", message),
-            this.input = el("input.input", { value: utils.formatEther(min) }),
+            this.input = el("input.input", { placeholder: `Balance: ${utils.formatEther(balance)}` }),
+            el("a.max-button", "MAX", {
+                click: () => this.input.domElement.value = utils.formatEther(balance),
+            }),
         );
-        this.input.domElement.select();
+        this.input.domElement.focus();
     }
 }
