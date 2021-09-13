@@ -10,7 +10,7 @@ export default class MaidList extends DomNode {
     private selectedMaid: Maid | undefined;
 
     constructor() {
-        super(".any-housekeeper-list");
+        super(".maid-list");
         this.append(
             el(".background"),
             this.content = el(".content"),

@@ -1,4 +1,5 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
+import NurseList from "./NurseList";
 
 export default class SelectNursePopup extends Popup {
 
@@ -14,14 +15,15 @@ export default class SelectNursePopup extends Popup {
                     click: () => this.delete(),
                 }),
                 el("main",
+                    new NurseList(),
                 ),
-                el("footer"),
+                el("footer",
+                    el("a.confirm-button",
+                        "Close",
+                        { click: () => this.delete() },
+                    ),
+                ),
             ),
         );
-
-        this.load();
-    }
-
-    private async load() {
     }
 }

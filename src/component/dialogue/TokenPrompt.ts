@@ -31,7 +31,7 @@ export default class TokenPrompt extends Dialogue {
         this.content.append(
             el("p", message),
             this.input = el("input.input", { placeholder: `Balance: ${utils.formatEther(balance)}` }),
-            el("a.max-button", "MAX", {
+            el("a.max-button", "Max", {
                 click: () => this.input.domElement.value = utils.formatEther(balance),
             }),
         );

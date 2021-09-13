@@ -60,7 +60,7 @@ export default class NurseRaid extends DomNode {
                     },
                 ) : el("a.cancel-button", await NurseRaidContract.checkDone(this.raidId) === true ? "Exit" : "Cancel", {
                     click: async () => {
-                        await NurseRaidContract.exit(this.raidId);
+                        await NurseRaidContract.exit([this.raidId]);
                     },
                 }),
             );

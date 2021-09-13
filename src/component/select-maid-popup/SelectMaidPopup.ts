@@ -71,7 +71,7 @@ export default class SelectMaidPopup extends Popup {
                     {
                         click: async () => {
                             //TODO: select housekeeper
-                            await NurseRaidContract.enter(this.raidId, Config.contracts.Maids);
+                            await NurseRaidContract.enter(this.raidId);
                             this.delete();
                         },
                     },

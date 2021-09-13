@@ -22,10 +22,10 @@ import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 interface INurseRaidInterface extends ethers.utils.Interface {
   functions: {
     "checkDone(uint256)": FunctionFragment;
-    "create(uint256,uint256,uint256,uint256,uint256)": FunctionFragment;
+    "create(uint256[],uint256[],uint256[],uint256[],uint256[])": FunctionFragment;
     "enter(uint256,address,uint256)": FunctionFragment;
     "enterWithPermitAll(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)": FunctionFragment;
-    "exit(uint256)": FunctionFragment;
+    "exit(uint256[])": FunctionFragment;
     "isMaidsApproved(address)": FunctionFragment;
     "maidCafe()": FunctionFragment;
     "maidCoin()": FunctionFragment;
@@ -42,11 +42,11 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "create",
     values: [
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish,
-      BigNumberish
+      BigNumberish[],
+      BigNumberish[],
+      BigNumberish[],
+      BigNumberish[],
+      BigNumberish[]
     ]
   ): string;
   encodeFunctionData(
@@ -68,7 +68,10 @@ interface INurseRaidInterface extends ethers.utils.Interface {
       BytesLike
     ]
   ): string;
-  encodeFunctionData(functionFragment: "exit", values: [BigNumberish]): string;
+  encodeFunctionData(
+    functionFragment: "exit",
+    values: [BigNumberish[]]
+  ): string;
   encodeFunctionData(
     functionFragment: "isMaidsApproved",
     values: [string]
@@ -165,11 +168,11 @@ export class INurseRaid extends BaseContract {
     checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<[boolean]>;
 
     create(
-      entranceFee: BigNumberish,
-      nursePart: BigNumberish,
-      maxRewardCount: BigNumberish,
-      duration: BigNumberish,
-      endBlock: BigNumberish,
+      entranceFee: BigNumberish[],
+      nursePart: BigNumberish[],
+      maxRewardCount: BigNumberish[],
+      duration: BigNumberish[],
+      endBlock: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -195,7 +198,7 @@ export class INurseRaid extends BaseContract {
     ): Promise<ContractTransaction>;
 
     exit(
-      id: BigNumberish,
+      ids: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -220,11 +223,11 @@ export class INurseRaid extends BaseContract {
   checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
   create(
-    entranceFee: BigNumberish,
-    nursePart: BigNumberish,
-    maxRewardCount: BigNumberish,
-    duration: BigNumberish,
-    endBlock: BigNumberish,
+    entranceFee: BigNumberish[],
+    nursePart: BigNumberish[],
+    maxRewardCount: BigNumberish[],
+    duration: BigNumberish[],
+    endBlock: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -250,7 +253,7 @@ export class INurseRaid extends BaseContract {
   ): Promise<ContractTransaction>;
 
   exit(
-    id: BigNumberish,
+    ids: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -272,11 +275,11 @@ export class INurseRaid extends BaseContract {
     checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
     create(
-      entranceFee: BigNumberish,
-      nursePart: BigNumberish,
-      maxRewardCount: BigNumberish,
-      duration: BigNumberish,
-      endBlock: BigNumberish,
+      entranceFee: BigNumberish[],
+      nursePart: BigNumberish[],
+      maxRewardCount: BigNumberish[],
+      duration: BigNumberish[],
+      endBlock: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -301,7 +304,7 @@ export class INurseRaid extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    exit(id: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    exit(ids: BigNumberish[], overrides?: CallOverrides): Promise<void>;
 
     isMaidsApproved(maids: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -369,11 +372,11 @@ export class INurseRaid extends BaseContract {
     checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     create(
-      entranceFee: BigNumberish,
-      nursePart: BigNumberish,
-      maxRewardCount: BigNumberish,
-      duration: BigNumberish,
-      endBlock: BigNumberish,
+      entranceFee: BigNumberish[],
+      nursePart: BigNumberish[],
+      maxRewardCount: BigNumberish[],
+      duration: BigNumberish[],
+      endBlock: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -399,7 +402,7 @@ export class INurseRaid extends BaseContract {
     ): Promise<BigNumber>;
 
     exit(
-      id: BigNumberish,
+      ids: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -428,11 +431,11 @@ export class INurseRaid extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     create(
-      entranceFee: BigNumberish,
-      nursePart: BigNumberish,
-      maxRewardCount: BigNumberish,
-      duration: BigNumberish,
-      endBlock: BigNumberish,
+      entranceFee: BigNumberish[],
+      nursePart: BigNumberish[],
+      maxRewardCount: BigNumberish[],
+      duration: BigNumberish[],
+      endBlock: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -458,7 +461,7 @@ export class INurseRaid extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     exit(
-      id: BigNumberish,
+      ids: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 

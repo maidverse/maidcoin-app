@@ -21,16 +21,16 @@ import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 
 interface CloneNursesInterface extends ethers.utils.Interface {
   functions: {
-    "addNurseType(uint256,uint256,uint256,uint256)": FunctionFragment;
+    "addNurseType(uint256[],uint256[],uint256[],uint256[])": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "assemble(uint256,uint256)": FunctionFragment;
     "assembleWithPermit(uint256,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
     "changeSupportedPower(address,int256)": FunctionFragment;
     "checkSupportingRoute(address)": FunctionFragment;
-    "claim(uint256)": FunctionFragment;
-    "destroy(uint256,uint256)": FunctionFragment;
-    "elongateLifetime(uint256,uint256)": FunctionFragment;
+    "claim(uint256[])": FunctionFragment;
+    "destroy(uint256[],uint256[])": FunctionFragment;
+    "elongateLifetime(uint256[],uint256[])": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "maidCoin()": FunctionFragment;
@@ -67,7 +67,7 @@ interface CloneNursesInterface extends ethers.utils.Interface {
 
   encodeFunctionData(
     functionFragment: "addNurseType",
-    values: [BigNumberish, BigNumberish, BigNumberish, BigNumberish]
+    values: [BigNumberish[], BigNumberish[], BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(
     functionFragment: "approve",
@@ -97,14 +97,17 @@ interface CloneNursesInterface extends ethers.utils.Interface {
     functionFragment: "checkSupportingRoute",
     values: [string]
   ): string;
-  encodeFunctionData(functionFragment: "claim", values: [BigNumberish]): string;
+  encodeFunctionData(
+    functionFragment: "claim",
+    values: [BigNumberish[]]
+  ): string;
   encodeFunctionData(
     functionFragment: "destroy",
-    values: [BigNumberish, BigNumberish]
+    values: [BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(
     functionFragment: "elongateLifetime",
-    values: [BigNumberish, BigNumberish]
+    values: [BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(
     functionFragment: "getApproved",
@@ -411,10 +414,10 @@ export class CloneNurses extends BaseContract {
 
   functions: {
     addNurseType(
-      partCount: BigNumberish,
-      destroyReturn: BigNumberish,
-      power: BigNumberish,
-      lifetime: BigNumberish,
+      partCounts: BigNumberish[],
+      destroyReturns: BigNumberish[],
+      powers: BigNumberish[],
+      lifetimes: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -454,19 +457,19 @@ export class CloneNurses extends BaseContract {
     ): Promise<ContractTransaction>;
 
     claim(
-      id: BigNumberish,
+      ids: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     destroy(
-      id: BigNumberish,
-      toId: BigNumberish,
+      ids: BigNumberish[],
+      toIds: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     elongateLifetime(
-      id: BigNumberish,
-      parts: BigNumberish,
+      ids: BigNumberish[],
+      parts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -646,10 +649,10 @@ export class CloneNurses extends BaseContract {
   };
 
   addNurseType(
-    partCount: BigNumberish,
-    destroyReturn: BigNumberish,
-    power: BigNumberish,
-    lifetime: BigNumberish,
+    partCounts: BigNumberish[],
+    destroyReturns: BigNumberish[],
+    powers: BigNumberish[],
+    lifetimes: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -689,19 +692,19 @@ export class CloneNurses extends BaseContract {
   ): Promise<ContractTransaction>;
 
   claim(
-    id: BigNumberish,
+    ids: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   destroy(
-    id: BigNumberish,
-    toId: BigNumberish,
+    ids: BigNumberish[],
+    toIds: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   elongateLifetime(
-    id: BigNumberish,
-    parts: BigNumberish,
+    ids: BigNumberish[],
+    parts: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -875,12 +878,12 @@ export class CloneNurses extends BaseContract {
 
   callStatic: {
     addNurseType(
-      partCount: BigNumberish,
-      destroyReturn: BigNumberish,
-      power: BigNumberish,
-      lifetime: BigNumberish,
+      partCounts: BigNumberish[],
+      destroyReturns: BigNumberish[],
+      powers: BigNumberish[],
+      lifetimes: BigNumberish[],
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<BigNumber[]>;
 
     approve(
       to: string,
@@ -917,17 +920,17 @@ export class CloneNurses extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[string, BigNumber]>;
 
-    claim(id: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    claim(ids: BigNumberish[], overrides?: CallOverrides): Promise<void>;
 
     destroy(
-      id: BigNumberish,
-      toId: BigNumberish,
+      ids: BigNumberish[],
+      toIds: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
 
     elongateLifetime(
-      id: BigNumberish,
-      parts: BigNumberish,
+      ids: BigNumberish[],
+      parts: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1199,10 +1202,10 @@ export class CloneNurses extends BaseContract {
 
   estimateGas: {
     addNurseType(
-      partCount: BigNumberish,
-      destroyReturn: BigNumberish,
-      power: BigNumberish,
-      lifetime: BigNumberish,
+      partCounts: BigNumberish[],
+      destroyReturns: BigNumberish[],
+      powers: BigNumberish[],
+      lifetimes: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -1242,19 +1245,19 @@ export class CloneNurses extends BaseContract {
     ): Promise<BigNumber>;
 
     claim(
-      id: BigNumberish,
+      ids: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     destroy(
-      id: BigNumberish,
-      toId: BigNumberish,
+      ids: BigNumberish[],
+      toIds: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     elongateLifetime(
-      id: BigNumberish,
-      parts: BigNumberish,
+      ids: BigNumberish[],
+      parts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -1419,10 +1422,10 @@ export class CloneNurses extends BaseContract {
 
   populateTransaction: {
     addNurseType(
-      partCount: BigNumberish,
-      destroyReturn: BigNumberish,
-      power: BigNumberish,
-      lifetime: BigNumberish,
+      partCounts: BigNumberish[],
+      destroyReturns: BigNumberish[],
+      powers: BigNumberish[],
+      lifetimes: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -1465,19 +1468,19 @@ export class CloneNurses extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     claim(
-      id: BigNumberish,
+      ids: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     destroy(
-      id: BigNumberish,
-      toId: BigNumberish,
+      ids: BigNumberish[],
+      toIds: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     elongateLifetime(
-      id: BigNumberish,
-      parts: BigNumberish,
+      ids: BigNumberish[],
+      parts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 

@@ -27,9 +27,9 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
     "balanceOf(address)": FunctionFragment;
     "changeSupportedPower(address,int256)": FunctionFragment;
     "checkSupportingRoute(address)": FunctionFragment;
-    "claim(uint256)": FunctionFragment;
-    "destroy(uint256,uint256)": FunctionFragment;
-    "elongateLifetime(uint256,uint256)": FunctionFragment;
+    "claim(uint256[])": FunctionFragment;
+    "destroy(uint256[],uint256[])": FunctionFragment;
+    "elongateLifetime(uint256[],uint256[])": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "maidCoin()": FunctionFragment;
@@ -85,14 +85,17 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
     functionFragment: "checkSupportingRoute",
     values: [string]
   ): string;
-  encodeFunctionData(functionFragment: "claim", values: [BigNumberish]): string;
+  encodeFunctionData(
+    functionFragment: "claim",
+    values: [BigNumberish[]]
+  ): string;
   encodeFunctionData(
     functionFragment: "destroy",
-    values: [BigNumberish, BigNumberish]
+    values: [BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(
     functionFragment: "elongateLifetime",
-    values: [BigNumberish, BigNumberish]
+    values: [BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(
     functionFragment: "getApproved",
@@ -381,19 +384,19 @@ export class ICloneNurses extends BaseContract {
     ): Promise<ContractTransaction>;
 
     claim(
-      id: BigNumberish,
+      ids: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     destroy(
-      id: BigNumberish,
-      toId: BigNumberish,
+      ids: BigNumberish[],
+      toIds: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     elongateLifetime(
-      id: BigNumberish,
-      parts: BigNumberish,
+      ids: BigNumberish[],
+      parts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -570,19 +573,19 @@ export class ICloneNurses extends BaseContract {
   ): Promise<ContractTransaction>;
 
   claim(
-    id: BigNumberish,
+    ids: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   destroy(
-    id: BigNumberish,
-    toId: BigNumberish,
+    ids: BigNumberish[],
+    toIds: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   elongateLifetime(
-    id: BigNumberish,
-    parts: BigNumberish,
+    ids: BigNumberish[],
+    parts: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -752,17 +755,17 @@ export class ICloneNurses extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[string, BigNumber]>;
 
-    claim(id: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    claim(ids: BigNumberish[], overrides?: CallOverrides): Promise<void>;
 
     destroy(
-      id: BigNumberish,
-      toId: BigNumberish,
+      ids: BigNumberish[],
+      toIds: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
 
     elongateLifetime(
-      id: BigNumberish,
-      parts: BigNumberish,
+      ids: BigNumberish[],
+      parts: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1025,19 +1028,19 @@ export class ICloneNurses extends BaseContract {
     ): Promise<BigNumber>;
 
     claim(
-      id: BigNumberish,
+      ids: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     destroy(
-      id: BigNumberish,
-      toId: BigNumberish,
+      ids: BigNumberish[],
+      toIds: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     elongateLifetime(
-      id: BigNumberish,
-      parts: BigNumberish,
+      ids: BigNumberish[],
+      parts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -1202,19 +1205,19 @@ export class ICloneNurses extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     claim(
-      id: BigNumberish,
+      ids: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     destroy(
-      id: BigNumberish,
-      toId: BigNumberish,
+      ids: BigNumberish[],
+      toIds: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     elongateLifetime(
-      id: BigNumberish,
-      parts: BigNumberish,
+      ids: BigNumberish[],
+      parts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 

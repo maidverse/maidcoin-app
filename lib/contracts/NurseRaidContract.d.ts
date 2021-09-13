@@ -19,9 +19,9 @@ declare class NurseRaidContract extends Contract<NurseRaid> {
     getRaid(raidId: number): Promise<RaidInfo>;
     getChallenger(raidId: number, owner: string): Promise<ChallengerInfo>;
     checkDone(raidId: number): Promise<boolean | undefined>;
-    create(entranceFee: BigNumberish, nursePart: BigNumberish, maxRewardCount: BigNumberish, duration: BigNumberish, endBlock: BigNumberish): Promise<void>;
-    enter(raidId: number, maids: string, maidId?: number): Promise<void>;
-    exit(raidId: number): Promise<void>;
+    create(entranceFees: BigNumberish[], nurseParts: BigNumberish[], maxRewardCounts: BigNumberish[], durations: BigNumberish[], endBlocks: BigNumberish[]): Promise<void>;
+    enter(raidId: number, maids?: string, maidId?: number): Promise<void>;
+    exit(raidIds: number[]): Promise<void>;
 }
 declare const _default: NurseRaidContract;
 export default _default;

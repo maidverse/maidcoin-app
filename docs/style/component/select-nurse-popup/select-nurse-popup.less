@@ -18,7 +18,34 @@
         top     : 0;
     }
 
-    >main {}
+    >main {
+        margin-top: 5px;
+        height    : 520px;
+        overflow-y: scroll;
+    }
 
-    >footer {}
+    >footer {
+        position: absolute;
+        left    : 0;
+        width   : 100%;
+        bottom  : 20px;
+        height  : 28px;
+
+        >.confirm-button {
+            display         : block;
+            margin          : auto;
+            width           : 209.5px;
+            height          : 33px;
+            background-image: url(/images/component/select-nurse-popup/confirm-button.png);
+            background-size : auto 100%;
+            color           : #000000;
+            font-size       : 13px;
+            text-transform  : uppercase;
+            text-align      : center;
+            font-weight     : bold;
+            padding-top     : 4px;
+            padding-left    : 1px;
+            line-height     : 21px;
+        }
+    }
 }

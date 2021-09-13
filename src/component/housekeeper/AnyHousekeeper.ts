@@ -25,7 +25,9 @@ export default class AnyHousekeeper extends DomNode {
                 el("img.image", { src: `https://storage.googleapis.com/maidcoin/LingerieGirl/Face/${this.id}.png` }),
                 el(".name", tokenInfo.name),
             );
-            this.onDom("click", () => new SushiGirlDetail(this.id));
+            if (this.selectable !== true) {
+                this.onDom("click", () => new SushiGirlDetail(this.id));
+            }
         }
 
         else if (this.type === "SushiGirl") {
@@ -35,7 +37,9 @@ export default class AnyHousekeeper extends DomNode {
                 el("img.image", { src: `https://storage.googleapis.com/maidcoin/SushiGirl/Face/${this.id}.png` }),
                 el(".name", tokenInfo.name),
             );
-            this.onDom("click", () => new LingerieGirlDetail(this.id));
+            if (this.selectable !== true) {
+                this.onDom("click", () => new LingerieGirlDetail(this.id));
+            }
         }
     }
 

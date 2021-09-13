@@ -1,11 +1,14 @@
 import { BigNumber, BigNumberish, constants } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
-import NurseRaidArtifact from "./maidcoin/artifacts/contracts/NurseRaid.sol/NurseRaid.json";
 import Contract from "./Contract";
+import LingerieGirlsContract from "./LingerieGirlsContract";
+import NurseRaidArtifact from "./maidcoin/artifacts/contracts/NurseRaid.sol/NurseRaid.json";
+import { NurseRaid } from "./maidcoin/typechain";
 import MaidCoinContract from "./MaidCoinContract";
 import MaidsContract from "./MaidsContract";
-import { NurseRaid } from "./maidcoin/typechain";
+import ERC721Contract from "./standard/ERC721Contract";
+import SushiGirlsContract from "./SushiGirlsContract";
 
 export interface RaidInfo {
     entranceFee: BigNumber;
@@ -62,17 +65,21 @@ class NurseRaidContract extends Contract<NurseRaid> {
     }
 
     public async create(
-        entranceFee: BigNumberish,
-        nursePart: BigNumberish,
-        maxRewardCount: BigNumberish,
-        duration: BigNumberish,
-        endBlock: BigNumberish,
+        entranceFees: BigNumberish[],
+        nurseParts: BigNumberish[],
+        maxRewardCounts: BigNumberish[],
+        durations: BigNumberish[],
+        endBlocks: BigNumberish[],
     ) {
         const contract = await this.connectAndGetWalletContract();
-        await contract?.create(entranceFee, nursePart, maxRewardCount, duration, endBlock);
+        await contract?.create(entranceFees, nurseParts, maxRewardCounts, durations, endBlocks);
     }
 
-    public async enter(raidId: number, maids: string, maidId?: number) {
+    public async enter(raidId: number, maids?: string, maidId?: number) {
+
+        if (maids === undefined) {
+            maids = constants.AddressZero;
+        }
 
         const contract = await this.connectAndGetWalletContract();
         const owner = await Wallet.loadAddress();
@@ -80,9 +87,21 @@ class NurseRaidContract extends Contract<NurseRaid> {
 
             const raid = await this.getRaid(raidId);
 
+            let supporterContract: undefined | ERC721Contract<any>;
+            if (maids === MaidsContract.address) {
+                supporterContract = MaidsContract;
+            } else if (maids === LingerieGirlsContract.address) {
+                supporterContract = LingerieGirlsContract;
+            } else if (maids === SushiGirlsContract.address) {
+                supporterContract = SushiGirlsContract;
+            }
+
             if (
                 (await MaidCoinContract.allowance(owner, this.address)).lt(raid.entranceFee) ||
-                await MaidsContract.isApprovedForAll(owner, this.address) !== true
+                (
+                    supporterContract !== undefined &&
+                    await supporterContract.isApprovedForAll(owner, this.address) !== true
+                )
             ) {
                 const deadline = Math.ceil(Date.now() / 1000) + 1000000;
 
@@ -98,14 +117,14 @@ class NurseRaidContract extends Contract<NurseRaid> {
                     deadline,
                 );
 
-                const maidSigned = await Wallet.signERC721PermitAll(
+                const maidSigned = supporterContract === undefined ? { v: 0, r: "0", s: "0" } : await Wallet.signERC721PermitAll(
 
-                    await MaidsContract.getName(),
+                    await supporterContract.getName(),
                     "1",
-                    MaidsContract.address,
+                    supporterContract.address,
 
                     this.address,
-                    await MaidsContract.getNonceForAll(owner),
+                    await supporterContract.getNonceForAll(owner),
                     deadline,
                 );
 
@@ -124,9 +143,9 @@ class NurseRaidContract extends Contract<NurseRaid> {
         }
     }
 
-    public async exit(raidId: number) {
+    public async exit(raidIds: number[]) {
         const contract = await this.connectAndGetWalletContract();
-        await contract?.exit(raidId);
+        await contract?.exit(raidIds);
     }
 }
 

@@ -141,29 +141,29 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
+        internalType: "uint256[]",
         name: "entranceFee",
-        type: "uint256",
+        type: "uint256[]",
       },
       {
-        internalType: "uint256",
+        internalType: "uint256[]",
         name: "nursePart",
-        type: "uint256",
+        type: "uint256[]",
       },
       {
-        internalType: "uint256",
+        internalType: "uint256[]",
         name: "maxRewardCount",
-        type: "uint256",
+        type: "uint256[]",
       },
       {
-        internalType: "uint256",
+        internalType: "uint256[]",
         name: "duration",
-        type: "uint256",
+        type: "uint256[]",
       },
       {
-        internalType: "uint256",
+        internalType: "uint256[]",
         name: "endBlock",
-        type: "uint256",
+        type: "uint256[]",
       },
     ],
     name: "create",
@@ -261,9 +261,9 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
       },
     ],
     name: "exit",

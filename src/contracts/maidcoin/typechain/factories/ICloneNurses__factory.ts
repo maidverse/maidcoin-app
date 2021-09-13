@@ -358,9 +358,9 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
       },
     ],
     name: "claim",
@@ -371,14 +371,14 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
       },
       {
-        internalType: "uint256",
-        name: "toId",
-        type: "uint256",
+        internalType: "uint256[]",
+        name: "toIds",
+        type: "uint256[]",
       },
     ],
     name: "destroy",
@@ -389,14 +389,14 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
       },
       {
-        internalType: "uint256",
+        internalType: "uint256[]",
         name: "parts",
-        type: "uint256",
+        type: "uint256[]",
       },
     ],
     name: "elongateLifetime",

@@ -3,7 +3,8 @@ import superagent from "superagent";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NursePartContract from "../../contracts/NursePartContract";
 import Wallet from "../../ethereum/Wallet";
-import NurseBatteryPopup from "./NurseBatteryPopup";
+import Alert from "../dialogue/Alert";
+import CreateNursePopup from "./CreateNursePopup";
 
 export default class NurseFactory extends DomNode {
 
@@ -45,7 +46,13 @@ export default class NurseFactory extends DomNode {
             this.footer.empty().append(
                 el(".name", tokenInfo.name),
                 el("a.create-button", "Create", {
-                    click: () => new NurseBatteryPopup(this.nurseType),
+                    click: () => {
+                        if (balance.toNumber() < nurseType.partCount) {
+                            new Alert("Error", "Nurse Parts not enough.", "Confirm");
+                        } else {
+                            new CreateNursePopup(this.nurseType);
+                        }
+                    },
                 }),
             );
         }

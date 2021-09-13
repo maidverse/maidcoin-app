@@ -3,7 +3,6 @@ import { utils } from "ethers";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
-import LingerieGirlsContract from "../../contracts/LingerieGirlsContract";
 import MaidsContract from "../../contracts/MaidsContract";
 import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
@@ -62,10 +61,10 @@ export default class Admin implements View {
                     el("a.action-button.create-nurse-type-button", "Create Nurse Type", {
                         click: async () => {
                             await CloneNursesContract.addNurseType(
-                                parseInt(partCountInput.domElement.value, 10),
-                                utils.parseEther(destroyReturnInput.domElement.value),
-                                parseInt(powerInput.domElement.value, 10),
-                                parseInt(lifetimeInput.domElement.value, 10),
+                                [parseInt(partCountInput.domElement.value, 10)],
+                                [utils.parseEther(destroyReturnInput.domElement.value)],
+                                [parseInt(powerInput.domElement.value, 10)],
+                                [parseInt(lifetimeInput.domElement.value, 10)],
                             );
                         },
                     }),
@@ -92,11 +91,11 @@ export default class Admin implements View {
                     el("a.action-button.create-nurse-raid-button", "Create Nurse Raid", {
                         click: async () => {
                             await NurseRaidContract.create(
-                                utils.parseEther(entranceFeeInput.domElement.value),
-                                parseInt(nursePartInput.domElement.value, 10),
-                                parseInt(maxRewardCountInput.domElement.value, 10),
-                                parseInt(durationInput.domElement.value, 10),
-                                parseInt(endBlockInput.domElement.value, 10),
+                                [utils.parseEther(entranceFeeInput.domElement.value)],
+                                [parseInt(nursePartInput.domElement.value, 10)],
+                                [parseInt(maxRewardCountInput.domElement.value, 10)],
+                                [parseInt(durationInput.domElement.value, 10)],
+                                [parseInt(endBlockInput.domElement.value, 10)],
                             );
                         },
                     }),

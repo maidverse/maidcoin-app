@@ -1,0 +1,54 @@
+.create-nurse-popup {
+    position        : relative;
+    width           : 369px;
+    margin          : auto;
+    height          : 412.5px;
+    background-image: url(/images/component/nurse-battery-popup/background.png);
+    background-size : auto 100%;
+
+    >h1 {
+        padding-left: 16px;
+        padding-top : 4px;
+        font-size   : 18px;
+    }
+
+    >.close-button {
+        position: absolute;
+        right   : 23px;
+        top     : 0;
+    }
+
+    >main {
+
+        >.range {
+            display         : block;
+            margin          : auto;
+            margin-top      : 20px;
+            appearance      : none;
+            width           : 298px;
+            height          : 8px;
+            background      : transparent;
+            background-image: url(/images/component/dialogue/slider.png);
+            background-size : auto 100%;
+
+            &::-webkit-slider-thumb {
+                appearance      : none;
+                width           : 26px;
+                height          : 27.5px;
+                background      : transparent;
+                background-image: url(/images/component/dialogue/slider-button.png);
+                background-size : auto 100%;
+            }
+
+            &::-moz-range-thumb {
+                width           : 26px;
+                height          : 27.5px;
+                background      : transparent;
+                background-image: url(/images/component/dialogue/slider-button.png);
+                background-size : auto 100%;
+            }
+        }
+    }
+
+    >footer {}
+}

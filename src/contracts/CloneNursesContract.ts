@@ -2,9 +2,9 @@ import { BigNumber, BigNumberish } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
 import CloneNursesArtifact from "./maidcoin/artifacts/contracts/CloneNurses.sol/CloneNurses.json";
+import { CloneNurses } from "./maidcoin/typechain";
 import NursePartContract from "./NursePartContract";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
-import { CloneNurses } from "./maidcoin/typechain";
 
 interface NurseType {
     partCount: number;
@@ -33,13 +33,13 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
     }
 
     public async addNurseType(
-        partCount: BigNumberish,
-        destroyReturn: BigNumber,
-        power: BigNumberish,
-        lifetime: BigNumberish
+        partCounts: BigNumberish[],
+        destroyReturns: BigNumber[],
+        powers: BigNumberish[],
+        lifetimes: BigNumberish[]
     ) {
         const contract = await this.connectAndGetWalletContract();
-        await contract?.addNurseType(partCount, destroyReturn, power, lifetime);
+        await contract?.addNurseType(partCounts, destroyReturns, powers, lifetimes);
     }
 
     public async getNurseType(nurseType: number): Promise<NurseType> {
@@ -106,9 +106,9 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
         }
     }
 
-    public async claim(nurseId: BigNumberish) {
+    public async claim(nurseIds: BigNumberish[]) {
         const contract = await this.connectAndGetWalletContract();
-        await contract?.claim(nurseId);
+        await contract?.claim(nurseIds);
     }
 }
 
