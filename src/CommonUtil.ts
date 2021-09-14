@@ -18,7 +18,15 @@ class CommonUtil {
         const minute = Math.floor(seconds / 60);
         seconds -= minute * 60;
 
-        return day === 0 ? `${hour}h ${minute}m` : `${day}d ${hour}h ${minute}m`;
+        if (day !== 0) {
+            return `${day}d ${hour}h ${minute}m ${seconds}s`;
+        } else if (hour !== 0) {
+            return `${hour}h ${minute}m ${seconds}s`;
+        } else if (minute !== 0) {
+            return `${minute}m ${seconds}s`;
+        } else {
+            return `${seconds}s`;
+        }
     }
 
     public numberWithCommas(x: string) {

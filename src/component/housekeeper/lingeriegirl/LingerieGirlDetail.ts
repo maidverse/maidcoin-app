@@ -25,7 +25,7 @@ export default class LingerieGirlDetail extends Popup {
         const lingerieGirlOwner = await LingerieGirlsContract.ownerOf(this.id);
         const lingerieGirlPower = await LingerieGirlsContract.powerOf(this.id);
 
-        const result = await superagent.post(`https://api.maidcoin.org/lingeriegirls/${this.id}`);
+        const result = await superagent.get(`https://api.maidcoin.org/lingeriegirls/${this.id}`);
         const tokenInfo = result.body;
 
         this.content.empty().append(

@@ -52,7 +52,7 @@ export default class NurseFarm extends DomNode {
 
                 const supportingTo = (await CloneNursesContract.getSupportingTo(owner)).toNumber();
 
-                const result = await superagent.post(`https://api.maidcoin.org/clonenurses/${supportingTo}`);
+                const result = await superagent.get(`https://api.maidcoin.org/clonenurses/${supportingTo}`);
                 const tokenInfo = result.body;
 
                 console.log(tokenInfo);

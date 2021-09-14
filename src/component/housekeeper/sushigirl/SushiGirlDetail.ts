@@ -25,7 +25,7 @@ export default class SushiGirlDetail extends Popup {
         const sushiGirlOwner = await SushiGirlsContract.ownerOf(this.id);
         const sushiGirlPower = await SushiGirlsContract.powerOf(this.id);
 
-        const result = await superagent.post(`https://api.maidcoin.org/sushigirls/${this.id}`);
+        const result = await superagent.get(`https://api.maidcoin.org/sushigirls/${this.id}`);
         const tokenInfo = result.body;
 
         this.content.empty().append(

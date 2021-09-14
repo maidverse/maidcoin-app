@@ -33,7 +33,7 @@ export default class NurseDetail extends Popup {
             const supportingTo = (await CloneNursesContract.getSupportingTo(owner)).toNumber();
             const supportingAmount = supportingTo !== this.nurseId ? BigNumber.from(0) : await TheMasterContract.getSupportingAmount(owner);
 
-            const result = await superagent.post(`https://api.maidcoin.org/clonenurses/${this.nurseId}`);
+            const result = await superagent.get(`https://api.maidcoin.org/clonenurses/${this.nurseId}`);
             const tokenInfo = result.body;
 
             const pendingReward = await CloneNursesContract.getPendigReward(this.nurseId);

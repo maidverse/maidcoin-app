@@ -9,7 +9,7 @@ export default class NursePart extends DomNode {
     }
 
     private async load() {
-        const result = await superagent.post(`https://api.maidcoin.org/nurseparts/${this.nurseType}`);
+        const result = await superagent.get(`https://api.maidcoin.org/nurseparts/${this.nurseType}`);
         const tokenInfo = result.body;
 
         this.append(

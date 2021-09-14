@@ -11,7 +11,7 @@ export default class SushiGirl extends DomNode {
     }
 
     private async load() {
-        const result = await superagent.post(`https://api.maidcoin.org/sushigirls/${this.id}`);
+        const result = await superagent.get(`https://api.maidcoin.org/sushigirls/${this.id}`);
         const tokenInfo = result.body;
 
         this.empty().append(

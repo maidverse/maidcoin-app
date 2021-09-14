@@ -16,7 +16,7 @@ export default class Nurse extends DomNode {
 
     private async load() {
         const { nurseType } = await CloneNursesContract.getNurse(this.nurseId);
-        const result = await superagent.post(`https://api.maidcoin.org/nursetypes/${nurseType}`);
+        const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurseType}`);
         const tokenInfo = result.body;
 
         const image = el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${tokenInfo.name}Idle.png`, height: "70" }).appendTo(this);

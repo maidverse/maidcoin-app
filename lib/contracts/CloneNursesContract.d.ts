@@ -1,10 +1,11 @@
 import { BigNumber, BigNumberish } from "ethers";
 import { CloneNurses } from "./maidcoin/typechain";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
-interface NurseType {
+export interface NurseType {
     partCount: number;
     destroyReturn: BigNumber;
     power: number;
+    lifetime: number;
 }
 interface NurseInfo {
     nurseType: number;

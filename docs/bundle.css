@@ -1436,7 +1436,7 @@ body {
   right: 23px;
   top: 0;
 }
-.create-nurse-popup > main > .range {
+.create-nurse-popup > .range {
   display: block;
   margin: auto;
   margin-top: 20px;
@@ -1444,22 +1444,22 @@ body {
   width: 298px;
   height: 8px;
   background: transparent;
-  background-image: url(/images/component/dialogue/slider.png);
+  background-image: url(/images/component/nurse-battery-popup/slider.png);
   background-size: auto 100%;
 }
-.create-nurse-popup > main > .range::-webkit-slider-thumb {
+.create-nurse-popup > .range::-webkit-slider-thumb {
   appearance: none;
   width: 26px;
   height: 27.5px;
   background: transparent;
-  background-image: url(/images/component/dialogue/slider-button.png);
+  background-image: url(/images/component/nurse-battery-popup/slider-button.png);
   background-size: auto 100%;
 }
-.create-nurse-popup > main > .range::-moz-range-thumb {
+.create-nurse-popup > .range::-moz-range-thumb {
   width: 26px;
   height: 27.5px;
   background: transparent;
-  background-image: url(/images/component/dialogue/slider-button.png);
+  background-image: url(/images/component/nurse-battery-popup/slider-button.png);
   background-size: auto 100%;
 }
 .nurse-part {

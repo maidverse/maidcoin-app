@@ -41,7 +41,7 @@ export default class MaidDetail extends Popup {
         const maidOwner = await MaidsContract.ownerOf(this.maidId);
         const maidPower = await MaidsContract.powerOf(this.maidId);
 
-        const result = await superagent.post(`https://api.maidcoin.org/maids/${this.maidId}`);
+        const result = await superagent.get(`https://api.maidcoin.org/maids/${this.maidId}`);
         const tokenInfo = result.body;
 
         this.content.empty().append(

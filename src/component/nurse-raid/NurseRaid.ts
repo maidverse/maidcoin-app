@@ -23,7 +23,7 @@ export default class NurseRaid extends DomNode {
 
     private async load() {
 
-        const result = await superagent.post(`https://api.maidcoin.org/nursetypes/${this.raid.nursePart}`);
+        const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${this.raid.nursePart}`);
         const tokenInfo = result.body;
 
         this.content.empty().append(

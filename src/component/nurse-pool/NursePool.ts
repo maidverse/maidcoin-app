@@ -18,7 +18,7 @@ export default class NursePool extends DomNode {
 
     private async load() {
 
-        const result = await superagent.post(`https://api.maidcoin.org/nursetypes/${this.nurseType}`);
+        const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${this.nurseType}`);
         const tokenInfo = result.body;
 
         let nurseList;

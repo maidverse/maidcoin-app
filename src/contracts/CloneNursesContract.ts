@@ -6,10 +6,11 @@ import { CloneNurses } from "./maidcoin/typechain";
 import NursePartContract from "./NursePartContract";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 
-interface NurseType {
+export interface NurseType {
     partCount: number;
     destroyReturn: BigNumber;
     power: number;
+    lifetime: number;
 }
 
 interface NurseInfo {
@@ -43,11 +44,12 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
     }
 
     public async getNurseType(nurseType: number): Promise<NurseType> {
-        const [partCount, destroyReturn, power] = await this.contract.nurseTypes(nurseType);
+        const [partCount, destroyReturn, power, lifetime] = await this.contract.nurseTypes(nurseType);
         return {
             partCount: partCount.toNumber(),
             destroyReturn,
             power: power.toNumber(),
+            lifetime: lifetime.toNumber(),
         };
     }
 
