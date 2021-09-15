@@ -19,10 +19,74 @@
         }
     }
 
-    >.balance {
-        width           : 215.5px;
-        height          : 185.5px;
-        background-image: url(/images/view/maid-cafe/balloon.png);
-        background-size : auto 100%;
+    >main {
+        >.button-container {
+            display: flex;
+
+            >.stake-button,
+            >.unstake-button {
+                display         : block;
+                width           : 204.5px;
+                height          : 33.5px;
+                background-image: url(/images/view/maid-cafe/button.png);
+                background-size : auto 100%;
+                text-align      : center;
+                padding-top     : 8px;
+
+                &.on {
+                    background-image: url(/images/view/maid-cafe/button-on.png);
+                }
+            }
+        }
+
+        >.info {
+            display: flex;
+
+            >.apr {
+                flex-grow   : 1;
+                text-align  : right;
+                font-size   : 20px;
+                font-family : "refrigerator-deluxe";
+                margin-right: 10px;
+
+                >span {
+                    color: #ffde00;
+                }
+            }
+
+            >.price {}
+        }
+
+        >.tab {
+            >.input-container {
+                >input {
+                    display         : block;
+                    width           : 360px;
+                    height          : 34px;
+                    background-image: url(/images/view/maid-cafe/amount-input.png);
+                    background-size : auto 100%;
+                }
+            }
+        }
+    }
+
+    >footer {
+        position: relative;
+
+        >.npc {
+            position: absolute;
+            top     : 0;
+            left    : calc(50% - 220px);
+        }
+
+        >.balance {
+            position        : absolute;
+            top             : 0;
+            left            : calc(50% - 20px);
+            width           : 215.5px;
+            height          : 185.5px;
+            background-image: url(/images/view/maid-cafe/balloon.png);
+            background-size : auto 100%;
+        }
     }
 }

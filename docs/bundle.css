@@ -548,7 +548,55 @@ body {
   animation: maid-view-slide-in 0.5s 0.2s ease-out;
   animation-fill-mode: forwards;
 }
-.maid-cafe-view > .balance {
+.maid-cafe-view > main > .button-container {
+  display: flex;
+}
+.maid-cafe-view > main > .button-container > .stake-button,
+.maid-cafe-view > main > .button-container > .unstake-button {
+  display: block;
+  width: 204.5px;
+  height: 33.5px;
+  background-image: url(/images/view/maid-cafe/button.png);
+  background-size: auto 100%;
+  text-align: center;
+  padding-top: 8px;
+}
+.maid-cafe-view > main > .button-container > .stake-button.on,
+.maid-cafe-view > main > .button-container > .unstake-button.on {
+  background-image: url(/images/view/maid-cafe/button-on.png);
+}
+.maid-cafe-view > main > .info {
+  display: flex;
+}
+.maid-cafe-view > main > .info > .apr {
+  flex-grow: 1;
+  text-align: right;
+  font-size: 20px;
+  font-family: "refrigerator-deluxe";
+  margin-right: 10px;
+}
+.maid-cafe-view > main > .info > .apr > span {
+  color: #ffde00;
+}
+.maid-cafe-view > main > .tab > .input-container > input {
+  display: block;
+  width: 360px;
+  height: 34px;
+  background-image: url(/images/view/maid-cafe/amount-input.png);
+  background-size: auto 100%;
+}
+.maid-cafe-view > footer {
+  position: relative;
+}
+.maid-cafe-view > footer > .npc {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 220px);
+}
+.maid-cafe-view > footer > .balance {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 20px);
   width: 215.5px;
   height: 185.5px;
   background-image: url(/images/view/maid-cafe/balloon.png);
