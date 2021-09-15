@@ -24,6 +24,7 @@ interface INurseRaidInterface extends ethers.utils.Interface {
     "checkDone(uint256)": FunctionFragment;
     "create(uint256[],uint256[],uint256[],uint256[],uint256[])": FunctionFragment;
     "enter(uint256,address,uint256)": FunctionFragment;
+    "enterWithPermit(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)": FunctionFragment;
     "enterWithPermitAll(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)": FunctionFragment;
     "exit(uint256[])": FunctionFragment;
     "isMaidsApproved(address)": FunctionFragment;
@@ -52,6 +53,21 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "enter",
     values: [BigNumberish, string, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "enterWithPermit",
+    values: [
+      BigNumberish,
+      string,
+      BigNumberish,
+      BigNumberish,
+      BigNumberish,
+      BytesLike,
+      BytesLike,
+      BigNumberish,
+      BytesLike,
+      BytesLike
+    ]
   ): string;
   encodeFunctionData(
     functionFragment: "enterWithPermitAll",
@@ -89,6 +105,10 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "checkDone", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "create", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "enter", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "enterWithPermit",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "enterWithPermitAll",
     data: BytesLike
@@ -183,6 +203,20 @@ export class INurseRaid extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    enterWithPermit(
+      id: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
+      deadline: BigNumberish,
+      v1: BigNumberish,
+      r1: BytesLike,
+      s1: BytesLike,
+      v2: BigNumberish,
+      r2: BytesLike,
+      s2: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
     enterWithPermitAll(
       id: BigNumberish,
       maids: string,
@@ -238,6 +272,20 @@ export class INurseRaid extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  enterWithPermit(
+    id: BigNumberish,
+    maids: string,
+    maidId: BigNumberish,
+    deadline: BigNumberish,
+    v1: BigNumberish,
+    r1: BytesLike,
+    s1: BytesLike,
+    v2: BigNumberish,
+    r2: BytesLike,
+    s2: BytesLike,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
   enterWithPermitAll(
     id: BigNumberish,
     maids: string,
@@ -287,6 +335,20 @@ export class INurseRaid extends BaseContract {
       id: BigNumberish,
       maids: string,
       maidId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    enterWithPermit(
+      id: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
+      deadline: BigNumberish,
+      v1: BigNumberish,
+      r1: BytesLike,
+      s1: BytesLike,
+      v2: BigNumberish,
+      r2: BytesLike,
+      s2: BytesLike,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -387,6 +449,20 @@ export class INurseRaid extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    enterWithPermit(
+      id: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
+      deadline: BigNumberish,
+      v1: BigNumberish,
+      r1: BytesLike,
+      s1: BytesLike,
+      v2: BigNumberish,
+      r2: BytesLike,
+      s2: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
     enterWithPermitAll(
       id: BigNumberish,
       maids: string,
@@ -443,6 +519,20 @@ export class INurseRaid extends BaseContract {
       id: BigNumberish,
       maids: string,
       maidId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    enterWithPermit(
+      id: BigNumberish,
+      maids: string,
+      maidId: BigNumberish,
+      deadline: BigNumberish,
+      v1: BigNumberish,
+      r1: BytesLike,
+      s1: BytesLike,
+      v2: BigNumberish,
+      r2: BytesLike,
+      s2: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 

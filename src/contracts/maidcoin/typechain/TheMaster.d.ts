@@ -47,7 +47,7 @@ interface TheMasterInterface extends ethers.utils.Interface {
     "renounceOwnership()": FunctionFragment;
     "rewardCalculator()": FunctionFragment;
     "rewardPerBlock()": FunctionFragment;
-    "set(uint256,uint256)": FunctionFragment;
+    "set(uint256[],uint256[])": FunctionFragment;
     "setSushiMasterChef(address,uint256)": FunctionFragment;
     "startBlock()": FunctionFragment;
     "support(uint256,uint256,uint256)": FunctionFragment;
@@ -172,7 +172,7 @@ interface TheMasterInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "set",
-    values: [BigNumberish, BigNumberish]
+    values: [BigNumberish[], BigNumberish[]]
   ): string;
   encodeFunctionData(
     functionFragment: "setSushiMasterChef",
@@ -558,8 +558,8 @@ export class TheMaster extends BaseContract {
     rewardPerBlock(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     set(
-      pid: BigNumberish,
-      allocPoint: BigNumberish,
+      pids: BigNumberish[],
+      allocPoints: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -768,8 +768,8 @@ export class TheMaster extends BaseContract {
   rewardPerBlock(overrides?: CallOverrides): Promise<BigNumber>;
 
   set(
-    pid: BigNumberish,
-    allocPoint: BigNumberish,
+    pids: BigNumberish[],
+    allocPoints: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -973,8 +973,8 @@ export class TheMaster extends BaseContract {
     rewardPerBlock(overrides?: CallOverrides): Promise<BigNumber>;
 
     set(
-      pid: BigNumberish,
-      allocPoint: BigNumberish,
+      pids: BigNumberish[],
+      allocPoints: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1266,8 +1266,8 @@ export class TheMaster extends BaseContract {
     rewardPerBlock(overrides?: CallOverrides): Promise<BigNumber>;
 
     set(
-      pid: BigNumberish,
-      allocPoint: BigNumberish,
+      pids: BigNumberish[],
+      allocPoints: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -1462,8 +1462,8 @@ export class TheMaster extends BaseContract {
     rewardPerBlock(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     set(
-      pid: BigNumberish,
-      allocPoint: BigNumberish,
+      pids: BigNumberish[],
+      allocPoints: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
