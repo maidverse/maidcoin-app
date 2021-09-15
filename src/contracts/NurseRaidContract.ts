@@ -1,14 +1,11 @@
 import { BigNumber, BigNumberish, constants } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
+import MaidsContractSelector from "../MaidsContractSelector";
 import Contract from "./Contract";
-import LingerieGirlsContract from "./LingerieGirlsContract";
 import NurseRaidArtifact from "./maidcoin/artifacts/contracts/NurseRaid.sol/NurseRaid.json";
 import { NurseRaid } from "./maidcoin/typechain";
 import MaidCoinContract from "./MaidCoinContract";
-import MaidsContract from "./MaidsContract";
-import ERC721Contract from "./standard/ERC721Contract";
-import SushiGirlsContract from "./SushiGirlsContract";
 
 export interface RaidInfo {
     entranceFee: BigNumber;
@@ -87,15 +84,7 @@ class NurseRaidContract extends Contract<NurseRaid> {
 
             const raid = await this.getRaid(raidId);
 
-            let supporterContract: undefined | ERC721Contract<any>;
-            if (maids === MaidsContract.address) {
-                supporterContract = MaidsContract;
-            } else if (maids === LingerieGirlsContract.address) {
-                supporterContract = LingerieGirlsContract;
-            } else if (maids === SushiGirlsContract.address) {
-                supporterContract = SushiGirlsContract;
-            }
-
+            let supporterContract = MaidsContractSelector.addressToContract(maids);
             if (
                 (await MaidCoinContract.allowance(owner, this.address)).lt(raid.entranceFee) ||
                 (
@@ -116,8 +105,11 @@ class NurseRaidContract extends Contract<NurseRaid> {
                     await MaidCoinContract.getNonce(owner),
                     deadline,
                 );
-
-                const maidSigned = supporterContract === undefined ? { v: 0, r: "0", s: "0" } : await Wallet.signERC721PermitAll(
+                const maidSigned = supporterContract === undefined ? {
+                    v: 28,
+                    r: "0x38a8ea09bd72d5ba58499a649cbdc6b22daf077c0efb731b2e9db84ca110666f",
+                    s: "0x7543d5ccd7b45730f239845830ce6b80e10d766eb13c36edc128f4ebc90aac45",
+                } : await Wallet.signERC721PermitAll(
 
                     await supporterContract.getName(),
                     "1",

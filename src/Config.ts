@@ -1,5 +1,6 @@
 const secure = require("../secure.json");
 const INFURA_ID = secure.infuraId;
+const ALCHEMY_KEY = secure.alchemyKey;
 
 export default {
 
@@ -17,7 +18,7 @@ export default {
     //endpoint: `wss://mainnet.infura.io/ws/v3/${INFURA_ID}`,
 
     // Kovan
-    endpoint: `wss://kovan.infura.io/ws/v3/${INFURA_ID}`,
+    endpoint: `wss://eth-kovan.alchemyapi.io/v2/${ALCHEMY_KEY}`,
 
     contracts: {
 

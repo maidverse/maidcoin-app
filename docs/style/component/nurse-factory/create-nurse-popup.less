@@ -18,32 +18,122 @@
         top     : 0;
     }
 
-    >.range {
+    >p {
+        font-size : 18px;
+        text-align: center;
+        padding   : 35px 0;
+    }
+
+    >.part {
+        display: block;
+        margin : auto;
+    }
+
+    >.part-count {
+        display        : flex;
+        justify-content: center;
+        margin         : auto;
+        margin-top     : 25px;
+        font-size      : 24px;
+        line-height    : 34px;
+
+        >input {
+            width           : 50px;
+            height          : 38px;
+            background      : transparent;
+            background-image: url(/images/component/nurse-battery-popup/input.png);
+            background-size : auto 100%;
+            text-align      : center;
+            font-size       : 24px;
+            margin-right    : 5px;
+        }
+    }
+
+    >.range-info {
+        width      : 80%;
+        margin     : auto;
+        margin-top : 20px;
+        display    : flex;
+        font-family: "refrigerator-deluxe";
+
+        >.assemble-range {
+            color: #d2196c;
+        }
+
+        >.battery-range {
+            flex-grow: 1;
+            color    : #19d27f;
+        }
+    }
+
+    >.range-container {
+        width     : 80%;
+        margin    : auto;
+        margin-top: 15px;
+        display   : flex;
+
+        >.assemble-range {
+            height          : 8px;
+            background      : transparent;
+            background-image: url(/images/component/nurse-battery-popup/assemble-slider.png);
+            background-size : auto 100%;
+        }
+
+        >.range {
+            flex-grow       : 1;
+            display         : block;
+            appearance      : none;
+            height          : 8px;
+            background      : transparent;
+            background-image: url(/images/component/nurse-battery-popup/slider.png);
+            background-size : auto 100%;
+
+            &::-webkit-slider-thumb {
+                appearance      : none;
+                width           : 26px;
+                height          : 27.5px;
+                background      : transparent;
+                background-image: url(/images/component/nurse-battery-popup/slider-button.png);
+                background-size : auto 100%;
+            }
+
+            &::-moz-range-thumb {
+                width           : 26px;
+                height          : 27.5px;
+                background      : transparent;
+                background-image: url(/images/component/nurse-battery-popup/slider-button.png);
+                background-size : auto 100%;
+            }
+        }
+    }
+
+    >.lifetime-container {
+        margin-top     : 15px;
+        display        : flex;
+        justify-content: center;
+        font-family    : "refrigerator-deluxe";
+        font-size      : 20px;
+
+        >.icon {
+            margin-right: 8px;
+        }
+    }
+
+    >.create-button {
         display         : block;
         margin          : auto;
-        margin-top      : 20px;
-        appearance      : none;
-        width           : 298px;
-        height          : 8px;
-        background      : transparent;
-        background-image: url(/images/component/nurse-battery-popup/slider.png);
+        margin-top      : 15px;
+        width           : 176.5px;
+        height          : 33.5px;
+        background-image: url(/images/component/nurse-battery-popup/create-button.png);
         background-size : auto 100%;
-
-        &::-webkit-slider-thumb {
-            appearance      : none;
-            width           : 26px;
-            height          : 27.5px;
-            background      : transparent;
-            background-image: url(/images/component/nurse-battery-popup/slider-button.png);
-            background-size : auto 100%;
-        }
-
-        &::-moz-range-thumb {
-            width           : 26px;
-            height          : 27.5px;
-            background      : transparent;
-            background-image: url(/images/component/nurse-battery-popup/slider-button.png);
-            background-size : auto 100%;
-        }
+        color           : #000000;
+        font-size       : 13px;
+        text-transform  : uppercase;
+        text-align      : center;
+        font-weight     : bold;
+        padding-top     : 4px;
+        padding-left    : 1px;
+        line-height     : 21px;
     }
 }

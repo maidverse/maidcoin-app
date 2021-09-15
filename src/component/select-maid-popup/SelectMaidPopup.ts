@@ -1,8 +1,8 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
-import Config from "../../Config";
 import NurseRaidContract, { RaidInfo } from "../../contracts/NurseRaidContract";
 import Wallet from "../../ethereum/Wallet";
+import MaidsContractSelector from "../../MaidsContractSelector";
 import AnyHousekeeperList from "../housekeeper/AnyHousekeeperList";
 import MaidList from "./MaidList";
 
@@ -70,8 +70,12 @@ export default class SelectMaidPopup extends Popup {
                     "Start",
                     {
                         click: async () => {
-                            //TODO: select housekeeper
-                            await NurseRaidContract.enter(this.raidId);
+                            let maidsAddress: undefined | string;
+                            const maidsType = this.selectedSupporter?.type;
+                            if (maidsType !== undefined) {
+                                maidsAddress = MaidsContractSelector.typeToAddress(maidsType);
+                            }
+                            await NurseRaidContract.enter(this.raidId, maidsAddress, this.selectedSupporter?.id);
                             this.delete();
                         },
                     },

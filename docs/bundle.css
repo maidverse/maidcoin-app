@@ -1436,18 +1436,69 @@ body {
   right: 23px;
   top: 0;
 }
-.create-nurse-popup > .range {
+.create-nurse-popup > p {
+  font-size: 18px;
+  text-align: center;
+  padding: 35px 0;
+}
+.create-nurse-popup > .part {
   display: block;
   margin: auto;
+}
+.create-nurse-popup > .part-count {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 25px;
+  font-size: 24px;
+  line-height: 34px;
+}
+.create-nurse-popup > .part-count > input {
+  width: 50px;
+  height: 38px;
+  background: transparent;
+  background-image: url(/images/component/nurse-battery-popup/input.png);
+  background-size: auto 100%;
+  text-align: center;
+  font-size: 24px;
+  margin-right: 5px;
+}
+.create-nurse-popup > .range-info {
+  width: 80%;
+  margin: auto;
   margin-top: 20px;
+  display: flex;
+  font-family: "refrigerator-deluxe";
+}
+.create-nurse-popup > .range-info > .assemble-range {
+  color: #d2196c;
+}
+.create-nurse-popup > .range-info > .battery-range {
+  flex-grow: 1;
+  color: #19d27f;
+}
+.create-nurse-popup > .range-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 15px;
+  display: flex;
+}
+.create-nurse-popup > .range-container > .assemble-range {
+  height: 8px;
+  background: transparent;
+  background-image: url(/images/component/nurse-battery-popup/assemble-slider.png);
+  background-size: auto 100%;
+}
+.create-nurse-popup > .range-container > .range {
+  flex-grow: 1;
+  display: block;
   appearance: none;
-  width: 298px;
   height: 8px;
   background: transparent;
   background-image: url(/images/component/nurse-battery-popup/slider.png);
   background-size: auto 100%;
 }
-.create-nurse-popup > .range::-webkit-slider-thumb {
+.create-nurse-popup > .range-container > .range::-webkit-slider-thumb {
   appearance: none;
   width: 26px;
   height: 27.5px;
@@ -1455,12 +1506,39 @@ body {
   background-image: url(/images/component/nurse-battery-popup/slider-button.png);
   background-size: auto 100%;
 }
-.create-nurse-popup > .range::-moz-range-thumb {
+.create-nurse-popup > .range-container > .range::-moz-range-thumb {
   width: 26px;
   height: 27.5px;
   background: transparent;
   background-image: url(/images/component/nurse-battery-popup/slider-button.png);
   background-size: auto 100%;
+}
+.create-nurse-popup > .lifetime-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  font-family: "refrigerator-deluxe";
+  font-size: 20px;
+}
+.create-nurse-popup > .lifetime-container > .icon {
+  margin-right: 8px;
+}
+.create-nurse-popup > .create-button {
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  width: 176.5px;
+  height: 33.5px;
+  background-image: url(/images/component/nurse-battery-popup/create-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-left: 1px;
+  line-height: 21px;
 }
 .nurse-part {
   position: relative;

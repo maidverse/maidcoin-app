@@ -1,8 +1,9 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import NurseRaidContract, { RaidInfo } from "../../contracts/NurseRaidContract";
+import NetworkProvider from "../../ethereum/NetworkProvider";
 import Wallet from "../../ethereum/Wallet";
 import SelectMaidPopup from "../select-maid-popup/SelectMaidPopup";
 
@@ -19,7 +20,24 @@ export default class NurseRaid extends DomNode {
             this.footer = el("footer"),
         );
         this.load();
+
+        NurseRaidContract.on("Enter", this.enterHandler);
+        NurseRaidContract.on("Exit", this.exitHandler);
     }
+
+    private enterHandler = async (challenger: string, id: BigNumber, maids: string, maidId: BigNumber) => {
+        if (id.toNumber() === this.raidId && challenger === await Wallet.loadAddress()) {
+            this.currentBlockNumber = await NetworkProvider.getBlockNumber();
+            this.load();
+        }
+    };
+
+    private exitHandler = async (challenger: string, id: BigNumber) => {
+        if (id.toNumber() === this.raidId && challenger === await Wallet.loadAddress()) {
+            this.currentBlockNumber = await NetworkProvider.getBlockNumber();
+            this.load();
+        }
+    };
 
     private async load() {
 
@@ -65,5 +83,11 @@ export default class NurseRaid extends DomNode {
                 }),
             );
         }
+    }
+
+    public delete() {
+        NurseRaidContract.off("Enter", this.enterHandler);
+        NurseRaidContract.off("Exit", this.exitHandler);
+        super.delete();
     }
 }
