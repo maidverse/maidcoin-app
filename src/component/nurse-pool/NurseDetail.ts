@@ -4,9 +4,11 @@ import superagent from "superagent";
 import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
+import LPTokenContract from "../../contracts/LPTokenContract";
 import TheMasterContract from "../../contracts/TheMasterContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
 import Wallet from "../../ethereum/Wallet";
+import TokenPrompt from "../dialogue/TokenPrompt";
 import ChargeNursePopup from "./ChargeNursePopup";
 
 export default class NurseDetail extends Popup {
@@ -98,19 +100,31 @@ export default class NurseDetail extends Popup {
                     el("a.suppport-button", "Support", {
                         click: async (event: MouseEvent) => {
                             event.stopPropagation();
-                            const amount = prompt("How much amount to support?", "10");
-                            if (amount) {
-                                await TheMasterContract.support(3, utils.parseEther(amount), this.nurseId);
-                            }
+                            const lpBalance = await LPTokenContract.balanceOf(owner);
+                            new TokenPrompt(
+                                "Support Nurse",
+                                "How much amount to support?",
+                                "Support",
+                                0, lpBalance,
+                                async (amount) => {
+                                    await TheMasterContract.support(3, amount, supportingTo);
+                                },
+                            );
                         },
                     }),
                     el("a.desupport-button", "Desupport", {
                         click: async (event: MouseEvent) => {
                             event.stopPropagation();
-                            const amount = prompt("How much amount to desupport?", "0");
-                            if (amount) {
-                                await TheMasterContract.desupport(3, utils.parseEther(amount));
-                            }
+                            const lpBalance = await LPTokenContract.balanceOf(owner);
+                            new TokenPrompt(
+                                "Desupport Nurse",
+                                "How much amount to desupport?",
+                                "Desupport",
+                                0, lpBalance,
+                                async (amount) => {
+                                    await TheMasterContract.desupport(3, amount);
+                                },
+                            );
                         },
                     }),
                 ),

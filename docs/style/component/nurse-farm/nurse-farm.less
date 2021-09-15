@@ -36,20 +36,15 @@
     }
 
     >.content {
-        position           : absolute;
-        left               : 3px;
-        top                : 0;
-        width              : calc(100% - 6px);
-        height             : 223px;
-        background-image   : url(/images/component/nurse-farm/background.png);
-        background-size    : auto 100%;
-        background-position: center center;
+        position: absolute;
+        left    : 3px;
+        top     : 0;
+        width   : calc(100% - 6px);
+        height  : 223px;
     }
 
     &.empty {
         >.content {
-            background-image: none;
-
             >.name {
                 position   : absolute;
                 left       : 3px;
@@ -65,6 +60,119 @@
                 left    : calc(50% - 66.75px);
                 top     : calc(111.5px - 66.25px);
                 z-index : 1;
+            }
+        }
+    }
+
+    &:not(.empty) {
+        >.content {
+            background-image   : url(/images/component/nurse-farm/background.png);
+            background-size    : auto 100%;
+            background-position: center center;
+
+            >.name {
+                position           : absolute;
+                left               : 0;
+                top                : 0;
+                min-width          : 210.5px;
+                height             : 100%;
+                background-image   : url(/images/component/nurse-farm/name-background.png);
+                background-size    : auto 100%;
+                background-position: 0 0;
+                background-repeat  : no-repeat;
+                font-family        : "refrigerator-deluxe";
+                font-weight        : bold;
+                font-size          : 24px;
+                animation          : nurse-factory-element-fade-in 0.5s ease-out;
+            }
+
+            >.owner {
+                position        : absolute;
+                left            : 14px;
+                top             : 24px;
+                background-image: url(/images/component/nurse-farm/owner-background.png);
+                font-size       : 14px;
+                font-family     : "refrigerator-deluxe";
+                padding         : 2px 5px;
+            }
+
+            >.image {
+                position           : absolute;
+                left               : calc(50% - 70px);
+                top                : 0;
+                width              : 140px;
+                height             : 100%;
+                background-size    : 100% auto;
+                background-position: 0 calc(50% + 56px);
+                background-repeat  : no-repeat;
+                animation          : nurse-factory-element-fade-in 0.5s ease-out;
+            }
+
+            >.claim-button {
+                position           : absolute;
+                right              : 0;
+                top                : 0;
+                z-index            : 2;
+                width              : 161px;
+                height             : 60px;
+                background-image   : url(/images/component/maid-corp/claim-button.png);
+                background-size    : auto 100%;
+                background-position: center center;
+                display            : flex;
+
+                >.maidcoin {
+                    margin-top : 5px;
+                    margin-left: 10px;
+                }
+
+                >.reward {
+                    flex-grow      : 1;
+                    display        : flex;
+                    flex-direction : column;
+                    justify-content: center;
+                    height         : 40px;
+                    text-align     : center;
+                    color          : #2e000f;
+                    font-family    : "refrigerator-deluxe";
+                    font-weight    : bold;
+                    font-size      : 12px;
+                }
+            }
+
+            >.desupport-button {
+                position        : absolute;
+                left            : 0;
+                bottom          : -5px;
+                z-index         : 2;
+                width           : 112px;
+                height          : 33.5px;
+                background-image: url(/images/component/nurse-farm/desupport-button.png);
+                background-size : auto 100%;
+                color           : #000000;
+                font-size       : 13px;
+                text-transform  : uppercase;
+                text-align      : center;
+                font-weight     : bold;
+                padding-top     : 8px;
+                padding-left    : 1px;
+            }
+
+            >.support-button {
+                position        : absolute;
+                right           : 0;
+                bottom          : -5px;
+                z-index         : 2;
+                width           : 112px;
+                height          : 33.5px;
+                background-image: url(/images/component/nurse-farm/support-button.png);
+                background-size : auto 100%;
+                color           : #000000;
+                font-size       : 13px;
+                text-transform  : uppercase;
+                text-align      : center;
+                font-weight     : bold;
+                padding-top     : 8px;
+                padding-left    : 1px;
             }
         }
     }
