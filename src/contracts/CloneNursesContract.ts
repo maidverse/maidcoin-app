@@ -15,6 +15,7 @@ export interface NurseType {
 
 interface NurseInfo {
     nurseType: number;
+    endBlock: number;
 }
 
 class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
@@ -58,9 +59,10 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
     }
 
     public async getNurse(nurseId: BigNumberish): Promise<NurseInfo> {
-        const [nurseType] = await this.contract.nurses(nurseId);
+        const [nurseType, endBlock] = await this.contract.nurses(nurseId);
         return {
             nurseType: nurseType.toNumber(),
+            endBlock: endBlock.toNumber(),
         };
     }
 
@@ -106,6 +108,11 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
                 await contract.assemble(nurseType, partCount);
             }
         }
+    }
+
+    public async elongateLifetime(ids: BigNumberish[], parts: BigNumberish[]) {
+        const contract = await this.connectAndGetWalletContract();
+        await contract?.elongateLifetime(ids, parts);
     }
 
     public async claim(nurseIds: BigNumberish[]) {

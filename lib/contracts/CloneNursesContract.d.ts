@@ -9,6 +9,7 @@ export interface NurseType {
 }
 interface NurseInfo {
     nurseType: number;
+    endBlock: number;
 }
 declare class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
     constructor();
@@ -21,6 +22,7 @@ declare class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> 
     getSupportingTo(supporter: string): Promise<BigNumber>;
     getPendigReward(nurseId: BigNumberish): Promise<BigNumber>;
     assemble(nurseType: number, partCount: number): Promise<void>;
+    elongateLifetime(ids: BigNumberish[], parts: BigNumberish[]): Promise<void>;
     claim(nurseIds: BigNumberish[]): Promise<void>;
 }
 declare const _default: CloneNursesContract;

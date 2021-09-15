@@ -50,7 +50,7 @@
         >.character {
             position  : absolute;
             right     : 24px;
-            bottom    : 170px;
+            bottom    : 222px;
             text-align: center;
 
             >.claim-button {
@@ -59,7 +59,7 @@
                 top             : -64px;
                 width           : 61px;
                 height          : 60.5px;
-                background-image: url(/images/component/nurse-pool/claim-button.png);
+                background-image: url(/images/component/nurse-detail/claim-button.png);
                 background-size : auto 100%;
                 padding-top     : 2px;
 
@@ -75,6 +75,45 @@
                     font-family: "refrigerator-deluxe";
                     font-weight: bold;
                     font-size  : 12px;
+                }
+            }
+        }
+
+        >.battery {
+            position   : absolute;
+            right      : 18px;
+            bottom     : 176px;
+            display    : flex;
+            text-shadow: #000000 0 0 5px;
+            font-family: "refrigerator-deluxe";
+            align-items: center;
+
+            >.range-container {
+                margin     : 0 10px;
+                padding-top: 14px;
+
+                >.range {
+                    width           : 62.5px;
+                    height          : 7px;
+                    background-image: url(/images/component/nurse-detail/battery-bar-background.png);
+                    background-size : auto 100%;
+
+                    >.bar {
+                        height          : 7px;
+                        background-image: url(/images/component/nurse-detail/battery-bar.png);
+                        background-size : auto 100%;
+                    }
+                }
+
+                >.lifetime {
+                    margin-top: 2px;
+                    text-align: center;
+                }
+            }
+
+            >.charge-button {
+                >img {
+                    display: block;
                 }
             }
         }

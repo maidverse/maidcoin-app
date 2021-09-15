@@ -1529,7 +1529,7 @@ body {
   margin-top: 15px;
   width: 176.5px;
   height: 33.5px;
-  background-image: url(/images/component/nurse-battery-popup/create-button.png);
+  background-image: url(/images/component/nurse-battery-popup/button.png);
   background-size: auto 100%;
   color: #000000;
   font-size: 13px;
@@ -1717,7 +1717,7 @@ body {
 .nurse-detail > .content > .character {
   position: absolute;
   right: 24px;
-  bottom: 170px;
+  bottom: 222px;
   text-align: center;
 }
 .nurse-detail > .content > .character > .claim-button {
@@ -1726,7 +1726,7 @@ body {
   top: -64px;
   width: 61px;
   height: 60.5px;
-  background-image: url(/images/component/nurse-pool/claim-button.png);
+  background-image: url(/images/component/nurse-detail/claim-button.png);
   background-size: auto 100%;
   padding-top: 2px;
 }
@@ -1741,6 +1741,37 @@ body {
   font-family: "refrigerator-deluxe";
   font-weight: bold;
   font-size: 12px;
+}
+.nurse-detail > .content > .battery {
+  position: absolute;
+  right: 18px;
+  bottom: 176px;
+  display: flex;
+  text-shadow: #000000 0 0 5px;
+  font-family: "refrigerator-deluxe";
+  align-items: center;
+}
+.nurse-detail > .content > .battery > .range-container {
+  margin: 0 10px;
+  padding-top: 14px;
+}
+.nurse-detail > .content > .battery > .range-container > .range {
+  width: 62.5px;
+  height: 7px;
+  background-image: url(/images/component/nurse-detail/battery-bar-background.png);
+  background-size: auto 100%;
+}
+.nurse-detail > .content > .battery > .range-container > .range > .bar {
+  height: 7px;
+  background-image: url(/images/component/nurse-detail/battery-bar.png);
+  background-size: auto 100%;
+}
+.nurse-detail > .content > .battery > .range-container > .lifetime {
+  margin-top: 2px;
+  text-align: center;
+}
+.nurse-detail > .content > .battery > .charge-button > img {
+  display: block;
 }
 .nurse-detail > .content > .properties {
   position: absolute;
@@ -1808,6 +1839,104 @@ body {
   font-weight: bold;
   padding-top: 8px;
   padding-left: 1px;
+}
+.charge-nurse-popup {
+  position: relative;
+  width: 369px;
+  margin: auto;
+  height: 412.5px;
+  background-image: url(/images/component/nurse-battery-popup/background.png);
+  background-size: auto 100%;
+}
+.charge-nurse-popup > h1 {
+  padding-left: 16px;
+  padding-top: 4px;
+  font-size: 18px;
+}
+.charge-nurse-popup > .close-button {
+  position: absolute;
+  right: 23px;
+  top: 0;
+}
+.charge-nurse-popup > p {
+  font-size: 18px;
+  text-align: center;
+  padding: 35px 0;
+}
+.charge-nurse-popup > .part {
+  display: block;
+  margin: auto;
+}
+.charge-nurse-popup > .part-count {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 25px;
+  font-size: 24px;
+  line-height: 34px;
+}
+.charge-nurse-popup > .part-count > input {
+  width: 50px;
+  height: 38px;
+  background: transparent;
+  background-image: url(/images/component/nurse-battery-popup/input.png);
+  background-size: auto 100%;
+  text-align: center;
+  font-size: 24px;
+  margin-right: 5px;
+}
+.charge-nurse-popup > .range {
+  margin: auto;
+  margin-top: 15px;
+  display: block;
+  appearance: none;
+  width: 80%;
+  height: 8px;
+  background: transparent;
+  background-image: url(/images/component/nurse-battery-popup/slider.png);
+  background-size: auto 100%;
+}
+.charge-nurse-popup > .range::-webkit-slider-thumb {
+  appearance: none;
+  width: 26px;
+  height: 27.5px;
+  background: transparent;
+  background-image: url(/images/component/nurse-battery-popup/slider-button.png);
+  background-size: auto 100%;
+}
+.charge-nurse-popup > .range::-moz-range-thumb {
+  width: 26px;
+  height: 27.5px;
+  background: transparent;
+  background-image: url(/images/component/nurse-battery-popup/slider-button.png);
+  background-size: auto 100%;
+}
+.charge-nurse-popup > .lifetime-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  font-family: "refrigerator-deluxe";
+  font-size: 20px;
+}
+.charge-nurse-popup > .lifetime-container > .icon {
+  margin-right: 8px;
+}
+.charge-nurse-popup > .charge-button {
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  width: 176.5px;
+  height: 33.5px;
+  background-image: url(/images/component/nurse-battery-popup/button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-left: 1px;
+  line-height: 21px;
 }
 .any-housekeeper {
   position: relative;

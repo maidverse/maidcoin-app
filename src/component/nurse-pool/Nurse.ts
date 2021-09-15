@@ -30,6 +30,12 @@ export default class Nurse extends DomNode {
             el("a.claim-button",
                 el("img.coin-image", { src: "/images/component/nurse-pool/maidcoin.png", height: "29" }),
                 el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),
+                {
+                    click: async (event: MouseEvent) => {
+                        event.stopPropagation();
+                        await CloneNursesContract.claim([this.nurseId]);
+                    },
+                },
             ),
         );
     }

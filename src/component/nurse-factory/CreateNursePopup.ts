@@ -39,6 +39,7 @@ export default class CreateNursePopup extends Popup {
                         this.nurseTypeInfo.lifetime,
                         this.nurseTypeInfo.partCount,
                         parseInt(this.input.domElement.value, 10),
+                        true,
                     ),
                 ),
             );
@@ -76,7 +77,7 @@ export default class CreateNursePopup extends Popup {
                             this.refreshLifetime();
                         },
                     }),
-                    ` / ${this.nurseTypeInfo.partCount}`,
+                    ` / ${balance.toString()}`,
                 ),
                 el(".range-info",
                     el(".assemble-range", "Assemble", { style: { width: `${100 - rangePercent}%` } }),

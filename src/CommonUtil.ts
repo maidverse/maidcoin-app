@@ -7,6 +7,10 @@ class CommonUtil {
     }
 
     public displayBlockDuration(blockCount: number) {
+        if (blockCount < 0) {
+            return "0s";
+        }
+
         let seconds = blockCount * Config.blockTimeSecond;
 
         const day = Math.floor(seconds / 86400);

@@ -72,11 +72,11 @@ export default class UserInfo extends DomNode {
             this.maidCoinPanel.empty().append(
                 el(".balance",
                     el("img.icon", { src: "/images/lptoken.png", height: "20.5" }),
-                    el(".amount", utils.formatEther(lpBalance)),
+                    el(".amount", CommonUtil.numberWithCommas(utils.formatEther(lpBalance))),
                 ),
                 el(".balance",
                     el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
-                    el(".amount", utils.formatEther(maidBalance)),
+                    el(".amount", CommonUtil.numberWithCommas(utils.formatEther(maidBalance))),
                 ),
             );
         }

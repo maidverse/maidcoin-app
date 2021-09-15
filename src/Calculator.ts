@@ -2,8 +2,8 @@ import Config from "./Config";
 
 class Calculator {
 
-    public nurseLifetime(baseLifetime: number, assemblePartCount: number, partCount: number) {
-        return baseLifetime * (partCount - 1) / (assemblePartCount - 1);
+    public nurseLifetime(baseLifetime: number, assemblePartCount: number, partCount: number, assemble: boolean) {
+        return baseLifetime * (partCount - (assemble === true ? 1 : 0)) / (assemblePartCount - 1);
     }
 
     public apr(investment: number, rewardPerBlock: number) {
