@@ -19,9 +19,36 @@
     }
 
     >main {
+        width     : 346.5px;
+        margin    : auto;
         margin-top: 5px;
-        height    : 520px;
-        overflow-y: scroll;
+
+        >.search {
+            position: relative;
+            height  : 33px;
+
+            >input {
+                width           : 100%;
+                height          : 100%;
+                background-image: url(/images/component/select-nurse-popup/input.png);
+                background-size : auto 100%;
+                padding         : 0 8px;
+                font-family     : "refrigerator-deluxe";
+                font-size       : 16px;
+                color           : #261130;
+            }
+
+            >.search-button {
+                position: absolute;
+                top     : 0.5px;
+                right   : 1.5px;
+            }
+        }
+
+        >.nurse-list {
+            height    : 487px;
+            overflow-y: scroll;
+        }
     }
 
     >footer {

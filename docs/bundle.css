@@ -1812,11 +1812,11 @@ body {
   clear: both;
   visibility: hidden;
 }
-.nurse-detail > .content > .controller > .power-up-button {
+.nurse-detail > .content > .controller > .support-button {
   float: left;
   width: 112px;
   height: 33.5px;
-  background-image: url(/images/component/maid-summary/power-up-button.png);
+  background-image: url(/images/component/nurse-detail/support-button.png);
   background-size: auto 100%;
   color: #000000;
   font-size: 13px;
@@ -1826,11 +1826,11 @@ body {
   padding-top: 8px;
   padding-left: 1px;
 }
-.nurse-detail > .content > .controller > .power-down-button {
+.nurse-detail > .content > .controller > .desupport-button {
   float: left;
   width: 112px;
   height: 33.5px;
-  background-image: url(/images/component/maid-summary/power-down-button.png);
+  background-image: url(/images/component/nurse-detail/desupport-button.png);
   background-size: auto 100%;
   color: #000000;
   font-size: 13px;
@@ -2724,8 +2724,31 @@ body {
   top: 0;
 }
 .select-nurse-popup > main {
+  width: 346.5px;
+  margin: auto;
   margin-top: 5px;
-  height: 520px;
+}
+.select-nurse-popup > main > .search {
+  position: relative;
+  height: 33px;
+}
+.select-nurse-popup > main > .search > input {
+  width: 100%;
+  height: 100%;
+  background-image: url(/images/component/select-nurse-popup/input.png);
+  background-size: auto 100%;
+  padding: 0 8px;
+  font-family: "refrigerator-deluxe";
+  font-size: 16px;
+  color: #261130;
+}
+.select-nurse-popup > main > .search > .search-button {
+  position: absolute;
+  top: 0.5px;
+  right: 1.5px;
+}
+.select-nurse-popup > main > .nurse-list {
+  height: 487px;
   overflow-y: scroll;
 }
 .select-nurse-popup > footer {
@@ -2750,5 +2773,70 @@ body {
   padding-top: 4px;
   padding-left: 1px;
   line-height: 21px;
+}
+.select-nurse-popup .nurse {
+  position: relative;
+  height: 96px;
+  border-bottom: 1px solid #c7cdd5;
+}
+.select-nurse-popup .nurse > .slot {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 76.5px;
+  height: 85px;
+  background-image: url(/images/component/select-nurse-popup/slot.png);
+  background-size: auto 100%;
+}
+.select-nurse-popup .nurse > .slot > .image {
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  height: 70px;
+  border-radius: 3px;
+}
+.select-nurse-popup .nurse > .slot > .name {
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+}
+.select-nurse-popup .nurse > .owner {
+  position: absolute;
+  left: 92px;
+  top: 14px;
+  font-size: 16px;
+  font-family: "refrigerator-deluxe";
+  color: #464a54;
+}
+.select-nurse-popup .nurse > .lp-amount {
+  position: absolute;
+  left: 100px;
+  top: 30px;
+  font-size: 20px;
+  font-family: "refrigerator-deluxe";
+  color: #261130;
+}
+.select-nurse-popup .nurse > .lp-amount > span {
+  color: #cb2972;
+}
+.select-nurse-popup .nurse > .support-button {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/nurse-detail/support-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
 }
 

@@ -1,6 +1,7 @@
 import { BigNumber, BigNumberish } from "@ethersproject/bignumber";
 import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
+import CommonUtil from "../../CommonUtil";
 import Alert from "./Alert";
 import Dialogue from "./Dialogue";
 
@@ -30,7 +31,7 @@ export default class TokenPrompt extends Dialogue {
         });
         this.content.append(
             el("p", message),
-            this.input = el("input.input", { placeholder: `Balance: ${utils.formatEther(balance)}` }),
+            this.input = el("input.input", { placeholder: `Balance: ${CommonUtil.numberWithCommas(utils.formatEther(balance))}` }),
             el("a.max-button", "Max", {
                 click: () => this.input.domElement.value = utils.formatEther(balance),
             }),

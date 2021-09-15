@@ -95,7 +95,7 @@ export default class NurseDetail extends Popup {
                     el(".property.lp-amount", "LP Supported By Me: ", el("span", utils.formatEther(supportingAmount))),
                 ),
                 el(".controller",
-                    el("a.power-up-button", "Power Up", {
+                    el("a.suppport-button", "Support", {
                         click: async (event: MouseEvent) => {
                             event.stopPropagation();
                             const amount = prompt("How much amount to support?", "10");
@@ -104,9 +104,13 @@ export default class NurseDetail extends Popup {
                             }
                         },
                     }),
-                    el("a.power-down-button", "Power Down", {
+                    el("a.desupport-button", "Desupport", {
                         click: async (event: MouseEvent) => {
                             event.stopPropagation();
+                            const amount = prompt("How much amount to desupport?", "0");
+                            if (amount) {
+                                await TheMasterContract.desupport(3, utils.parseEther(amount));
+                            }
                         },
                     }),
                 ),
