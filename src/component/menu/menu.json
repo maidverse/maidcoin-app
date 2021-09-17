@@ -1,0 +1,31 @@
+{
+    "menu": [{
+            "uri": "",
+            "name": "Dashboard"
+        },
+        {
+            "uri": "maid",
+            "name": "Maid"
+        },
+        {
+            "uri": "housekeeper",
+            "name": "Housekeeper"
+        },
+        {
+            "uri": "nurseraid",
+            "name": "Nurse Raid"
+        },
+        {
+            "uri": "nursefactory",
+            "name": "Nurse Factory"
+        },
+        {
+            "uri": "farm",
+            "name": "Farm"
+        },
+        {
+            "uri": "cafe",
+            "name": "Maid Cafe"
+        }
+    ]
+}
