@@ -5,7 +5,7 @@
     >.claim-button {
         position        : absolute;
         left            : calc(50% - 30.5px);
-        top             : -64px;
+        top             : -79px;
         width           : 61px;
         height          : 60.5px;
         background-image: url(/images/component/nurse-pool/claim-button.png);
@@ -24,6 +24,27 @@
             font-family: "refrigerator-deluxe";
             font-weight: bold;
             font-size  : 12px;
+        }
+    }
+
+    >.battery {
+        position        : absolute;
+        left            : calc(50% - 31.25px);
+        top             : -15px;
+        width           : 62.5px;
+        height          : 7px;
+        background-image: url(/images/component/nurse-detail/battery-bar-background.png);
+        background-size : auto 100%;
+        text-align      : center;
+
+        &.low {
+            background-image: none;
+        }
+
+        >.bar {
+            height          : 7px;
+            background-image: url(/images/component/nurse-detail/battery-bar.png);
+            background-size : auto 100%;
         }
     }
 }

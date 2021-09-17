@@ -246,6 +246,14 @@ body {
 .dashboard-view > section {
   margin-top: 20px;
 }
+.dashboard-view > section:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 .dashboard-view > section > h3 {
   width: 216.5px;
   height: 17.5px;
@@ -1615,6 +1623,29 @@ body {
   font-weight: bold;
   font-size: 18px;
 }
+.nurse-pool-list > footer {
+  float: right;
+  display: flex;
+}
+.nurse-pool-list > footer > a {
+  width: 104px;
+  height: 33.5px;
+  background-size: auto 100%;
+  color: #000000;
+  font-weight: bold;
+  font-size: 13px;
+  padding-top: 8px;
+  padding-left: 28px;
+}
+.nurse-pool-list > footer > .claim-all-button {
+  background-image: url(/images/component/nurse-pool/claim-all-button.png);
+}
+.nurse-pool-list > footer > .charge-all-button {
+  background-image: url(/images/component/nurse-pool/charge-all-button.png);
+}
+.nurse-pool-list > footer > .destroy-all-button {
+  background-image: url(/images/component/nurse-pool/destroy-all-button.png);
+}
 .nurse-pool {
   position: relative;
   max-width: 403px;
@@ -1705,7 +1736,7 @@ body {
 .nurse-pool .nurse > .claim-button {
   position: absolute;
   left: calc(50% - 30.5px);
-  top: -64px;
+  top: -79px;
   width: 61px;
   height: 60.5px;
   background-image: url(/images/component/nurse-pool/claim-button.png);
@@ -1723,6 +1754,24 @@ body {
   font-family: "refrigerator-deluxe";
   font-weight: bold;
   font-size: 12px;
+}
+.nurse-pool .nurse > .battery {
+  position: absolute;
+  left: calc(50% - 31.25px);
+  top: -15px;
+  width: 62.5px;
+  height: 7px;
+  background-image: url(/images/component/nurse-detail/battery-bar-background.png);
+  background-size: auto 100%;
+  text-align: center;
+}
+.nurse-pool .nurse > .battery.low {
+  background-image: none;
+}
+.nurse-pool .nurse > .battery > .bar {
+  height: 7px;
+  background-image: url(/images/component/nurse-detail/battery-bar.png);
+  background-size: auto 100%;
 }
 .nurse-detail {
   position: fixed;

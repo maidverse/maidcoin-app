@@ -24,6 +24,7 @@ declare class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> 
     assemble(nurseType: number, partCount: number): Promise<void>;
     elongateLifetime(ids: BigNumberish[], parts: BigNumberish[]): Promise<void>;
     claim(nurseIds: BigNumberish[]): Promise<void>;
+    destroy(nurseIds: BigNumberish[], toIds: BigNumberish[]): Promise<void>;
 }
 declare const _default: CloneNursesContract;
 export default _default;

@@ -1,4 +1,4 @@
-import { DomNode } from "@hanul/skynode";
+import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import Wallet from "../../ethereum/Wallet";
@@ -18,6 +18,7 @@ export default class NursePoolList extends DomNode {
 
             // nurseType => nurse ids
             const nurses: { [nurseType: number]: number[] } = {};
+            const totalNurseIds: number[] = [];
 
             const nurseCount = (await CloneNursesContract.balanceOf(owner)).toNumber();
 
@@ -30,12 +31,35 @@ export default class NursePoolList extends DomNode {
                         nurses[nurseInfo.nurseType] = [];
                     }
                     nurses[nurseInfo.nurseType].push(nurseId);
+                    totalNurseIds.push(nurseId);
                 })());
             });
             await Promise.all(promises);
 
             for (const [nurseType, nurseIds] of Object.entries(nurses)) {
                 this.append(new NursePool(parseInt(nurseType, 10), nurseIds));
+            }
+
+            if (totalNurseIds.length > 0) {
+                this.append(
+                    el("footer",
+                        el("a.claim-all-button", "Claim All", {
+                            click: async () => {
+                                await CloneNursesContract.claim(totalNurseIds);
+                            },
+                        }),
+                        el("a.charge-all-button", "Charge All", {
+                            click: async () => {
+                                //TODO:
+                            },
+                        }),
+                        el("a.destroy-all-button", "Destroy All", {
+                            click: async () => {
+                                //TODO:
+                            },
+                        }),
+                    ),
+                );
             }
         }
     }

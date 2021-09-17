@@ -2,11 +2,17 @@ import { DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import SkyUtil from "skyutil";
 import superagent from "superagent";
+import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
+import NetworkProvider from "../../ethereum/NetworkProvider";
 import NurseDetail from "./NurseDetail";
 
 export default class Nurse extends DomNode {
+
+    private lifetime: undefined | DomNode;
+    private currentBlockNumber: undefined | number;
+    private endBlock: undefined | number;
 
     constructor(private nurseId: number) {
         super(".nurse");
@@ -15,8 +21,14 @@ export default class Nurse extends DomNode {
     }
 
     private async load() {
-        const { nurseType } = await CloneNursesContract.getNurse(this.nurseId);
-        const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurseType}`);
+
+        this.currentBlockNumber = await NetworkProvider.getBlockNumber();
+        const nurse = await CloneNursesContract.getNurse(this.nurseId);
+        this.endBlock = nurse.endBlock;
+
+        const nurseType = await CloneNursesContract.getNurseType(nurse.nurseType);
+
+        const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurse.nurseType}`);
         const tokenInfo = result.body;
 
         const image = el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${tokenInfo.name}Idle.png`, height: "70" }).appendTo(this);
@@ -25,6 +37,14 @@ export default class Nurse extends DomNode {
         }
 
         const pendingReward = await CloneNursesContract.getPendigReward(this.nurseId);
+
+        const lifetimePercent = (this.endBlock - this.currentBlockNumber) /
+            Calculator.nurseLifetime(
+                nurseType.lifetime,
+                nurseType.partCount,
+                nurseType.partCount,
+                true,
+            ) * 100;
 
         this.append(
             el("a.claim-button",
@@ -36,6 +56,11 @@ export default class Nurse extends DomNode {
                         await CloneNursesContract.claim([this.nurseId]);
                     },
                 },
+            ),
+            el(`.battery${lifetimePercent <= 0 ? ".low" : ""}`,
+                lifetimePercent <= 0 ? el("img", { src: "/images/component/nurse-pool/low-battery.png", height: "14.5" }) : el(".bar", {
+                    style: { width: `${lifetimePercent < 0 ? 0 : lifetimePercent}%` },
+                }),
             ),
         );
     }

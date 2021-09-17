@@ -119,6 +119,11 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
         const contract = await this.connectAndGetWalletContract();
         await contract?.claim(nurseIds);
     }
+
+    public async destroy(nurseIds: BigNumberish[], toIds: BigNumberish[]) {
+        const contract = await this.connectAndGetWalletContract();
+        await contract?.destroy(nurseIds, toIds);
+    }
 }
 
 export default new CloneNursesContract();

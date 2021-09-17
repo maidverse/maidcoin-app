@@ -82,7 +82,7 @@ export default class NurseDetail extends Popup {
                     el("span", "Battery"),
                     el(".range-container",
                         el(".range", el(".bar", {
-                            style: { width: `${lifetimePercent}%` },
+                            style: { width: `${lifetimePercent < 0 ? 0 : lifetimePercent}%` },
                         })),
                         this.lifetime = el(".lifetime"),
                     ),
