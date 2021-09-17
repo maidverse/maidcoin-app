@@ -1,7 +1,13 @@
 import { DomNode, el } from "@hanul/skynode";
+import { utils } from "ethers";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
+import CommonUtil from "../CommonUtil";
 import StakeTab from "../component/maid-cafe/StakeTab";
+import LPTokenContract from "../contracts/LPTokenContract";
+import MaidCafeContract from "../contracts/MaidCafeContract";
+import MaidCoinContract from "../contracts/MaidCoinContract";
+import Wallet from "../ethereum/Wallet";
 import Layout from "./Layout";
 
 export default class MaidCafe implements View {
@@ -43,7 +49,13 @@ export default class MaidCafe implements View {
     }
 
     private async loadBalance() {
-
+        const owner = await Wallet.loadAddress();
+        if (owner !== undefined) {
+            const lpBalance = await MaidCafeContract.balanceOf(owner);
+            const maidBalance = await MaidCoinContract.balanceOf(owner);
+            this.omuBalance.empty().appendText(CommonUtil.numberWithCommas(utils.formatEther(lpBalance)));
+            this.maidcoinBalance.empty().appendText(CommonUtil.numberWithCommas(utils.formatEther(maidBalance)));
+        }
     }
 
     public changeParams(params: ViewParams, uri: string): void { }

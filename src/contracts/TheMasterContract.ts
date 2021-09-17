@@ -80,7 +80,7 @@ class TheMasterContract extends Contract<TheMaster> {
         const owner = await Wallet.loadAddress();
         if (contract !== undefined && owner !== undefined) {
 
-            if (await LPTokenContract.allowance(owner, this.address) < lpTokenAmount) {
+            if ((await LPTokenContract.allowance(owner, this.address)).lt(lpTokenAmount)) {
 
                 const deadline = Math.ceil(Date.now() / 1000) + 1000000;
                 const signed = await Wallet.signERC20Permit(
@@ -113,7 +113,7 @@ class TheMasterContract extends Contract<TheMaster> {
         const owner = await Wallet.loadAddress();
         if (contract !== undefined && owner !== undefined) {
 
-            if (await LPTokenContract.allowance(owner, this.address) < lpTokenAmount) {
+            if ((await LPTokenContract.allowance(owner, this.address)).lt(lpTokenAmount)) {
 
                 const deadline = Math.ceil(Date.now() / 1000) + 1000000;
                 const signed = await Wallet.signERC20Permit(
