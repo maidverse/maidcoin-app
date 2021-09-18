@@ -29,6 +29,7 @@ export default class UserInfo extends DomNode {
         this.loadBalances();
 
         Wallet.on("connect", this.connectHandler);
+        LPTokenContract.on("Transfer", this.transferHandler);
         MaidCoinContract.on("Transfer", this.transferHandler);
     }
 
@@ -85,6 +86,7 @@ export default class UserInfo extends DomNode {
     public delete(): void {
 
         Wallet.off("connect", this.connectHandler);
+        LPTokenContract.off("Transfer", this.transferHandler);
         MaidCoinContract.off("Transfer", this.transferHandler);
 
         super.delete();

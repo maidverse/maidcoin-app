@@ -611,6 +611,40 @@ body {
   background-image: url(/images/view/maid-cafe/balloon.png);
   background-size: auto 100%;
 }
+.test-lp-token-view {
+  padding: 60px 0;
+}
+.test-lp-token-view > h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.test-lp-token-view > .info {
+  line-height: 1.5em;
+}
+.test-lp-token-view > .control {
+  margin-top: 20px;
+}
+.test-lp-token-view > .control:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.test-lp-token-view > .control > .mint-button {
+  float: left;
+  background-color: #dfdcd7;
+  border: 1px solid #363138;
+  color: #363138;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+.test-lp-token-view > .control > .mint-button:hover {
+  background-color: #363138;
+  color: #dfdcd7;
+}
 .loading {
   position: fixed;
   left: 50%;

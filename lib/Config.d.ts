@@ -12,8 +12,8 @@ declare const _default: {
         Maids: string;
         MasterCoin: string;
         NursePart: string;
-        NurseRaid: string;
         CloneNurses: string;
+        NurseRaid: string;
         SushiGirls: string;
         LingerieGirls: string;
     };

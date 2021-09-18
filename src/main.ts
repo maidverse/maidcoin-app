@@ -8,6 +8,7 @@ import MaidCafe from "./view/MaidCafe";
 import Nursefactory from "./view/NurseFactory";
 import NurseRaid from "./view/NurseRaid";
 import TestAdmin from "./view/test/TestAdmin";
+import TestLPToken from "./view/TestLPToken";
 
 SkyRouter.route("**", Layout);
 SkyRouter.route("", Dashboard);
@@ -17,6 +18,7 @@ SkyRouter.route("nurseraid", NurseRaid);
 SkyRouter.route("nursefactory", Nursefactory);
 SkyRouter.route("farm", Farm);
 SkyRouter.route("cafe", MaidCafe);
+SkyRouter.route("test-lp-token", TestLPToken);
 
 // test
 SkyRouter.route("test/admin", TestAdmin);
