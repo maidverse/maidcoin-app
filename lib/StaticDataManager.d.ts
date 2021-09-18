@@ -16,12 +16,13 @@ declare class StaticDataManager {
         name: string;
     };
     getNurseType(type: number): {
+        name: string;
         partCount: number;
         destroyReturn: BigNumber;
         power: number;
         lifetime: number;
     };
-    get raidCount(): any;
+    get raidCount(): number;
     getRaid(id: number): {
         entranceFee: BigNumber;
         nursePart: number;

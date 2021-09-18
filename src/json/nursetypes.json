@@ -2,6 +2,7 @@
     "0": {
         "name": "N1",
         "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N1.png",
+        "entranceFee": 300,
         "partCount": 2,
         "destroyReturn": 10,
         "power": 120,

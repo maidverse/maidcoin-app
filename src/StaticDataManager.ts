@@ -4,6 +4,7 @@ import lingeriegirls from "./json/lingeriegirls.json";
 import maids from "./json/maids.json";
 import nurseparts from "./json/nurseparts.json";
 import nursetypes from "./json/nursetypes.json";
+import raids from "./json/raids.json";
 import sushigirls from "./json/sushigirls.json";
 
 class StaticDataManager {
@@ -48,6 +49,7 @@ class StaticDataManager {
     }
 
     public getNurseType(type: number): {
+        name: string,
         partCount: number,
         destroyReturn: BigNumber,
         power: number,
@@ -55,6 +57,7 @@ class StaticDataManager {
     } {
         const raw = (nursetypes as any)[type];
         return {
+            name: raw.name,
             partCount: raw.partCount,
             destroyReturn: utils.parseEther(String(raw.destroyReturn)),
             power: raw.power,
@@ -63,7 +66,7 @@ class StaticDataManager {
     }
 
     public get raidCount() {
-        return (nursetypes as any).length;
+        return 1;//Object.keys((nursetypes as any)).length;
     }
 
     public getRaid(id: number): {
@@ -73,7 +76,7 @@ class StaticDataManager {
         duration: number,
         endBlock: number,
     } {
-        const raw = (nursetypes as any)[id];
+        const raw = (raids as any)[id];
         return {
             entranceFee: utils.parseEther(String(raw.entranceFee)),
             nursePart: raw.nursePart,
