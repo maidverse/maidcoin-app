@@ -2,7 +2,7 @@ import { DomNode, el, Popup } from "@hanul/skynode";
 import superagent from "superagent";
 import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
-import CloneNursesContract, { NurseType } from "../../contracts/CloneNursesContract";
+import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NursePartContract from "../../contracts/NursePartContract";
 import Wallet from "../../ethereum/Wallet";
 
@@ -10,7 +10,7 @@ export default class ChargeNursePopup extends Popup {
 
     public content: DomNode;
 
-    private nurseTypeInfo: undefined | NurseType;
+    private nurseType: undefined | number;
     private input: undefined | DomNode<HTMLInputElement>;
     private range: undefined | DomNode<HTMLInputElement>;
     private lifetime: undefined | DomNode;
@@ -32,12 +32,11 @@ export default class ChargeNursePopup extends Popup {
     }
 
     private refreshLifetime() {
-        if (this.nurseTypeInfo !== undefined && this.input !== undefined) {
+        if (this.nurseType !== undefined && this.input !== undefined) {
             this.lifetime?.empty().appendText(
                 CommonUtil.displayBlockDuration(
                     Calculator.nurseLifetime(
-                        this.nurseTypeInfo.lifetime,
-                        this.nurseTypeInfo.partCount,
+                        this.nurseType,
                         parseInt(this.input.domElement.value, 10),
                         false,
                     ),
@@ -52,7 +51,8 @@ export default class ChargeNursePopup extends Popup {
         if (owner !== undefined) {
 
             const nurse = await CloneNursesContract.getNurse(this.nurseId);
-            this.nurseTypeInfo = await CloneNursesContract.getNurseType(nurse.nurseType);
+            this.nurseType = nurse.nurseType;
+
             const balance = (await NursePartContract.balanceOf(owner, nurse.nurseType)).toNumber();
 
             const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurse.nurseType}`);

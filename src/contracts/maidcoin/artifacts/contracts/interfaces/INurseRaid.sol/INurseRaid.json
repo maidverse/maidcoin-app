@@ -135,6 +135,19 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "cloneNurses",
+      "outputs": [
+        {
+          "internalType": "contract ICloneNurses",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "uint256[]",

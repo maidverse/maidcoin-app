@@ -38,7 +38,7 @@ export default class MaidCafe implements View {
                 this.currentTab = new StakeTab(),
             ),
             el("footer",
-                el("img.npc", { src: "/images/view/maid-cafe/npc.png", height: "496.5" }),
+                el("img.npc", { src: "/images/view/maid-cafe/npc.png", height: "447" }),
                 el(".balance",
                     this.omuBalance = el(".omu-balance"),
                     this.maidcoinBalance = el(".maidcoin-balance"),

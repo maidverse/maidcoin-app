@@ -1,0 +1,42 @@
+{
+    "0": {
+        "name": "N1 Part",
+        "external_url": "https://maidcoin.app/nurseparts/0",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N1.png"
+    },
+    "1": {
+        "name": "N2 Part",
+        "external_url": "https://maidcoin.app/nurseparts/1",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N2.png"
+    },
+    "2": {
+        "name": "N3 Part",
+        "external_url": "https://maidcoin.app/nurseparts/2",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N3.png"
+    },
+    "3": {
+        "name": "N4 Part",
+        "external_url": "https://maidcoin.app/nurseparts/3",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N4.png"
+    },
+    "4": {
+        "name": "N5 Part",
+        "external_url": "https://maidcoin.app/nurseparts/4",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N5.png"
+    },
+    "5": {
+        "name": "N6 Part",
+        "external_url": "https://maidcoin.app/nurseparts/5",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N6.png"
+    },
+    "6": {
+        "name": "N7 Part",
+        "external_url": "https://maidcoin.app/nurseparts/6",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N7.png"
+    },
+    "7": {
+        "name": "N8 Part",
+        "external_url": "https://maidcoin.app/nurseparts/7",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N8.png"
+    }
+}

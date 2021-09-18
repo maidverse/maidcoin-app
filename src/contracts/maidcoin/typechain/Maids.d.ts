@@ -28,13 +28,11 @@ interface MaidsInterface extends ethers.utils.Interface {
     "accSushiPerShare()": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
-    "changeLPTokenToMaidPower(uint256)": FunctionFragment;
     "claimSushiReward(uint256)": FunctionFragment;
     "desupport(uint256,uint256)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "lpToken()": FunctionFragment;
-    "lpTokenToMaidPower()": FunctionFragment;
     "maids(uint256)": FunctionFragment;
     "masterChefPid()": FunctionFragment;
     "mint(uint256)": FunctionFragment;
@@ -47,7 +45,7 @@ interface MaidsInterface extends ethers.utils.Interface {
     "pendingSushiReward(uint256)": FunctionFragment;
     "permit(address,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
     "permitAll(address,address,uint256,uint8,bytes32,bytes32)": FunctionFragment;
-    "powerOf(uint256)": FunctionFragment;
+    "powerAndLP(uint256)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "royaltyInfo(uint256,uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
@@ -95,10 +93,6 @@ interface MaidsInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
   encodeFunctionData(
-    functionFragment: "changeLPTokenToMaidPower",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
     functionFragment: "claimSushiReward",
     values: [BigNumberish]
   ): string;
@@ -115,10 +109,6 @@ interface MaidsInterface extends ethers.utils.Interface {
     values: [string, string]
   ): string;
   encodeFunctionData(functionFragment: "lpToken", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "lpTokenToMaidPower",
-    values?: undefined
-  ): string;
   encodeFunctionData(functionFragment: "maids", values: [BigNumberish]): string;
   encodeFunctionData(
     functionFragment: "masterChefPid",
@@ -163,7 +153,7 @@ interface MaidsInterface extends ethers.utils.Interface {
     values: [string, string, BigNumberish, BigNumberish, BytesLike, BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "powerOf",
+    functionFragment: "powerAndLP",
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
@@ -267,10 +257,6 @@ interface MaidsInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "changeLPTokenToMaidPower",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "claimSushiReward",
     data: BytesLike
   ): Result;
@@ -284,10 +270,6 @@ interface MaidsInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "lpToken", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "lpTokenToMaidPower",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "maids", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "masterChefPid",
@@ -309,7 +291,7 @@ interface MaidsInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "permit", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "permitAll", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "powerOf", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "powerAndLP", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
     data: BytesLike
@@ -378,7 +360,6 @@ interface MaidsInterface extends ethers.utils.Interface {
   events: {
     "Approval(address,address,uint256)": EventFragment;
     "ApprovalForAll(address,address,bool)": EventFragment;
-    "ChangeLPTokenToMaidPower(uint256)": EventFragment;
     "Desupport(uint256,uint256)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
     "Support(uint256,uint256)": EventFragment;
@@ -387,7 +368,6 @@ interface MaidsInterface extends ethers.utils.Interface {
 
   getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ChangeLPTokenToMaidPower"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Desupport"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Support"): EventFragment;
@@ -456,11 +436,6 @@ export class Maids extends BaseContract {
 
     balanceOf(owner: string, overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    changeLPTokenToMaidPower(
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
     claimSushiReward(
       id: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -484,8 +459,6 @@ export class Maids extends BaseContract {
     ): Promise<[boolean]>;
 
     lpToken(overrides?: CallOverrides): Promise<[string]>;
-
-    lpTokenToMaidPower(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     maids(
       arg0: BigNumberish,
@@ -549,7 +522,10 @@ export class Maids extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    powerOf(id: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
+    powerAndLP(
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber, BigNumber]>;
 
     renounceOwnership(
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -672,11 +648,6 @@ export class Maids extends BaseContract {
 
   balanceOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-  changeLPTokenToMaidPower(
-    value: BigNumberish,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   claimSushiReward(
     id: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
@@ -700,8 +671,6 @@ export class Maids extends BaseContract {
   ): Promise<boolean>;
 
   lpToken(overrides?: CallOverrides): Promise<string>;
-
-  lpTokenToMaidPower(overrides?: CallOverrides): Promise<BigNumber>;
 
   maids(
     arg0: BigNumberish,
@@ -762,7 +731,10 @@ export class Maids extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  powerOf(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+  powerAndLP(
+    id: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<[BigNumber, BigNumber]>;
 
   renounceOwnership(
     overrides?: Overrides & { from?: string | Promise<string> }
@@ -882,11 +854,6 @@ export class Maids extends BaseContract {
 
     balanceOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    changeLPTokenToMaidPower(
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     claimSushiReward(
       id: BigNumberish,
       overrides?: CallOverrides
@@ -910,8 +877,6 @@ export class Maids extends BaseContract {
     ): Promise<boolean>;
 
     lpToken(overrides?: CallOverrides): Promise<string>;
-
-    lpTokenToMaidPower(overrides?: CallOverrides): Promise<BigNumber>;
 
     maids(
       arg0: BigNumberish,
@@ -969,7 +934,10 @@ export class Maids extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    powerOf(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    powerAndLP(
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber, BigNumber]>;
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
@@ -1088,10 +1056,6 @@ export class Maids extends BaseContract {
       { owner: string; operator: string; approved: boolean }
     >;
 
-    ChangeLPTokenToMaidPower(
-      value?: null
-    ): TypedEventFilter<[BigNumber], { value: BigNumber }>;
-
     Desupport(
       id?: BigNumberish | null,
       lpTokenAmount?: null
@@ -1145,11 +1109,6 @@ export class Maids extends BaseContract {
 
     balanceOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    changeLPTokenToMaidPower(
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
     claimSushiReward(
       id: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -1173,8 +1132,6 @@ export class Maids extends BaseContract {
     ): Promise<BigNumber>;
 
     lpToken(overrides?: CallOverrides): Promise<BigNumber>;
-
-    lpTokenToMaidPower(overrides?: CallOverrides): Promise<BigNumber>;
 
     maids(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -1229,7 +1186,7 @@ export class Maids extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    powerOf(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    powerAndLP(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     renounceOwnership(
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -1358,11 +1315,6 @@ export class Maids extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    changeLPTokenToMaidPower(
-      value: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
     claimSushiReward(
       id: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -1386,10 +1338,6 @@ export class Maids extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     lpToken(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    lpTokenToMaidPower(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
 
     maids(
       arg0: BigNumberish,
@@ -1453,7 +1401,7 @@ export class Maids extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    powerOf(
+    powerAndLP(
       id: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

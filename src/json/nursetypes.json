@@ -1,67 +1,66 @@
 {
     "0": {
-        "external_url": "https://maidcoin.org/clonenurse/0",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/P1.png",
-        "name": "P1"
+        "name": "N1",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N1.png",
+        "partCount": 2,
+        "destroyReturn": 10,
+        "power": 120,
+        "lifetime": 80640
     },
     "1": {
-        "external_url": "https://maidcoin.org/clonenurse/1",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/P2.png",
-        "name": "P2"
+        "name": "N2",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N2.png",
+        "partCount": 3,
+        "destroyReturn": 15,
+        "power": 215,
+        "lifetime": 120960
     },
     "2": {
-        "external_url": "https://maidcoin.org/clonenurse/2",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/P3.png",
-        "name": "P3"
+        "name": "N3",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N3.png",
+        "partCount": 3,
+        "destroyReturn": 20,
+        "power": 334,
+        "lifetime": 120960
     },
     "3": {
-        "external_url": "https://maidcoin.org/clonenurse/3",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/P4.png",
-        "name": "P4"
+        "name": "N4",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N4.png",
+        "partCount": 4,
+        "destroyReturn": 30,
+        "power": 451,
+        "lifetime": 161280
     },
     "4": {
-        "external_url": "https://maidcoin.org/clonenurse/4",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/P5.png",
-        "name": "P5"
+        "name": "N5",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N5.png",
+        "partCount": 4,
+        "destroyReturn": 35,
+        "power": 537,
+        "lifetime": 161280
     },
     "5": {
-        "external_url": "https://maidcoin.org/clonenurse/5",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/N1.png",
-        "name": "N1"
+        "name": "N6",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N6.png",
+        "partCount": 5,
+        "destroyReturn": 50,
+        "power": 783,
+        "lifetime": 201600
     },
     "6": {
-        "external_url": "https://maidcoin.org/clonenurse/6",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/N2.png",
-        "name": "N2"
+        "name": "N7",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N7.png",
+        "partCount": 0,
+        "destroyReturn": 0,
+        "power": 0,
+        "lifetime": 0
     },
     "7": {
-        "external_url": "https://maidcoin.org/clonenurse/7",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/N3.png",
-        "name": "N3"
-    },
-    "8": {
-        "external_url": "https://maidcoin.org/clonenurse/8",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/N4.png",
-        "name": "N4"
-    },
-    "9": {
-        "external_url": "https://maidcoin.org/clonenurse/9",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/N5.png",
-        "name": "N5"
-    },
-    "10": {
-        "external_url": "https://maidcoin.org/clonenurse/10",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/N6.png",
-        "name": "N6"
-    },
-    "11": {
-        "external_url": "https://maidcoin.org/clonenurse/11",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/N7.png",
-        "name": "N7"
-    },
-    "12": {
-        "external_url": "https://maidcoin.org/clonenurse/12",
-        "image": "https://storage.googleapis.com/maidcoin/Nurse/N8.png",
-        "name": "N8"
+        "name": "N8",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N8.png",
+        "partCount": 0,
+        "destroyReturn": 0,
+        "power": 0,
+        "lifetime": 0
     }
 }

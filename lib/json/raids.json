@@ -1,0 +1,37 @@
+[{
+        "entranceFee": 10,
+        "nursePart": 0,
+        "maxRewardCount": 5,
+        "duration": 1920,
+        "endBlock": 99999999
+    }, {
+        "entranceFee": 12,
+        "nursePart": 1,
+        "maxRewardCount": 5,
+        "duration": 2880,
+        "endBlock": 99999999
+    }, {
+        "entranceFee": 14,
+        "nursePart": 2,
+        "maxRewardCount": 5,
+        "duration": 3840,
+        "endBlock": 99999999
+    }, {
+        "entranceFee": 16,
+        "nursePart": 3,
+        "maxRewardCount": 5,
+        "duration": 4800,
+        "endBlock": 99999999
+    }, {
+        "entranceFee": 18,
+        "nursePart": 4,
+        "maxRewardCount": 5,
+        "duration": 5760,
+        "endBlock": 99999999
+    }, {
+        "entranceFee": 20,
+        "nursePart": 5,
+        "maxRewardCount": 5,
+        "duration": 6720,
+        "endBlock": 99999999
+    }]

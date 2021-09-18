@@ -33,7 +33,6 @@ interface IMaidsInterface extends ethers.utils.Interface {
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "lpToken()": FunctionFragment;
-    "lpTokenToMaidPower()": FunctionFragment;
     "maids(uint256)": FunctionFragment;
     "masterChefPid()": FunctionFragment;
     "name()": FunctionFragment;
@@ -43,7 +42,7 @@ interface IMaidsInterface extends ethers.utils.Interface {
     "pendingSushiReward(uint256)": FunctionFragment;
     "permit(address,uint256,uint256,uint8,bytes32,bytes32)": FunctionFragment;
     "permitAll(address,address,uint256,uint8,bytes32,bytes32)": FunctionFragment;
-    "powerOf(uint256)": FunctionFragment;
+    "powerAndLP(uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
     "support(uint256,uint256)": FunctionFragment;
@@ -102,10 +101,6 @@ interface IMaidsInterface extends ethers.utils.Interface {
     values: [string, string]
   ): string;
   encodeFunctionData(functionFragment: "lpToken", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "lpTokenToMaidPower",
-    values?: undefined
-  ): string;
   encodeFunctionData(functionFragment: "maids", values: [BigNumberish]): string;
   encodeFunctionData(
     functionFragment: "masterChefPid",
@@ -144,7 +139,7 @@ interface IMaidsInterface extends ethers.utils.Interface {
     values: [string, string, BigNumberish, BigNumberish, BytesLike, BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "powerOf",
+    functionFragment: "powerAndLP",
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
@@ -241,10 +236,6 @@ interface IMaidsInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "lpToken", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "lpTokenToMaidPower",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "maids", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "masterChefPid",
@@ -263,7 +254,7 @@ interface IMaidsInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "permit", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "permitAll", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "powerOf", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "powerAndLP", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "safeTransferFrom",
     data: BytesLike
@@ -312,7 +303,6 @@ interface IMaidsInterface extends ethers.utils.Interface {
   events: {
     "Approval(address,address,uint256)": EventFragment;
     "ApprovalForAll(address,address,bool)": EventFragment;
-    "ChangeLPTokenToMaidPower(uint256)": EventFragment;
     "Desupport(uint256,uint256)": EventFragment;
     "Support(uint256,uint256)": EventFragment;
     "Transfer(address,address,uint256)": EventFragment;
@@ -320,7 +310,6 @@ interface IMaidsInterface extends ethers.utils.Interface {
 
   getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ChangeLPTokenToMaidPower"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Desupport"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Support"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
@@ -415,8 +404,6 @@ export class IMaids extends BaseContract {
 
     lpToken(overrides?: CallOverrides): Promise<[string]>;
 
-    lpTokenToMaidPower(overrides?: CallOverrides): Promise<[BigNumber]>;
-
     maids(
       id: BigNumberish,
       overrides?: CallOverrides
@@ -469,7 +456,10 @@ export class IMaids extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    powerOf(id: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
+    powerAndLP(
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber, BigNumber]>;
 
     "safeTransferFrom(address,address,uint256)"(
       from: string,
@@ -589,8 +579,6 @@ export class IMaids extends BaseContract {
 
   lpToken(overrides?: CallOverrides): Promise<string>;
 
-  lpTokenToMaidPower(overrides?: CallOverrides): Promise<BigNumber>;
-
   maids(
     id: BigNumberish,
     overrides?: CallOverrides
@@ -637,7 +625,10 @@ export class IMaids extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  powerOf(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+  powerAndLP(
+    id: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<[BigNumber, BigNumber]>;
 
   "safeTransferFrom(address,address,uint256)"(
     from: string,
@@ -754,8 +745,6 @@ export class IMaids extends BaseContract {
 
     lpToken(overrides?: CallOverrides): Promise<string>;
 
-    lpTokenToMaidPower(overrides?: CallOverrides): Promise<BigNumber>;
-
     maids(
       id: BigNumberish,
       overrides?: CallOverrides
@@ -802,7 +791,10 @@ export class IMaids extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    powerOf(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    powerAndLP(
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber, BigNumber]>;
 
     "safeTransferFrom(address,address,uint256)"(
       from: string,
@@ -896,10 +888,6 @@ export class IMaids extends BaseContract {
       { owner: string; operator: string; approved: boolean }
     >;
 
-    ChangeLPTokenToMaidPower(
-      value?: null
-    ): TypedEventFilter<[BigNumber], { value: BigNumber }>;
-
     Desupport(
       id?: BigNumberish | null,
       lpTokenAmount?: null
@@ -969,8 +957,6 @@ export class IMaids extends BaseContract {
 
     lpToken(overrides?: CallOverrides): Promise<BigNumber>;
 
-    lpTokenToMaidPower(overrides?: CallOverrides): Promise<BigNumber>;
-
     maids(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     masterChefPid(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1011,7 +997,7 @@ export class IMaids extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    powerOf(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    powerAndLP(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     "safeTransferFrom(address,address,uint256)"(
       from: string,
@@ -1137,10 +1123,6 @@ export class IMaids extends BaseContract {
 
     lpToken(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    lpTokenToMaidPower(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
     maids(
       id: BigNumberish,
       overrides?: CallOverrides
@@ -1190,7 +1172,7 @@ export class IMaids extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    powerOf(
+    powerAndLP(
       id: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

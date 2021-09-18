@@ -1,15 +1,10 @@
 import { BigNumber, BigNumberish } from "ethers";
-import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 import { Maids } from "./maidcoin/typechain";
-export interface MaidInfo {
-    originPower: number;
-    supportedLPTokenAmount: BigNumber;
-}
+import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 declare class MaidsContract extends ERC721EnumerableContract<Maids> {
     constructor();
-    getMaid(maidId: number): Promise<MaidInfo>;
+    getSupportedLP(id: number): Promise<BigNumber>;
     ownerOf(maidId: number): Promise<string>;
-    powerOf(maidId: number): Promise<number>;
     mint(power: BigNumberish): Promise<void>;
     support(id: BigNumberish, lpTokenAmount: BigNumberish): Promise<void>;
 }

@@ -1,20 +1,8 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Contract from "./Contract";
 import { TheMaster } from "./maidcoin/typechain";
-export interface PoolInfo {
-    addr: string;
-    delegate: boolean;
-    supportable: string;
-    supportingRatio: number;
-    allocPoint: number;
-    lastRewardBlock: number;
-    accRewardPerShare: BigNumber;
-    supply: BigNumber;
-}
 declare class TheMasterContract extends Contract<TheMaster> {
     constructor();
-    getPoolCount(): Promise<BigNumber>;
-    getPool(poolId: BigNumberish): Promise<PoolInfo>;
     getLPAmount(pid: BigNumberish, user: string): Promise<BigNumber>;
     getSupportingAmount(user: string): Promise<BigNumber>;
     getPendingReward(pid: BigNumberish, user: string): Promise<BigNumber>;

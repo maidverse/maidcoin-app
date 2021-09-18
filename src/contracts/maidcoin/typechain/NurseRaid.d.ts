@@ -23,9 +23,11 @@ interface NurseRaidInterface extends ethers.utils.Interface {
   functions: {
     "approveMaids(address[])": FunctionFragment;
     "challengers(uint256,address)": FunctionFragment;
+    "changeLPTokenToMaidPower(uint256)": FunctionFragment;
     "changeMaidEfficacy(uint256,uint256)": FunctionFragment;
     "changeRNG(address)": FunctionFragment;
     "checkDone(uint256)": FunctionFragment;
+    "cloneNurses()": FunctionFragment;
     "create(uint256[],uint256[],uint256[],uint256[],uint256[])": FunctionFragment;
     "disapproveMaids(address[])": FunctionFragment;
     "enter(uint256,address,uint256)": FunctionFragment;
@@ -33,16 +35,20 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     "enterWithPermitAll(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)": FunctionFragment;
     "exit(uint256[])": FunctionFragment;
     "isMaidsApproved(address)": FunctionFragment;
+    "lingerieGirls()": FunctionFragment;
+    "lpTokenToMaidPower()": FunctionFragment;
     "maidCafe()": FunctionFragment;
     "maidCoin()": FunctionFragment;
     "maidEfficacy()": FunctionFragment;
     "nursePart()": FunctionFragment;
     "owner()": FunctionFragment;
+    "powerOfMaids(address,uint256)": FunctionFragment;
     "raidCount()": FunctionFragment;
     "raids(uint256)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "rng()": FunctionFragment;
     "setMaidCafe(address)": FunctionFragment;
+    "sushiGirls()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
   };
 
@@ -55,6 +61,10 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     values: [BigNumberish, string]
   ): string;
   encodeFunctionData(
+    functionFragment: "changeLPTokenToMaidPower",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "changeMaidEfficacy",
     values: [BigNumberish, BigNumberish]
   ): string;
@@ -62,6 +72,10 @@ interface NurseRaidInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "checkDone",
     values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "cloneNurses",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "create",
@@ -119,6 +133,14 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     functionFragment: "isMaidsApproved",
     values: [string]
   ): string;
+  encodeFunctionData(
+    functionFragment: "lingerieGirls",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "lpTokenToMaidPower",
+    values?: undefined
+  ): string;
   encodeFunctionData(functionFragment: "maidCafe", values?: undefined): string;
   encodeFunctionData(functionFragment: "maidCoin", values?: undefined): string;
   encodeFunctionData(
@@ -127,6 +149,10 @@ interface NurseRaidInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "nursePart", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "powerOfMaids",
+    values: [string, BigNumberish]
+  ): string;
   encodeFunctionData(functionFragment: "raidCount", values?: undefined): string;
   encodeFunctionData(functionFragment: "raids", values: [BigNumberish]): string;
   encodeFunctionData(
@@ -135,6 +161,10 @@ interface NurseRaidInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "rng", values?: undefined): string;
   encodeFunctionData(functionFragment: "setMaidCafe", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "sushiGirls",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
     values: [string]
@@ -149,11 +179,19 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "changeLPTokenToMaidPower",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "changeMaidEfficacy",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "changeRNG", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "checkDone", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "cloneNurses",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "create", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "disapproveMaids",
@@ -173,6 +211,14 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     functionFragment: "isMaidsApproved",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "lingerieGirls",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "lpTokenToMaidPower",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "maidCafe", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "maidCoin", data: BytesLike): Result;
   decodeFunctionResult(
@@ -181,6 +227,10 @@ interface NurseRaidInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "nursePart", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "powerOfMaids",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "raidCount", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "raids", data: BytesLike): Result;
   decodeFunctionResult(
@@ -192,12 +242,14 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     functionFragment: "setMaidCafe",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "sushiGirls", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "transferOwnership",
     data: BytesLike
   ): Result;
 
   events: {
+    "ChangeLPTokenToMaidPower(uint256)": EventFragment;
     "ChangeMaidEfficacy(uint256,uint256)": EventFragment;
     "Create(uint256,uint256,uint256,uint256,uint256,uint256)": EventFragment;
     "Enter(address,uint256,address,uint256)": EventFragment;
@@ -205,6 +257,7 @@ interface NurseRaidInterface extends ethers.utils.Interface {
     "OwnershipTransferred(address,address)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "ChangeLPTokenToMaidPower"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ChangeMaidEfficacy"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Create"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Enter"): EventFragment;
@@ -273,6 +326,11 @@ export class NurseRaid extends BaseContract {
       }
     >;
 
+    changeLPTokenToMaidPower(
+      value: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
     changeMaidEfficacy(
       _numerator: BigNumberish,
       _denominator: BigNumberish,
@@ -285,6 +343,8 @@ export class NurseRaid extends BaseContract {
     ): Promise<ContractTransaction>;
 
     checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<[boolean]>;
+
+    cloneNurses(overrides?: CallOverrides): Promise<[string]>;
 
     create(
       entranceFees: BigNumberish[],
@@ -345,6 +405,10 @@ export class NurseRaid extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
+    lingerieGirls(overrides?: CallOverrides): Promise<[string]>;
+
+    lpTokenToMaidPower(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     maidCafe(overrides?: CallOverrides): Promise<[string]>;
 
     maidCoin(overrides?: CallOverrides): Promise<[string]>;
@@ -358,6 +422,12 @@ export class NurseRaid extends BaseContract {
     nursePart(overrides?: CallOverrides): Promise<[string]>;
 
     owner(overrides?: CallOverrides): Promise<[string]>;
+
+    powerOfMaids(
+      maids: string,
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
 
     raidCount(overrides?: CallOverrides): Promise<[BigNumber]>;
 
@@ -385,6 +455,8 @@ export class NurseRaid extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    sushiGirls(overrides?: CallOverrides): Promise<[string]>;
+
     transferOwnership(
       newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -408,6 +480,11 @@ export class NurseRaid extends BaseContract {
     }
   >;
 
+  changeLPTokenToMaidPower(
+    value: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
   changeMaidEfficacy(
     _numerator: BigNumberish,
     _denominator: BigNumberish,
@@ -420,6 +497,8 @@ export class NurseRaid extends BaseContract {
   ): Promise<ContractTransaction>;
 
   checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+
+  cloneNurses(overrides?: CallOverrides): Promise<string>;
 
   create(
     entranceFees: BigNumberish[],
@@ -477,6 +556,10 @@ export class NurseRaid extends BaseContract {
 
   isMaidsApproved(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
+  lingerieGirls(overrides?: CallOverrides): Promise<string>;
+
+  lpTokenToMaidPower(overrides?: CallOverrides): Promise<BigNumber>;
+
   maidCafe(overrides?: CallOverrides): Promise<string>;
 
   maidCoin(overrides?: CallOverrides): Promise<string>;
@@ -490,6 +573,12 @@ export class NurseRaid extends BaseContract {
   nursePart(overrides?: CallOverrides): Promise<string>;
 
   owner(overrides?: CallOverrides): Promise<string>;
+
+  powerOfMaids(
+    maids: string,
+    id: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   raidCount(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -517,6 +606,8 @@ export class NurseRaid extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  sushiGirls(overrides?: CallOverrides): Promise<string>;
+
   transferOwnership(
     newOwner: string,
     overrides?: Overrides & { from?: string | Promise<string> }
@@ -537,6 +628,11 @@ export class NurseRaid extends BaseContract {
       }
     >;
 
+    changeLPTokenToMaidPower(
+      value: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     changeMaidEfficacy(
       _numerator: BigNumberish,
       _denominator: BigNumberish,
@@ -546,6 +642,8 @@ export class NurseRaid extends BaseContract {
     changeRNG(addr: string, overrides?: CallOverrides): Promise<void>;
 
     checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+
+    cloneNurses(overrides?: CallOverrides): Promise<string>;
 
     create(
       entranceFees: BigNumberish[],
@@ -597,6 +695,10 @@ export class NurseRaid extends BaseContract {
 
     isMaidsApproved(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
+    lingerieGirls(overrides?: CallOverrides): Promise<string>;
+
+    lpTokenToMaidPower(overrides?: CallOverrides): Promise<BigNumber>;
+
     maidCafe(overrides?: CallOverrides): Promise<string>;
 
     maidCoin(overrides?: CallOverrides): Promise<string>;
@@ -610,6 +712,12 @@ export class NurseRaid extends BaseContract {
     nursePart(overrides?: CallOverrides): Promise<string>;
 
     owner(overrides?: CallOverrides): Promise<string>;
+
+    powerOfMaids(
+      maids: string,
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     raidCount(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -632,6 +740,8 @@ export class NurseRaid extends BaseContract {
 
     setMaidCafe(_maidCafe: string, overrides?: CallOverrides): Promise<void>;
 
+    sushiGirls(overrides?: CallOverrides): Promise<string>;
+
     transferOwnership(
       newOwner: string,
       overrides?: CallOverrides
@@ -639,6 +749,10 @@ export class NurseRaid extends BaseContract {
   };
 
   filters: {
+    ChangeLPTokenToMaidPower(
+      value?: null
+    ): TypedEventFilter<[BigNumber], { value: BigNumber }>;
+
     ChangeMaidEfficacy(
       numerator?: null,
       denominator?: null
@@ -705,6 +819,11 @@ export class NurseRaid extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    changeLPTokenToMaidPower(
+      value: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
     changeMaidEfficacy(
       _numerator: BigNumberish,
       _denominator: BigNumberish,
@@ -717,6 +836,8 @@ export class NurseRaid extends BaseContract {
     ): Promise<BigNumber>;
 
     checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+
+    cloneNurses(overrides?: CallOverrides): Promise<BigNumber>;
 
     create(
       entranceFees: BigNumberish[],
@@ -777,6 +898,10 @@ export class NurseRaid extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    lingerieGirls(overrides?: CallOverrides): Promise<BigNumber>;
+
+    lpTokenToMaidPower(overrides?: CallOverrides): Promise<BigNumber>;
+
     maidCafe(overrides?: CallOverrides): Promise<BigNumber>;
 
     maidCoin(overrides?: CallOverrides): Promise<BigNumber>;
@@ -786,6 +911,12 @@ export class NurseRaid extends BaseContract {
     nursePart(overrides?: CallOverrides): Promise<BigNumber>;
 
     owner(overrides?: CallOverrides): Promise<BigNumber>;
+
+    powerOfMaids(
+      maids: string,
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     raidCount(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -801,6 +932,8 @@ export class NurseRaid extends BaseContract {
       _maidCafe: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
+
+    sushiGirls(overrides?: CallOverrides): Promise<BigNumber>;
 
     transferOwnership(
       newOwner: string,
@@ -820,6 +953,11 @@ export class NurseRaid extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    changeLPTokenToMaidPower(
+      value: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
     changeMaidEfficacy(
       _numerator: BigNumberish,
       _denominator: BigNumberish,
@@ -835,6 +973,8 @@ export class NurseRaid extends BaseContract {
       id: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
+
+    cloneNurses(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     create(
       entranceFees: BigNumberish[],
@@ -895,6 +1035,12 @@ export class NurseRaid extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    lingerieGirls(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    lpTokenToMaidPower(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     maidCafe(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     maidCoin(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -904,6 +1050,12 @@ export class NurseRaid extends BaseContract {
     nursePart(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    powerOfMaids(
+      maids: string,
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     raidCount(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -922,6 +1074,8 @@ export class NurseRaid extends BaseContract {
       _maidCafe: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
+
+    sushiGirls(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     transferOwnership(
       newOwner: string,

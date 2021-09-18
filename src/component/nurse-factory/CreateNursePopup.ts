@@ -2,15 +2,15 @@ import { DomNode, el, Popup } from "@hanul/skynode";
 import superagent from "superagent";
 import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
-import CloneNursesContract, { NurseType } from "../../contracts/CloneNursesContract";
+import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NursePartContract from "../../contracts/NursePartContract";
 import Wallet from "../../ethereum/Wallet";
+import StaticDataManager from "../../StaticDataManager";
 
 export default class CreateNursePopup extends Popup {
 
     public content: DomNode;
 
-    private nurseTypeInfo: undefined | NurseType;
     private input: undefined | DomNode<HTMLInputElement>;
     private range: undefined | DomNode<HTMLInputElement>;
     private lifetime: undefined | DomNode;
@@ -32,12 +32,11 @@ export default class CreateNursePopup extends Popup {
     }
 
     private refreshLifetime() {
-        if (this.nurseTypeInfo !== undefined && this.input !== undefined) {
+        if (this.input !== undefined) {
             this.lifetime?.empty().appendText(
                 CommonUtil.displayBlockDuration(
                     Calculator.nurseLifetime(
-                        this.nurseTypeInfo.lifetime,
-                        this.nurseTypeInfo.partCount,
+                        this.nurseType,
                         parseInt(this.input.domElement.value, 10),
                         true,
                     ),
@@ -51,24 +50,24 @@ export default class CreateNursePopup extends Popup {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 
-            this.nurseTypeInfo = await CloneNursesContract.getNurseType(this.nurseType);
+            const nurseTypeInfo = StaticDataManager.getNurseType(this.nurseType);
             const balance = (await NursePartContract.balanceOf(owner, this.nurseType)).toNumber();
 
             const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${this.nurseType}`);
             const tokenInfo = result.body;
 
-            const rangePercent = 100 - this.nurseTypeInfo.partCount / balance * 100;
+            const rangePercent = 100 - nurseTypeInfo.partCount / balance * 100;
 
             this.content.append(
                 el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${tokenInfo.name}.png`, height: "80" }),
                 el(".part-count",
                     this.input = el("input", {
-                        value: String(this.nurseTypeInfo.partCount),
+                        value: String(nurseTypeInfo.partCount),
                         change: () => {
-                            if (this.range !== undefined && this.input !== undefined && this.nurseTypeInfo !== undefined) {
+                            if (this.range !== undefined && this.input !== undefined && nurseTypeInfo !== undefined) {
                                 const currentValue = parseInt(this.input.domElement.value, 10);
-                                if (currentValue < this.nurseTypeInfo.partCount) {
-                                    this.input.domElement.value = String(this.nurseTypeInfo.partCount);
+                                if (currentValue < nurseTypeInfo.partCount) {
+                                    this.input.domElement.value = String(nurseTypeInfo.partCount);
                                 } else if (currentValue > balance) {
                                     this.input.domElement.value = String(balance);
                                 }
@@ -88,8 +87,8 @@ export default class CreateNursePopup extends Popup {
                     this.range = el("input.range", {
                         style: { width: `${rangePercent}%` },
                         type: "range",
-                        min: String(this.nurseTypeInfo.partCount),
-                        value: String(this.nurseTypeInfo.partCount),
+                        min: String(nurseTypeInfo.partCount),
+                        value: String(nurseTypeInfo.partCount),
                         max: balance.toString(),
                         change: () => {
                             if (this.input !== undefined && this.range !== undefined) {

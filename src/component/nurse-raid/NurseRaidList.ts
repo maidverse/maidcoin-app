@@ -1,7 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
-import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
+import StaticDataManager from "../../StaticDataManager";
 import Loading from "../Loading";
 import NurseRaid from "./NurseRaid";
 
@@ -21,16 +21,15 @@ export default class NurseRaidList extends DomNode {
 
     private async loadRaids() {
 
-        const raidCount = (await NurseRaidContract.getRaidCount()).toNumber();
         const currentBlockNumber = await NetworkProvider.getBlockNumber();
 
         let index = 0;
-        SkyUtil.repeat(raidCount, async (raidId) => {
+        SkyUtil.repeat(StaticDataManager.raidCount, async (raidId) => {
             if (this.deleted !== true) {
-                const raid = await NurseRaidContract.getRaid(raidId);
+                const raid = StaticDataManager.getRaid(raidId);
                 if (currentBlockNumber < raid.endBlock) {
                     setTimeout(() => {
-                        new NurseRaid(raidId, raid, currentBlockNumber).appendTo(this.raidContainer);
+                        new NurseRaid(raidId, currentBlockNumber).appendTo(this.raidContainer);
                     }, index * 50);
                     index += 1;
                 }

@@ -2,7 +2,9 @@ import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../../CommonUtil";
+import NurseRaidContract from "../../../contracts/NurseRaidContract";
 import SushiGirlsContract from "../../../contracts/SushiGirlsContract";
+import StaticDataManager from "../../../StaticDataManager";
 
 export default class SushiGirlDetail extends Popup {
 
@@ -21,9 +23,10 @@ export default class SushiGirlDetail extends Popup {
 
     private async load() {
 
-        const sushiGirl = await SushiGirlsContract.getSushiGirl(this.id);
+        const sushiGirl = StaticDataManager.getLingerieGirl(this.id);
+        const supportedLP = await SushiGirlsContract.getSupportedLP(this.id);
         const sushiGirlOwner = await SushiGirlsContract.ownerOf(this.id);
-        const sushiGirlPower = await SushiGirlsContract.powerOf(this.id);
+        const sushiGirlPower = await NurseRaidContract.powerOfMaids(SushiGirlsContract.address, this.id);
 
         const result = await superagent.get(`https://api.maidcoin.org/sushigirls/${this.id}`);
         const tokenInfo = result.body;
@@ -36,7 +39,7 @@ export default class SushiGirlDetail extends Popup {
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(sushiGirlPower))),
                 el(".property.origin-power", "Origin Power: ", el("span", String(sushiGirl.originPower))),
                 el(".property.additional-power", "Additional Power: ", el("span", String(sushiGirlPower - sushiGirl.originPower))),
-                el(".property.lp-amount", "LP Supported: ", el("span", utils.formatEther(sushiGirl.supportedLPTokenAmount))),
+                el(".property.lp-amount", "LP Supported: ", el("span", utils.formatEther(supportedLP))),
             ),
             el(".controller",
                 el("a.power-up-button", "Power Up", {

@@ -3,6 +3,8 @@ import { utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../../CommonUtil";
 import LingerieGirlsContract from "../../../contracts/LingerieGirlsContract";
+import NurseRaidContract from "../../../contracts/NurseRaidContract";
+import StaticDataManager from "../../../StaticDataManager";
 
 export default class LingerieGirlDetail extends Popup {
 
@@ -21,9 +23,10 @@ export default class LingerieGirlDetail extends Popup {
 
     private async load() {
 
-        const lingerieGirl = await LingerieGirlsContract.getLingerieGirl(this.id);
+        const lingerieGirl = StaticDataManager.getLingerieGirl(this.id);
+        const supportedLP = await LingerieGirlsContract.getSupportedLP(this.id);
         const lingerieGirlOwner = await LingerieGirlsContract.ownerOf(this.id);
-        const lingerieGirlPower = await LingerieGirlsContract.powerOf(this.id);
+        const lingerieGirlPower = await NurseRaidContract.powerOfMaids(LingerieGirlsContract.address, this.id);
 
         const result = await superagent.get(`https://api.maidcoin.org/lingeriegirls/${this.id}`);
         const tokenInfo = result.body;
@@ -36,7 +39,7 @@ export default class LingerieGirlDetail extends Popup {
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(lingerieGirlPower))),
                 el(".property.origin-power", "Origin Power: ", el("span", String(lingerieGirl.originPower))),
                 el(".property.additional-power", "Additional Power: ", el("span", String(lingerieGirlPower - lingerieGirl.originPower))),
-                el(".property.lp-amount", "LP Supported: ", el("span", utils.formatEther(lingerieGirl.supportedLPTokenAmount))),
+                el(".property.lp-amount", "LP Supported: ", el("span", utils.formatEther(supportedLP))),
             ),
             el(".controller",
                 el("a.power-up-button", "Power Up", {

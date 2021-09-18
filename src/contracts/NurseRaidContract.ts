@@ -2,18 +2,11 @@ import { BigNumber, BigNumberish, constants } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
 import MaidsContractSelector from "../MaidsContractSelector";
+import StaticDataManager from "../StaticDataManager";
 import Contract from "./Contract";
 import NurseRaidArtifact from "./maidcoin/artifacts/contracts/NurseRaid.sol/NurseRaid.json";
 import { NurseRaid } from "./maidcoin/typechain";
 import MaidCoinContract from "./MaidCoinContract";
-
-export interface RaidInfo {
-    entranceFee: BigNumber;
-    nursePart: number;
-    maxRewardCount: number;
-    duration: number;
-    endBlock: number;
-}
 
 export interface ChallengerInfo {
     enterBlock: number;
@@ -32,21 +25,6 @@ class NurseRaidContract extends Contract<NurseRaid> {
         ]);
     }
 
-    public async getRaidCount(): Promise<BigNumber> {
-        return await this.contract.raidCount();
-    }
-
-    public async getRaid(raidId: number): Promise<RaidInfo> {
-        const [entranceFee, nursePart, maxRewardCount, duration, endBlock] = await this.contract.raids(raidId);
-        return {
-            entranceFee,
-            nursePart: nursePart.toNumber(),
-            maxRewardCount: maxRewardCount.toNumber(),
-            duration: duration.toNumber(),
-            endBlock: endBlock.toNumber(),
-        };
-    }
-
     public async getChallenger(raidId: number, owner: string): Promise<ChallengerInfo> {
         const [enterBlock, maids, maidId] = await this.contract.challengers(raidId, owner);
         return {
@@ -54,6 +32,10 @@ class NurseRaidContract extends Contract<NurseRaid> {
             maids,
             maidId,
         };
+    }
+
+    public async powerOfMaids(maids: string, maidId: number): Promise<number> {
+        return (await this.contract.powerOfMaids(maids, maidId)).toNumber();
     }
 
     public async checkDone(raidId: number): Promise<boolean | undefined> {
@@ -82,7 +64,7 @@ class NurseRaidContract extends Contract<NurseRaid> {
         const owner = await Wallet.loadAddress();
         if (contract !== undefined && owner !== undefined) {
 
-            const raid = await this.getRaid(raidId);
+            const raid = StaticDataManager.getRaid(raidId);
 
             let supporterContract = MaidsContractSelector.addressToContract(maids);
             if (

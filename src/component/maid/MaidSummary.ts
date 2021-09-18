@@ -3,6 +3,8 @@ import { utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import MaidsContract from "../../contracts/MaidsContract";
+import NurseRaidContract from "../../contracts/NurseRaidContract";
+import StaticDataManager from "../../StaticDataManager";
 import MaidDetail from "./MaidDetail";
 import Sound from "./Sound";
 
@@ -30,9 +32,10 @@ export default class MaidSummary extends DomNode {
 
     private async load() {
 
-        const maid = await MaidsContract.getMaid(this.maidId);
+        const maid = StaticDataManager.getMaid(this.maidId);
+        const supportedLP = await MaidsContract.getSupportedLP(this.maidId);
         const maidOwner = await MaidsContract.ownerOf(this.maidId);
-        const maidPower = await MaidsContract.powerOf(this.maidId);
+        const maidPower = await NurseRaidContract.powerOfMaids(MaidsContract.address, this.maidId);
 
         const result = await superagent.get(`https://api.maidcoin.org/maids/${this.maidId}`);
         const tokenInfo = result.body;
@@ -60,7 +63,7 @@ export default class MaidSummary extends DomNode {
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(maidPower))),
                 el(".property.origin-power", "Origin Power: ", el("span", String(maid.originPower))),
                 el(".property.additional-power", "Additional Power: ", el("span", String(maidPower - maid.originPower))),
-                el(".property.lp-amount", "Supported LP Token Amount: ", el("span", utils.formatEther(maid.supportedLPTokenAmount))),
+                el(".property.lp-amount", "Supported LP Token Amount: ", el("span", utils.formatEther(supportedLP))),
             ),
         );
 

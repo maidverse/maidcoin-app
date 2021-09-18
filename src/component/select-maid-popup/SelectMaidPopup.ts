@@ -1,8 +1,9 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
-import NurseRaidContract, { RaidInfo } from "../../contracts/NurseRaidContract";
+import NurseRaidContract from "../../contracts/NurseRaidContract";
 import Wallet from "../../ethereum/Wallet";
 import MaidsContractSelector from "../../MaidsContractSelector";
+import StaticDataManager from "../../StaticDataManager";
 import AnyHousekeeperList from "../housekeeper/AnyHousekeeperList";
 import MaidList from "./MaidList";
 
@@ -16,7 +17,7 @@ export default class SelectMaidPopup extends Popup {
         id: number,
     } | undefined;
 
-    constructor(private raidId: number, private raid: RaidInfo) {
+    constructor(private raidId: number) {
         super(".popup-background");
 
         let maidList: MaidList;
@@ -63,9 +64,11 @@ export default class SelectMaidPopup extends Popup {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 
+            const raid = StaticDataManager.getRaid(this.raidId);
+
             this.footer.empty().append(
                 el("a.start-button",
-                    utils.formatEther(this.raid.entranceFee),
+                    utils.formatEther(raid.entranceFee),
                     el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
                     "Start",
                     {

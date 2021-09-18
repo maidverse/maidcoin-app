@@ -8,6 +8,7 @@ import LPTokenContract from "../../contracts/LPTokenContract";
 import TheMasterContract from "../../contracts/TheMasterContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
 import Wallet from "../../ethereum/Wallet";
+import StaticDataManager from "../../StaticDataManager";
 import TokenPrompt from "../dialogue/TokenPrompt";
 import ChargeNursePopup from "./ChargeNursePopup";
 
@@ -47,7 +48,7 @@ export default class NurseDetail extends Popup {
             this.endBlock = nurse.endBlock;
 
             const nurseOwner = await CloneNursesContract.ownerOf(this.nurseId);
-            const nurseType = await CloneNursesContract.getNurseType(nurse.nurseType);
+            const nurseType = StaticDataManager.getNurseType(nurse.nurseType);
             const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
 
             const supportingTo = (await CloneNursesContract.getSupportingTo(owner)).toNumber();
@@ -60,8 +61,7 @@ export default class NurseDetail extends Popup {
 
             const lifetimePercent = (this.endBlock - this.currentBlockNumber) /
                 Calculator.nurseLifetime(
-                    nurseType.lifetime,
-                    nurseType.partCount,
+                    nurse.nurseType,
                     nurseType.partCount,
                     true,
                 ) * 100;

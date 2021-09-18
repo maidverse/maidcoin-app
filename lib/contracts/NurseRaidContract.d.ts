@@ -1,13 +1,6 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Contract from "./Contract";
 import { NurseRaid } from "./maidcoin/typechain";
-export interface RaidInfo {
-    entranceFee: BigNumber;
-    nursePart: number;
-    maxRewardCount: number;
-    duration: number;
-    endBlock: number;
-}
 export interface ChallengerInfo {
     enterBlock: number;
     maids: string;
@@ -15,9 +8,8 @@ export interface ChallengerInfo {
 }
 declare class NurseRaidContract extends Contract<NurseRaid> {
     constructor();
-    getRaidCount(): Promise<BigNumber>;
-    getRaid(raidId: number): Promise<RaidInfo>;
     getChallenger(raidId: number, owner: string): Promise<ChallengerInfo>;
+    powerOfMaids(maids: string, maidId: number): Promise<number>;
     checkDone(raidId: number): Promise<boolean | undefined>;
     create(entranceFees: BigNumberish[], nurseParts: BigNumberish[], maxRewardCounts: BigNumberish[], durations: BigNumberish[], endBlocks: BigNumberish[]): Promise<void>;
     enter(raidId: number, maids?: string, maidId?: number): Promise<void>;

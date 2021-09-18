@@ -22,6 +22,7 @@ import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 interface INurseRaidInterface extends ethers.utils.Interface {
   functions: {
     "checkDone(uint256)": FunctionFragment;
+    "cloneNurses()": FunctionFragment;
     "create(uint256[],uint256[],uint256[],uint256[],uint256[])": FunctionFragment;
     "enter(uint256,address,uint256)": FunctionFragment;
     "enterWithPermit(uint256,address,uint256,uint256,uint8,bytes32,bytes32,uint8,bytes32,bytes32)": FunctionFragment;
@@ -39,6 +40,10 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "checkDone",
     values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "cloneNurses",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "create",
@@ -103,6 +108,10 @@ interface INurseRaidInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "rng", values?: undefined): string;
 
   decodeFunctionResult(functionFragment: "checkDone", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "cloneNurses",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "create", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "enter", data: BytesLike): Result;
   decodeFunctionResult(
@@ -187,6 +196,8 @@ export class INurseRaid extends BaseContract {
   functions: {
     checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<[boolean]>;
 
+    cloneNurses(overrides?: CallOverrides): Promise<[string]>;
+
     create(
       entranceFee: BigNumberish[],
       nursePart: BigNumberish[],
@@ -256,6 +267,8 @@ export class INurseRaid extends BaseContract {
 
   checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
+  cloneNurses(overrides?: CallOverrides): Promise<string>;
+
   create(
     entranceFee: BigNumberish[],
     nursePart: BigNumberish[],
@@ -321,6 +334,8 @@ export class INurseRaid extends BaseContract {
 
   callStatic: {
     checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+
+    cloneNurses(overrides?: CallOverrides): Promise<string>;
 
     create(
       entranceFee: BigNumberish[],
@@ -433,6 +448,8 @@ export class INurseRaid extends BaseContract {
   estimateGas: {
     checkDone(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
+    cloneNurses(overrides?: CallOverrides): Promise<BigNumber>;
+
     create(
       entranceFee: BigNumberish[],
       nursePart: BigNumberish[],
@@ -505,6 +522,8 @@ export class INurseRaid extends BaseContract {
       id: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
+
+    cloneNurses(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     create(
       entranceFee: BigNumberish[],

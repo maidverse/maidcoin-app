@@ -2,9 +2,10 @@ import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
-import NurseRaidContract, { RaidInfo } from "../../contracts/NurseRaidContract";
+import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
 import Wallet from "../../ethereum/Wallet";
+import StaticDataManager from "../../StaticDataManager";
 import SelectMaidPopup from "../select-maid-popup/SelectMaidPopup";
 
 export default class NurseRaid extends DomNode {
@@ -12,7 +13,7 @@ export default class NurseRaid extends DomNode {
     private content: DomNode;
     private footer: DomNode;
 
-    constructor(private raidId: number, private raid: RaidInfo, private currentBlockNumber: number) {
+    constructor(private raidId: number, private currentBlockNumber: number) {
         super(".nurse-raid");
         this.append(
             el(".background"),
@@ -41,19 +42,21 @@ export default class NurseRaid extends DomNode {
 
     private async load() {
 
-        const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${this.raid.nursePart}`);
+        const raid = StaticDataManager.getRaid(this.raidId);
+
+        const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${raid.nursePart}`);
         const tokenInfo = result.body;
 
         this.content.empty().append(
             el(".name", tokenInfo.name),
             el(".image", { style: { backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${tokenInfo.name}.png)` } }),
-            el(".end-time", `End ${CommonUtil.displayBlockDuration(this.raid.endBlock - this.currentBlockNumber)}`),
+            el(".end-time", `End ${CommonUtil.displayBlockDuration(raid.endBlock - this.currentBlockNumber)}`),
             el(".character",
                 el("img", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${tokenInfo.name}Idle.png`, height: "85" }),
             ),
             el(".duration",
                 el("span.title", "Duration"),
-                el("span", CommonUtil.displayBlockDuration(this.raid.duration)),
+                el("span", CommonUtil.displayBlockDuration(raid.duration)),
             ),
             el(".progress"),
         );
@@ -67,14 +70,14 @@ export default class NurseRaid extends DomNode {
                 el(".reward",
                     el("h3", "Rewards"),
                     el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${tokenInfo.name}.png`, height: "28" }),
-                    el(".count", `x 1 ~ ${this.raid.maxRewardCount}`),
+                    el(".count", `x 1 ~ ${raid.maxRewardCount}`),
                 ),
                 challenger.enterBlock === 0 ? el("a.start-button",
-                    utils.formatEther(this.raid.entranceFee),
+                    utils.formatEther(raid.entranceFee),
                     el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
                     "Start",
                     {
-                        click: () => new SelectMaidPopup(this.raidId, this.raid),
+                        click: () => new SelectMaidPopup(this.raidId),
                     },
                 ) : el("a.cancel-button", await NurseRaidContract.checkDone(this.raidId) === true ? "Exit" : "Cancel", {
                     click: async () => {

@@ -1,9 +1,11 @@
 import Config from "./Config";
+import StaticDataManager from "./StaticDataManager";
 
 class Calculator {
 
-    public nurseLifetime(baseLifetime: number, assemblePartCount: number, partCount: number, assemble: boolean) {
-        return baseLifetime * (partCount - (assemble === true ? 1 : 0)) / (assemblePartCount - 1);
+    public nurseLifetime(nurseType: number, partCount: number, assemble: boolean) {
+        const nurseTypeInfo = StaticDataManager.getNurseType(nurseType);
+        return nurseTypeInfo.lifetime * (partCount - (assemble === true ? 1 : 0)) / (nurseTypeInfo.partCount - 1);
     }
 
     public apr(investment: number, rewardPerBlock: number) {

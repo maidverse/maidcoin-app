@@ -6,13 +6,6 @@ import { CloneNurses } from "./maidcoin/typechain";
 import NursePartContract from "./NursePartContract";
 import ERC721EnumerableContract from "./standard/ERC721EnumerableContract";
 
-export interface NurseType {
-    partCount: number;
-    destroyReturn: BigNumber;
-    power: number;
-    lifetime: number;
-}
-
 interface NurseInfo {
     nurseType: number;
     endBlock: number;
@@ -42,16 +35,6 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
     ) {
         const contract = await this.connectAndGetWalletContract();
         await contract?.addNurseType(partCounts, destroyReturns, powers, lifetimes);
-    }
-
-    public async getNurseType(nurseType: number): Promise<NurseType> {
-        const [partCount, destroyReturn, power, lifetime] = await this.contract.nurseTypes(nurseType);
-        return {
-            partCount: partCount.toNumber(),
-            destroyReturn,
-            power: power.toNumber(),
-            lifetime: lifetime.toNumber(),
-        };
     }
 
     public async ownerOf(nurseId: number): Promise<string> {

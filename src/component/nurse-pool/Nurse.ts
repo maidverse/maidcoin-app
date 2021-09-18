@@ -6,6 +6,7 @@ import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
+import StaticDataManager from "../../StaticDataManager";
 import NurseDetail from "./NurseDetail";
 
 export default class Nurse extends DomNode {
@@ -26,7 +27,7 @@ export default class Nurse extends DomNode {
         const nurse = await CloneNursesContract.getNurse(this.nurseId);
         this.endBlock = nurse.endBlock;
 
-        const nurseType = await CloneNursesContract.getNurseType(nurse.nurseType);
+        const nurseType = StaticDataManager.getNurseType(nurse.nurseType);
 
         const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurse.nurseType}`);
         const tokenInfo = result.body;
@@ -40,8 +41,7 @@ export default class Nurse extends DomNode {
 
         const lifetimePercent = (this.endBlock - this.currentBlockNumber) /
             Calculator.nurseLifetime(
-                nurseType.lifetime,
-                nurseType.partCount,
+                nurse.nurseType,
                 nurseType.partCount,
                 true,
             ) * 100;

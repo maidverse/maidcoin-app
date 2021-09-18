@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ILingerieGirls",
+  "sourceName": "contracts/interfaces/ISushiGirlsLingerieGIrls.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "lingerieGirls",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "originPower",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "supportedLPTokenAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sushiRewardDebt",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

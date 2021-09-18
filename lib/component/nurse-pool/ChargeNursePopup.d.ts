@@ -2,7 +2,7 @@ import { DomNode, Popup } from "@hanul/skynode";
 export default class ChargeNursePopup extends Popup {
     private nurseId;
     content: DomNode;
-    private nurseTypeInfo;
+    private nurseType;
     private input;
     private range;
     private lifetime;
