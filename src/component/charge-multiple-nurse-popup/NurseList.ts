@@ -10,6 +10,16 @@ export default class NurseList extends DomNode {
         this.loadAllNurses();
     }
 
+    public get partCounts(): { [nurseId: number]: number } {
+        const partCounts: { [nurseId: number]: number } = {};
+        for (const child of this.children) {
+            if (child instanceof Nurse) {
+                partCounts[child.nurseId] = child.partCount;
+            }
+        }
+        return partCounts;
+    }
+
     public async loadAllNurses() {
 
         const nurseCount = await CloneNursesContract.getTotalSupply();

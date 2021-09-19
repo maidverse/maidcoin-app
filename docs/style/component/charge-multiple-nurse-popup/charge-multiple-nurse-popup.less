@@ -19,11 +19,11 @@
     }
 
     >.nurse-list {
-        width           : 346.5px;
-        margin          : auto;
-        margin-top      : 5px;
-        height          : 517px;
-        overflow-y      : scroll;
+        width     : 346.5px;
+        margin    : auto;
+        margin-top: 5px;
+        height    : 517px;
+        overflow-y: scroll;
     }
 
     >footer {
@@ -32,13 +32,30 @@
         width   : 100%;
         bottom  : 20px;
         height  : 28px;
+        padding : 0 10px;
+        .float-wrapper();
 
         >.confirm-button {
-            display         : block;
-            margin          : auto;
+            float           : left;
             width           : 209.5px;
             height          : 33px;
             background-image: url(/images/component/charge-multiple-nurse-popup/confirm-button.png);
+            background-size : auto 100%;
+            color           : #000000;
+            font-size       : 13px;
+            text-transform  : uppercase;
+            text-align      : center;
+            font-weight     : bold;
+            padding-top     : 4px;
+            padding-left    : 1px;
+            line-height     : 21px;
+        }
+
+        >.charge-button {
+            float           : right;
+            width           : 112px;
+            height          : 33.5px;
+            background-image: url(/images/component/charge-multiple-nurse-popup/charge-button.png);
             background-size : auto 100%;
             color           : #000000;
             font-size       : 13px;

@@ -60,12 +60,15 @@ export default class NurseDetail extends Popup {
 
             const pendingReward = await CloneNursesContract.getPendigReward(this.nurseId);
 
-            const lifetimePercent = (this.endBlock - this.currentBlockNumber) /
+            let lifetimePercent = (this.endBlock - this.currentBlockNumber) /
                 Calculator.nurseLifetime(
                     nurse.nurseType,
                     nurseType.partCount,
                     true,
                 ) * 100;
+
+            if (lifetimePercent < 0) { lifetimePercent = 0; }
+            if (lifetimePercent > 100) { lifetimePercent = 100; }
 
             this.content.empty().append(
                 owner !== nurseOwner ? undefined : el("a.delete-button",

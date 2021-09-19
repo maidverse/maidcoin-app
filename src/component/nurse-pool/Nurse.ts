@@ -39,12 +39,15 @@ export default class Nurse extends DomNode {
 
         const pendingReward = await CloneNursesContract.getPendigReward(this.nurseId);
 
-        const lifetimePercent = (this.endBlock - this.currentBlockNumber) /
+        let lifetimePercent = (this.endBlock - this.currentBlockNumber) /
             Calculator.nurseLifetime(
                 nurse.nurseType,
                 nurseType.partCount,
                 true,
             ) * 100;
+
+        if (lifetimePercent < 0) { lifetimePercent = 0; }
+        if (lifetimePercent > 100) { lifetimePercent = 100; }
 
         this.append(
             el("a.claim-button",
@@ -59,7 +62,7 @@ export default class Nurse extends DomNode {
             ),
             el(`.battery${lifetimePercent <= 0 ? ".low" : ""}`,
                 lifetimePercent <= 0 ? el("img", { src: "/images/component/nurse-pool/low-battery.png", height: "14.5" }) : el(".bar", {
-                    style: { width: `${lifetimePercent < 0 ? 0 : lifetimePercent}%` },
+                    style: { width: `${lifetimePercent}%` },
                 }),
             ),
         );

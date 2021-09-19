@@ -34,10 +34,4 @@
         "maxRewardCount": 2,
         "duration": 6,
         "endBlock": 99999999
-    }, {
-        "entranceFee": 20,
-        "nursePart": 6,
-        "maxRewardCount": 2,
-        "duration": 6,
-        "endBlock": 99999999
     }]

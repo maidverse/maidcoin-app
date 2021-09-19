@@ -53,20 +53,47 @@
         }
     }
 
-    >.support-button {
-        position        : absolute;
-        right           : 4px;
-        bottom          : 4px;
-        width           : 112px;
-        height          : 33.5px;
-        background-image: url(/images/component/charge-multiple-nurse-popup/support-button.png);
-        background-size : auto 100%;
-        color           : #000000;
-        font-size       : 13px;
-        text-transform  : uppercase;
-        text-align      : center;
-        font-weight     : bold;
-        padding-top     : 8px;
-        padding-left    : 1px;
+    >.lifetime {
+        position   : absolute;
+        left       : 100px;
+        bottom     : 14px;
+        font-size  : 20px;
+        font-family: "refrigerator-deluxe";
+        color      : #1d98a0;
+    }
+
+    .charge-form {
+        position: absolute;
+        right   : 10px;
+        top     : 8px;
+
+        >.part {
+            display: block;
+            margin : auto;
+        }
+
+        >.input-container {
+            display      : flex;
+            align-items  : center;
+            padding-right: 5px;
+
+            >input {
+                width           : 43.5px;
+                height          : 25.5px;
+                background-image: url(/images/component/charge-multiple-nurse-popup/input.png);
+                background-size : auto 100%;
+                font-size       : 16px;
+                color           : #261130;
+                text-align      : center;
+                margin          : 0 5px;
+                font-weight     : bold;
+            }
+
+            >span {
+                font-size  : 16px;
+                color      : #261130;
+                font-weight: bold;
+            }
+        }
     }
 }

@@ -3303,13 +3303,36 @@ body {
   width: 100%;
   bottom: 20px;
   height: 28px;
+  padding: 0 10px;
+}
+.charge-multiple-nurse-popup > footer:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 .charge-multiple-nurse-popup > footer > .confirm-button {
-  display: block;
-  margin: auto;
+  float: left;
   width: 209.5px;
   height: 33px;
   background-image: url(/images/component/charge-multiple-nurse-popup/confirm-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-left: 1px;
+  line-height: 21px;
+}
+.charge-multiple-nurse-popup > footer > .charge-button {
+  float: right;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/charge-multiple-nurse-popup/charge-button.png);
   background-size: auto 100%;
   color: #000000;
   font-size: 13px;
@@ -3369,21 +3392,43 @@ body {
 .charge-multiple-nurse-popup .nurse > .lp-amount > span {
   color: #cb2972;
 }
-.charge-multiple-nurse-popup .nurse > .support-button {
+.charge-multiple-nurse-popup .nurse > .lifetime {
   position: absolute;
-  right: 4px;
-  bottom: 4px;
-  width: 112px;
-  height: 33.5px;
-  background-image: url(/images/component/charge-multiple-nurse-popup/support-button.png);
+  left: 100px;
+  bottom: 14px;
+  font-size: 20px;
+  font-family: "refrigerator-deluxe";
+  color: #1d98a0;
+}
+.charge-multiple-nurse-popup .nurse .charge-form {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+.charge-multiple-nurse-popup .nurse .charge-form > .part {
+  display: block;
+  margin: auto;
+}
+.charge-multiple-nurse-popup .nurse .charge-form > .input-container {
+  display: flex;
+  align-items: center;
+  padding-right: 5px;
+}
+.charge-multiple-nurse-popup .nurse .charge-form > .input-container > input {
+  width: 43.5px;
+  height: 25.5px;
+  background-image: url(/images/component/charge-multiple-nurse-popup/input.png);
   background-size: auto 100%;
-  color: #000000;
-  font-size: 13px;
-  text-transform: uppercase;
+  font-size: 16px;
+  color: #261130;
   text-align: center;
+  margin: 0 5px;
   font-weight: bold;
-  padding-top: 8px;
-  padding-left: 1px;
+}
+.charge-multiple-nurse-popup .nurse .charge-form > .input-container > span {
+  font-size: 16px;
+  color: #261130;
+  font-weight: bold;
 }
 .delete-multiple-nurse-popup {
   position: relative;

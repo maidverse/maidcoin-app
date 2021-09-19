@@ -56,7 +56,9 @@ export default class CreateNursePopup extends Popup {
             const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${this.nurseType}`);
             const tokenInfo = result.body;
 
-            const rangePercent = 100 - nurseTypeInfo.partCount / balance * 100;
+            let rangePercent = 100 - nurseTypeInfo.partCount / balance * 100;
+            if (rangePercent < 0) { rangePercent = 0; }
+            if (rangePercent > 100) { rangePercent = 100; }
 
             this.content.append(
                 el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${tokenInfo.name}.png`, height: "80" }),
