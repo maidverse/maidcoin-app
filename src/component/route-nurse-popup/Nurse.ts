@@ -29,13 +29,10 @@ export default class Nurse extends DomNode {
             ),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(owner)}`),
             el(".lp-amount", "Supported LP : ", el("span", utils.formatEther(supportedPower))),
-            el("a.support-button", "Support", {
+            el("a.route-button", "Route", {
                 click: async (event: MouseEvent) => {
                     event.stopPropagation();
-                    const balance = await MaidCoinContract.balanceOf(owner);
-                    new TokenPrompt("Support Nurse", "How much amount to support?", "Support", 0, balance, async (amount) => {
-                        await TheMasterContract.support(3, amount, this.nurseId);
-                    });
+                    this.fireEvent("route", this.nurseId);
                 },
             }),
         );

@@ -76,6 +76,7 @@ export default class NurseDetail extends Popup {
                     {
                         click: () => new RouteNursePopup(supportedPower, async (toNurseId: number) => {
                             await CloneNursesContract.destroy([this.nurseId], [toNurseId]);
+                            this.delete();
                         }),
                     },
                 ),

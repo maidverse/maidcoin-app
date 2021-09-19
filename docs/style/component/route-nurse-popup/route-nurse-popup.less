@@ -18,19 +18,39 @@
         top     : 0;
     }
 
+    >.supported-lp {
+        height     : 86px;
+        font-size  : 20px;
+        font-family: "refrigerator-deluxe";
+        color      : #261130;
+        text-align : center;
+        padding-top: 20px;
+
+        >span {
+            color: #cb2972;
+        }
+    }
+
     >main {
-        width     : 346.5px;
-        margin    : auto;
-        margin-top: 5px;
+        width : 346.5px;
+        margin: auto;
+
+        >h2 {
+            padding-left: 6px;
+            padding-top : 4px;
+            font-size   : 18px;
+        }
 
         >.search {
-            position: relative;
-            height  : 33px;
+            margin-top: 4px;
+            position  : relative;
+            height    : 33px;
 
             >input {
-                width           : 100%;
-                height          : 100%;
-                background-image: url(/images/component/select-nurse-popup/input.png);
+                width           : 346.5px;
+                height          : 33px;
+                background      : none;
+                background-image: url(/images/component/route-nurse-popup/search.png);
                 background-size : auto 100%;
                 padding         : 0 8px;
                 font-family     : "refrigerator-deluxe";
@@ -46,7 +66,7 @@
         }
 
         >.nurse-list {
-            height    : 487px;
+            height    : 376px;
             overflow-y: scroll;
         }
     }
