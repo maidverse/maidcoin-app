@@ -13,7 +13,7 @@ export default class StakeTab extends DomNode {
                 this.input = el("input"),
                 el("a.max-button", "Max"),
             ),
-            el("a.stake-button", "Stake", {
+            el("a.confirm-button", "Stake", {
                 click: async () => {
                     await MaidCafeContract.enter(utils.parseEther(this.input.domElement.value));
                 },

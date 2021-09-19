@@ -20,26 +20,33 @@
     }
 
     >main {
+        margin-top: 10px;
+
         >.button-container {
             display: flex;
 
             >.stake-button,
             >.unstake-button {
                 display         : block;
-                width           : 184px;
-                height          : 30px;
+                width           : 171px;
+                height          : 28px;
                 background-image: url(/images/view/maid-cafe/button.png);
                 background-size : auto 100%;
                 text-align      : center;
-                padding-top     : 8px;
+                padding-top     : 5px;
+                text-align      : center;
+                font-weight     : bold;
+                color           : #84828f;
 
                 &.on {
                     background-image: url(/images/view/maid-cafe/button-on.png);
+                    color           : #1f0814;
                 }
             }
         }
 
         >.info {
+            padding: 10px 0;
             display: flex;
 
             >.apr {
@@ -54,25 +61,64 @@
                 }
             }
 
-            >.price {}
+            >.price {
+                color  : #ebbac6;
+                border : 1px solid #ebbac6;
+                padding: 2px 5px;
+            }
         }
 
         >.tab {
             >.input-container {
+                position: relative;
+
                 >input {
                     display         : block;
-                    width           : 360px;
-                    height          : 34px;
+                    width           : 335px;
+                    height          : 31.5px;
                     background      : none;
                     background-image: url(/images/view/maid-cafe/amount-input.png);
                     background-size : auto 100%;
                 }
+
+                >.max-button {
+                    position        : absolute;
+                    top             : 1px;
+                    right           : 1px;
+                    width           : 57px;
+                    height          : 29.5px;
+                    background-image: url(/images/view/maid-cafe/max-button.png);
+                    background-size : auto 100%;
+                    text-align      : center;
+                    padding-top     : 7px;
+                    color           : #1f0814;
+                    text-transform  : uppercase;
+                    text-align      : center;
+                    font-weight     : bold;
+                }
+            }
+
+            >.confirm-button {
+                margin          : auto;
+                margin-top      : 10px;
+                display         : block;
+                width           : 209.5px;
+                height          : 33px;
+                background-image: url(/images/view/maid-cafe/confirm-button.png);
+                background-size : auto 100%;
+                text-align      : center;
+                padding-top     : 8px;
+                color           : #1f0814;
+                text-transform  : uppercase;
+                text-align      : center;
+                font-weight     : bold;
             }
         }
     }
 
     >footer {
-        position: relative;
+        margin-top: 15px;
+        position  : relative;
 
         >.npc {
             position: absolute;
@@ -80,7 +126,7 @@
             left    : calc(50% - 210px);
         }
 
-        >.balance {
+        >.balance-container {
             position        : absolute;
             top             : 0;
             left            : calc(50% - 10px);
@@ -88,6 +134,25 @@
             height          : 167px;
             background-image: url(/images/view/maid-cafe/balloon.png);
             background-size : auto 100%;
+            padding         : 40px 0 0 50px;
+
+            >.balance {
+                margin-top : 10px;
+                display    : flex;
+                align-items: center;
+
+                >.amount {
+                    margin-left: 10px;
+                    font-weight: bold;
+                    color      : #1f0814;
+
+                    >span {
+                        margin-top: 5px;
+                        display   : block;
+                        color     : #84828f;
+                    }
+                }
+            }
         }
     }
 }

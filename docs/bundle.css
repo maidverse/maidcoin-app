@@ -556,24 +556,31 @@ body {
   animation: maid-view-slide-in 0.5s 0.2s ease-out;
   animation-fill-mode: forwards;
 }
+.maid-cafe-view > main {
+  margin-top: 10px;
+}
 .maid-cafe-view > main > .button-container {
   display: flex;
 }
 .maid-cafe-view > main > .button-container > .stake-button,
 .maid-cafe-view > main > .button-container > .unstake-button {
   display: block;
-  width: 184px;
-  height: 30px;
+  width: 171px;
+  height: 28px;
   background-image: url(/images/view/maid-cafe/button.png);
   background-size: auto 100%;
+  padding-top: 5px;
   text-align: center;
-  padding-top: 8px;
+  font-weight: bold;
+  color: #84828f;
 }
 .maid-cafe-view > main > .button-container > .stake-button.on,
 .maid-cafe-view > main > .button-container > .unstake-button.on {
   background-image: url(/images/view/maid-cafe/button-on.png);
+  color: #1f0814;
 }
 .maid-cafe-view > main > .info {
+  padding: 10px 0;
   display: flex;
 }
 .maid-cafe-view > main > .info > .apr {
@@ -586,15 +593,52 @@ body {
 .maid-cafe-view > main > .info > .apr > span {
   color: #ffde00;
 }
+.maid-cafe-view > main > .info > .price {
+  color: #ebbac6;
+  border: 1px solid #ebbac6;
+  padding: 2px 5px;
+}
+.maid-cafe-view > main > .tab > .input-container {
+  position: relative;
+}
 .maid-cafe-view > main > .tab > .input-container > input {
   display: block;
-  width: 360px;
-  height: 34px;
+  width: 335px;
+  height: 31.5px;
   background: none;
   background-image: url(/images/view/maid-cafe/amount-input.png);
   background-size: auto 100%;
 }
+.maid-cafe-view > main > .tab > .input-container > .max-button {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 57px;
+  height: 29.5px;
+  background-image: url(/images/view/maid-cafe/max-button.png);
+  background-size: auto 100%;
+  padding-top: 7px;
+  color: #1f0814;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+}
+.maid-cafe-view > main > .tab > .confirm-button {
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+  width: 209.5px;
+  height: 33px;
+  background-image: url(/images/view/maid-cafe/confirm-button.png);
+  background-size: auto 100%;
+  padding-top: 8px;
+  color: #1f0814;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+}
 .maid-cafe-view > footer {
+  margin-top: 15px;
   position: relative;
 }
 .maid-cafe-view > footer > .npc {
@@ -602,7 +646,7 @@ body {
   top: 0;
   left: calc(50% - 210px);
 }
-.maid-cafe-view > footer > .balance {
+.maid-cafe-view > footer > .balance-container {
   position: absolute;
   top: 0;
   left: calc(50% - 10px);
@@ -610,6 +654,22 @@ body {
   height: 167px;
   background-image: url(/images/view/maid-cafe/balloon.png);
   background-size: auto 100%;
+  padding: 40px 0 0 50px;
+}
+.maid-cafe-view > footer > .balance-container > .balance {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+.maid-cafe-view > footer > .balance-container > .balance > .amount {
+  margin-left: 10px;
+  font-weight: bold;
+  color: #1f0814;
+}
+.maid-cafe-view > footer > .balance-container > .balance > .amount > span {
+  margin-top: 5px;
+  display: block;
+  color: #84828f;
 }
 .test-lp-token-view {
   padding: 60px 0;

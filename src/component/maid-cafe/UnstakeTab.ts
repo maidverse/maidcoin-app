@@ -13,7 +13,7 @@ export default class UnstakeTab extends DomNode {
                 this.input = el("input"),
                 el("a.max-button", "Max"),
             ),
-            el("a.stake-button", "Unstake", {
+            el("a.confirm-button", "Unstake", {
                 click: async () => {
                     await MaidCafeContract.leave(utils.parseEther(this.input.domElement.value));
                 },

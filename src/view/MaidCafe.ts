@@ -4,7 +4,7 @@ import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
 import CommonUtil from "../CommonUtil";
 import StakeTab from "../component/maid-cafe/StakeTab";
-import LPTokenContract from "../contracts/LPTokenContract";
+import UnstakeTab from "../component/maid-cafe/UnstakeTab";
 import MaidCafeContract from "../contracts/MaidCafeContract";
 import MaidCoinContract from "../contracts/MaidCoinContract";
 import Wallet from "../ethereum/Wallet";
@@ -13,11 +13,17 @@ import Layout from "./Layout";
 export default class MaidCafe implements View {
 
     private container: DomNode;
+
+    private main: DomNode;
+    private stakeButton: DomNode;
+    private unstakeButton: DomNode;
+    private currentTab: DomNode;
+
     private apr: DomNode;
     private price: DomNode;
+
     private omuBalance: DomNode;
     private maidcoinBalance: DomNode;
-    private currentTab: DomNode;
 
     constructor() {
         Layout.current.changeBackground("/images/view/maid-cafe/background.jpg");
@@ -26,10 +32,24 @@ export default class MaidCafe implements View {
                 el("h2", "Maid Cafe"),
                 el("p", "Maximize yield by staking $MAID for $OMU"),
             ),
-            el("main",
+            this.main = el("main",
                 el(".button-container",
-                    el("a.stake-button.on", "Stake $MAID"),
-                    el("a.unstake-button", "Unstake"),
+                    this.stakeButton = el("a.stake-button.on", "Stake $MAID", {
+                        click: () => {
+                            this.currentTab.delete();
+                            this.currentTab = new StakeTab().appendTo(this.main);
+                            this.stakeButton.addClass("on");
+                            this.unstakeButton.deleteClass("on");
+                        },
+                    }),
+                    this.unstakeButton = el("a.unstake-button", "Unstake", {
+                        click: () => {
+                            this.currentTab.delete();
+                            this.currentTab = new UnstakeTab().appendTo(this.main);
+                            this.stakeButton.deleteClass("on");
+                            this.unstakeButton.addClass("on");
+                        },
+                    }),
                 ),
                 el(".info",
                     el(".apr", "APR: ", this.apr = el("span")),
@@ -39,9 +59,9 @@ export default class MaidCafe implements View {
             ),
             el("footer",
                 el("img.npc", { src: "/images/view/maid-cafe/npc.png", height: "447" }),
-                el(".balance",
-                    this.omuBalance = el(".omu-balance"),
-                    this.maidcoinBalance = el(".maidcoin-balance"),
+                el(".balance-container",
+                    this.omuBalance = el(".balance"),
+                    this.maidcoinBalance = el(".balance"),
                 ),
             ),
         ));
@@ -53,8 +73,20 @@ export default class MaidCafe implements View {
         if (owner !== undefined) {
             const lpBalance = await MaidCafeContract.balanceOf(owner);
             const maidBalance = await MaidCoinContract.balanceOf(owner);
-            this.omuBalance.empty().appendText(CommonUtil.numberWithCommas(utils.formatEther(lpBalance)));
-            this.maidcoinBalance.empty().appendText(CommonUtil.numberWithCommas(utils.formatEther(maidBalance)));
+            this.omuBalance.empty().append(
+                el("img", { src: "/images/view/maid-cafe/omu.png", height: "40" }),
+                el(".amount",
+                    CommonUtil.numberWithCommas(utils.formatEther(lpBalance)),
+                    el("span", "$OMU"),
+                ),
+            );
+            this.maidcoinBalance.empty().append(
+                el("img", { src: "/images/view/maid-cafe/maidcoin.png", height: "41.5" }),
+                el(".amount",
+                    CommonUtil.numberWithCommas(utils.formatEther(maidBalance)),
+                    el("span", "$MAID"),
+                ),
+            );
         }
     }
 
