@@ -35,7 +35,7 @@ export default class Admin implements View {
                 el(".action-button-container",
                     el("a.action-button.mint-maid-button", "Mint Maid", {
                         click: async () => {
-                            const power = prompt("Please enter power", "50");
+                            const power = prompt("Please enter power", "100");
                             if (power) {
                                 await MaidsContract.mint(power);
                             }
@@ -55,7 +55,7 @@ export default class Admin implements View {
                     powerInput = el("input", { placeholder: "Power" }),
                 ),
                 el("label", "Lifetime",
-                    lifetimeInput = el("input", { placeholder: "Power" }),
+                    lifetimeInput = el("input", { placeholder: "Lifetime" }),
                 ),
                 el(".action-button-container",
                     el("a.action-button.create-nurse-type-button", "Create Nurse Type", {

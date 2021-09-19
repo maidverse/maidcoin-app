@@ -2,9 +2,8 @@
     "0": {
         "name": "N1",
         "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N1.png",
-        "entranceFee": 300,
         "partCount": 2,
-        "destroyReturn": 10,
+        "destroyReturn": 3,
         "power": 120,
         "lifetime": 80640
     },
@@ -12,7 +11,7 @@
         "name": "N2",
         "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N2.png",
         "partCount": 3,
-        "destroyReturn": 15,
+        "destroyReturn": 5,
         "power": 215,
         "lifetime": 120960
     },
@@ -20,7 +19,7 @@
         "name": "N3",
         "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N3.png",
         "partCount": 3,
-        "destroyReturn": 20,
+        "destroyReturn": 6,
         "power": 334,
         "lifetime": 120960
     },
@@ -28,7 +27,7 @@
         "name": "N4",
         "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N4.png",
         "partCount": 4,
-        "destroyReturn": 30,
+        "destroyReturn": 10,
         "power": 451,
         "lifetime": 161280
     },
@@ -36,7 +35,7 @@
         "name": "N5",
         "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N5.png",
         "partCount": 4,
-        "destroyReturn": 35,
+        "destroyReturn": 12,
         "power": 537,
         "lifetime": 161280
     },
@@ -44,7 +43,7 @@
         "name": "N6",
         "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N6.png",
         "partCount": 5,
-        "destroyReturn": 50,
+        "destroyReturn": 15,
         "power": 783,
         "lifetime": 201600
     },

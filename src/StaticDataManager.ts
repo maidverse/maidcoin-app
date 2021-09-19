@@ -66,7 +66,7 @@ class StaticDataManager {
     }
 
     public get raidCount() {
-        return 1;//Object.keys((nursetypes as any)).length;
+        return Object.keys((raids as any)).length;
     }
 
     public getRaid(id: number): {
