@@ -21,5 +21,16 @@
 
     .nurse-raid-list {
         margin-top: 20px;
+
+        @media @pc {
+            >.raid-container {
+                .float-wrapper();
+
+                >.nurse-raid {
+                    width: 403px;
+                    float: left;
+                }
+            }
+        }
     }
 }

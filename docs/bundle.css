@@ -435,6 +435,20 @@ body {
 .nurse-raid-view .nurse-raid-list {
   margin-top: 20px;
 }
+@media only screen and (min-width: 960px) {
+  .nurse-raid-view .nurse-raid-list > .raid-container:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .nurse-raid-view .nurse-raid-list > .raid-container > .nurse-raid {
+    width: 403px;
+    float: left;
+  }
+}
 .nurse-factory-view > header {
   height: 40px;
   background-image: url(/images/view/title.png);
@@ -454,6 +468,20 @@ body {
 }
 .nurse-factory-view .nurse-factory-list {
   margin-top: 20px;
+}
+@media only screen and (min-width: 960px) {
+  .nurse-factory-view .nurse-factory-list > .factory-container:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .nurse-factory-view .nurse-factory-list > .factory-container > .nurse-factory {
+    width: 403px;
+    float: left;
+  }
 }
 .housekeeper-view > .category-area {
   position: absolute;
@@ -557,6 +585,8 @@ body {
   animation-fill-mode: forwards;
 }
 .maid-cafe-view > main {
+  width: 335px;
+  margin: auto;
   margin-top: 10px;
 }
 .maid-cafe-view > main > .button-container {
@@ -2147,6 +2177,7 @@ body {
   height: 85px;
   background-image: url(/images/component/housekeeper-list/slot.png);
   background-size: auto 100%;
+  cursor: pointer;
 }
 .any-housekeeper > .image {
   position: absolute;
@@ -2180,6 +2211,7 @@ body {
   height: 85px;
   background-image: url(/images/component/housekeeper-list/slot.png);
   background-size: auto 100%;
+  cursor: pointer;
 }
 .sushigirl > .image {
   position: absolute;
@@ -2314,6 +2346,7 @@ body {
   height: 85px;
   background-image: url(/images/component/housekeeper-list/slot.png);
   background-size: auto 100%;
+  cursor: pointer;
 }
 .lingeriegirl > .image {
   position: absolute;

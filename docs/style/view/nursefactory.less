@@ -21,5 +21,16 @@
 
     .nurse-factory-list {
         margin-top: 20px;
+
+        @media @pc {
+            >.factory-container {
+                .float-wrapper();
+
+                >.nurse-factory {
+                    width: 403px;
+                    float: left;
+                }
+            }
+        }
     }
 }
