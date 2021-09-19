@@ -1,4 +1,4 @@
-.select-nurse-popup .nurse {
+.delete-multiple-nurse-popup .nurse {
     position     : relative;
     height       : 96px;
     border-bottom: 1px solid #c7cdd5;
@@ -9,7 +9,7 @@
         top             : 4px;
         width           : 76.5px;
         height          : 85px;
-        background-image: url(/images/component/select-nurse-popup/slot.png);
+        background-image: url(/images/component/delete-multiple-nurse-popup/slot.png);
         background-size : auto 100%;
 
         >.image {
@@ -53,20 +53,22 @@
         }
     }
 
-    >.support-button {
-        position        : absolute;
-        right           : 4px;
-        bottom          : 4px;
-        width           : 112px;
-        height          : 33.5px;
-        background-image: url(/images/component/nurse-detail/support-button.png);
-        background-size : auto 100%;
-        color           : #000000;
-        font-size       : 13px;
-        text-transform  : uppercase;
-        text-align      : center;
-        font-weight     : bold;
-        padding-top     : 8px;
-        padding-left    : 1px;
+    >.lifetime {
+        position   : absolute;
+        left       : 100px;
+        bottom     : 14px;
+        font-size  : 20px;
+        font-family: "refrigerator-deluxe";
+        color      : #1d98a0;
+    }
+
+    >.check {
+        position: absolute;
+        right   : 20px;
+        top     : 34px;
+    }
+
+    &.selected {
+        background-color: #dfdbd6;
     }
 }

@@ -1,9 +1,14 @@
+import { BigNumber } from "@ethersproject/bignumber";
 import { DomNode } from "@hanul/skynode";
 import SkyUtil from "skyutil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import Nurse from "./Nurse";
 
 export default class NurseList extends DomNode {
+
+    public checkedNurseIds: number[] = [];
+    public totalSelectedSupportedPower: BigNumber = BigNumber.from(0);
+    public totalDestroyReturn: BigNumber = BigNumber.from(0);
 
     constructor() {
         super(".nurse-list");
@@ -16,7 +21,8 @@ export default class NurseList extends DomNode {
 
         this.empty();
         SkyUtil.repeat(nurseCount.toNumber(), async (nurseId) => {
-            new Nurse(nurseId).appendTo(this);
+            const nurse = new Nurse(this, nurseId).appendTo(this);
+            nurse.toss("toggle", this);
         });
     }
 
@@ -27,7 +33,8 @@ export default class NurseList extends DomNode {
         this.empty();
         SkyUtil.repeat(nurseCount.toNumber(), async (index) => {
             const nurseId = await CloneNursesContract.getTokenOfOwnerByIndex(owner, index);
-            new Nurse(nurseId.toNumber()).appendTo(this);
+            const nurse = new Nurse(this, nurseId.toNumber()).appendTo(this);
+            nurse.toss("toggle", this);
         });
     }
 }

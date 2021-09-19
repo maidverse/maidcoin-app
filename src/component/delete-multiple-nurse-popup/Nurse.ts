@@ -1,42 +1,74 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
-import superagent from "superagent";
+import { BigNumber, utils } from "ethers";
+import SkyUtil from "skyutil";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
-import MaidCoinContract from "../../contracts/MaidCoinContract";
-import TheMasterContract from "../../contracts/TheMasterContract";
-import TokenPrompt from "../dialogue/TokenPrompt";
+import NetworkProvider from "../../ethereum/NetworkProvider";
+import StaticDataManager from "../../StaticDataManager";
+import NurseList from "./NurseList";
 
 export default class Nurse extends DomNode {
 
-    constructor(public nurseId: number) {
+    private lifetime: undefined | DomNode;
+
+    private currentBlockNumber: undefined | number;
+    private endBlock: undefined | number;
+
+    private supportedPower: BigNumber = BigNumber.from(0);
+    private destroyReturn: BigNumber = BigNumber.from(0);
+
+    constructor(nurseList: NurseList, public nurseId: number) {
         super(".nurse");
+        const check = el<HTMLImageElement>("img.check", { src: "/images/component/delete-multiple-nurse-popup/unchecked.png", height: "21" }).appendTo(this);
+        this.onDom("click", () => {
+            if (nurseList.checkedNurseIds.includes(nurseId) !== true) {
+                check.domElement.src = "/images/component/delete-multiple-nurse-popup/checked.png";
+                nurseList.checkedNurseIds.push(nurseId);
+                nurseList.totalSelectedSupportedPower = nurseList.totalSelectedSupportedPower.add(this.supportedPower);
+                nurseList.totalDestroyReturn = nurseList.totalDestroyReturn.add(this.destroyReturn);
+                this.addClass("selected");
+            } else {
+                check.domElement.src = "/images/component/delete-multiple-nurse-popup/unchecked.png";
+                SkyUtil.pull(nurseList.checkedNurseIds, nurseId);
+                nurseList.totalSelectedSupportedPower = nurseList.totalSelectedSupportedPower.sub(this.supportedPower);
+                nurseList.totalDestroyReturn = nurseList.totalDestroyReturn.sub(this.destroyReturn);
+                this.deleteClass("selected");
+            }
+            this.fireEvent("toggle");
+        });
         this.load();
     }
 
-    private async load() {
-        const { nurseType } = await CloneNursesContract.getNurse(this.nurseId);
-        const owner = await CloneNursesContract.ownerOf(this.nurseId);
-        const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
-        const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurseType}`);
-        const tokenInfo = result.body;
+    private async refreshLifetime() {
+        if (this.endBlock !== undefined && this.currentBlockNumber !== undefined) {
+            this.lifetime?.empty().appendText(
+                CommonUtil.displayBlockDuration(this.endBlock - this.currentBlockNumber),
+            );
+        }
+    }
 
-        this.empty().append(
+    private async load() {
+
+        this.currentBlockNumber = await NetworkProvider.getBlockNumber();
+        const nurse = await CloneNursesContract.getNurse(this.nurseId);
+        this.endBlock = nurse.endBlock;
+
+        const owner = await CloneNursesContract.ownerOf(this.nurseId);
+        this.supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
+
+        const nurseType = StaticDataManager.getNurseType(nurse.nurseType);
+        this.destroyReturn = nurseType.destroyReturn;
+
+        this.append(
             el(".slot",
-                el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/Face/${tokenInfo.name}.png` }),
-                el(".name", tokenInfo.name),
+                el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/Face/${nurseType.name}.png` }),
+                el(".name", nurseType.name),
             ),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(owner)}`),
-            el(".lp-amount", "Supported LP : ", el("span", utils.formatEther(supportedPower))),
-            el("a.support-button", "Support", {
-                click: async (event: MouseEvent) => {
-                    event.stopPropagation();
-                    const balance = await MaidCoinContract.balanceOf(owner);
-                    new TokenPrompt("Support Nurse", "How much amount to support?", "Support", 0, balance, async (amount) => {
-                        await TheMasterContract.support(3, amount, this.nurseId);
-                    });
-                },
-            }),
+            el(".lp-amount", "Supported LP : ", el("span", utils.formatEther(this.supportedPower))),
+            this.lifetime = el(".lifetime"),
         );
+
+        this.refreshLifetime();
     }
 }

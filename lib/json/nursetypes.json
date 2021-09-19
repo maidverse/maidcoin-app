@@ -50,10 +50,10 @@
     "6": {
         "name": "N7",
         "image": "https://storage.googleapis.com/maidcoin/Nurse/Image/N7.png",
-        "partCount": 0,
-        "destroyReturn": 0,
-        "power": 0,
-        "lifetime": 0
+        "partCount": 5,
+        "destroyReturn": 50,
+        "power": 783,
+        "lifetime": 201600
     },
     "7": {
         "name": "N8",

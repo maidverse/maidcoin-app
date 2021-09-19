@@ -2,6 +2,8 @@ import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import Wallet from "../../ethereum/Wallet";
+import ChargeMultipleNursePopup from "../charge-multiple-nurse-popup/ChargeMultipleNursePopup";
+import DeleteMultipleNursePopup from "../delete-multiple-nurse-popup/DeleteMultipleNursePopup";
 import NursePool from "./NursePool";
 
 export default class NursePoolList extends DomNode {
@@ -49,14 +51,10 @@ export default class NursePoolList extends DomNode {
                             },
                         }),
                         el("a.charge-all-button", "Charge All", {
-                            click: async () => {
-                                //TODO:
-                            },
+                            click: () => new ChargeMultipleNursePopup(),
                         }),
                         el("a.destroy-all-button", "Destroy All", {
-                            click: async () => {
-                                //TODO:
-                            },
+                            click: () => new DeleteMultipleNursePopup(),
                         }),
                     ),
                 );

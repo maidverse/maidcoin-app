@@ -1,37 +1,43 @@
 [{
-    "entranceFee": 25,
+    "entranceFee": 5,
     "nursePart": 0,
     "maxRewardCount": 3,
-    "duration": 1920,
+    "duration": 1,
     "endBlock": 99999999
 }, {
-    "entranceFee": 25,
+    "entranceFee": 5,
     "nursePart": 1,
     "maxRewardCount": 3,
-    "duration": 2880,
+    "duration": 2,
     "endBlock": 99999999
 }, {
-    "entranceFee": 34,
+    "entranceFee": 6,
     "nursePart": 2,
     "maxRewardCount": 3,
-    "duration": 3840,
+    "duration": 3,
     "endBlock": 99999999
 }, {
-    "entranceFee": 38,
+    "entranceFee": 5,
     "nursePart": 3,
     "maxRewardCount": 2,
-    "duration": 4800,
+    "duration": 4,
     "endBlock": 99999999
 }, {
-    "entranceFee": 44,
+    "entranceFee": 6,
     "nursePart": 4,
     "maxRewardCount": 2,
-    "duration": 5760,
+    "duration": 5,
     "endBlock": 99999999
 }, {
-    "entranceFee": 50,
+    "entranceFee": 6,
     "nursePart": 5,
     "maxRewardCount": 2,
-    "duration": 6720,
+    "duration": 6,
+    "endBlock": 99999999
+}, {
+    "entranceFee": 20,
+    "nursePart": 6,
+    "maxRewardCount": 2,
+    "duration": 6,
     "endBlock": 99999999
 }]

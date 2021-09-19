@@ -10,6 +10,7 @@ import NetworkProvider from "../../ethereum/NetworkProvider";
 import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
 import TokenPrompt from "../dialogue/TokenPrompt";
+import RouteNursePopup from "../route-nurse-popup/RouteNursePopup";
 import ChargeNursePopup from "./ChargeNursePopup";
 
 export default class NurseDetail extends Popup {
@@ -67,12 +68,20 @@ export default class NurseDetail extends Popup {
                 ) * 100;
 
             this.content.empty().append(
+                owner !== nurseOwner ? undefined : el("a.delete-button",
+                    el("img.image", { src: "/images/component/nurse-detail/delete-button.png", height: "33.5" }),
+                    {
+                        click: () => new RouteNursePopup(supportedPower, async (toNurseId: number) => {
+                            await CloneNursesContract.destroy([this.nurseId], [toNurseId]);
+                        }),
+                    },
+                ),
                 el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/Illust/${tokenInfo.name}.png` }),
                 el(".name", tokenInfo.name),
                 el(".owner", `Owner: ${CommonUtil.shortenAddress(nurseOwner)}`),
                 el(".character",
                     el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${tokenInfo.name}Idle.png`, height: "120" }),
-                    el("a.claim-button",
+                    owner !== nurseOwner ? undefined : el("a.claim-button",
                         el("img.coin-image", { src: "/images/component/nurse-detail/maidcoin.png", height: "29" }),
                         el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),
                         { click: async () => await CloneNursesContract.claim([this.nurseId]) },
@@ -86,7 +95,7 @@ export default class NurseDetail extends Popup {
                         })),
                         this.lifetime = el(".lifetime"),
                     ),
-                    el("a.charge-button",
+                    owner !== nurseOwner ? undefined : el("a.charge-button",
                         el("img.image", { src: "/images/component/nurse-detail/charge-button.png", height: "29" }),
                         { click: () => new ChargeNursePopup(this.nurseId) },
                     ),
@@ -97,7 +106,7 @@ export default class NurseDetail extends Popup {
                     el(".property.lp-amount", "LP Supported By Me: ", el("span", utils.formatEther(supportingAmount))),
                 ),
                 el(".controller",
-                    el("a.suppport-button", "Support", {
+                    el("a.support-button", "Support", {
                         click: async (event: MouseEvent) => {
                             event.stopPropagation();
                             const lpBalance = await LPTokenContract.balanceOf(owner);
