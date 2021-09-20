@@ -222,7 +222,7 @@ body {
   overflow-y: auto;
 }
 .layout > main > .content {
-  max-width: 960px;
+  max-width: 846px;
   padding: 10px 20px 50px;
   margin: auto;
 }
@@ -267,10 +267,23 @@ body {
 .dashboard-view > section > .owned-maid-list {
   margin-top: -3px;
 }
+.dashboard-view > section > .owned-maid-list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+@media only screen and (min-width: 960px) {
+  .dashboard-view > section > .owned-maid-list > .maid-container > .maid-summary {
+    width: 403px;
+    float: left;
+  }
+}
 .dashboard-view > section > .any-housekeeper-list,
 .dashboard-view > section > .nurse-part-list {
   position: relative;
-  max-width: 403px;
   height: 161px;
 }
 .dashboard-view > section > .any-housekeeper-list > .background,
@@ -493,7 +506,7 @@ body {
   background-color: rgba(49, 19, 54, 0.8);
 }
 .housekeeper-view > .category-area > .category-list {
-  max-width: 960px;
+  max-width: 846px;
   padding: 0 20px;
   margin: auto;
 }
@@ -829,8 +842,6 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
   overflow-y: scroll;
   padding: 20px 0;
 }
@@ -1443,6 +1454,20 @@ body {
   margin-left: 5px;
   margin-right: 5px;
 }
+.nurse-raid > footer > .exit-button {
+  float: right;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/component/nurse-raid/exit-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
+}
 .nurse-raid > footer > .cancel-button {
   float: right;
   width: 112px;
@@ -1747,6 +1772,20 @@ body {
   color: #15151d;
   font-weight: bold;
   font-size: 18px;
+}
+.nurse-pool-list:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+@media only screen and (min-width: 960px) {
+  .nurse-pool-list > .nurse-pool {
+    width: 403px;
+    float: left;
+  }
 }
 .nurse-pool-list > footer {
   float: right;
@@ -2474,6 +2513,10 @@ body {
   font-weight: bold;
   padding-top: 8px;
   padding-left: 1px;
+}
+.dialogue-background {
+  display: flex;
+  flex-direction: column;
 }
 .dialogue {
   position: relative;

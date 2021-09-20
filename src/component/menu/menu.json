@@ -1,31 +1,30 @@
 {
     "menu": [{
-            "uri": "",
-            "name": "Dashboard"
-        },
-        {
             "uri": "maid",
-            "name": "Maid"
+            "name": "Maids"
         },
         {
             "uri": "housekeeper",
-            "name": "Housekeeper"
+            "name": "Housekeepers"
         },
         {
             "uri": "nurseraid",
-            "name": "Nurse Raid"
+            "name": "Nurse Raids"
         },
         {
             "uri": "nursefactory",
-            "name": "Nurse Factory"
+            "name": "Nurse Factories"
         },
         {
             "uri": "farm",
-            "name": "Farm"
+            "name": "Farms"
         },
         {
             "uri": "cafe",
             "name": "Maid Cafe"
+        }, {
+            "uri": "dashboard",
+            "name": "Dashboard"
         }
     ]
 }

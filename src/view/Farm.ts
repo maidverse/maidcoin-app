@@ -12,7 +12,7 @@ export default class Farm implements View {
         Layout.current.changeBackground("/images/view/farm/background.jpg");
         Layout.current.content.append(this.container = el(".farm-view",
             el("header",
-                el("h2", "Farm"),
+                el("h2", "Farms"),
                 el("p", "Earn $MAID!"),
             ),
             new MaidCorp(),

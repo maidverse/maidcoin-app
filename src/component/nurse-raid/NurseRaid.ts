@@ -1,6 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
-import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
@@ -77,11 +76,15 @@ export default class NurseRaid extends DomNode {
                     {
                         click: () => new SelectMaidPopup(this.raidId),
                     },
-                ) : el("a.cancel-button", await NurseRaidContract.checkDone(this.raidId) === true ? "Exit" : "Cancel", {
+                ) : (await NurseRaidContract.checkDone(this.raidId) === true ? el("a.exit-button", "Exit", {
                     click: async () => {
                         await NurseRaidContract.exit([this.raidId]);
                     },
-                }),
+                }) : el("a.cancel-button", "Cancel", {
+                    click: async () => {
+                        await NurseRaidContract.exit([this.raidId]);
+                    },
+                })),
             );
         }
     }

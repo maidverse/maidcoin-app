@@ -53,7 +53,7 @@ export default class NurseFarm extends DomNode {
             else {
                 this.deleteClass("empty");
 
-                const supportingTo = (await CloneNursesContract.getSupportingTo(owner)).toNumber();
+                /*const [, supportingTo] = await CloneNursesContract.findSupportingTo(owner);
                 const nurse = await CloneNursesContract.getNurse(supportingTo);
                 const nurseOwner = await CloneNursesContract.ownerOf(supportingTo);
 
@@ -75,12 +75,11 @@ export default class NurseFarm extends DomNode {
                     ),
                     el("a.desupport-button", "Desupport", {
                         click: async () => {
-                            const lpBalance = await LPTokenContract.balanceOf(owner);
                             new TokenPrompt(
                                 "Desupport Nurse",
                                 "How much amount to desupport?",
                                 "Desupport",
-                                0, lpBalance,
+                                0, lpAmount,
                                 async (amount) => {
                                     await TheMasterContract.desupport(3, amount);
                                 },
@@ -106,7 +105,7 @@ export default class NurseFarm extends DomNode {
                 this.footer.empty().append(
                     el(".property.lp-amount", "Deposited LP: ", el("span", utils.formatEther(lpAmount))),
                     el(".property.apr", "APR: ", el("span", "0%")), //TODO:
-                );
+                );*/
             }
         }
     }

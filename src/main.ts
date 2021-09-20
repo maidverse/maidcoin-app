@@ -12,8 +12,8 @@ import TestLPToken from "./view/test/TestLPToken";
 import TestMaidCoin from "./view/test/TestMaidCoin";
 
 SkyRouter.route("**", Layout);
-SkyRouter.route("", Dashboard);
-SkyRouter.route("maid", Maid);
+SkyRouter.route("dashboard", Dashboard);
+SkyRouter.route(["", "maid"], Maid);
 SkyRouter.route(["housekeeper", "housekeeper/{type}"], Housekeeper);
 SkyRouter.route("nurseraid", NurseRaid);
 SkyRouter.route("nursefactory", Nursefactory);
