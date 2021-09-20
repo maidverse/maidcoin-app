@@ -30,6 +30,8 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
     "claim(uint256[])": FunctionFragment;
     "destroy(uint256[],uint256[])": FunctionFragment;
     "elongateLifetime(uint256[],uint256[])": FunctionFragment;
+    "exists(uint256)": FunctionFragment;
+    "findSupportingTo(address)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "maidCoin()": FunctionFragment;
@@ -96,6 +98,14 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "elongateLifetime",
     values: [BigNumberish[], BigNumberish[]]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "exists",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "findSupportingTo",
+    values: [string]
   ): string;
   encodeFunctionData(
     functionFragment: "getApproved",
@@ -202,6 +212,11 @@ interface ICloneNursesInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "destroy", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "elongateLifetime",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "exists", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "findSupportingTo",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -400,6 +415,13 @@ export class ICloneNurses extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    exists(id: BigNumberish, overrides?: CallOverrides): Promise<[boolean]>;
+
+    findSupportingTo(
+      supporter: string,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
+
     getApproved(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -589,6 +611,13 @@ export class ICloneNurses extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  exists(id: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+
+  findSupportingTo(
+    supporter: string,
+    overrides?: CallOverrides
+  ): Promise<[string, BigNumber]>;
+
   getApproved(
     tokenId: BigNumberish,
     overrides?: CallOverrides
@@ -768,6 +797,13 @@ export class ICloneNurses extends BaseContract {
       parts: BigNumberish[],
       overrides?: CallOverrides
     ): Promise<void>;
+
+    exists(id: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+
+    findSupportingTo(
+      supporter: string,
+      overrides?: CallOverrides
+    ): Promise<[string, BigNumber]>;
 
     getApproved(
       tokenId: BigNumberish,
@@ -1044,6 +1080,13 @@ export class ICloneNurses extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    exists(id: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+
+    findSupportingTo(
+      supporter: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     getApproved(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -1219,6 +1262,16 @@ export class ICloneNurses extends BaseContract {
       ids: BigNumberish[],
       parts: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    exists(
+      id: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    findSupportingTo(
+      supporter: string,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getApproved(
