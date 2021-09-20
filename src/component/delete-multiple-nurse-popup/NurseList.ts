@@ -1,5 +1,6 @@
 import { BigNumber } from "@ethersproject/bignumber";
 import { DomNode } from "@hanul/skynode";
+import { constants } from "ethers";
 import SkyUtil from "skyutil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import Nurse from "./Nurse";
@@ -21,8 +22,11 @@ export default class NurseList extends DomNode {
 
         this.empty();
         SkyUtil.repeat(nurseCount.toNumber(), async (nurseId) => {
-            const nurse = new Nurse(this, nurseId).appendTo(this);
-            nurse.toss("toggle", this);
+            const owner = await CloneNursesContract.ownerOf(nurseId);
+            if (owner !== constants.AddressZero) {
+                const nurse = new Nurse(this, nurseId, owner).appendTo(this);
+                nurse.toss("toggle", this);
+            }
         });
     }
 
@@ -33,7 +37,7 @@ export default class NurseList extends DomNode {
         this.empty();
         SkyUtil.repeat(nurseCount.toNumber(), async (index) => {
             const nurseId = await CloneNursesContract.getTokenOfOwnerByIndex(owner, index);
-            const nurse = new Nurse(this, nurseId.toNumber()).appendTo(this);
+            const nurse = new Nurse(this, nurseId.toNumber(), owner).appendTo(this);
             nurse.toss("toggle", this);
         });
     }

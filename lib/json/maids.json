@@ -57,6 +57,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 80
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 110
             }
         ]
     },
@@ -85,6 +90,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 83
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 120
             }
         ]
     },
@@ -113,6 +123,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 86
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 130
             }
         ]
     },
@@ -141,6 +156,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 96
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 140
             }
         ]
     },
@@ -169,6 +189,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 88
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 150
             }
         ]
     },
@@ -197,6 +222,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 82
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 160
             }
         ]
     },
@@ -225,6 +255,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 87
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 170
             }
         ]
     },
@@ -253,6 +288,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 91
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 180
             }
         ]
     },
@@ -281,6 +321,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 79
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 190
             }
         ]
     },
@@ -309,6 +354,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 78
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 200
             }
         ]
     },
@@ -337,6 +387,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 76
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 210
             }
         ]
     },
@@ -365,6 +420,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 77
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 220
             }
         ]
     },
@@ -393,6 +453,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 90
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 230
             }
         ]
     },
@@ -421,6 +486,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 84
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 240
             }
         ]
     },
@@ -449,6 +519,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 90
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 250
             }
         ]
     },
@@ -477,6 +552,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 87
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 260
             }
         ]
     },
@@ -505,6 +585,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 79
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 270
             }
         ]
     },
@@ -533,6 +618,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 80
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 280
             }
         ]
     },
@@ -561,6 +651,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 72
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 290
             }
         ]
     },
@@ -589,6 +684,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 74
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 300
             }
         ]
     },
@@ -617,6 +717,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 80
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 310
             }
         ]
     },
@@ -645,6 +750,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 82
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 320
             }
         ]
     },
@@ -673,6 +783,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 84
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 330
             }
         ]
     },
@@ -701,6 +816,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 79
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 340
             }
         ]
     },
@@ -729,6 +849,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 78
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 350
             }
         ]
     },
@@ -757,6 +882,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 80
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 360
             }
         ]
     },
@@ -785,6 +915,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 79
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 370
             }
         ]
     },
@@ -813,6 +948,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 84
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 380
             }
         ]
     },
@@ -841,6 +981,11 @@
                 "display_type": "number",
                 "trait_type": "Bust Size",
                 "value": 82
+            },
+            {
+                "display_type": "number",
+                "trait_type": "Power",
+                "value": 390
             }
         ]
     }

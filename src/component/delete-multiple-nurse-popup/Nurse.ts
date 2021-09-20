@@ -17,7 +17,7 @@ export default class Nurse extends DomNode {
     private supportedPower: BigNumber = BigNumber.from(0);
     private destroyReturn: BigNumber = BigNumber.from(0);
 
-    constructor(nurseList: NurseList, public nurseId: number) {
+    constructor(nurseList: NurseList, public nurseId: number, private owner: string) {
         super(".nurse");
         const check = el<HTMLImageElement>("img.check", { src: "/images/component/delete-multiple-nurse-popup/unchecked.png", height: "21" }).appendTo(this);
         this.onDom("click", () => {
@@ -53,7 +53,6 @@ export default class Nurse extends DomNode {
         const nurse = await CloneNursesContract.getNurse(this.nurseId);
         this.endBlock = nurse.endBlock;
 
-        const owner = await CloneNursesContract.ownerOf(this.nurseId);
         this.supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
 
         const nurseType = StaticDataManager.getNurseType(nurse.nurseType);
@@ -64,7 +63,7 @@ export default class Nurse extends DomNode {
                 el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/Face/${nurseType.name}.png` }),
                 el(".name", nurseType.name),
             ),
-            el(".owner", `Owner: ${CommonUtil.shortenAddress(owner)}`),
+            el(".owner", `Owner: ${CommonUtil.shortenAddress(this.owner)}`),
             el(".lp-amount", "Supported LP : ", el("span", utils.formatEther(this.supportedPower))),
             this.lifetime = el(".lifetime"),
         );

@@ -12,7 +12,6 @@ declare class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> 
     ownerOf(nurseId: number): Promise<string>;
     getNurse(nurseId: BigNumberish): Promise<NurseInfo>;
     getSupportedPower(nurseId: number): Promise<BigNumber>;
-    getSupportingTo(supporter: string): Promise<BigNumber>;
     getPendigReward(nurseId: BigNumberish): Promise<BigNumber>;
     assemble(nurseType: number, partCount: number): Promise<void>;
     elongateLifetime(ids: BigNumberish[], parts: BigNumberish[]): Promise<void>;

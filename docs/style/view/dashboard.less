@@ -36,13 +36,22 @@
 
         >.owned-maid-list {
             margin-top: -3px;
+            .float-wrapper();
+
+            @media @pc {
+                >.maid-container {
+                    >.maid-summary {
+                        width: 403px;
+                        float: left;
+                    }
+                }
+            }
         }
 
         >.any-housekeeper-list,
         >.nurse-part-list {
-            position : relative;
-            max-width: 403px;
-            height   : 161px;
+            position: relative;
+            height  : 161px;
 
             >.background {
                 position        : absolute;

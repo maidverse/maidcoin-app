@@ -46,7 +46,7 @@ export default class MaidCorp extends DomNode {
                         "Withdraw from MaidCorp",
                         "How much amount to withdraw?",
                         "Withdraw",
-                        0, lpBalance,
+                        0, lpAmount,
                         async (amount) => {
                             await TheMasterContract.withdraw(1, amount);
                         },

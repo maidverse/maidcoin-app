@@ -53,9 +53,16 @@ class CloneNursesContract extends ERC721EnumerableContract<CloneNurses> {
         return await this.contract.supportedPower(nurseId);
     }
 
-    public async getSupportingTo(supporter: string): Promise<BigNumber> {
-        return await this.contract.supportingTo(supporter);
-    }
+    /*public async findSupportingTo(supporter: string): Promise<{
+        owner: string,
+        supportingTo: number,
+    }> {
+        const [owner, supportingTo] = await this.contract.findSupportingTo(supporter);
+        return {
+            owner,
+            supportingTo: supportingTo.toNumber(),
+        }
+    }*/
 
     public async getPendigReward(nurseId: BigNumberish): Promise<BigNumber> {
         return await this.contract.pendingReward(nurseId);

@@ -11,7 +11,7 @@ export default class Nursefactory implements View {
         Layout.current.changeBackground("/images/view/nurse-factory/background.jpg");
         Layout.current.content.append(this.container = el(".nurse-factory-view",
             el("header",
-                el("h2", "Nurse Factory"),
+                el("h2", "Nurse Factories"),
                 el("p", "You can make Clone Nurses with Nurse Parts."),
             ),
             new NurseFactoryList(),

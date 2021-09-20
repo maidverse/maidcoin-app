@@ -12,7 +12,7 @@ export default class NurseRaid implements View {
         Layout.current.changeBackground("/images/view/nurse-raid/background.jpg");
         Layout.current.content.append(this.container = el(".nurse-raid-view",
             el("header",
-                el("h2", "Nurse Raid"),
+                el("h2", "Nurse Raids"),
                 el("p", "Defeat Nurses and get Nurse Parts."),
             ),
             new NurseRaidList(),

@@ -1,4 +1,5 @@
 import { DomNode } from "@hanul/skynode";
+import { constants } from "ethers";
 import SkyUtil from "skyutil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import Nurse from "./Nurse";
@@ -26,7 +27,10 @@ export default class NurseList extends DomNode {
 
         this.empty();
         SkyUtil.repeat(nurseCount.toNumber(), async (nurseId) => {
-            new Nurse(nurseId).appendTo(this);
+            const owner = await CloneNursesContract.ownerOf(nurseId);
+            if (owner !== constants.AddressZero) {
+                new Nurse(nurseId, owner).appendTo(this);
+            }
         });
     }
 
@@ -37,7 +41,7 @@ export default class NurseList extends DomNode {
         this.empty();
         SkyUtil.repeat(nurseCount.toNumber(), async (index) => {
             const nurseId = await CloneNursesContract.getTokenOfOwnerByIndex(owner, index);
-            new Nurse(nurseId.toNumber()).appendTo(this);
+            new Nurse(nurseId.toNumber(), owner).appendTo(this);
         });
     }
 }
