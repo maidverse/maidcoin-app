@@ -11,6 +11,7 @@ export default {
     // Ropsten
     chainId: 3,
     blockTimeSecond: 30,
+    rewardPerBlock: 1,
 
     infuraId: INFURA_ID,
 

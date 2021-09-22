@@ -8,6 +8,8 @@ export default class Nurse extends DomNode {
     partCount: number;
     constructor(nurseId: number, owner: string);
     private refreshLifetime;
+    private elongateLifetimeHandler;
     private load;
+    delete(): void;
 }
 //# sourceMappingURL=Nurse.d.ts.map

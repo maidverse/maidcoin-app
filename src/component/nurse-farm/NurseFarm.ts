@@ -1,6 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import superagent from "superagent";
+import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import LPTokenContract from "../../contracts/LPTokenContract";
@@ -23,10 +24,18 @@ export default class NurseFarm extends DomNode {
         );
         this.load();
         Wallet.on("connect", this.connectHandler);
+        TheMasterContract.on("Support", this.supportHandler);
+        TheMasterContract.on("Desupport", this.supportHandler);
     }
 
     private connectHandler = () => {
         this.load();
+    };
+
+    private supportHandler = (userId: BigNumber, pid: BigNumber, amount: BigNumber) => {
+        if (pid.toNumber() === 3) {
+            this.load();
+        }
     };
 
     private async load() {
@@ -45,22 +54,23 @@ export default class NurseFarm extends DomNode {
                     }),
                 );
 
+                const apr = await Calculator.apr(3);
                 this.footer.empty().append(
-                    el(".property.apr", "APR: ", el("span", "0%")), //TODO:
+                    el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(String(apr))}%`)),
                 );
             }
 
             else {
                 this.deleteClass("empty");
 
-                /*const [, supportingTo] = await CloneNursesContract.findSupportingTo(owner);
+                const { supportingTo } = await CloneNursesContract.findSupportingTo(owner);
                 const nurse = await CloneNursesContract.getNurse(supportingTo);
                 const nurseOwner = await CloneNursesContract.ownerOf(supportingTo);
 
                 const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurse.nurseType}`);
                 const tokenInfo = result.body;
 
-                const lpAmount = await TheMasterContract.getLPAmount(3, owner);
+                const lpAmount = await TheMasterContract.getUserLPAmount(3, owner);
                 const reward = await TheMasterContract.getPendingReward(3, owner);
 
                 this.content.empty().append(
@@ -102,16 +112,19 @@ export default class NurseFarm extends DomNode {
                     }),
                 );
 
+                const apr = await Calculator.apr(3);
                 this.footer.empty().append(
                     el(".property.lp-amount", "Deposited LP: ", el("span", utils.formatEther(lpAmount))),
-                    el(".property.apr", "APR: ", el("span", "0%")), //TODO:
-                );*/
+                    el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(String(apr))}%`)),
+                );
             }
         }
     }
 
     public delete(): void {
         Wallet.off("connect", this.connectHandler);
+        TheMasterContract.off("Support", this.supportHandler);
+        TheMasterContract.off("Desupport", this.supportHandler);
         super.delete();
     }
 }

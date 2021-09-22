@@ -10,6 +10,8 @@ export default class Nurse extends DomNode {
     private destroyReturn;
     constructor(nurseList: NurseList, nurseId: number, owner: string);
     private refreshLifetime;
+    private elongateLifetimeHandler;
     private load;
+    delete(): void;
 }
 //# sourceMappingURL=Nurse.d.ts.map

@@ -41,5 +41,7 @@ export default class SelectNursePopup extends Popup {
                 ),
             ),
         );
+
+        nurseList.on("support", () => this.delete());
     }
 }

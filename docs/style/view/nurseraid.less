@@ -1,4 +1,6 @@
 .nurse-raid-view {
+    position: relative;
+
     >header {
         height             : 40px;
         background-image   : url(/images/view/title.png);
@@ -17,6 +19,23 @@
             animation          : maid-view-slide-in 0.5s 0.2s ease-out;
             animation-fill-mode: forwards;
         }
+    }
+
+    >.exit-all-button {
+        position        : absolute;
+        top             : 6px;
+        right           : 0;
+        width           : 112px;
+        height          : 33.5px;
+        background-image: url(/images/view/nurse-raid/exit-all-button.png);
+        background-size : auto 100%;
+        color           : #000000;
+        font-size       : 13px;
+        text-transform  : uppercase;
+        text-align      : center;
+        font-weight     : bold;
+        padding-top     : 8px;
+        padding-left    : 1px;
     }
 
     .nurse-raid-list {

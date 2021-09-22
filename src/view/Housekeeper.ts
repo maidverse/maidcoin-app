@@ -1,8 +1,9 @@
 import { DomNode, el } from "@hanul/skynode";
-import { SkyRouter, View, ViewParams } from "skyrouter";
+import { View, ViewParams } from "skyrouter";
 import LingerieGirlList from "../component/housekeeper/lingeriegirl/LingerieGirlList";
 import SushiGirlList from "../component/housekeeper/sushigirl/SushiGirlList";
 import Layout from "./Layout";
+import ViewUtil from "./ViewUtil";
 
 export default class Housekeeper implements View {
 
@@ -27,8 +28,8 @@ export default class Housekeeper implements View {
         }
 
         this.categoryList.empty().append(
-            el(`a${type === "lingeriegirls" ? ".on" : ""}.category`, "Lingerie Girls", { click: () => SkyRouter.go("/housekeeper/lingeriegirls") }),
-            el(`a${type === "sushigirls" ? ".on" : ""}.category`, "Sushi Girls", { click: () => SkyRouter.go("/housekeeper/sushigirls") }),
+            el(`a${type === "lingeriegirls" ? ".on" : ""}.category`, "Lingerie Girls", { click: () => ViewUtil.go("/housekeeper/lingeriegirls") }),
+            el(`a${type === "sushigirls" ? ".on" : ""}.category`, "Sushi Girls", { click: () => ViewUtil.go("/housekeeper/sushigirls") }),
         );
 
         this.housekeeperList?.delete();

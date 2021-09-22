@@ -23,13 +23,18 @@ class TheMasterContract extends Contract<TheMaster> {
         ]);
     }
 
-    public async getLPAmount(pid: BigNumberish, user: string) {
+    public async getPoolLPAmount(pid: BigNumberish) {
+        const [, , , , , , , amount] = await this.contract.poolInfo(pid);
+        return amount;
+    }
+
+    public async getUserLPAmount(pid: BigNumberish, user: string) {
         const [amount] = await this.contract.userInfo(pid, BigNumber.from(user));
         return amount;
     }
 
     public async getSupportingAmount(user: string) {
-        return this.getLPAmount(3, user);
+        return this.getUserLPAmount(3, user);
     }
 
     public async getPendingReward(pid: BigNumberish, user: string) {

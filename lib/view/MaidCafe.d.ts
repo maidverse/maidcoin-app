@@ -11,7 +11,9 @@ export default class MaidCafe implements View {
     private omuBalance;
     private maidcoinBalance;
     constructor();
-    private loadBalance;
+    private connectHandler;
+    private transferHandler;
+    private loadBalances;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
 }

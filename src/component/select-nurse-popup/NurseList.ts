@@ -19,7 +19,8 @@ export default class NurseList extends DomNode {
         SkyUtil.repeat(nurseCount.toNumber(), async (nurseId) => {
             const owner = await CloneNursesContract.ownerOf(nurseId);
             if (owner !== constants.AddressZero) {
-                new Nurse(nurseId, owner).appendTo(this);
+                const nurse = new Nurse(nurseId, owner).appendTo(this);
+                nurse.toss("support", this);
             }
         });
     }
@@ -31,7 +32,8 @@ export default class NurseList extends DomNode {
         this.empty();
         SkyUtil.repeat(nurseCount.toNumber(), async (index) => {
             const nurseId = await CloneNursesContract.getTokenOfOwnerByIndex(owner, index);
-            new Nurse(nurseId.toNumber(), owner).appendTo(this);
+            const nurse = new Nurse(nurseId.toNumber(), owner).appendTo(this);
+            nurse.toss("support", this);
         });
     }
 }

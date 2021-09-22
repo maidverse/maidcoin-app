@@ -1,6 +1,6 @@
 import { ClosableFloatingDomNode, el, Position } from "@hanul/skynode";
-import { SkyRouter } from "skyrouter";
 import Config from "../../Config";
+import ViewUtil from "../../view/ViewUtil";
 import menu from "./menu.json";
 import MenuBuilder from "./MenuBuilder";
 
@@ -16,8 +16,8 @@ export default class MobileMenu extends ClosableFloatingDomNode {
                 ...MenuBuilder.build(menu.menu),
             ),
             el(".bottom-menu",
-                Config.chainId !== 1 ? el("a", "Test LP Token", { click: () => SkyRouter.go("/test/test-lp-token") }) : undefined,
-                Config.chainId !== 1 ? el("a", "Test $MAID", { click: () => SkyRouter.go("/test/test-maidcoin") }) : undefined,
+                Config.chainId !== 1 ? el("a", "Test LP Token", { click: () => ViewUtil.go("/test/test-lp-token") }) : undefined,
+                Config.chainId !== 1 ? el("a", "Test $MAID", { click: () => ViewUtil.go("/test/test-maidcoin") }) : undefined,
                 el("a", "Docs", { href: "https://medium.com/maid-coin", target: "_blank" }),
                 el("a", "Open Source", { href: "https://github.com/maidcoingit", target: "_blank" }),
             ),

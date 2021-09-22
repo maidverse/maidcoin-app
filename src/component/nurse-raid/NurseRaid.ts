@@ -12,7 +12,9 @@ export default class NurseRaid extends DomNode {
     private content: DomNode;
     private footer: DomNode;
 
-    constructor(private raidId: number, private currentBlockNumber: number) {
+    public done = false;
+
+    constructor(public raidId: number, private currentBlockNumber: number) {
         super(".nurse-raid");
         this.append(
             el(".background"),
@@ -63,6 +65,8 @@ export default class NurseRaid extends DomNode {
 
             const challenger = await NurseRaidContract.getChallenger(this.raidId, owner);
 
+            this.done = challenger.enterBlock !== 0 && await NurseRaidContract.checkDone(this.raidId) === true;
+
             this.footer.empty().append(
                 el(".reward",
                     el("h3", "Rewards"),
@@ -76,7 +80,7 @@ export default class NurseRaid extends DomNode {
                     {
                         click: () => new SelectMaidPopup(this.raidId),
                     },
-                ) : (await NurseRaidContract.checkDone(this.raidId) === true ? el("a.exit-button", "Exit", {
+                ) : (this.done === true ? el("a.exit-button", "Exit", {
                     click: async () => {
                         await NurseRaidContract.exit([this.raidId]);
                     },

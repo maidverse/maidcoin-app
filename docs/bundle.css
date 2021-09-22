@@ -167,6 +167,17 @@ body {
   background-color: #000000;
   color: #e9dfee;
 }
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8448a;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: rgba(233, 223, 238, 0.5) 0px 0px 5px inset;
+  border-radius: 10px;
+}
 .layout {
   height: 100%;
   background-size: cover;
@@ -242,6 +253,45 @@ body {
   color: #9e92a9;
   animation: maid-view-slide-in 0.5s 0.2s ease-out;
   animation-fill-mode: forwards;
+}
+.dashboard-view > .welcome-container > .welcome {
+  background-image: url(/images/view/dashboard/welcome-background.png);
+  background-size: auto 100%;
+  margin-top: 10px;
+  position: relative;
+}
+.dashboard-view > .welcome-container > .welcome > .info {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  text-align: right;
+}
+.dashboard-view > .welcome-container > .welcome > .info > p {
+  color: #000000;
+  font-family: "refrigerator-deluxe";
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.dashboard-view > .welcome-container > .welcome > .info > .document-button {
+  font-family: "refrigerator-deluxe";
+  font-size: 18px;
+  color: #5d5ab0;
+  text-decoration: underline;
+}
+.dashboard-view > .welcome-container > .welcome > .info > .connect-wallet-button {
+  margin-top: 24px;
+  display: block;
+  width: 176.5px;
+  height: 33.5px;
+  background-image: url(/images/view/dashboard/connect-wallet-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
 }
 .dashboard-view > section {
   margin-top: 20px;
@@ -428,6 +478,9 @@ body {
   background-color: #363138;
   color: #dfdcd7;
 }
+.nurse-raid-view {
+  position: relative;
+}
 .nurse-raid-view > header {
   height: 40px;
   background-image: url(/images/view/title.png);
@@ -444,6 +497,22 @@ body {
   color: #9e92a9;
   animation: maid-view-slide-in 0.5s 0.2s ease-out;
   animation-fill-mode: forwards;
+}
+.nurse-raid-view > .exit-all-button {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/view/nurse-raid/exit-all-button.png);
+  background-size: auto 100%;
+  color: #000000;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 1px;
 }
 .nurse-raid-view .nurse-raid-list {
   margin-top: 20px;
@@ -559,6 +628,14 @@ body {
 .housekeeper-view > .lingeriegirl-list > .lingeriegirl {
   float: left;
 }
+.farm-view:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
 .farm-view > header {
   height: 40px;
   background-image: url(/images/view/title.png);
@@ -579,6 +656,13 @@ body {
 .farm-view > .maid-corp,
 .farm-view > .nurse-farm {
   margin-top: 20px;
+}
+@media only screen and (min-width: 960px) {
+  .farm-view > .maid-corp,
+  .farm-view > .nurse-farm {
+    width: 403px;
+    float: left;
+  }
 }
 .maid-cafe-view > header {
   height: 40px;
@@ -651,6 +735,9 @@ body {
   background: none;
   background-image: url(/images/view/maid-cafe/amount-input.png);
   background-size: auto 100%;
+  padding: 0 10px;
+  font-size: 18px;
+  font-family: "refrigerator-deluxe";
 }
 .maid-cafe-view > main > .tab > .input-container > .max-button {
   position: absolute;
@@ -748,6 +835,40 @@ body {
   background-color: #363138;
   color: #dfdcd7;
 }
+.test-maidcoin-view {
+  padding: 60px 0;
+}
+.test-maidcoin-view > h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.test-maidcoin-view > .info {
+  line-height: 1.5em;
+}
+.test-maidcoin-view > .control {
+  margin-top: 20px;
+}
+.test-maidcoin-view > .control:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.test-maidcoin-view > .control > .mint-button {
+  float: left;
+  background-color: #dfdcd7;
+  border: 1px solid #363138;
+  color: #363138;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+.test-maidcoin-view > .control > .mint-button:hover {
+  background-color: #363138;
+  color: #dfdcd7;
+}
 .loading {
   position: fixed;
   left: 50%;
@@ -802,14 +923,11 @@ body {
 }
 .user-info > .maid-coin > .balance {
   float: left;
-}
-.user-info > .maid-coin > .balance > .icon {
-  float: left;
+  display: flex;
+  align-items: center;
 }
 .user-info > .maid-coin > .balance > .amount {
-  float: right;
   font-family: "refrigerator-deluxe";
-  line-height: 19px;
   font-size: 14px;
   padding: 0 4px;
 }
@@ -2654,6 +2772,17 @@ body {
   font-family: "refrigerator-deluxe";
   font-size: 24px;
   font-weight: bold;
+}
+.select-maid-popup > main > section > .maid-list > .content:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.select-maid-popup > main > section > .maid-list > .content > .maid {
+  float: left;
 }
 .select-maid-popup > main > section > .any-housekeeper-list {
   margin-top: 2px;

@@ -1,5 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
+import Calculator from "../../Calculator";
+import CommonUtil from "../../CommonUtil";
 import LPTokenContract from "../../contracts/LPTokenContract";
 import TheMasterContract from "../../contracts/TheMasterContract";
 import Wallet from "../../ethereum/Wallet";
@@ -21,10 +23,18 @@ export default class MaidCorp extends DomNode {
         );
         this.load();
         Wallet.on("connect", this.connectHandler);
+        TheMasterContract.on("Deposit", this.depositHandler);
+        TheMasterContract.on("Withdraw", this.depositHandler);
     }
 
     private connectHandler = () => {
         this.load();
+    };
+
+    private depositHandler = (userId: BigNumber, pid: BigNumber, amount: BigNumber) => {
+        if (pid.toNumber() === 1) {
+            this.load();
+        }
     };
 
     private async load() {
@@ -32,7 +42,7 @@ export default class MaidCorp extends DomNode {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 
-            const lpAmount = await TheMasterContract.getLPAmount(1, owner);
+            const lpAmount = await TheMasterContract.getUserLPAmount(1, owner);
             const reward = await TheMasterContract.getPendingReward(1, owner);
             const lpBalance = await LPTokenContract.balanceOf(owner);
 
@@ -65,15 +75,18 @@ export default class MaidCorp extends DomNode {
                 }),
             );
 
+            const apr = await Calculator.apr(1);
             this.footer.empty().append(
                 el(".property.lp-amount", "Deposited LP: ", el("span", utils.formatEther(lpAmount))),
-                el(".property.apr", "APR: ", el("span", "0%")), //TODO:
+                el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(String(apr))}%`)),
             );
         }
     }
 
     public delete(): void {
         Wallet.off("connect", this.connectHandler);
+        TheMasterContract.off("Deposit", this.depositHandler);
+        TheMasterContract.off("Withdraw", this.depositHandler);
         super.delete();
     }
 }

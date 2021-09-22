@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
 import CommonUtil from "../CommonUtil";
@@ -65,10 +65,25 @@ export default class MaidCafe implements View {
                 ),
             ),
         ));
-        this.loadBalance();
+        this.loadBalances();
+
+        Wallet.on("connect", this.connectHandler);
+        MaidCoinContract.on("Transfer", this.transferHandler);
+        MaidCafeContract.on("Transfer", this.transferHandler);
     }
 
-    private async loadBalance() {
+    private connectHandler = () => {
+        this.loadBalances();
+    };
+
+    private transferHandler = async (from: string, to: string, amount: BigNumber) => {
+        const address = await Wallet.loadAddress();
+        if (from === address || to === address) {
+            this.loadBalances();
+        }
+    };
+
+    private async loadBalances() {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
             const lpBalance = await MaidCafeContract.balanceOf(owner);
@@ -93,6 +108,11 @@ export default class MaidCafe implements View {
     public changeParams(params: ViewParams, uri: string): void { }
 
     public close(): void {
+
+        Wallet.off("connect", this.connectHandler);
+        MaidCoinContract.off("Transfer", this.transferHandler);
+        MaidCafeContract.off("Transfer", this.transferHandler);
+
         this.container.delete();
     }
 }

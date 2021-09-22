@@ -7,6 +7,8 @@ export default class NurseDetail extends Popup {
     private endBlock;
     constructor(nurseId: number);
     private refreshLifetime;
+    private elongateLifetimeHandler;
     private load;
+    delete(): void;
 }
 //# sourceMappingURL=NurseDetail.d.ts.map

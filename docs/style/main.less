@@ -9,6 +9,20 @@ body {
     color           : #e9dfee;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background   : #d8448a;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow   : rgba(233, 223, 238, 0.5) 0px 0px 5px inset;
+    border-radius: 10px;
+}
+
 // views
 @import "view/layout.less";
 @import "view/dashboard.less";
@@ -20,6 +34,7 @@ body {
 @import "view/farm.less";
 @import "view/maidcafe.less";
 @import "view/test-lp-token.less";
+@import "view/test-maidcoin.less";
 
 // components
 @import "component/loading.less";

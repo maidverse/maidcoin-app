@@ -2,19 +2,7 @@ import { Signer } from "ethers";
 import { Provider } from "@ethersproject/providers";
 import type { ILingerieGirls, ILingerieGirlsInterface } from "../ILingerieGirls";
 export declare class ILingerieGirls__factory {
-    static readonly abi: ({
-        anonymous: boolean;
-        inputs: {
-            indexed: boolean;
-            internalType: string;
-            name: string;
-            type: string;
-        }[];
-        name: string;
-        type: string;
-        outputs?: undefined;
-        stateMutability?: undefined;
-    } | {
+    static readonly abi: {
         inputs: {
             internalType: string;
             name: string;
@@ -28,8 +16,7 @@ export declare class ILingerieGirls__factory {
         }[];
         stateMutability: string;
         type: string;
-        anonymous?: undefined;
-    })[];
+    }[];
     static createInterface(): ILingerieGirlsInterface;
     static connect(address: string, signerOrProvider: Signer | Provider): ILingerieGirls;
 }

@@ -30,6 +30,8 @@ export default class NurseDetail extends Popup {
             this.content = el(".content"),
         );
         this.load();
+
+        CloneNursesContract.on("ElongateLifetime", this.elongateLifetimeHandler);
     }
 
     private async refreshLifetime() {
@@ -39,6 +41,11 @@ export default class NurseDetail extends Popup {
             );
         }
     }
+
+    private elongateLifetimeHandler = (id: BigNumber, rechargedLifetime: BigNumber, lastEndBlock: BigNumber, newEndBlock: BigNumber) => {
+        this.endBlock = newEndBlock.toNumber();
+        this.refreshLifetime();
+    };
 
     private async load() {
         const owner = await Wallet.loadAddress();
@@ -52,8 +59,8 @@ export default class NurseDetail extends Popup {
             const nurseType = StaticDataManager.getNurseType(nurse.nurseType);
             const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
 
-            //const [, supportingTo] = await CloneNursesContract.findSupportingTo(owner);
-            //const supportingAmount = supportingTo !== this.nurseId ? BigNumber.from(0) : await TheMasterContract.getSupportingAmount(owner);
+            const { supportingTo } = await CloneNursesContract.findSupportingTo(owner);
+            const supportingAmount = supportingTo !== this.nurseId ? BigNumber.from(0) : await TheMasterContract.getSupportingAmount(owner);
 
             const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurse.nurseType}`);
             const tokenInfo = result.body;
@@ -107,7 +114,7 @@ export default class NurseDetail extends Popup {
                 el(".properties",
                     el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(nurseType.power))),
                     el(".property.lp-amount", "Total LP Supported: ", el("span", utils.formatEther(supportedPower))),
-                    //el(".property.lp-amount", "LP Supported By Me: ", el("span", utils.formatEther(supportingAmount))),
+                    el(".property.lp-amount", "LP Supported By Me: ", el("span", utils.formatEther(supportingAmount))),
                 ),
                 el(".controller",
                     el("a.support-button", "Support", {
@@ -120,7 +127,7 @@ export default class NurseDetail extends Popup {
                                 "Support",
                                 0, lpBalance,
                                 async (amount) => {
-                                    //await TheMasterContract.support(3, amount, supportingTo);
+                                    await TheMasterContract.support(3, amount, supportingTo);
                                 },
                             );
                         },
@@ -145,5 +152,10 @@ export default class NurseDetail extends Popup {
         }
 
         this.refreshLifetime();
+    }
+
+    public delete() {
+        CloneNursesContract.off("ElongateLifetime", this.elongateLifetimeHandler);
+        super.delete();
     }
 }

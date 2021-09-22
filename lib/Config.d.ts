@@ -1,6 +1,7 @@
 declare const _default: {
     chainId: number;
     blockTimeSecond: number;
+    rewardPerBlock: number;
     infuraId: any;
     endpoint: string;
     contracts: {

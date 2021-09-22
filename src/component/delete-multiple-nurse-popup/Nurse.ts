@@ -37,6 +37,8 @@ export default class Nurse extends DomNode {
             this.fireEvent("toggle");
         });
         this.load();
+
+        CloneNursesContract.on("ElongateLifetime", this.elongateLifetimeHandler);
     }
 
     private async refreshLifetime() {
@@ -46,6 +48,11 @@ export default class Nurse extends DomNode {
             );
         }
     }
+
+    private elongateLifetimeHandler = (id: BigNumber, rechargedLifetime: BigNumber, lastEndBlock: BigNumber, newEndBlock: BigNumber) => {
+        this.endBlock = newEndBlock.toNumber();
+        this.refreshLifetime();
+    };
 
     private async load() {
 
@@ -69,5 +76,10 @@ export default class Nurse extends DomNode {
         );
 
         this.refreshLifetime();
+    }
+
+    public delete() {
+        CloneNursesContract.off("ElongateLifetime", this.elongateLifetimeHandler);
+        super.delete();
     }
 }

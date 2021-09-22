@@ -2,19 +2,7 @@ import { Signer } from "ethers";
 import { Provider } from "@ethersproject/providers";
 import type { ISushiGirls, ISushiGirlsInterface } from "../ISushiGirls";
 export declare class ISushiGirls__factory {
-    static readonly abi: ({
-        anonymous: boolean;
-        inputs: {
-            indexed: boolean;
-            internalType: string;
-            name: string;
-            type: string;
-        }[];
-        name: string;
-        type: string;
-        outputs?: undefined;
-        stateMutability?: undefined;
-    } | {
+    static readonly abi: {
         inputs: {
             internalType: string;
             name: string;
@@ -28,8 +16,7 @@ export declare class ISushiGirls__factory {
         }[];
         stateMutability: string;
         type: string;
-        anonymous?: undefined;
-    })[];
+    }[];
     static createInterface(): ISushiGirlsInterface;
     static connect(address: string, signerOrProvider: Signer | Provider): ISushiGirls;
 }

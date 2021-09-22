@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { SkyRouter } from "skyrouter";
+import ViewUtil from "../../view/ViewUtil";
 
 interface Menu {
     uri: string;
@@ -13,7 +13,7 @@ class MenuBuilder {
         for (const menuItem of menus) {
             els.push(el(`a${location.pathname === `/${menuItem.uri}` ? ".on" : ""}`,
                 menuItem.name,
-                { click: () => SkyRouter.go(`/${menuItem.uri}`) },
+                { click: () => ViewUtil.go(`/${menuItem.uri}`) },
             ));
         }
         return els;

@@ -1,4 +1,6 @@
 .farm-view {
+    .float-wrapper();
+
     >header {
         height             : 40px;
         background-image   : url(/images/view/title.png);
@@ -22,5 +24,10 @@
     >.maid-corp,
     >.nurse-farm {
         margin-top: 20px;
+
+        @media @pc {
+            width: 403px;
+            float: left;
+        }
     }
 }

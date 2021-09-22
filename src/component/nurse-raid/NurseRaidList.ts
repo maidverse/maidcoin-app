@@ -19,6 +19,16 @@ export default class NurseRaidList extends DomNode {
         this.loadRaids();
     }
 
+    public get doneRaids(): number[] {
+        const raidIds: number[] = [];
+        for (const child of this.raidContainer.children) {
+            if (child instanceof NurseRaid && child.done === true) {
+                raidIds.push(child.raidId);
+            }
+        }
+        return raidIds;
+    }
+
     private async loadRaids() {
 
         const currentBlockNumber = await NetworkProvider.getBlockNumber();

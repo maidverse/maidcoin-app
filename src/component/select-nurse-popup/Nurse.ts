@@ -5,6 +5,7 @@ import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import LPTokenContract from "../../contracts/LPTokenContract";
 import TheMasterContract from "../../contracts/TheMasterContract";
+import Wallet from "../../ethereum/Wallet";
 import TokenPrompt from "../dialogue/TokenPrompt";
 
 export default class Nurse extends DomNode {
@@ -30,10 +31,13 @@ export default class Nurse extends DomNode {
             el("a.support-button", "Support", {
                 click: async (event: MouseEvent) => {
                     event.stopPropagation();
-                    const balance = await LPTokenContract.balanceOf(this.owner);
-                    new TokenPrompt("Support Nurse", "How much amount to support?", "Support", 0, balance, async (amount) => {
-                        await TheMasterContract.support(3, amount, this.nurseId);
-                    });
+                    const owner = await Wallet.loadAddress();
+                    if (owner !== undefined) {
+                        const balance = await LPTokenContract.balanceOf(owner);
+                        new TokenPrompt("Support Nurse", "How much amount to support?", "Support", 0, balance, async (amount) => {
+                            await TheMasterContract.support(3, amount, this.nurseId);
+                        });
+                    }
                 },
             }),
         );

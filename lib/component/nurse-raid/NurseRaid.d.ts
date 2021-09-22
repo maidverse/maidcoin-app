@@ -1,9 +1,10 @@
 import { DomNode } from "@hanul/skynode";
 export default class NurseRaid extends DomNode {
-    private raidId;
+    raidId: number;
     private currentBlockNumber;
     private content;
     private footer;
+    done: boolean;
     constructor(raidId: number, currentBlockNumber: number);
     private enterHandler;
     private exitHandler;
