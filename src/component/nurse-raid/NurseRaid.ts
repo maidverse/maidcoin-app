@@ -53,8 +53,7 @@ export default class NurseRaid extends DomNode {
                 style: {
                     backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${nurseType.name}.png)`,
                     width: nurseType.width,
-                    left: nurseType.left - 30,
-                    top: nurseType.top,
+                    backgroundPosition: `${nurseType.left}px calc(50% + ${nurseType.top + 56}px)`,
                 },
             }),
             el(".end-time", `End ${CommonUtil.displayBlockDuration(raid.endBlock - this.currentBlockNumber)}`),

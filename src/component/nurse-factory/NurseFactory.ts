@@ -38,8 +38,7 @@ export default class NurseFactory extends DomNode {
                 style: {
                     backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${nurseType.name}.png)`,
                     width: nurseType.width,
-                    left: nurseType.left,
-                    top: nurseType.top,
+                    backgroundPosition: `${nurseType.left}px calc(50% + ${nurseType.top + 56}px)`,
                 },
             }),
             el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${nurseType.name}.png`, height: "60" }),

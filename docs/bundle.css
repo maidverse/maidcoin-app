@@ -1480,6 +1480,9 @@ body {
 }
 .nurse-raid > .content > .image {
   position: absolute;
+  left: 30px;
+  top: 0;
+  width: 140px;
   height: 100%;
   background-size: 100% auto;
   background-position: 0 calc(50% + 56px);
@@ -1682,6 +1685,9 @@ body {
 }
 .nurse-factory > .content > .image {
   position: absolute;
+  left: 0;
+  top: 0;
+  width: 140px;
   height: 100%;
   background-size: 100% auto;
   background-position: 0 calc(50% + 56px);
