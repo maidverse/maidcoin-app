@@ -1,12 +1,12 @@
 import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
-import superagent from "superagent";
 import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import LPTokenContract from "../../contracts/LPTokenContract";
 import TheMasterContract from "../../contracts/TheMasterContract";
 import Wallet from "../../ethereum/Wallet";
+import StaticDataManager from "../../StaticDataManager";
 import TokenPrompt from "../dialogue/TokenPrompt";
 import SelectNursePopup from "../select-nurse-popup/SelectNursePopup";
 
@@ -73,17 +73,22 @@ export default class NurseFarm extends DomNode {
                 const nurse = await CloneNursesContract.getNurse(supportingTo);
                 const nurseOwner = await CloneNursesContract.ownerOf(supportingTo);
 
-                const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurse.nurseType}`);
-                const tokenInfo = result.body;
+                const nurseType = StaticDataManager.getNurseType(nurse.nurseType);
 
                 const lpAmount = await TheMasterContract.getUserLPAmount(3, owner);
                 const reward = await TheMasterContract.getPendingReward(3, owner);
 
                 this.content.empty().append(
 
-                    el(".name", tokenInfo.name),
+                    el(".name", nurseType.name),
                     el(".owner", `Owner: ${CommonUtil.shortenAddress(nurseOwner)}`),
-                    el(".image", { style: { backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${tokenInfo.name}.png)` } }),
+                    el(".image", {
+                        style: {
+                            backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${nurseType.name}.png)`,
+                            width: nurseType.width,
+                            backgroundPosition: `${nurseType.left}px calc(50% + ${nurseType.top + 56}px)`,
+                        },
+                    }),
 
                     el("a.claim-button",
                         el("img.maidcoin", { src: "/images/component/maid-corp/maidcoin.png", height: "29" }),
