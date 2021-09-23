@@ -45,14 +45,21 @@ export default class NurseRaid extends DomNode {
     private async load() {
 
         const raid = StaticDataManager.getRaid(this.raidId);
-        const nuresType = StaticDataManager.getNurseType(raid.nursePart);
+        const nurseType = StaticDataManager.getNurseType(raid.nursePart);
 
         this.content.empty().append(
-            el(".name", nuresType.name),
-            el(".image", { style: { backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${nuresType.name}.png)` } }),
+            el(".name", nurseType.name),
+            el(".image", {
+                style: {
+                    backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${nurseType.name}.png)`,
+                    width: nurseType.width,
+                    left: nurseType.left - 30,
+                    top: nurseType.top,
+                },
+            }),
             el(".end-time", `End ${CommonUtil.displayBlockDuration(raid.endBlock - this.currentBlockNumber)}`),
             el(".character",
-                el("img", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${nuresType.name}Idle.png`, height: "85" }),
+                el("img", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${nurseType.name}Idle.png`, height: "85" }),
             ),
             el(".duration",
                 el("span.title", "Duration"),
@@ -71,7 +78,7 @@ export default class NurseRaid extends DomNode {
             this.footer.empty().append(
                 el(".reward",
                     el("h3", "Rewards"),
-                    el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${nuresType.name}.png`, height: "28" }),
+                    el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${nurseType.name}.png`, height: "28" }),
                     el(".count", `x 1 ~ ${raid.maxRewardCount}`),
                 ),
                 challenger.enterBlock === 0 ? el("a.start-button",

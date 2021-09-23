@@ -21,6 +21,9 @@ declare class StaticDataManager {
         destroyReturn: BigNumber;
         power: number;
         lifetime: number;
+        width: number;
+        left: number;
+        top: number;
     };
     get raidCount(): number;
     getRaid(id: number): {

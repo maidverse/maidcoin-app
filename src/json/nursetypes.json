@@ -5,7 +5,10 @@
         "partCount": 2,
         "destroyReturn": 6,
         "power": 120,
-        "lifetime": 80640
+        "lifetime": 80640,
+        "width": 180,
+        "left": 0,
+        "top": 0
     },
     "1": {
         "name": "N2",
@@ -13,7 +16,10 @@
         "partCount": 3,
         "destroyReturn": 12,
         "power": 215,
-        "lifetime": 120960
+        "lifetime": 120960,
+        "width": 140,
+        "left": 0,
+        "top": -10
     },
     "2": {
         "name": "N3",
@@ -21,7 +27,10 @@
         "partCount": 3,
         "destroyReturn": 14,
         "power": 334,
-        "lifetime": 120960
+        "lifetime": 120960,
+        "width": 330,
+        "left": -40,
+        "top": 0
     },
     "3": {
         "name": "N4",
@@ -29,7 +38,10 @@
         "partCount": 4,
         "destroyReturn": 32,
         "power": 451,
-        "lifetime": 161280
+        "lifetime": 161280,
+        "width": 140,
+        "left": 0,
+        "top": 0
     },
     "4": {
         "name": "N5",
@@ -37,7 +49,10 @@
         "partCount": 4,
         "destroyReturn": 36,
         "power": 537,
-        "lifetime": 161280
+        "lifetime": 161280,
+        "width": 210,
+        "left": 0,
+        "top": 0
     },
     "5": {
         "name": "N6",
@@ -45,7 +60,10 @@
         "partCount": 5,
         "destroyReturn": 50,
         "power": 783,
-        "lifetime": 201600
+        "lifetime": 201600,
+        "width": 190,
+        "left": 0,
+        "top": 0
     },
     "6": {
         "name": "N7",
@@ -53,7 +71,10 @@
         "partCount": 0,
         "destroyReturn": 0,
         "power": 0,
-        "lifetime": 0
+        "lifetime": 0,
+        "width": 140,
+        "left": 0,
+        "top": 0
     },
     "7": {
         "name": "N8",
@@ -61,6 +82,9 @@
         "partCount": 0,
         "destroyReturn": 0,
         "power": 0,
-        "lifetime": 0
+        "lifetime": 0,
+        "width": 140,
+        "left": 0,
+        "top": 0
     }
 }

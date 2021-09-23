@@ -54,6 +54,9 @@ class StaticDataManager {
         destroyReturn: BigNumber,
         power: number,
         lifetime: number,
+        width: number,
+        left: number,
+        top: number,
     } {
         const raw = (nursetypes as any)[type];
         return {
@@ -62,6 +65,9 @@ class StaticDataManager {
             destroyReturn: utils.parseEther(String(raw.destroyReturn)),
             power: raw.power,
             lifetime: raw.lifetime,
+            width: raw.width,
+            left: raw.left,
+            top: raw.top,
         };
     }
 
