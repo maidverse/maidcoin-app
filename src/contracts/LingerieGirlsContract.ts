@@ -51,6 +51,11 @@ class LingerieGirlsContract extends ERC721EnumerableContract<LingerieGirls> {
             }
         }
     }
+
+    public async desupport(id: BigNumberish, lpTokenAmount: BigNumberish) {
+        const contract = await this.connectAndGetWalletContract();
+        await contract?.desupport(id, lpTokenAmount);
+    }
 }
 
 export default new LingerieGirlsContract();

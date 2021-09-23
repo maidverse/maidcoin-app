@@ -56,6 +56,11 @@ class MaidsContract extends ERC721EnumerableContract<Maids> {
             }
         }
     }
+
+    public async desupport(id: BigNumberish, lpTokenAmount: BigNumberish) {
+        const contract = await this.connectAndGetWalletContract();
+        await contract?.desupport(id, lpTokenAmount);
+    }
 }
 
 export default new MaidsContract();

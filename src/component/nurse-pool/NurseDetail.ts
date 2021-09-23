@@ -19,6 +19,7 @@ export default class NurseDetail extends Popup {
 
     private lifetime: undefined | DomNode;
     private supportedPower: undefined | DomNode;
+    private pendingReward: undefined | DomNode;
 
     private currentBlockNumber: undefined | number;
     private endBlock: undefined | number;
@@ -35,6 +36,7 @@ export default class NurseDetail extends Popup {
 
         CloneNursesContract.on("ElongateLifetime", this.elongateLifetimeHandler);
         CloneNursesContract.on("ChangeSupportedPower", this.changeSupportedPowerHandler);
+        CloneNursesContract.on("Claim", this.claimHandler);
     }
 
     private async refreshLifetime() {
@@ -56,6 +58,12 @@ export default class NurseDetail extends Popup {
         if (id.eq(this.nurseId) === true) {
             const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
             this.supportedPower?.empty().appendText(utils.formatEther(supportedPower));
+        }
+    };
+
+    private claimHandler = async (id: BigNumber) => {
+        if (id.eq(this.nurseId) === true) {
+            this.pendingReward?.empty().appendText("0");
         }
     };
 
@@ -106,7 +114,7 @@ export default class NurseDetail extends Popup {
                     el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${tokenInfo.name}Idle.png`, height: "120" }),
                     owner !== nurseOwner ? undefined : el("a.claim-button",
                         el("img.coin-image", { src: "/images/component/nurse-detail/maidcoin.png", height: "29" }),
-                        el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),
+                        this.pendingReward = el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),
                         { click: async () => await CloneNursesContract.claim([this.nurseId]) },
                     ),
                 ),
@@ -169,6 +177,7 @@ export default class NurseDetail extends Popup {
     public delete() {
         CloneNursesContract.off("ElongateLifetime", this.elongateLifetimeHandler);
         CloneNursesContract.off("ChangeSupportedPower", this.changeSupportedPowerHandler);
+        CloneNursesContract.off("Claim", this.claimHandler);
         super.delete();
     }
 }

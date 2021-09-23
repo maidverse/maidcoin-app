@@ -6,6 +6,7 @@ declare class LingerieGirlsContract extends ERC721EnumerableContract<LingerieGir
     getSupportedLP(id: number): Promise<BigNumber>;
     ownerOf(id: number): Promise<string>;
     support(id: BigNumberish, lpTokenAmount: BigNumberish): Promise<void>;
+    desupport(id: BigNumberish, lpTokenAmount: BigNumberish): Promise<void>;
 }
 declare const _default: LingerieGirlsContract;
 export default _default;

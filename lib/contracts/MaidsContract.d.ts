@@ -7,6 +7,7 @@ declare class MaidsContract extends ERC721EnumerableContract<Maids> {
     ownerOf(maidId: number): Promise<string>;
     mint(power: BigNumberish): Promise<void>;
     support(id: BigNumberish, lpTokenAmount: BigNumberish): Promise<void>;
+    desupport(id: BigNumberish, lpTokenAmount: BigNumberish): Promise<void>;
 }
 declare const _default: MaidsContract;
 export default _default;

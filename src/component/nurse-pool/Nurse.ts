@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import SkyUtil from "skyutil";
 import superagent from "superagent";
 import Calculator from "../../Calculator";
@@ -12,6 +12,8 @@ import NurseDetail from "./NurseDetail";
 export default class Nurse extends DomNode {
 
     private lifetime: undefined | DomNode;
+    private pendingReward: undefined | DomNode;
+
     private currentBlockNumber: undefined | number;
     private endBlock: undefined | number;
 
@@ -19,7 +21,14 @@ export default class Nurse extends DomNode {
         super(".nurse");
         this.load();
         this.onDom("click", () => new NurseDetail(nurseId));
+        CloneNursesContract.on("Claim", this.claimHandler);
     }
+
+    private claimHandler = async (id: BigNumber) => {
+        if (id.eq(this.nurseId) === true) {
+            this.pendingReward?.empty().appendText("0");
+        }
+    };
 
     private async load() {
 
@@ -52,7 +61,7 @@ export default class Nurse extends DomNode {
         this.append(
             el("a.claim-button",
                 el("img.coin-image", { src: "/images/component/nurse-pool/maidcoin.png", height: "29" }),
-                el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),
+                this.pendingReward = el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),
                 {
                     click: async (event: MouseEvent) => {
                         event.stopPropagation();
@@ -66,5 +75,10 @@ export default class Nurse extends DomNode {
                 }),
             ),
         );
+    }
+
+    public delete() {
+        CloneNursesContract.off("Claim", this.claimHandler);
+        super.delete();
     }
 }

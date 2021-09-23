@@ -2,9 +2,12 @@ import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
+import LPTokenContract from "../../contracts/LPTokenContract";
 import MaidsContract from "../../contracts/MaidsContract";
 import NurseRaidContract from "../../contracts/NurseRaidContract";
+import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
+import TokenPrompt from "../dialogue/TokenPrompt";
 import Sound from "./Sound";
 
 export default class MaidDetail extends Popup {
@@ -76,15 +79,34 @@ export default class MaidDetail extends Popup {
                 el("a.power-up-button", "Power Up", {
                     click: async (event: MouseEvent) => {
                         event.stopPropagation();
-                        const amount = prompt("How much amount to support?", "10");
-                        if (amount) {
-                            await MaidsContract.support(this.maidId, utils.parseEther(amount));
+                        const owner = await Wallet.loadAddress();
+                        if (owner !== undefined) {
+                            const lpBalance = await LPTokenContract.balanceOf(owner);
+                            new TokenPrompt(
+                                "Support Maid",
+                                "How much amount to support?",
+                                "Support",
+                                0, lpBalance,
+                                async (amount) => {
+                                    await MaidsContract.support(this.maidId, amount);
+                                },
+                            );
                         }
                     },
                 }),
                 el("a.power-down-button", "Power Down", {
                     click: async (event: MouseEvent) => {
                         event.stopPropagation();
+                        const supported = await MaidsContract.getSupportedLP(this.maidId);
+                        new TokenPrompt(
+                            "Desupport Maid",
+                            "How much amount to desupport?",
+                            "Desupport",
+                            0, supported,
+                            async (amount) => {
+                                await MaidsContract.desupport(this.maidId, amount);
+                            },
+                        );
                     },
                 }),
             ),

@@ -3,8 +3,11 @@ import { utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../../CommonUtil";
 import LingerieGirlsContract from "../../../contracts/LingerieGirlsContract";
+import LPTokenContract from "../../../contracts/LPTokenContract";
 import NurseRaidContract from "../../../contracts/NurseRaidContract";
+import Wallet from "../../../ethereum/Wallet";
 import StaticDataManager from "../../../StaticDataManager";
+import TokenPrompt from "../../dialogue/TokenPrompt";
 
 export default class LingerieGirlDetail extends Popup {
 
@@ -45,15 +48,34 @@ export default class LingerieGirlDetail extends Popup {
                 el("a.power-up-button", "Power Up", {
                     click: async (event: MouseEvent) => {
                         event.stopPropagation();
-                        const amount = prompt("How much amount to support?", "10");
-                        if (amount) {
-                            await LingerieGirlsContract.support(this.id, utils.parseEther(amount));
+                        const owner = await Wallet.loadAddress();
+                        if (owner !== undefined) {
+                            const lpBalance = await LPTokenContract.balanceOf(owner);
+                            new TokenPrompt(
+                                "Support Lingerie Girl",
+                                "How much amount to support?",
+                                "Support",
+                                0, lpBalance,
+                                async (amount) => {
+                                    await LingerieGirlsContract.support(this.id, amount);
+                                },
+                            );
                         }
                     },
                 }),
                 el("a.power-down-button", "Power Down", {
                     click: async (event: MouseEvent) => {
                         event.stopPropagation();
+                        const supported = await LingerieGirlsContract.getSupportedLP(this.id);
+                        new TokenPrompt(
+                            "Desupport Lingerie Girl",
+                            "How much amount to desupport?",
+                            "Desupport",
+                            0, supported,
+                            async (amount) => {
+                                await LingerieGirlsContract.desupport(this.id, amount);
+                            },
+                        );
                     },
                 }),
             ),

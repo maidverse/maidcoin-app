@@ -2,9 +2,12 @@ import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../../CommonUtil";
+import LPTokenContract from "../../../contracts/LPTokenContract";
 import NurseRaidContract from "../../../contracts/NurseRaidContract";
 import SushiGirlsContract from "../../../contracts/SushiGirlsContract";
+import Wallet from "../../../ethereum/Wallet";
 import StaticDataManager from "../../../StaticDataManager";
+import TokenPrompt from "../../dialogue/TokenPrompt";
 
 export default class SushiGirlDetail extends Popup {
 
@@ -45,15 +48,34 @@ export default class SushiGirlDetail extends Popup {
                 el("a.power-up-button", "Power Up", {
                     click: async (event: MouseEvent) => {
                         event.stopPropagation();
-                        const amount = prompt("How much amount to support?", "10");
-                        if (amount) {
-                            await SushiGirlsContract.support(this.id, utils.parseEther(amount));
+                        const owner = await Wallet.loadAddress();
+                        if (owner !== undefined) {
+                            const lpBalance = await LPTokenContract.balanceOf(owner);
+                            new TokenPrompt(
+                                "Support Sushi Girl",
+                                "How much amount to support?",
+                                "Support",
+                                0, lpBalance,
+                                async (amount) => {
+                                    await SushiGirlsContract.support(this.id, amount);
+                                },
+                            );
                         }
                     },
                 }),
                 el("a.power-down-button", "Power Down", {
                     click: async (event: MouseEvent) => {
                         event.stopPropagation();
+                        const supported = await SushiGirlsContract.getSupportedLP(this.id);
+                        new TokenPrompt(
+                            "Desupport Sushi Girl",
+                            "How much amount to desupport?",
+                            "Desupport",
+                            0, supported,
+                            async (amount) => {
+                                await SushiGirlsContract.desupport(this.id, amount);
+                            },
+                        );
                     },
                 }),
             ),
