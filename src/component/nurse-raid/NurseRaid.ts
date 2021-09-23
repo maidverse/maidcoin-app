@@ -5,6 +5,7 @@ import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
 import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
+import Confirm from "../dialogue/Confirm";
 import SelectMaidPopup from "../select-maid-popup/SelectMaidPopup";
 
 export default class NurseRaid extends DomNode {
@@ -85,8 +86,10 @@ export default class NurseRaid extends DomNode {
                         await NurseRaidContract.exit([this.raidId]);
                     },
                 }) : el("a.cancel-button", "Cancel", {
-                    click: async () => {
-                        await NurseRaidContract.exit([this.raidId]);
+                    click: () => {
+                        new Confirm("Cancel Raid", "Are you sure you want to cancel the raid? If you cancel, you will not receive any parts.", async () => {
+                            await NurseRaidContract.exit([this.raidId]);
+                        });
                     },
                 })),
             );

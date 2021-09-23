@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { BigNumber, utils } from "ethers";
+import { BigNumber, constants, utils } from "ethers";
 import SkyUtil from "skyutil";
 import superagent from "superagent";
 import Calculator from "../../Calculator";
@@ -22,11 +22,19 @@ export default class Nurse extends DomNode {
         this.load();
         this.onDom("click", () => new NurseDetail(nurseId));
         CloneNursesContract.on("Claim", this.claimHandler);
+        CloneNursesContract.on("Transfer", this.transferHandler);
     }
 
     private claimHandler = async (id: BigNumber) => {
         if (id.eq(this.nurseId) === true) {
             this.pendingReward?.empty().appendText("0");
+        }
+    };
+
+    private transferHandler = async (from: string, to: string, id: BigNumber) => {
+        // burn
+        if (to === constants.AddressZero && id.eq(this.nurseId) === true) {
+            this.delete();
         }
     };
 
@@ -79,6 +87,7 @@ export default class Nurse extends DomNode {
 
     public delete() {
         CloneNursesContract.off("Claim", this.claimHandler);
+        CloneNursesContract.off("Transfer", this.transferHandler);
         super.delete();
     }
 }

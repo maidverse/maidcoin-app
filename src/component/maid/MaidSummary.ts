@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import LPTokenContract from "../../contracts/LPTokenContract";
@@ -14,6 +14,8 @@ import Sound from "./Sound";
 export default class MaidSummary extends DomNode {
 
     private content: DomNode;
+    private additionalPower: undefined | DomNode;
+    private supportedLP: undefined | DomNode;
     private footer: DomNode;
 
     constructor(private maidId: number) {
@@ -25,6 +27,8 @@ export default class MaidSummary extends DomNode {
         );
         this.load();
         this.content.onDom("click", () => new MaidDetail(maidId));
+        MaidsContract.on("Support", this.supportHandler);
+        MaidsContract.on("Desupport", this.desupportHandler);
     }
 
     private getRandomInt(min: number, max: number) {
@@ -32,6 +36,26 @@ export default class MaidSummary extends DomNode {
         max = Math.floor(max);
         return Math.floor(Math.random() * (max + 1 - min)) + min;
     }
+
+    private supportHandler = async (id: BigNumber) => {
+        if (id.eq(this.maidId) === true) {
+            const maid = StaticDataManager.getMaid(this.maidId);
+            const supportedLP = await MaidsContract.getSupportedLP(this.maidId);
+            const maidPower = await NurseRaidContract.powerOfMaids(MaidsContract.address, this.maidId);
+            this.additionalPower?.empty().appendText(String(maidPower - maid.originPower));
+            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+        }
+    };
+
+    private desupportHandler = async (id: BigNumber) => {
+        if (id.eq(this.maidId) === true) {
+            const maid = StaticDataManager.getMaid(this.maidId);
+            const supportedLP = await MaidsContract.getSupportedLP(this.maidId);
+            const maidPower = await NurseRaidContract.powerOfMaids(MaidsContract.address, this.maidId);
+            this.additionalPower?.empty().appendText(String(maidPower - maid.originPower));
+            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+        }
+    };
 
     private async load() {
 
@@ -65,8 +89,8 @@ export default class MaidSummary extends DomNode {
             el(".properties",
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(maidPower))),
                 el(".property.origin-power", "Origin Power: ", el("span", String(maid.originPower))),
-                el(".property.additional-power", "Additional Power: ", el("span", String(maidPower - maid.originPower))),
-                el(".property.lp-amount", "Supported LP Token Amount: ", el("span", utils.formatEther(supportedLP))),
+                el(".property.additional-power", "Additional Power: ", this.additionalPower = el("span", String(maidPower - maid.originPower))),
+                el(".property.lp-amount", "Supported LP Token Amount: ", this.supportedLP = el("span", utils.formatEther(supportedLP))),
             ),
         );
 
@@ -105,5 +129,11 @@ export default class MaidSummary extends DomNode {
                 },
             }),
         );
+    }
+
+    public delete() {
+        MaidsContract.off("Support", this.supportHandler);
+        MaidsContract.off("Desupport", this.desupportHandler);
+        super.delete();
     }
 }

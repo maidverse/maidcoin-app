@@ -5,6 +5,7 @@ export default class NurseFarm extends DomNode {
     constructor();
     private connectHandler;
     private supportHandler;
+    private desupportHandler;
     private load;
     delete(): void;
 }

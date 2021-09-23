@@ -24,7 +24,7 @@ export default class MaidCorp extends DomNode {
         this.load();
         Wallet.on("connect", this.connectHandler);
         TheMasterContract.on("Deposit", this.depositHandler);
-        TheMasterContract.on("Withdraw", this.depositHandler);
+        TheMasterContract.on("Withdraw", this.withdrawHandler);
     }
 
     private connectHandler = () => {
@@ -32,6 +32,12 @@ export default class MaidCorp extends DomNode {
     };
 
     private depositHandler = (userId: BigNumber, pid: BigNumber, amount: BigNumber) => {
+        if (pid.toNumber() === 1) {
+            this.load();
+        }
+    };
+
+    private withdrawHandler = (userId: BigNumber, pid: BigNumber, amount: BigNumber) => {
         if (pid.toNumber() === 1) {
             this.load();
         }
@@ -86,7 +92,7 @@ export default class MaidCorp extends DomNode {
     public delete(): void {
         Wallet.off("connect", this.connectHandler);
         TheMasterContract.off("Deposit", this.depositHandler);
-        TheMasterContract.off("Withdraw", this.depositHandler);
+        TheMasterContract.off("Withdraw", this.withdrawHandler);
         super.delete();
     }
 }

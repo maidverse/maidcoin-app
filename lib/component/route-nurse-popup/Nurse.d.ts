@@ -5,6 +5,7 @@ export default class Nurse extends DomNode {
     private supportedPower;
     constructor(nurseId: number, owner: string);
     private changeSupportedPowerHandler;
+    private transferHandler;
     private load;
     delete(): void;
 }

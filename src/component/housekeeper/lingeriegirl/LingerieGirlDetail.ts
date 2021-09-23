@@ -1,5 +1,5 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../../CommonUtil";
 import LingerieGirlsContract from "../../../contracts/LingerieGirlsContract";
@@ -12,6 +12,8 @@ import TokenPrompt from "../../dialogue/TokenPrompt";
 export default class LingerieGirlDetail extends Popup {
 
     public content: DomNode;
+    private additionalPower: undefined | DomNode;
+    private supportedLP: undefined | DomNode;
 
     constructor(private id: number) {
         super(".lingeriegirl-detail");
@@ -22,7 +24,29 @@ export default class LingerieGirlDetail extends Popup {
             this.content = el(".content"),
         );
         this.load();
+        LingerieGirlsContract.on("Support", this.supportHandler);
+        LingerieGirlsContract.on("Desupport", this.desupportHandler);
     }
+
+    private supportHandler = async (id: BigNumber) => {
+        if (id.eq(this.id) === true) {
+            const lingerieGirl = StaticDataManager.getLingerieGirl(this.id);
+            const supportedLP = await LingerieGirlsContract.getSupportedLP(this.id);
+            const lingerieGirlPower = await NurseRaidContract.powerOfMaids(LingerieGirlsContract.address, this.id);
+            this.additionalPower?.empty().appendText(String(lingerieGirlPower - lingerieGirl.originPower));
+            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+        }
+    };
+
+    private desupportHandler = async (id: BigNumber) => {
+        if (id.eq(this.id) === true) {
+            const lingerieGirl = StaticDataManager.getLingerieGirl(this.id);
+            const supportedLP = await LingerieGirlsContract.getSupportedLP(this.id);
+            const lingerieGirlPower = await NurseRaidContract.powerOfMaids(LingerieGirlsContract.address, this.id);
+            this.additionalPower?.empty().appendText(String(lingerieGirlPower - lingerieGirl.originPower));
+            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+        }
+    };
 
     private async load() {
 
@@ -41,8 +65,8 @@ export default class LingerieGirlDetail extends Popup {
             el(".properties",
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(lingerieGirlPower))),
                 el(".property.origin-power", "Origin Power: ", el("span", String(lingerieGirl.originPower))),
-                el(".property.additional-power", "Additional Power: ", el("span", String(lingerieGirlPower - lingerieGirl.originPower))),
-                el(".property.lp-amount", "LP Supported: ", el("span", utils.formatEther(supportedLP))),
+                el(".property.additional-power", "Additional Power: ", this.additionalPower = el("span", String(lingerieGirlPower - lingerieGirl.originPower))),
+                el(".property.lp-amount", "LP Supported: ", this.supportedLP = el("span", utils.formatEther(supportedLP))),
             ),
             el(".controller",
                 el("a.power-up-button", "Power Up", {
@@ -80,5 +104,11 @@ export default class LingerieGirlDetail extends Popup {
                 }),
             ),
         );
+    }
+
+    public delete() {
+        LingerieGirlsContract.off("Support", this.supportHandler);
+        LingerieGirlsContract.off("Desupport", this.desupportHandler);
+        super.delete();
     }
 }

@@ -11,6 +11,7 @@ export default class Nurse extends DomNode {
     private refreshLifetime;
     private elongateLifetimeHandler;
     private changeSupportedPowerHandler;
+    private transferHandler;
     private load;
     delete(): void;
 }

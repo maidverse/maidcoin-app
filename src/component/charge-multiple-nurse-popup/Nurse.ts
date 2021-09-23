@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { BigNumber, utils } from "ethers";
+import { BigNumber, constants, utils } from "ethers";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NursePartContract from "../../contracts/NursePartContract";
@@ -21,6 +21,7 @@ export default class Nurse extends DomNode {
         this.load();
         CloneNursesContract.on("ElongateLifetime", this.elongateLifetimeHandler);
         CloneNursesContract.on("ChangeSupportedPower", this.changeSupportedPowerHandler);
+        CloneNursesContract.on("Transfer", this.transferHandler);
     }
 
     private async refreshLifetime() {
@@ -42,6 +43,13 @@ export default class Nurse extends DomNode {
         if (id.eq(this.nurseId) === true) {
             const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
             this.supportedPower?.empty().appendText(utils.formatEther(supportedPower));
+        }
+    };
+
+    private transferHandler = async (from: string, to: string, id: BigNumber) => {
+        // burn
+        if (to === constants.AddressZero && id.eq(this.nurseId) === true) {
+            this.delete();
         }
     };
 
@@ -92,6 +100,7 @@ export default class Nurse extends DomNode {
     public delete() {
         CloneNursesContract.off("ElongateLifetime", this.elongateLifetimeHandler);
         CloneNursesContract.off("ChangeSupportedPower", this.changeSupportedPowerHandler);
+        CloneNursesContract.off("Transfer", this.transferHandler);
         super.delete();
     }
 }

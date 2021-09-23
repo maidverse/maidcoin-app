@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { BigNumber, utils } from "ethers";
+import { BigNumber, constants, utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
@@ -16,12 +16,20 @@ export default class Nurse extends DomNode {
         super(".nurse");
         this.load();
         CloneNursesContract.on("ChangeSupportedPower", this.changeSupportedPowerHandler);
+        CloneNursesContract.on("Transfer", this.transferHandler);
     }
 
     private changeSupportedPowerHandler = async (id: BigNumber) => {
         if (id.eq(this.nurseId) === true) {
             const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
             this.supportedPower?.empty().appendText(utils.formatEther(supportedPower));
+        }
+    };
+
+    private transferHandler = async (from: string, to: string, id: BigNumber) => {
+        // burn
+        if (to === constants.AddressZero && id.eq(this.nurseId) === true) {
+            this.delete();
         }
     };
 
@@ -55,6 +63,7 @@ export default class Nurse extends DomNode {
 
     public delete() {
         CloneNursesContract.off("ChangeSupportedPower", this.changeSupportedPowerHandler);
+        CloneNursesContract.off("Transfer", this.transferHandler);
         super.delete();
     }
 }

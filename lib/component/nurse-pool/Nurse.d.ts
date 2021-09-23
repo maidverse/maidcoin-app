@@ -7,6 +7,7 @@ export default class Nurse extends DomNode {
     private endBlock;
     constructor(nurseId: number);
     private claimHandler;
+    private transferHandler;
     private load;
     delete(): void;
 }

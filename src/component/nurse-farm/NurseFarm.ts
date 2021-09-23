@@ -25,7 +25,7 @@ export default class NurseFarm extends DomNode {
         this.load();
         Wallet.on("connect", this.connectHandler);
         TheMasterContract.on("Support", this.supportHandler);
-        TheMasterContract.on("Desupport", this.supportHandler);
+        TheMasterContract.on("Desupport", this.desupportHandler);
     }
 
     private connectHandler = () => {
@@ -33,6 +33,12 @@ export default class NurseFarm extends DomNode {
     };
 
     private supportHandler = (userId: BigNumber, pid: BigNumber, amount: BigNumber) => {
+        if (pid.toNumber() === 3) {
+            this.load();
+        }
+    };
+
+    private desupportHandler = (userId: BigNumber, pid: BigNumber, amount: BigNumber) => {
         if (pid.toNumber() === 3) {
             this.load();
         }
@@ -124,7 +130,7 @@ export default class NurseFarm extends DomNode {
     public delete(): void {
         Wallet.off("connect", this.connectHandler);
         TheMasterContract.off("Support", this.supportHandler);
-        TheMasterContract.off("Desupport", this.supportHandler);
+        TheMasterContract.off("Desupport", this.desupportHandler);
         super.delete();
     }
 }

@@ -1,5 +1,5 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import LPTokenContract from "../../contracts/LPTokenContract";
@@ -13,8 +13,10 @@ import Sound from "./Sound";
 export default class MaidDetail extends Popup {
 
     public content: DomNode;
-    public image1: DomNode | undefined;
-    public image2: DomNode | undefined;
+    private additionalPower: undefined | DomNode;
+    private supportedLP: undefined | DomNode;
+    private image1: DomNode | undefined;
+    private image2: DomNode | undefined;
 
     constructor(private maidId: number) {
         super(".maid-detail");
@@ -26,6 +28,8 @@ export default class MaidDetail extends Popup {
         );
         this.load();
         this.onDom("scroll", this.scrollHandler);
+        MaidsContract.on("Support", this.supportHandler);
+        MaidsContract.on("Desupport", this.desupportHandler);
     }
 
     private scrollHandler = () => {
@@ -39,6 +43,26 @@ export default class MaidDetail extends Popup {
         max = Math.floor(max);
         return Math.floor(Math.random() * (max + 1 - min)) + min;
     }
+
+    private supportHandler = async (id: BigNumber) => {
+        if (id.eq(this.maidId) === true) {
+            const maid = StaticDataManager.getMaid(this.maidId);
+            const supportedLP = await MaidsContract.getSupportedLP(this.maidId);
+            const maidPower = await NurseRaidContract.powerOfMaids(MaidsContract.address, this.maidId);
+            this.additionalPower?.empty().appendText(String(maidPower - maid.originPower));
+            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+        }
+    };
+
+    private desupportHandler = async (id: BigNumber) => {
+        if (id.eq(this.maidId) === true) {
+            const maid = StaticDataManager.getMaid(this.maidId);
+            const supportedLP = await MaidsContract.getSupportedLP(this.maidId);
+            const maidPower = await NurseRaidContract.powerOfMaids(MaidsContract.address, this.maidId);
+            this.additionalPower?.empty().appendText(String(maidPower - maid.originPower));
+            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+        }
+    };
 
     private async load() {
 
@@ -72,8 +96,8 @@ export default class MaidDetail extends Popup {
             el(".properties",
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(maidPower))),
                 el(".property.origin-power", "Origin Power: ", el("span", String(maid.originPower))),
-                el(".property.additional-power", "Additional Power: ", el("span", String(maidPower - maid.originPower))),
-                el(".property.lp-amount", "LP Supported: ", el("span", utils.formatEther(supportedLP))),
+                el(".property.additional-power", "Additional Power: ", this.additionalPower = el("span", String(maidPower - maid.originPower))),
+                el(".property.lp-amount", "LP Supported: ", this.supportedLP = el("span", utils.formatEther(supportedLP))),
             ),
             el(".controller",
                 el("a.power-up-button", "Power Up", {
@@ -113,5 +137,11 @@ export default class MaidDetail extends Popup {
         );
 
         this.scrollHandler();
+    }
+
+    public delete() {
+        MaidsContract.off("Support", this.supportHandler);
+        MaidsContract.off("Desupport", this.desupportHandler);
+        super.delete();
     }
 }

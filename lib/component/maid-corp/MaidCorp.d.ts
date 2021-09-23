@@ -5,6 +5,7 @@ export default class MaidCorp extends DomNode {
     constructor();
     private connectHandler;
     private depositHandler;
+    private withdrawHandler;
     private load;
     delete(): void;
 }

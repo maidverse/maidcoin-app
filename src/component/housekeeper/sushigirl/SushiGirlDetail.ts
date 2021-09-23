@@ -1,5 +1,5 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../../CommonUtil";
 import LPTokenContract from "../../../contracts/LPTokenContract";
@@ -12,6 +12,8 @@ import TokenPrompt from "../../dialogue/TokenPrompt";
 export default class SushiGirlDetail extends Popup {
 
     public content: DomNode;
+    private additionalPower: undefined | DomNode;
+    private supportedLP: undefined | DomNode;
 
     constructor(private id: number) {
         super(".sushigirl-detail");
@@ -22,7 +24,29 @@ export default class SushiGirlDetail extends Popup {
             this.content = el(".content"),
         );
         this.load();
+        SushiGirlsContract.on("Support", this.supportHandler);
+        SushiGirlsContract.on("Desupport", this.desupportHandler);
     }
+
+    private supportHandler = async (id: BigNumber) => {
+        if (id.eq(this.id) === true) {
+            const sushiGirl = StaticDataManager.getLingerieGirl(this.id);
+            const supportedLP = await SushiGirlsContract.getSupportedLP(this.id);
+            const sushiGirlPower = await NurseRaidContract.powerOfMaids(SushiGirlsContract.address, this.id);
+            this.additionalPower?.empty().appendText(String(sushiGirlPower - sushiGirl.originPower));
+            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+        }
+    };
+
+    private desupportHandler = async (id: BigNumber) => {
+        if (id.eq(this.id) === true) {
+            const sushiGirl = StaticDataManager.getLingerieGirl(this.id);
+            const supportedLP = await SushiGirlsContract.getSupportedLP(this.id);
+            const sushiGirlPower = await NurseRaidContract.powerOfMaids(SushiGirlsContract.address, this.id);
+            this.additionalPower?.empty().appendText(String(sushiGirlPower - sushiGirl.originPower));
+            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+        }
+    };
 
     private async load() {
 
@@ -41,8 +65,8 @@ export default class SushiGirlDetail extends Popup {
             el(".properties",
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(sushiGirlPower))),
                 el(".property.origin-power", "Origin Power: ", el("span", String(sushiGirl.originPower))),
-                el(".property.additional-power", "Additional Power: ", el("span", String(sushiGirlPower - sushiGirl.originPower))),
-                el(".property.lp-amount", "LP Supported: ", el("span", utils.formatEther(supportedLP))),
+                el(".property.additional-power", "Additional Power: ", this.additionalPower = el("span", String(sushiGirlPower - sushiGirl.originPower))),
+                el(".property.lp-amount", "LP Supported: ", this.supportedLP = el("span", utils.formatEther(supportedLP))),
             ),
             el(".controller",
                 el("a.power-up-button", "Power Up", {
@@ -80,5 +104,11 @@ export default class SushiGirlDetail extends Popup {
                 }),
             ),
         );
+    }
+
+    public delete() {
+        SushiGirlsContract.off("Support", this.supportHandler);
+        SushiGirlsContract.off("Desupport", this.desupportHandler);
+        super.delete();
     }
 }
