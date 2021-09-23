@@ -3,11 +3,13 @@ export default class NurseDetail extends Popup {
     private nurseId;
     content: DomNode;
     private lifetime;
+    private supportedPower;
     private currentBlockNumber;
     private endBlock;
     constructor(nurseId: number);
     private refreshLifetime;
     private elongateLifetimeHandler;
+    private changeSupportedPowerHandler;
     private load;
     delete(): void;
 }

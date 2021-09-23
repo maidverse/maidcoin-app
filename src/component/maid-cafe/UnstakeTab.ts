@@ -57,6 +57,6 @@ export default class UnstakeTab extends DomNode {
     public delete(): void {
         Wallet.off("connect", this.connectHandler);
         MaidCafeContract.off("Transfer", this.transferHandler);
-        this.delete();
+        super.delete();
     }
 }

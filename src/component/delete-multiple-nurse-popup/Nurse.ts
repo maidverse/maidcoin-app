@@ -10,6 +10,7 @@ import NurseList from "./NurseList";
 export default class Nurse extends DomNode {
 
     private lifetime: undefined | DomNode;
+    private supportedPowerDisplay: undefined | DomNode;
 
     private currentBlockNumber: undefined | number;
     private endBlock: undefined | number;
@@ -39,6 +40,7 @@ export default class Nurse extends DomNode {
         this.load();
 
         CloneNursesContract.on("ElongateLifetime", this.elongateLifetimeHandler);
+        CloneNursesContract.on("ChangeSupportedPower", this.changeSupportedPowerHandler);
     }
 
     private async refreshLifetime() {
@@ -50,8 +52,17 @@ export default class Nurse extends DomNode {
     }
 
     private elongateLifetimeHandler = (id: BigNumber, rechargedLifetime: BigNumber, lastEndBlock: BigNumber, newEndBlock: BigNumber) => {
-        this.endBlock = newEndBlock.toNumber();
-        this.refreshLifetime();
+        if (id.eq(this.nurseId) === true) {
+            this.endBlock = newEndBlock.toNumber();
+            this.refreshLifetime();
+        }
+    };
+
+    private changeSupportedPowerHandler = async (id: BigNumber) => {
+        if (id.eq(this.nurseId) === true) {
+            this.supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
+            this.supportedPowerDisplay?.empty().appendText(utils.formatEther(this.supportedPower));
+        }
     };
 
     private async load() {
@@ -71,7 +82,7 @@ export default class Nurse extends DomNode {
                 el(".name", nurseType.name),
             ),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(this.owner)}`),
-            el(".lp-amount", "Supported LP : ", el("span", utils.formatEther(this.supportedPower))),
+            el(".lp-amount", "Supported LP : ", this.supportedPowerDisplay = el("span", utils.formatEther(this.supportedPower))),
             this.lifetime = el(".lifetime"),
         );
 
@@ -80,6 +91,7 @@ export default class Nurse extends DomNode {
 
     public delete() {
         CloneNursesContract.off("ElongateLifetime", this.elongateLifetimeHandler);
+        CloneNursesContract.off("ChangeSupportedPower", this.changeSupportedPowerHandler);
         super.delete();
     }
 }

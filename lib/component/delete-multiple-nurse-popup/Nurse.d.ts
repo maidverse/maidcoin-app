@@ -4,6 +4,7 @@ export default class Nurse extends DomNode {
     nurseId: number;
     private owner;
     private lifetime;
+    private supportedPowerDisplay;
     private currentBlockNumber;
     private endBlock;
     private supportedPower;
@@ -11,6 +12,7 @@ export default class Nurse extends DomNode {
     constructor(nurseList: NurseList, nurseId: number, owner: string);
     private refreshLifetime;
     private elongateLifetimeHandler;
+    private changeSupportedPowerHandler;
     private load;
     delete(): void;
 }

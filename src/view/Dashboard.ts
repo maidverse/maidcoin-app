@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { View, ViewParams } from "skyrouter";
+import SkyStore from "skystore";
 import AnyHousekeeperList from "../component/housekeeper/AnyHousekeeperList";
 import OwnedMaidList from "../component/maid/OwnedMaidList";
 import NursePartList from "../component/nurse-part/NursePartList";
@@ -11,6 +12,8 @@ export default class Dashboard implements View {
 
     private container: DomNode;
     private welcomeContainer: DomNode;
+
+    private store: SkyStore = new SkyStore("Dashboard");
 
     constructor() {
         Layout.current.changeBackground("/images/view/dashboard/background.jpg");
@@ -47,18 +50,29 @@ export default class Dashboard implements View {
 
     private async load() {
         const connected = await Wallet.connected();
-        this.welcomeContainer.empty().append(
-            el(".welcome",
-                el("img", { src: "/images/view/dashboard/welcome.png", height: "142.5" }),
-                el(".info",
-                    el("p", "Welcome to MaidCoin"),
-                    el("a.document-button", "Read Documnet", { href: "https://medium.com/maid-coin", target: "_blank" }),
-                    connected === true ? undefined : el("a.connect-wallet-button", "Connect Wallet", {
-                        click: () => Wallet.connect(),
-                    }),
+        if (this.store.get("close-welcome") !== true) {
+            this.welcomeContainer.empty().append(
+                el(".welcome",
+                    el("img", { src: "/images/view/dashboard/welcome.png", height: "142.5" }),
+                    el("a.close-welcome-button",
+                        el("img", { src: "/images/view/dashboard/close-welcome-button.png", height: "11.25" }),
+                        {
+                            click: () => {
+                                this.store.set("close-welcome", true);
+                                this.welcomeContainer.empty();
+                            },
+                        },
+                    ),
+                    el(".info",
+                        el("p", "Welcome to MaidCoin"),
+                        el("a.document-button", "Read Documnet", { href: "https://medium.com/maid-coin", target: "_blank" }),
+                        connected === true ? undefined : el("a.connect-wallet-button", "Connect Wallet", {
+                            click: () => Wallet.connect(),
+                        }),
+                    ),
                 ),
-            ),
-        );
+            );
+        }
     }
 
     public changeParams(params: ViewParams, uri: string): void { }

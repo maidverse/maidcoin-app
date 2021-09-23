@@ -16,7 +16,9 @@ import ChargeNursePopup from "./ChargeNursePopup";
 export default class NurseDetail extends Popup {
 
     public content: DomNode;
+
     private lifetime: undefined | DomNode;
+    private supportedPower: undefined | DomNode;
 
     private currentBlockNumber: undefined | number;
     private endBlock: undefined | number;
@@ -32,6 +34,7 @@ export default class NurseDetail extends Popup {
         this.load();
 
         CloneNursesContract.on("ElongateLifetime", this.elongateLifetimeHandler);
+        CloneNursesContract.on("ChangeSupportedPower", this.changeSupportedPowerHandler);
     }
 
     private async refreshLifetime() {
@@ -43,8 +46,17 @@ export default class NurseDetail extends Popup {
     }
 
     private elongateLifetimeHandler = (id: BigNumber, rechargedLifetime: BigNumber, lastEndBlock: BigNumber, newEndBlock: BigNumber) => {
-        this.endBlock = newEndBlock.toNumber();
-        this.refreshLifetime();
+        if (id.eq(this.nurseId) === true) {
+            this.endBlock = newEndBlock.toNumber();
+            this.refreshLifetime();
+        }
+    };
+
+    private changeSupportedPowerHandler = async (id: BigNumber) => {
+        if (id.eq(this.nurseId) === true) {
+            const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
+            this.supportedPower?.empty().appendText(utils.formatEther(supportedPower));
+        }
     };
 
     private async load() {
@@ -113,7 +125,7 @@ export default class NurseDetail extends Popup {
                 ),
                 el(".properties",
                     el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(nurseType.power))),
-                    el(".property.lp-amount", "Total LP Supported: ", el("span", utils.formatEther(supportedPower))),
+                    el(".property.lp-amount", "Total LP Supported: ", this.supportedPower = el("span", utils.formatEther(supportedPower))),
                     el(".property.lp-amount", "LP Supported By Me: ", el("span", utils.formatEther(supportingAmount))),
                 ),
                 el(".controller",
@@ -156,6 +168,7 @@ export default class NurseDetail extends Popup {
 
     public delete() {
         CloneNursesContract.off("ElongateLifetime", this.elongateLifetimeHandler);
+        CloneNursesContract.off("ChangeSupportedPower", this.changeSupportedPowerHandler);
         super.delete();
     }
 }

@@ -260,6 +260,11 @@ body {
   margin-top: 10px;
   position: relative;
 }
+.dashboard-view > .welcome-container > .welcome > .close-welcome-button {
+  position: absolute;
+  top: 11px;
+  right: 15px;
+}
 .dashboard-view > .welcome-container > .welcome > .info {
   position: absolute;
   top: 30px;

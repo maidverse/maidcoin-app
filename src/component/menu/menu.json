@@ -1,5 +1,8 @@
 {
     "menu": [{
+            "uri": "",
+            "name": "Dashboard"
+        }, {
             "uri": "maid",
             "name": "Maids"
         },
@@ -22,9 +25,6 @@
         {
             "uri": "cafe",
             "name": "Maid Cafe"
-        }, {
-            "uri": "dashboard",
-            "name": "Dashboard"
         }
     ]
 }

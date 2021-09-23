@@ -5,6 +5,5 @@ export default class NurseList extends DomNode {
         [nurseId: number]: number;
     };
     loadAllNurses(): Promise<void>;
-    find(owner: string): Promise<void>;
 }
 //# sourceMappingURL=NurseList.d.ts.map

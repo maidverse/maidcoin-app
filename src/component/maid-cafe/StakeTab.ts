@@ -58,6 +58,6 @@ export default class StakeTab extends DomNode {
     public delete(): void {
         Wallet.off("connect", this.connectHandler);
         MaidCoinContract.off("Transfer", this.transferHandler);
-        this.delete();
+        super.delete();
     }
 }

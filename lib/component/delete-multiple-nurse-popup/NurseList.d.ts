@@ -6,6 +6,5 @@ export default class NurseList extends DomNode {
     totalDestroyReturn: BigNumber;
     constructor();
     loadAllNurses(): Promise<void>;
-    find(owner: string): Promise<void>;
 }
 //# sourceMappingURL=NurseList.d.ts.map

@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
@@ -10,10 +10,20 @@ import TokenPrompt from "../dialogue/TokenPrompt";
 
 export default class Nurse extends DomNode {
 
+    private supportedPower: undefined | DomNode;
+
     constructor(public nurseId: number, private owner: string) {
         super(".nurse");
         this.load();
+        CloneNursesContract.on("ChangeSupportedPower", this.changeSupportedPowerHandler);
     }
+
+    private changeSupportedPowerHandler = async (id: BigNumber) => {
+        if (id.eq(this.nurseId) === true) {
+            const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
+            this.supportedPower?.empty().appendText(utils.formatEther(supportedPower));
+        }
+    };
 
     private async load() {
         const { nurseType } = await CloneNursesContract.getNurse(this.nurseId);
@@ -27,7 +37,7 @@ export default class Nurse extends DomNode {
                 el(".name", tokenInfo.name),
             ),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(this.owner)}`),
-            el(".lp-amount", "Supported LP : ", el("span", utils.formatEther(supportedPower))),
+            el(".lp-amount", "Supported LP : ", this.supportedPower = el("span", utils.formatEther(supportedPower))),
             el("a.support-button", "Support", {
                 click: async (event: MouseEvent) => {
                     event.stopPropagation();
@@ -41,5 +51,10 @@ export default class Nurse extends DomNode {
                 },
             }),
         );
+    }
+
+    public delete() {
+        CloneNursesContract.off("ChangeSupportedPower", this.changeSupportedPowerHandler);
+        super.delete();
     }
 }

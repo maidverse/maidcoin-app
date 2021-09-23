@@ -3,6 +3,7 @@ import { utils } from "ethers";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
+import LingerieGirlsContract from "../../contracts/LingerieGirlsContract";
 import MaidsContract from "../../contracts/MaidsContract";
 import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
@@ -38,6 +39,28 @@ export default class Admin implements View {
                             const power = prompt("Please enter power", "100");
                             if (power) {
                                 await MaidsContract.mint(power);
+                            }
+                        },
+                    }),
+                ),
+                el(".transfer-button-container",
+                    el("a.action-button.transfer-button", "Transfer Maid", {
+                        click: async () => {
+                            const maidId = prompt("Please enter maid id");
+                            const to = prompt("Please enter address");
+                            if (maidId && to) {
+                                await MaidsContract.transfer(to, maidId);
+                            }
+                        },
+                    }),
+                ),
+                el(".transfer-button-container",
+                    el("a.action-button.transfer-button", "Transfer Lingerie Girl", {
+                        click: async () => {
+                            const lgId = prompt("Please enter lingerie girl id");
+                            const to = prompt("Please enter address");
+                            if (lgId && to) {
+                                await LingerieGirlsContract.transfer(to, lgId);
                             }
                         },
                     }),

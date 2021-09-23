@@ -2,6 +2,7 @@ import { View, ViewParams } from "skyrouter";
 export default class Dashboard implements View {
     private container;
     private welcomeContainer;
+    private store;
     constructor();
     private connectHandler;
     private load;

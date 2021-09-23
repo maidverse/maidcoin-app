@@ -1,4 +1,5 @@
 import { BigNumber, BigNumberish, ContractInterface, ethers } from "ethers";
+import Wallet from "../../ethereum/Wallet";
 import Contract from "../Contract";
 
 export default abstract class ERC721Contract<CT extends ethers.Contract> extends Contract<CT> {
@@ -19,6 +20,10 @@ export default abstract class ERC721Contract<CT extends ethers.Contract> extends
         return await this.contract.balanceOf(owner);
     }
 
+    public async ownerOf(id: BigNumberish): Promise<string> {
+        return await this.contract.ownerOf(id);
+    }
+
     public async getNonce(id: BigNumberish): Promise<BigNumber> {
         return await this.contract.nonces(id);
     }
@@ -29,5 +34,10 @@ export default abstract class ERC721Contract<CT extends ethers.Contract> extends
 
     public async isApprovedForAll(owner: string, operator: string): Promise<boolean> {
         return await this.contract.isApprovedForAll(owner, operator);
+    }
+
+    public async transfer(to: string, id: BigNumberish) {
+        const contract = await this.connectAndGetWalletContract();
+        await contract?.transferFrom(await Wallet.loadAddress(), to, id);
     }
 }

@@ -9,6 +9,7 @@ import StaticDataManager from "../../StaticDataManager";
 export default class Nurse extends DomNode {
 
     private lifetime: undefined | DomNode;
+    private supportedPower: undefined | DomNode;
 
     private currentBlockNumber: undefined | number;
     private endBlock: undefined | number;
@@ -19,6 +20,7 @@ export default class Nurse extends DomNode {
         super(".nurse");
         this.load();
         CloneNursesContract.on("ElongateLifetime", this.elongateLifetimeHandler);
+        CloneNursesContract.on("ChangeSupportedPower", this.changeSupportedPowerHandler);
     }
 
     private async refreshLifetime() {
@@ -30,8 +32,17 @@ export default class Nurse extends DomNode {
     }
 
     private elongateLifetimeHandler = (id: BigNumber, rechargedLifetime: BigNumber, lastEndBlock: BigNumber, newEndBlock: BigNumber) => {
-        this.endBlock = newEndBlock.toNumber();
-        this.refreshLifetime();
+        if (id.eq(this.nurseId) === true) {
+            this.endBlock = newEndBlock.toNumber();
+            this.refreshLifetime();
+        }
+    };
+
+    private changeSupportedPowerHandler = async (id: BigNumber) => {
+        if (id.eq(this.nurseId) === true) {
+            const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
+            this.supportedPower?.empty().appendText(utils.formatEther(supportedPower));
+        }
     };
 
     private async load() {
@@ -52,7 +63,7 @@ export default class Nurse extends DomNode {
                 el(".name", nurseType.name),
             ),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(nuserOwner)}`),
-            el(".lp-amount", "Supported LP : ", el("span", utils.formatEther(supportedPower))),
+            el(".lp-amount", "Supported LP : ", this.supportedPower = el("span", utils.formatEther(supportedPower))),
             this.lifetime = el(".lifetime"),
             el(".charge-form",
                 el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${nurseType.name}.png`, height: "50" }),
@@ -80,6 +91,7 @@ export default class Nurse extends DomNode {
 
     public delete() {
         CloneNursesContract.off("ElongateLifetime", this.elongateLifetimeHandler);
+        CloneNursesContract.off("ChangeSupportedPower", this.changeSupportedPowerHandler);
         super.delete();
     }
 }

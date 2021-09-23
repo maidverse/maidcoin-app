@@ -2940,9 +2940,9 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.4:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
   integrity sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ==
 
-"graph-results-pager@git+https://github.com/LufyCZ/graph-results-pager.git":
+"graph-results-pager@https://github.com/LufyCZ/graph-results-pager":
   version "1.0.3"
-  resolved "git+https://github.com/LufyCZ/graph-results-pager.git#9b230f05b8d79aeedc9e167ac5a1fea33e04d51f"
+  resolved "https://github.com/LufyCZ/graph-results-pager#9b230f05b8d79aeedc9e167ac5a1fea33e04d51f"
   dependencies:
     node-fetch "2.6.1"
 
@@ -4815,6 +4815,11 @@ skyrouter@^0.0.6:
   dependencies:
     eventcontainer "^0.0.4"
     skyutil "^0.0.4"
+
+skystore@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/skystore/-/skystore-0.0.1.tgz#e8b1795a9ad499d2630969c251f5281dd7000fbb"
+  integrity sha512-J1aoWddQUoVUEykRynllHFMMWdz02HQCWaSMsLqWRuOeh2Zlvc5MsojfYBXswCLks3+UgsfTBYooXb1QopgKog==
 
 skyutil@^0.0.1:
   version "0.0.1"
