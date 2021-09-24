@@ -9,7 +9,7 @@ export interface ChallengerInfo {
 declare class NurseRaidContract extends Contract<NurseRaid> {
     constructor();
     getChallenger(raidId: number, owner: string): Promise<ChallengerInfo>;
-    powerOfMaids(maids: string, maidId: number): Promise<number>;
+    powerOfMaids(maids: string, maidId: BigNumberish): Promise<number>;
     checkDone(raidId: number): Promise<boolean | undefined>;
     create(entranceFees: BigNumberish[], nurseParts: BigNumberish[], maxRewardCounts: BigNumberish[], durations: BigNumberish[], endBlocks: BigNumberish[]): Promise<void>;
     enter(raidId: number, maids?: string, maidId?: number): Promise<void>;

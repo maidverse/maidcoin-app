@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { BigNumber, utils } from "ethers";
+import { BigNumber, constants, utils } from "ethers";
 import CommonUtil from "../../CommonUtil";
 import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
@@ -12,6 +12,7 @@ export default class NurseRaid extends DomNode {
 
     private content: DomNode;
     private footer: DomNode;
+    private durationInterval: number | undefined;
 
     public done = false;
 
@@ -30,8 +31,10 @@ export default class NurseRaid extends DomNode {
 
     private enterHandler = async (challenger: string, id: BigNumber, maids: string, maidId: BigNumber) => {
         if (id.toNumber() === this.raidId && challenger === await Wallet.loadAddress()) {
-            this.currentBlockNumber = await NetworkProvider.getBlockNumber();
-            this.load();
+            setTimeout(async () => {
+                this.currentBlockNumber = await NetworkProvider.getBlockNumber();
+                this.load();
+            }, 3000);
         }
     };
 
@@ -43,10 +46,15 @@ export default class NurseRaid extends DomNode {
     };
 
     private async load() {
+        if (this.durationInterval !== undefined) {
+            clearInterval(this.durationInterval);
+            this.durationInterval = undefined;
+        }
 
         const raid = StaticDataManager.getRaid(this.raidId);
         const nurseType = StaticDataManager.getNurseType(raid.nursePart);
 
+        let duration: DomNode;
         this.content.empty().append(
             el(".name", nurseType.name),
             el(".image", {
@@ -62,7 +70,7 @@ export default class NurseRaid extends DomNode {
             ),
             el(".duration",
                 el("span.title", "Duration"),
-                el("span", CommonUtil.displayBlockDuration(raid.duration)),
+                duration = el("span", CommonUtil.displayBlockDuration(raid.duration)),
             ),
             el(".progress"),
         );
@@ -73,6 +81,23 @@ export default class NurseRaid extends DomNode {
             const challenger = await NurseRaidContract.getChallenger(this.raidId, owner);
 
             this.done = challenger.enterBlock !== 0 && await NurseRaidContract.checkDone(this.raidId) === true;
+
+            if (this.done === true) {
+                duration.empty().appendText("Done");
+            } else {
+                if (this.durationInterval !== undefined) {
+                    clearInterval(this.durationInterval);
+                }
+                const refresh = async () => {
+                    this.currentBlockNumber += 1 / 15;
+                    const maidPower = challenger.maids === constants.AddressZero ? 1000 : await NurseRaidContract.powerOfMaids(challenger.maids, challenger.maidId);
+                    duration.empty().appendText(CommonUtil.displayBlockDuration(raid.duration * (maidPower / 1000) - (
+                        this.currentBlockNumber - challenger.enterBlock
+                    )));
+                };
+                refresh();
+                this.durationInterval = setInterval(() => refresh(), 1000) as any;
+            }
 
             this.footer.empty().append(
                 el(".reward",
@@ -103,6 +128,9 @@ export default class NurseRaid extends DomNode {
     }
 
     public delete() {
+        if (this.durationInterval !== undefined) {
+            clearInterval(this.durationInterval);
+        }
         NurseRaidContract.off("Enter", this.enterHandler);
         NurseRaidContract.off("Exit", this.exitHandler);
         super.delete();

@@ -22,6 +22,8 @@ class CommonUtil {
         const minute = Math.floor(seconds / 60);
         seconds -= minute * 60;
 
+        seconds = Math.floor(seconds);
+
         if (day !== 0) {
             return `${day}d ${hour}h ${minute}m ${seconds}s`;
         } else if (hour !== 0) {

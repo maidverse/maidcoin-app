@@ -21,9 +21,9 @@ SkyRouter.route("farm", Farm);
 SkyRouter.route("cafe", MaidCafe);
 
 // test
-SkyRouter.route("test/test-lp-token", TestLPToken);
-SkyRouter.route("test/test-maidcoin", TestMaidCoin);
-SkyRouter.route("test/admin", TestAdmin);
+//SkyRouter.route("test/test-lp-token", TestLPToken);
+//SkyRouter.route("test/test-maidcoin", TestMaidCoin);
+//SkyRouter.route("test/admin", TestAdmin);
 
 if (sessionStorage.__spa_path) {
     SkyRouter.go(sessionStorage.__spa_path);

@@ -34,7 +34,7 @@ class NurseRaidContract extends Contract<NurseRaid> {
         };
     }
 
-    public async powerOfMaids(maids: string, maidId: number): Promise<number> {
+    public async powerOfMaids(maids: string, maidId: BigNumberish): Promise<number> {
         return (await this.contract.powerOfMaids(maids, maidId)).toNumber();
     }
 

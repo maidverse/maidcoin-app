@@ -77,9 +77,7 @@ export default class UserInfo extends DomNode {
                     el(".amount", CommonUtil.numberWithCommas(utils.formatEther(lpBalance))),
                     el("a.add-button",
                         el("img", { src: "/images/component/user-info/add-button.png", height: "19" }),
-                        //{ href: "https://app.sushi.com/add/ETH/0x4Af698B479D0098229DC715655c667Ceb6cd8433", target: "_blank" },
-                        //TODO: for test
-                        { click: () => ViewUtil.go("/test/test-lp-token") },
+                        { href: "https://app.sushi.com/add/ETH/0x4Af698B479D0098229DC715655c667Ceb6cd8433", target: "_blank" },
                     ),
                 ),
                 el(".balance",
@@ -87,9 +85,7 @@ export default class UserInfo extends DomNode {
                     el(".amount", CommonUtil.numberWithCommas(utils.formatEther(maidBalance))),
                     el("a.add-button",
                         el("img", { src: "/images/component/user-info/add-button.png", height: "19" }),
-                        //{ href: "https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0x4Af698B479D0098229DC715655c667Ceb6cd8433", target: "_blank" },
-                        //TODO: for test
-                        { click: () => ViewUtil.go("/test/test-maidcoin") },
+                        { href: "https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0x4Af698B479D0098229DC715655c667Ceb6cd8433", target: "_blank" },
                     ),
                 ),
             );
