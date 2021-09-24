@@ -1685,7 +1685,7 @@ body {
 }
 .nurse-factory > .content > .image {
   position: absolute;
-  left: 0;
+  left: 30px;
   top: 0;
   width: 140px;
   height: 100%;
@@ -1732,12 +1732,17 @@ body {
   clear: both;
   visibility: hidden;
 }
-.nurse-factory > footer > .name {
+.nurse-factory > footer > .destroy-return {
   float: left;
-  font-family: "refrigerator-deluxe";
-  font-size: 22px;
-  padding-top: 4px;
+  padding-top: 2px;
   padding-left: 26px;
+  font-size: 20px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
+}
+.nurse-factory > footer > .destroy-return > span {
+  color: #7a8dff;
 }
 .nurse-factory > footer > .create-button {
   float: right;
@@ -3111,7 +3116,7 @@ body {
 }
 .nurse-farm:not(.empty) > .content > .image {
   position: absolute;
-  left: calc(50% - 70px);
+  left: calc(50% - 100px);
   top: 0;
   width: 140px;
   height: 100%;

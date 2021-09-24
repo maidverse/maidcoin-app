@@ -50,7 +50,7 @@ export default class Dashboard implements View {
 
     private async load() {
         const connected = await Wallet.connected();
-        if (this.store.get("close-welcome") !== true) {
+        if (this.welcomeContainer.deleted !== true && this.store.get("close-welcome") !== true) {
             this.welcomeContainer.empty().append(
                 el(".welcome",
                     el("img", { src: "/images/view/dashboard/welcome.png", height: "142.5" }),

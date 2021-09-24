@@ -83,7 +83,7 @@ export default class MaidCorp extends DomNode {
 
             const apr = await Calculator.apr(1);
             this.footer.empty().append(
-                el(".property.lp-amount", "Deposited LP: ", el("span", utils.formatEther(lpAmount))),
+                el(".property.lp-amount", "LP Deposited By Me: ", el("span", utils.formatEther(lpAmount))),
                 el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(String(apr))}%`)),
             );
         }

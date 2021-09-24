@@ -65,6 +65,7 @@ export default class MaidCafe implements View {
                 ),
             ),
         ));
+        this.loadAPR();
         this.loadBalances();
 
         Wallet.on("connect", this.connectHandler);
@@ -82,6 +83,12 @@ export default class MaidCafe implements View {
             this.loadBalances();
         }
     };
+
+    private async loadAPR() {
+        //TODO:
+        this.apr.empty().appendText("0%");
+        this.price.empty().appendText("1");
+    }
 
     private async loadBalances() {
         const owner = await Wallet.loadAddress();

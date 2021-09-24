@@ -13,6 +13,7 @@ export default class MaidCafe implements View {
     constructor();
     private connectHandler;
     private transferHandler;
+    private loadAPR;
     private loadBalances;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;

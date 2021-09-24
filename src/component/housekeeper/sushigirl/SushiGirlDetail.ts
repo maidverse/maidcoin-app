@@ -30,7 +30,7 @@ export default class SushiGirlDetail extends Popup {
 
     private supportHandler = async (id: BigNumber) => {
         if (id.eq(this.id) === true) {
-            const sushiGirl = StaticDataManager.getLingerieGirl(this.id);
+            const sushiGirl = StaticDataManager.getSushiGirl(this.id);
             const supportedLP = await SushiGirlsContract.getSupportedLP(this.id);
             const sushiGirlPower = await NurseRaidContract.powerOfMaids(SushiGirlsContract.address, this.id);
             this.additionalPower?.empty().appendText(String(sushiGirlPower - sushiGirl.originPower));
@@ -40,7 +40,7 @@ export default class SushiGirlDetail extends Popup {
 
     private desupportHandler = async (id: BigNumber) => {
         if (id.eq(this.id) === true) {
-            const sushiGirl = StaticDataManager.getLingerieGirl(this.id);
+            const sushiGirl = StaticDataManager.getSushiGirl(this.id);
             const supportedLP = await SushiGirlsContract.getSupportedLP(this.id);
             const sushiGirlPower = await NurseRaidContract.powerOfMaids(SushiGirlsContract.address, this.id);
             this.additionalPower?.empty().appendText(String(sushiGirlPower - sushiGirl.originPower));
@@ -50,7 +50,7 @@ export default class SushiGirlDetail extends Popup {
 
     private async load() {
 
-        const sushiGirl = StaticDataManager.getLingerieGirl(this.id);
+        const sushiGirl = StaticDataManager.getSushiGirl(this.id);
         const supportedLP = await SushiGirlsContract.getSupportedLP(this.id);
         const sushiGirlOwner = await SushiGirlsContract.ownerOf(this.id);
         const sushiGirlPower = await NurseRaidContract.powerOfMaids(SushiGirlsContract.address, this.id);
