@@ -8,13 +8,23 @@
     background-color: rgba(31, 25, 29, 0.9);
     overflow-y      : scroll;
 
-    >.back-button {
-        position: absolute;
-        left    : 16px;
-        top     : 10px;
+    >.back-button-container {
+        position : relative;
+        max-width: 846px;
+        margin   : auto;
+
+        >.back-button {
+            position: absolute;
+            left    : 16px;
+            top     : 10px;
+        }
     }
 
     >.content {
+        position : relative;
+        max-width: 846px;
+        margin   : auto;
+
         >.image {
             position: absolute;
             left    : 20px;

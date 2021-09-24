@@ -38,26 +38,29 @@ export default class NursePoolList extends DomNode {
             });
             await Promise.all(promises);
 
-            for (const [nurseType, nurseIds] of Object.entries(nurses)) {
-                this.append(new NursePool(parseInt(nurseType, 10), nurseIds));
-            }
+            if (this.deleted !== true) {
 
-            if (totalNurseIds.length > 0) {
-                this.append(
-                    el("footer",
-                        el("a.claim-all-button", "Claim All", {
-                            click: async () => {
-                                await CloneNursesContract.claim(totalNurseIds);
-                            },
-                        }),
-                        el("a.charge-all-button", "Charge All", {
-                            click: () => new ChargeMultipleNursePopup(),
-                        }),
-                        el("a.destroy-all-button", "Destroy All", {
-                            click: () => new DeleteMultipleNursePopup(),
-                        }),
-                    ),
-                );
+                for (const [nurseType, nurseIds] of Object.entries(nurses)) {
+                    this.append(new NursePool(parseInt(nurseType, 10), nurseIds));
+                }
+
+                if (totalNurseIds.length > 0) {
+                    this.append(
+                        el("footer",
+                            el("a.claim-all-button", "Claim All", {
+                                click: async () => {
+                                    await CloneNursesContract.claim(totalNurseIds);
+                                },
+                            }),
+                            el("a.charge-all-button", "Charge All", {
+                                click: () => new ChargeMultipleNursePopup(),
+                            }),
+                            el("a.destroy-all-button", "Destroy All", {
+                                click: () => new DeleteMultipleNursePopup(),
+                            }),
+                        ),
+                    );
+                }
             }
         }
     }

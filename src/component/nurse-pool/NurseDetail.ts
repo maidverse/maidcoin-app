@@ -27,9 +27,11 @@ export default class NurseDetail extends Popup {
     constructor(private nurseId: number) {
         super(".nurse-detail");
         this.append(
-            el("a.back-button", el("img", { src: "/images/component/nurse-detail/back-button.png", height: "19.5" }), {
-                click: () => this.delete(),
-            }),
+            el(".back-button-container",
+                el("a.back-button", el("img", { src: "/images/component/nurse-detail/back-button.png", height: "19.5" }), {
+                    click: () => this.delete(),
+                }),
+            ),
             this.content = el(".content"),
         );
         this.load();

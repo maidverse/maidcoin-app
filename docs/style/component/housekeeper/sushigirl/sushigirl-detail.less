@@ -8,18 +8,29 @@
     background-color: rgba(31, 25, 29, 0.9);
     overflow-y      : scroll;
 
-    >.back-button {
-        position: absolute;
-        left    : 16px;
-        top     : 10px;
+    >.back-button-container {
+        position : relative;
+        max-width: 846px;
+        margin   : auto;
+
+        >.back-button {
+            position: absolute;
+            left    : 16px;
+            top     : 10px;
+            z-index : 1;
+        }
     }
 
     >.content {
+        position   : relative;
+        max-width  : 846px;
+        margin     : auto;
+        padding-top: 120px;
+
         >.image {
-            display   : block;
-            margin    : auto;
-            margin-top: 120px;
-            height    : 550px;
+            display: block;
+            margin : auto;
+            height : 550px;
         }
 
         >.name {

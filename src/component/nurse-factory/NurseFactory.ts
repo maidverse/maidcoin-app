@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import CommonUtil from "../../CommonUtil";
 import NursePartContract from "../../contracts/NursePartContract";
 import Wallet from "../../ethereum/Wallet";
@@ -21,10 +21,17 @@ export default class NurseFactory extends DomNode {
         );
         this.load();
         Wallet.on("connect", this.connectHandler);
+        NursePartContract.on("TransferSingle", this.transferSingleHandler);
     }
 
     private connectHandler = () => {
         this.load();
+    };
+
+    private transferSingleHandler = async (operator: string, from: string, to: string, id: BigNumber, amount: BigNumber) => {
+        if (from === await Wallet.loadAddress() && id.eq(this.nurseType)) {
+            this.load();
+        }
     };
 
     private async load() {
@@ -63,6 +70,7 @@ export default class NurseFactory extends DomNode {
 
     public delete(): void {
         Wallet.off("connect", this.connectHandler);
+        NursePartContract.off("TransferSingle", this.transferSingleHandler);
         super.delete();
     }
 }

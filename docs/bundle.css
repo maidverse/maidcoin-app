@@ -966,7 +966,7 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   overflow-y: scroll;
-  padding: 20px 0;
+  padding: 70px 0;
 }
 .pc-menu {
   margin-left: 10px;
@@ -1287,10 +1287,20 @@ body {
   background-color: rgba(31, 25, 29, 0.9);
   overflow-y: scroll;
 }
-.maid-detail > .back-button {
+.maid-detail > .back-button-container {
+  position: relative;
+  max-width: 846px;
+  margin: auto;
+}
+.maid-detail > .back-button-container > .back-button {
   position: absolute;
   left: 16px;
   top: 10px;
+}
+.maid-detail > .content {
+  position: relative;
+  max-width: 846px;
+  margin: auto;
 }
 .maid-detail > .content > .image {
   position: absolute;
@@ -2075,10 +2085,22 @@ body {
   background-color: rgba(31, 25, 29, 0.9);
   overflow-y: scroll;
 }
-.nurse-detail > .back-button {
+.nurse-detail > .back-button-container {
+  position: relative;
+  max-width: 846px;
+  margin: auto;
+}
+.nurse-detail > .back-button-container > .back-button {
   position: absolute;
   left: 16px;
   top: 10px;
+  z-index: 1;
+}
+.nurse-detail > .content {
+  position: relative;
+  max-width: 846px;
+  margin: auto;
+  padding-top: 120px;
 }
 .nurse-detail > .content > .delete-button {
   position: absolute;
@@ -2088,7 +2110,6 @@ body {
 .nurse-detail > .content > .image {
   display: block;
   margin: auto;
-  margin-top: 120px;
   height: 550px;
 }
 .nurse-detail > .content > .name {
@@ -2406,15 +2427,26 @@ body {
   background-color: rgba(31, 25, 29, 0.9);
   overflow-y: scroll;
 }
-.sushigirl-detail > .back-button {
+.sushigirl-detail > .back-button-container {
+  position: relative;
+  max-width: 846px;
+  margin: auto;
+}
+.sushigirl-detail > .back-button-container > .back-button {
   position: absolute;
   left: 16px;
   top: 10px;
+  z-index: 1;
+}
+.sushigirl-detail > .content {
+  position: relative;
+  max-width: 846px;
+  margin: auto;
+  padding-top: 120px;
 }
 .sushigirl-detail > .content > .image {
   display: block;
   margin: auto;
-  margin-top: 120px;
   height: 550px;
 }
 .sushigirl-detail > .content > .name {
@@ -2541,15 +2573,26 @@ body {
   background-color: rgba(31, 25, 29, 0.9);
   overflow-y: scroll;
 }
-.lingeriegirl-detail > .back-button {
+.lingeriegirl-detail > .back-button-container {
+  position: relative;
+  max-width: 846px;
+  margin: auto;
+}
+.lingeriegirl-detail > .back-button-container > .back-button {
   position: absolute;
   left: 16px;
   top: 10px;
+  z-index: 1;
+}
+.lingeriegirl-detail > .content {
+  position: relative;
+  max-width: 846px;
+  margin: auto;
+  padding-top: 120px;
 }
 .lingeriegirl-detail > .content > .image {
   display: block;
   margin: auto;
-  margin-top: 120px;
   height: 550px;
 }
 .lingeriegirl-detail > .content > .name {

@@ -18,9 +18,11 @@ export default class SushiGirlDetail extends Popup {
     constructor(private id: number) {
         super(".sushigirl-detail");
         this.append(
-            el("a.back-button", el("img", { src: "/images/component/housekeeper-detail/back-button.png", height: "19.5" }), {
-                click: () => this.delete(),
-            }),
+            el(".back-button-container",
+                el("a.back-button", el("img", { src: "/images/component/housekeeper-detail/back-button.png", height: "19.5" }), {
+                    click: () => this.delete(),
+                }),
+            ),
             this.content = el(".content"),
         );
         this.load();
