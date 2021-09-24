@@ -391,6 +391,26 @@ body {
   clear: both;
   visibility: hidden;
 }
+.dashboard-view > section > .any-housekeeper-list > .content > .zoom-button,
+.dashboard-view > section > .nurse-part-list > .content > .zoom-button,
+.dashboard-view > section > .any-housekeeper-list > .content > .plus-button,
+.dashboard-view > section > .nurse-part-list > .content > .plus-button {
+  display: block;
+  text-align: center;
+  color: #c4c9cc;
+  font-family: "refrigerator-deluxe";
+  font-size: 18px;
+  height: 100%;
+  padding-top: 50px;
+}
+.dashboard-view > section > .any-housekeeper-list > .content > .zoom-button > img,
+.dashboard-view > section > .nurse-part-list > .content > .zoom-button > img,
+.dashboard-view > section > .any-housekeeper-list > .content > .plus-button > img,
+.dashboard-view > section > .nurse-part-list > .content > .plus-button > img {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+}
 .dashboard-view > section > .any-housekeeper-list > .content > .nurse-part,
 .dashboard-view > section > .nurse-part-list > .content > .nurse-part,
 .dashboard-view > section > .any-housekeeper-list > .content > .any-housekeeper,

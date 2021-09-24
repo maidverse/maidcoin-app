@@ -4,6 +4,7 @@ export default class AnyHousekeeperList extends DomNode {
     private selectable;
     private content;
     selectedHousekeeper: AnyHousekeeper | undefined;
+    private zoomButton;
     constructor(selectable?: boolean);
     private loadHousekeepers;
     private loadLingerieGirls;

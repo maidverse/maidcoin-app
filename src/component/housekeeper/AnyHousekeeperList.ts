@@ -3,6 +3,7 @@ import SkyUtil from "skyutil";
 import LingerieGirlsContract from "../../contracts/LingerieGirlsContract";
 import SushiGirlsContract from "../../contracts/SushiGirlsContract";
 import Wallet from "../../ethereum/Wallet";
+import ViewUtil from "../../view/ViewUtil";
 import AnyHousekeeper from "./AnyHousekeeper";
 
 export default class AnyHousekeeperList extends DomNode {
@@ -10,12 +11,21 @@ export default class AnyHousekeeperList extends DomNode {
     private content: DomNode;
     public selectedHousekeeper: AnyHousekeeper | undefined;
 
+    private zoomButton: DomNode | undefined;
+
     constructor(private selectable = false) {
         super(".any-housekeeper-list");
         this.append(
             el(".background"),
-            this.content = el(".content"),
+            this.content = el(".content",
+                this.zoomButton = el("a.zoom-button",
+                    el("img", { src: "/images/view/dashboard/zoom-button.png", height: "27.5" }),
+                    "View Housekeepers",
+                    { click: () => ViewUtil.go("/housekeeper") },
+                ),
+            ),
         );
+        this.zoomButton.on("delete", () => this.zoomButton = undefined);
         this.loadHousekeepers();
     }
 
@@ -35,6 +45,7 @@ export default class AnyHousekeeperList extends DomNode {
             const id = (await LingerieGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
 
             if (this.deleted !== true) {
+                this.zoomButton?.delete();
                 const housekeeper = new AnyHousekeeper("LingerieGirl", id, this.selectable).appendTo(this.content);
                 housekeeper.on("select", () => {
                     if (housekeeper === this.selectedHousekeeper) {
@@ -58,6 +69,7 @@ export default class AnyHousekeeperList extends DomNode {
             const id = (await SushiGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
 
             if (this.deleted !== true) {
+                this.zoomButton?.delete();
                 const housekeeper = new AnyHousekeeper("SushiGirl", id, this.selectable).appendTo(this.content);
                 housekeeper.on("select", () => {
                     if (housekeeper === this.selectedHousekeeper) {
