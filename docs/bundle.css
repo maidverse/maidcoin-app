@@ -2869,6 +2869,9 @@ body {
   clear: both;
   visibility: hidden;
 }
+.select-maid-popup > main > section > .any-housekeeper-list > .content > .zoom-button {
+  display: none;
+}
 .select-maid-popup > main > section > .any-housekeeper-list > .content > .any-housekeeper {
   float: left;
 }
