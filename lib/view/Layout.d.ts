@@ -6,7 +6,7 @@ export default class Layout implements View {
     private container;
     content: DomNode;
     constructor();
-    changeBackground(src: string): void;
+    changeBackground(src: string, top?: string): void;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
 }

@@ -44,8 +44,8 @@ export default class Layout implements View {
         ));
     }
 
-    public changeBackground(src: string) {
-        this.container.style({ backgroundImage: `url(${src})` });
+    public changeBackground(src: string, top: string = "bottom") {
+        this.container.style({ backgroundImage: `url(${src})`, backgroundPositionY: top });
     }
 
     public changeParams(params: ViewParams, uri: string): void { }

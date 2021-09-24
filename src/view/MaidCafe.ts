@@ -26,7 +26,7 @@ export default class MaidCafe implements View {
     private maidcoinBalance: DomNode;
 
     constructor() {
-        Layout.current.changeBackground("/images/view/maid-cafe/background.jpg");
+        Layout.current.changeBackground("/images/view/maid-cafe/background.jpg", "top");
         Layout.current.content.append(this.container = el(".maid-cafe-view",
             el("header",
                 el("h2", "Maid Cafe"),
