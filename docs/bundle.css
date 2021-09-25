@@ -1087,6 +1087,9 @@ body {
   clear: both;
   visibility: hidden;
 }
+.maid-list > .ready {
+  padding: 0 20px 20px 20px;
+}
 .maid-list .maid-container {
   margin: auto;
 }

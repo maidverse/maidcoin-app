@@ -22,6 +22,10 @@ export default class MaidList extends DomNode {
 
         const maidCount = (await MaidsContract.getTotalSupply()).toNumber();
 
+        if (maidCount === 0) {
+            this.append(el(".ready", "There is no Maid yet. Maid will be issued when Shoyu is released on SushiSwap."));
+        }
+
         SkyUtil.repeat(maidCount, async (index) => {
             setTimeout(() => {
                 if (this.deleted !== true) {
