@@ -147,17 +147,19 @@ class Wallet extends EventContainer {
             message,
         });
 
-        const payload = {
-            method: "eth_signTypedData_v4",
-            params: [owner, data],
-            from: owner,
-        };
-
         let signedMessage;
         if (this.existsInjectedProvider === true) {
-            signedMessage = await this.ethereum.request(payload);
+            signedMessage = await this.ethereum.request({
+                method: "eth_signTypedData_v4",
+                params: [owner, data],
+                from: owner,
+            });
         } else {
-            signedMessage = await this.walletConnectProvider?.request(payload);
+            signedMessage = await this.walletConnectProvider?.request({
+                method: "eth_signTypedData",
+                params: [owner, data],
+                from: owner,
+            });
         }
 
         const signature = splitSignature(signedMessage);
