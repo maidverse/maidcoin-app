@@ -5,6 +5,7 @@ export default class NurseRaid extends DomNode {
     private footer;
     private durationInterval;
     constructor(raidId: number, currentBlockNumber: number);
+    private connectHandler;
     private enterHandler;
     private exitHandler;
     private getLeftBlocks;

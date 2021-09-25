@@ -7,6 +7,7 @@ import LPTokenContract from "../../contracts/LPTokenContract";
 import TheMasterContract from "../../contracts/TheMasterContract";
 import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
+import Alert from "../dialogue/Alert";
 import TokenPrompt from "../dialogue/TokenPrompt";
 import SelectNursePopup from "../select-nurse-popup/SelectNursePopup";
 
@@ -56,7 +57,8 @@ export default class NurseFarm extends DomNode {
                 this.content.empty().append(
                     el(".name", "Clone Nurse"),
                     el("a.add-button", el("img", { src: "/images/component/nurse-farm/add-button.png", height: "132.5" }), {
-                        click: () => new SelectNursePopup(),
+                        click: () => new Alert("Support Nurse", "Supporting Nurse feature is coming soon.", "Confirm"),
+                        //click: () => new SelectNursePopup(),
                     }),
                 );
 

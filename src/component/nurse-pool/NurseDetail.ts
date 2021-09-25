@@ -84,9 +84,6 @@ export default class NurseDetail extends Popup {
             const { supportingTo } = await CloneNursesContract.findSupportingTo(owner);
             const supportingAmount = supportingTo !== this.nurseId ? BigNumber.from(0) : await TheMasterContract.getSupportingAmount(owner);
 
-            const result = await superagent.get(`https://api.maidcoin.org/nursetypes/${nurse.nurseType}`);
-            const tokenInfo = result.body;
-
             const pendingReward = await CloneNursesContract.getPendigReward(this.nurseId);
 
             let lifetimePercent = (this.endBlock - this.currentBlockNumber) /
@@ -109,11 +106,11 @@ export default class NurseDetail extends Popup {
                         }),
                     },
                 ),
-                el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/Illust/${tokenInfo.name}.png` }),
-                el(".name", tokenInfo.name),
+                el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/Illust/${nurseType.name}.png` }),
+                el(".name", nurseType.name),
                 el(".owner", `Owner: ${CommonUtil.shortenAddress(nurseOwner)}`),
                 el(".character",
-                    el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${tokenInfo.name}Idle.png`, height: "120" }),
+                    el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${nurseType.name}Idle.png`, height: "120" }),
                     owner !== nurseOwner ? undefined : el("a.claim-button",
                         el("img.coin-image", { src: "/images/component/nurse-detail/maidcoin.png", height: "29" }),
                         this.pendingReward = el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),

@@ -12,6 +12,7 @@ declare class Wallet extends EventContainer {
     loadChainId(): Promise<number>;
     connected(): Promise<boolean>;
     connect(): Promise<void>;
+    disconnectFromWalletConnect(): Promise<void>;
     changeNetwork(chainId: number, chainName: string, currency: {
         name: string;
         symbol: string;
