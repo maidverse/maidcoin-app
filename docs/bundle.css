@@ -1545,7 +1545,6 @@ body {
 }
 .nurse-raid > .content > .duration > .title {
   color: #e4eaed;
-  margin-right: 5px;
 }
 .nurse-raid > .content > .progress {
   position: absolute;
@@ -2764,6 +2763,7 @@ body {
   font-size: 18px;
   text-align: center;
   height: 170px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2774,6 +2774,17 @@ body {
 }
 .alert > .confirm-button {
   right: 110px !important;
+}
+.confirm > p {
+  color: #3b3e4a;
+  font-size: 18px;
+  text-align: center;
+  height: 170px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 24px;
 }
 .token-prompt > p {
   color: #3b3e4a;

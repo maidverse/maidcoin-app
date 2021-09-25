@@ -3,7 +3,7 @@ export default class NurseRaidList extends DomNode {
     private loading;
     private raidContainer;
     constructor();
-    get doneRaids(): number[];
+    getDoneRaids(owner: string): Promise<number[]>;
     private loadRaids;
 }
 //# sourceMappingURL=NurseRaidList.d.ts.map

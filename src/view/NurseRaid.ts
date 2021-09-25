@@ -3,6 +3,7 @@ import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
 import NurseRaidList from "../component/nurse-raid/NurseRaidList";
 import NurseRaidContract from "../contracts/NurseRaidContract";
+import Wallet from "../ethereum/Wallet";
 import Layout from "./Layout";
 
 export default class NurseRaid implements View {
@@ -20,7 +21,10 @@ export default class NurseRaid implements View {
             ),
             el("a.exit-all-button", "Exit All", {
                 click: async () => {
-                    await NurseRaidContract.exit(raidList.doneRaids);
+                    const owner = await Wallet.loadAddress();
+                    if (owner !== undefined) {
+                        await NurseRaidContract.exit(await raidList.getDoneRaids(owner));
+                    }
                 },
             }),
             raidList = new NurseRaidList(),

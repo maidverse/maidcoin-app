@@ -26,7 +26,7 @@ export default class AnyHousekeeper extends DomNode {
                 el(".name", tokenInfo.name),
             );
             if (this.selectable !== true) {
-                this.onDom("click", () => new SushiGirlDetail(this.id));
+                this.onDom("click", () => new LingerieGirlDetail(this.id));
             }
         }
 
@@ -38,7 +38,7 @@ export default class AnyHousekeeper extends DomNode {
                 el(".name", tokenInfo.name),
             );
             if (this.selectable !== true) {
-                this.onDom("click", () => new LingerieGirlDetail(this.id));
+                this.onDom("click", () => new SushiGirlDetail(this.id));
             }
         }
     }

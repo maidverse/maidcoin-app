@@ -1,7 +1,8 @@
 import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, constants, utils } from "ethers";
 import CommonUtil from "../../CommonUtil";
-import NurseRaidContract from "../../contracts/NurseRaidContract";
+import Config from "../../Config";
+import NurseRaidContract, { ChallengerInfo } from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
 import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
@@ -14,16 +15,14 @@ export default class NurseRaid extends DomNode {
     private footer: DomNode;
     private durationInterval: number | undefined;
 
-    public done = false;
-
-    constructor(public raidId: number, private currentBlockNumber: number) {
+    constructor(public raidId: number, currentBlockNumber: number) {
         super(".nurse-raid");
         this.append(
             el(".background"),
             this.content = el(".content"),
             this.footer = el("footer"),
         );
-        this.load();
+        this.load(currentBlockNumber);
 
         NurseRaidContract.on("Enter", this.enterHandler);
         NurseRaidContract.on("Exit", this.exitHandler);
@@ -31,21 +30,35 @@ export default class NurseRaid extends DomNode {
 
     private enterHandler = async (challenger: string, id: BigNumber, maids: string, maidId: BigNumber) => {
         if (id.toNumber() === this.raidId && challenger === await Wallet.loadAddress()) {
-            setTimeout(async () => {
-                this.currentBlockNumber = await NetworkProvider.getBlockNumber();
-                this.load();
-            }, 3000);
+            this.load(await NetworkProvider.getBlockNumber());
         }
     };
 
     private exitHandler = async (challenger: string, id: BigNumber) => {
         if (id.toNumber() === this.raidId && challenger === await Wallet.loadAddress()) {
-            this.currentBlockNumber = await NetworkProvider.getBlockNumber();
-            this.load();
+            this.load(await NetworkProvider.getBlockNumber());
         }
     };
 
-    private async load() {
+    private async getLeftBlocks(challenger: ChallengerInfo) {
+        const currentBlockNumber = await NetworkProvider.getBlockNumber();
+        const raid = StaticDataManager.getRaid(this.raidId);
+        const maidPower = challenger.maids === constants.AddressZero ? 1000 : await NurseRaidContract.powerOfMaids(challenger.maids, challenger.maidId);
+        const leftBlocks = Math.ceil(raid.duration * (maidPower / 1000) - (currentBlockNumber - challenger.enterBlock));
+        return leftBlocks;
+    }
+
+    public async checkDone(owner: string) {
+        const challenger = await NurseRaidContract.getChallenger(this.raidId, owner);
+        const done = challenger.enterBlock !== 0 && await NurseRaidContract.checkDone(this.raidId) === true;
+        if (done !== true) {
+            return false;
+        }
+        return await this.getLeftBlocks(challenger) <= 0;
+    }
+
+    private async load(currentBlockNumber: number) {
+
         if (this.durationInterval !== undefined) {
             clearInterval(this.durationInterval);
             this.durationInterval = undefined;
@@ -64,13 +77,13 @@ export default class NurseRaid extends DomNode {
                     backgroundPosition: `${nurseType.left}px calc(50% + ${nurseType.top + 56}px)`,
                 },
             }),
-            el(".end-time", `End ${CommonUtil.displayBlockDuration(raid.endBlock - this.currentBlockNumber)}`),
+            el(".end-time", `End ${CommonUtil.displayBlockDuration(raid.endBlock - currentBlockNumber)}`),
             el(".character",
                 el("img", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${nurseType.name}Idle.png`, height: "85" }),
             ),
-            el(".duration",
-                el("span.title", "Duration"),
-                duration = el("span", CommonUtil.displayBlockDuration(raid.duration)),
+            duration = el(".duration",
+                el("span.title", "Duration "),
+                el("span", CommonUtil.displayBlockDuration(raid.duration)),
             ),
             el(".progress"),
         );
@@ -79,24 +92,30 @@ export default class NurseRaid extends DomNode {
         if (owner !== undefined) {
 
             const challenger = await NurseRaidContract.getChallenger(this.raidId, owner);
+            let done = false;
 
-            this.done = challenger.enterBlock !== 0 && await NurseRaidContract.checkDone(this.raidId) === true;
+            if (challenger.enterBlock > 0) {
 
-            if (this.done === true) {
-                duration.empty().appendText("Done");
-            } else {
-                if (this.durationInterval !== undefined) {
-                    clearInterval(this.durationInterval);
+                done = await this.checkDone(owner);
+                if (done === true) {
+                    duration.empty().appendText("Done");
+                } else {
+                    if (this.durationInterval !== undefined) {
+                        clearInterval(this.durationInterval);
+                    }
+                    const refresh = async () => {
+                        const leftBlocks = await this.getLeftBlocks(challenger);
+                        if (leftBlocks <= 0) {
+                            this.load(await NetworkProvider.getBlockNumber());
+                        }
+                        duration.empty().append(
+                            el("span", String(leftBlocks)),
+                            el("span.title", ` ${leftBlocks === 1 ? "Block" : "Blocks"} Left`),
+                        );
+                    };
+                    refresh();
+                    this.durationInterval = setInterval(() => refresh(), Config.blockTimeSecond * 1000) as any;
                 }
-                const refresh = async () => {
-                    this.currentBlockNumber += 1 / 15;
-                    const maidPower = challenger.maids === constants.AddressZero ? 1000 : await NurseRaidContract.powerOfMaids(challenger.maids, challenger.maidId);
-                    duration.empty().appendText(CommonUtil.displayBlockDuration(raid.duration * (maidPower / 1000) - (
-                        this.currentBlockNumber - challenger.enterBlock
-                    )));
-                };
-                refresh();
-                this.durationInterval = setInterval(() => refresh(), 1000) as any;
             }
 
             this.footer.empty().append(
@@ -109,21 +128,26 @@ export default class NurseRaid extends DomNode {
                     utils.formatEther(raid.entranceFee),
                     el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
                     "Start",
-                    {
-                        click: () => new SelectMaidPopup(this.raidId),
-                    },
-                ) : (this.done === true ? el("a.exit-button", "Exit", {
-                    click: async () => {
-                        await NurseRaidContract.exit([this.raidId]);
-                    },
-                }) : el("a.cancel-button", "Cancel", {
-                    click: () => {
-                        new Confirm("Cancel Raid", "Are you sure you want to cancel the raid? If you cancel, you will not receive any parts.", async () => {
-                            await NurseRaidContract.exit([this.raidId]);
-                        });
-                    },
-                })),
+                    { click: () => new SelectMaidPopup(this.raidId) },
+                ) : (done === true ?
+                    el("a.exit-button", "Exit", { click: () => this.exit() }) :
+                    el("a.cancel-button", "Cancel", { click: () => this.exit() })
+                ),
             );
+        }
+    }
+
+    private async exit() {
+        const owner = await Wallet.loadAddress();
+        if (owner !== undefined) {
+            const done = await this.checkDone(owner);
+            if (done === true) {
+                await NurseRaidContract.exit([this.raidId]);
+            } else {
+                new Confirm("Cancel Raid", "Are you sure you want to cancel the raid? If you cancel, you will not receive any parts.", "Cancel", async () => {
+                    await NurseRaidContract.exit([this.raidId]);
+                });
+            }
         }
     }
 

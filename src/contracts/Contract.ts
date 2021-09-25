@@ -1,5 +1,6 @@
 import { ContractInterface, ethers } from "ethers";
 import EventContainer from "eventcontainer";
+import Alert from "../component/dialogue/Alert";
 import Config from "../Config";
 import NetworkProvider from "../ethereum/NetworkProvider";
 import Wallet from "../ethereum/Wallet";
@@ -31,7 +32,7 @@ export default abstract class Contract<CT extends ethers.Contract> extends Event
 
     public async connectAndGetWalletContract() {
         if (await Wallet.loadChainId() !== Config.chainId) {
-            alert("Wrong Network");
+            new Alert("Error", "Wrong Network. Please change to Mainnet.", "Ok");
         } else {
             if (await Wallet.connected() !== true) {
                 await Wallet.connect();
