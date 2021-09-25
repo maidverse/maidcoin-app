@@ -125,7 +125,7 @@ export default class NurseFarm extends DomNode {
 
                 const apr = await Calculator.apr(3);
                 this.footer.empty().append(
-                    el(".property.lp-amount", "LP Supported By Me: ", el("span", utils.formatEther(lpAmount))),
+                    el(".property.lp-amount", "LP Supported By Me: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(lpAmount)))),
                     el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(String(apr))}%`)),
                 );
             }
