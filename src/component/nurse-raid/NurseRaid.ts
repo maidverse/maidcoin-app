@@ -24,9 +24,14 @@ export default class NurseRaid extends DomNode {
         );
         this.load(currentBlockNumber);
 
+        Wallet.on("connect", this.connectHandler);
         NurseRaidContract.on("Enter", this.enterHandler);
         NurseRaidContract.on("Exit", this.exitHandler);
     }
+
+    private connectHandler = async () => {
+        this.load(await NetworkProvider.getBlockNumber());
+    };
 
     private enterHandler = async (challenger: string, id: BigNumber, maids: string, maidId: BigNumber) => {
         if (id.toNumber() === this.raidId && challenger === await Wallet.loadAddress()) {
@@ -169,6 +174,7 @@ export default class NurseRaid extends DomNode {
         if (this.durationInterval !== undefined) {
             clearInterval(this.durationInterval);
         }
+        Wallet.off("connect", this.connectHandler);
         NurseRaidContract.off("Enter", this.enterHandler);
         NurseRaidContract.off("Exit", this.exitHandler);
         super.delete();
