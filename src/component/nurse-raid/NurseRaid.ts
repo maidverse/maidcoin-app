@@ -50,11 +50,7 @@ export default class NurseRaid extends DomNode {
 
     public async checkDone(owner: string) {
         const challenger = await NurseRaidContract.getChallenger(this.raidId, owner);
-        const done = challenger.enterBlock !== 0 && await NurseRaidContract.checkDone(this.raidId) === true;
-        if (done !== true) {
-            return false;
-        }
-        return await this.getLeftBlocks(challenger) <= 0;
+        return challenger.enterBlock !== 0 && await this.getLeftBlocks(challenger) <= 0;
     }
 
     private async load(currentBlockNumber: number) {
