@@ -119,7 +119,10 @@ class NurseRaidContract extends Contract<NurseRaid> {
 
     public async exit(raidIds: number[]) {
         const contract = await this.connectAndGetWalletContract();
-        await contract?.exit(raidIds);
+        if (contract !== undefined) {
+            const estimation = await contract.estimateGas.exit(raidIds);
+            await contract.exit(raidIds, { gasLimit: estimation.mul(12).div(10) });
+        }
     }
 }
 

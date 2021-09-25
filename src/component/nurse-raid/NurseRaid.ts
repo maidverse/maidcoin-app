@@ -43,14 +43,18 @@ export default class NurseRaid extends DomNode {
     private async getLeftBlocks(challenger: ChallengerInfo) {
         const currentBlockNumber = await NetworkProvider.getBlockNumber();
         const raid = StaticDataManager.getRaid(this.raidId);
-        const maidPower = challenger.maids === constants.AddressZero ? 1000 : await NurseRaidContract.powerOfMaids(challenger.maids, challenger.maidId);
-        const leftBlocks = Math.ceil(raid.duration * (maidPower / 1000) - (currentBlockNumber - challenger.enterBlock));
+        const maidPower = challenger.maids === constants.AddressZero ? 0 : await NurseRaidContract.powerOfMaids(challenger.maids, challenger.maidId);
+        const leftBlocks = Math.ceil(raid.duration * (1000 - maidPower) / 1000 - (currentBlockNumber - challenger.enterBlock));
         return leftBlocks;
     }
 
     public async checkDone(owner: string) {
         const challenger = await NurseRaidContract.getChallenger(this.raidId, owner);
-        return challenger.enterBlock !== 0 && await this.getLeftBlocks(challenger) <= 0;
+        const done = challenger.enterBlock !== 0 && await NurseRaidContract.checkDone(this.raidId) === true;
+        if (done !== true) {
+            return false;
+        }
+        return await this.getLeftBlocks(challenger) <= 0;
     }
 
     private async load(currentBlockNumber: number) {
@@ -100,14 +104,28 @@ export default class NurseRaid extends DomNode {
                         clearInterval(this.durationInterval);
                     }
                     const refresh = async () => {
+
                         const leftBlocks = await this.getLeftBlocks(challenger);
                         if (leftBlocks <= 0) {
-                            this.load(await NetworkProvider.getBlockNumber());
+
+                            if (this.durationInterval !== undefined) {
+                                clearInterval(this.durationInterval);
+                                this.durationInterval = undefined;
+                            }
+
+                            setTimeout(async () => {
+                                if (this.deleted !== true) {
+                                    this.load(await NetworkProvider.getBlockNumber());
+                                }
+                            }, Config.blockTimeSecond * 1000);
                         }
-                        duration.empty().append(
-                            el("span", String(leftBlocks)),
-                            el("span.title", ` ${leftBlocks === 1 ? "Block" : "Blocks"} Left`),
-                        );
+
+                        else if (this.deleted !== true) {
+                            duration.empty().append(
+                                el("span", String(leftBlocks)),
+                                el("span.title", ` ${leftBlocks === 1 ? "Block" : "Blocks"} Left`),
+                            );
+                        }
                     };
                     refresh();
                     this.durationInterval = setInterval(() => refresh(), Config.blockTimeSecond * 1000) as any;
