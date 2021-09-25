@@ -144,7 +144,7 @@ export default class NurseRaid extends DomNode {
             if (done === true) {
                 await NurseRaidContract.exit([this.raidId]);
             } else {
-                new Confirm("Cancel Raid", "Are you sure you want to cancel the raid? If you cancel, you will not receive any parts.", "Cancel", async () => {
+                new Confirm("Cancel Raid", "Are you sure you want to cancel the raid? If you cancel, you will not receive any parts.", "Go Ahead", async () => {
                     await NurseRaidContract.exit([this.raidId]);
                 });
             }
