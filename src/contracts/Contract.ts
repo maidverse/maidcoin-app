@@ -32,7 +32,9 @@ export default abstract class Contract<CT extends ethers.Contract> extends Event
 
     public async connectAndGetWalletContract() {
         if (await Wallet.loadChainId() !== Config.chainId) {
-            new Alert("Error", "Wrong Network. Please change to Mainnet.", "Ok");
+            new Alert("Error", "Wrong Network. Please change to Mainnet.", "Ok", () => {
+                Wallet.disconnectFromWalletConnect();
+            });
         } else {
             if (await Wallet.connected() !== true) {
                 await Wallet.connect();

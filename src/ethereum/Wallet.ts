@@ -64,6 +64,13 @@ class Wallet extends EventContainer {
         this.checkConnected();
     }
 
+    public async disconnectFromWalletConnect() {
+        if (this.existsInjectedProvider !== true) {
+            await this.walletConnectProvider?.disconnect();
+            location.reload();
+        }
+    }
+
     public async changeNetwork(
         chainId: number,
         chainName: string,
