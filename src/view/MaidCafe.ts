@@ -85,9 +85,11 @@ export default class MaidCafe implements View {
     };
 
     private async loadAPR() {
-        //TODO:
+        const omu = await MaidCafeContract.getTotalSupply();
+        const maidcoin = await MaidCoinContract.balanceOf(MaidCafeContract.address);
+        //TODO: calculate apr
         this.apr.empty().appendText("0%");
-        this.price.empty().appendText("1");
+        this.price.empty().appendText(utils.formatEther(maidcoin.mul(BigNumber.from("1000000000000000000")).div(omu)));
     }
 
     private async loadBalances() {
