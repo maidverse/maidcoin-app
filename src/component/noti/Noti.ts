@@ -3,6 +3,7 @@ import { BodyNode, DomNode, el } from "@hanul/skynode";
 export default class Noti extends DomNode {
 
     private closeTimeout: number;
+    private closing = false;
 
     constructor(title: string, message: string) {
         super(".noti");
@@ -21,8 +22,11 @@ export default class Noti extends DomNode {
     }
 
     private close() {
-        clearTimeout(this.closeTimeout);
-        this.addClass("hide");
-        setTimeout(() => this.delete(), 1000);
+        if (this.closing !== true) {
+            this.closing = true;
+            clearTimeout(this.closeTimeout);
+            this.addClass("hide");
+            setTimeout(() => this.delete(), 1000);
+        }
     }
 }

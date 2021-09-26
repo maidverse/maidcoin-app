@@ -4,6 +4,7 @@ import StaticDataManager from "../../StaticDataManager";
 export default class GetNurseNoti extends DomNode {
 
     private closeTimeout: number;
+    private closing = false;
 
     constructor(_nurseType: number) {
         super(".get-nurse-noti");
@@ -26,8 +27,11 @@ export default class GetNurseNoti extends DomNode {
     }
 
     private close() {
-        clearTimeout(this.closeTimeout);
-        this.addClass("hide");
-        setTimeout(() => this.delete(), 1000);
+        if (this.closing !== true) {
+            this.closing = true;
+            clearTimeout(this.closeTimeout);
+            this.addClass("hide");
+            setTimeout(() => this.delete(), 1000);
+        }
     }
 }

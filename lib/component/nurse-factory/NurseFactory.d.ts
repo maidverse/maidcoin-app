@@ -5,8 +5,7 @@ export default class NurseFactory extends DomNode {
     private footer;
     constructor(nurseType: number);
     private connectHandler;
-    private transferPartHandler;
-    private transferNurseHandler;
+    private transferSingleHandler;
     private load;
     delete(): void;
 }

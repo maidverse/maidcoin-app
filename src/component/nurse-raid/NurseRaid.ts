@@ -2,13 +2,11 @@ import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, constants, utils } from "ethers";
 import CommonUtil from "../../CommonUtil";
 import Config from "../../Config";
-import NursePartContract from "../../contracts/NursePartContract";
 import NurseRaidContract, { ChallengerInfo } from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
 import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
 import Confirm from "../dialogue/Confirm";
-import GetPartsNoti from "../noti/GetPartsNoti";
 import SelectMaidPopup from "../select-maid-popup/SelectMaidPopup";
 
 export default class NurseRaid extends DomNode {
@@ -29,7 +27,6 @@ export default class NurseRaid extends DomNode {
         Wallet.on("connect", this.connectHandler);
         NurseRaidContract.on("Enter", this.enterHandler);
         NurseRaidContract.on("Exit", this.exitHandler);
-        NursePartContract.on("TransferSingle", this.transferPartHandler);
     }
 
     private connectHandler = async () => {
@@ -45,12 +42,6 @@ export default class NurseRaid extends DomNode {
     private exitHandler = async (challenger: string, id: BigNumber) => {
         if (id.toNumber() === this.raidId && challenger === await Wallet.loadAddress()) {
             this.load(await NetworkProvider.getBlockNumber());
-        }
-    };
-
-    private transferPartHandler = async (operator: string, from: string, to: string, id: BigNumber, amount: BigNumber) => {
-        if (from === constants.AddressZero && to === await Wallet.loadAddress()) {
-            new GetPartsNoti(id.toNumber(), amount.toNumber());
         }
     };
 
@@ -186,7 +177,6 @@ export default class NurseRaid extends DomNode {
         Wallet.off("connect", this.connectHandler);
         NurseRaidContract.off("Enter", this.enterHandler);
         NurseRaidContract.off("Exit", this.exitHandler);
-        NursePartContract.off("TransferSingle", this.transferPartHandler);
         super.delete();
     }
 }

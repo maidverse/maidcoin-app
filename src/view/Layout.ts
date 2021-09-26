@@ -1,10 +1,16 @@
 import { BodyNode, DomNode, el } from "@hanul/skynode";
+import { BigNumber, constants } from "ethers";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
 import MobileMenu from "../component/menu/MobileMenu";
 import MoreMenu from "../component/menu/MoreMenu";
 import PCMenu from "../component/menu/PCMenu";
+import GetNurseNoti from "../component/noti/GetNurseNoti";
+import GetPartsNoti from "../component/noti/GetPartsNoti";
 import UserInfo from "../component/UserInfo";
+import CloneNursesContract from "../contracts/CloneNursesContract";
+import NursePartContract from "../contracts/NursePartContract";
+import Wallet from "../ethereum/Wallet";
 import ViewUtil from "./ViewUtil";
 
 export default class Layout implements View {
@@ -13,6 +19,7 @@ export default class Layout implements View {
 
     private container: DomNode;
     public content: DomNode;
+
     constructor() {
         Layout.current = this;
         BodyNode.append(this.container = el(".layout",
@@ -42,15 +49,33 @@ export default class Layout implements View {
                 this.content = el(".content"),
             ),
         ));
+
+        CloneNursesContract.on("Transfer", this.transferNurseHandler);
+        NursePartContract.on("TransferSingle", this.transferPartHandler);
     }
 
     public changeBackground(src: string, top: string = "bottom") {
         this.container.style({ backgroundImage: `url(${src})`, backgroundPositionY: top });
     }
 
+    private transferNurseHandler = async (from: string, to: string, id: BigNumber) => {
+        if (from === constants.AddressZero && to === await Wallet.loadAddress()) {
+            const nurse = await CloneNursesContract.getNurse(id);
+            new GetNurseNoti(nurse.nurseType);
+        }
+    };
+
+    private transferPartHandler = async (operator: string, from: string, to: string, id: BigNumber, amount: BigNumber) => {
+        if (from === constants.AddressZero && to === await Wallet.loadAddress()) {
+            new GetPartsNoti(id.toNumber(), amount.toNumber());
+        }
+    };
+
     public changeParams(params: ViewParams, uri: string): void { }
 
     public close(): void {
+        CloneNursesContract.off("Transfer", this.transferNurseHandler);
+        NursePartContract.off("TransferSingle", this.transferPartHandler);
         this.container.delete();
     }
 }

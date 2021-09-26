@@ -8,7 +8,6 @@ export default class NurseRaid extends DomNode {
     private connectHandler;
     private enterHandler;
     private exitHandler;
-    private transferPartHandler;
     private getLeftBlocks;
     checkDone(owner: string): Promise<boolean>;
     private load;
