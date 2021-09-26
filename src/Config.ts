@@ -12,6 +12,7 @@ export default {
     /*chainId: 3,
     blockTimeSecond: 30,*/
 
+    startBlock: 13316000,
     rewardPerBlock: 1,
 
     infuraId: INFURA_ID,

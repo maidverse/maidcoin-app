@@ -5,6 +5,8 @@ import AnyHousekeeperList from "../component/housekeeper/AnyHousekeeperList";
 import OwnedMaidList from "../component/maid/OwnedMaidList";
 import NursePartList from "../component/nurse-part/NursePartList";
 import NursePoolList from "../component/nurse-pool/NursePoolList";
+import Config from "../Config";
+import NetworkProvider from "../ethereum/NetworkProvider";
 import Wallet from "../ethereum/Wallet";
 import Layout from "./Layout";
 
@@ -12,6 +14,7 @@ export default class Dashboard implements View {
 
     private container: DomNode;
     private welcomeContainer: DomNode;
+    private startBlockInterval: number | undefined;
 
     private store: SkyStore = new SkyStore("Dashboard");
 
@@ -49,12 +52,20 @@ export default class Dashboard implements View {
     };
 
     private async load() {
+
+        if (this.startBlockInterval !== undefined) {
+            clearInterval(this.startBlockInterval);
+            this.startBlockInterval = undefined;
+        }
+
         const connected = await Wallet.connected();
-        if (this.welcomeContainer.deleted !== true && this.store.get("close-welcome") !== true) {
+        if (this.welcomeContainer.deleted !== true/* && this.store.get("close-welcome") !== true*/) {
+
+            let startBlockTimer: DomNode;
             this.welcomeContainer.empty().append(
                 el(".welcome",
                     el("img", { src: "/images/view/dashboard/welcome.png", height: "142.5" }),
-                    el("a.close-welcome-button",
+                    /*el("a.close-welcome-button",
                         el("img", { src: "/images/view/dashboard/close-welcome-button.png", height: "11.25" }),
                         {
                             click: () => {
@@ -62,22 +73,39 @@ export default class Dashboard implements View {
                                 this.welcomeContainer.empty();
                             },
                         },
-                    ),
+                    ),*/
                     el(".info",
                         el("p", "Welcome to MaidCoin"),
                         el("a.document-button", "Read Documnet", { href: "https://medium.com/maid-coin", target: "_blank" }),
+                        startBlockTimer = el(".start-block-timer"),
                         connected === true ? undefined : el("a.connect-wallet-button", "Connect Wallet", {
                             click: () => Wallet.connect(),
                         }),
                     ),
                 ),
             );
+
+            if (this.startBlockInterval !== undefined) {
+                clearInterval(this.startBlockInterval);
+            }
+            const refresh = async () => {
+                const currentBlock = await NetworkProvider.getBlockNumber();
+                if (startBlockTimer.deleted !== true) {
+                    const leftBlocks = Config.startBlock - currentBlock;
+                    startBlockTimer.empty().appendText(`Pool Start ${leftBlocks} ${leftBlocks === 1 ? "Block" : "Blocks"} Left`);
+                }
+            };
+            refresh();
+            this.startBlockInterval = setInterval(() => refresh(), Config.blockTimeSecond * 1000) as any;
         }
     }
 
     public changeParams(params: ViewParams, uri: string): void { }
 
     public close(): void {
+        if (this.startBlockInterval !== undefined) {
+            clearInterval(this.startBlockInterval);
+        }
         Wallet.off("connect", this.connectHandler);
         this.container.delete();
     }

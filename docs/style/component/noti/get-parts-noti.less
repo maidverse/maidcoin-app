@@ -1,0 +1,58 @@
+.get-parts-noti {
+    position        : fixed;
+    right           : 0;
+    bottom          : 0;
+    z-index         : 999999;
+    width           : 360px;
+    height          : 277.5px;
+    background-image: url(/images/component/noti/background.png);
+    background-size : auto 100%;
+    animation       : noti-show 0.3s ease-out;
+
+    &.hide {
+        animation: noti-hide 0.3s ease-out forwards;
+    }
+
+    >h4 {
+        position : absolute;
+        left     : 66px;
+        top      : 42px;
+        font-size: 18px;
+    }
+
+    >.close-button {
+        position: absolute;
+        right   : 56px;
+        top     : 42px;
+    }
+
+    >.reward {
+        position: absolute;
+        left    : 66px;
+        top     : 62px;
+        width   : 226px;
+
+        >p {
+            font-size      : 22px;
+            height         : 70px;
+            display        : flex;
+            flex-direction : column;
+            justify-content: center;
+            text-align     : center;
+        }
+
+        >.parts {
+            display        : flex;
+            justify-content: center;
+
+            >.count {
+                margin-left    : 10px;
+                display        : flex;
+                flex-direction : column;
+                justify-content: center;
+                font-size      : 24px;
+                padding-bottom : 5px;
+            }
+        }
+    }
+}

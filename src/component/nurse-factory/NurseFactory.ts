@@ -1,10 +1,12 @@
 import { DomNode, el } from "@hanul/skynode";
-import { BigNumber, utils } from "ethers";
+import { BigNumber, constants, utils } from "ethers";
 import CommonUtil from "../../CommonUtil";
+import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NursePartContract from "../../contracts/NursePartContract";
 import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
 import Alert from "../dialogue/Alert";
+import GetNurseNoti from "../noti/GetNurseNoti";
 import CreateNursePopup from "./CreateNursePopup";
 
 export default class NurseFactory extends DomNode {
@@ -21,16 +23,24 @@ export default class NurseFactory extends DomNode {
         );
         this.load();
         Wallet.on("connect", this.connectHandler);
-        NursePartContract.on("TransferSingle", this.transferSingleHandler);
+        NursePartContract.on("TransferSingle", this.transferPartHandler);
+        CloneNursesContract.on("Transfer", this.transferNurseHandler);
     }
 
     private connectHandler = () => {
         this.load();
     };
 
-    private transferSingleHandler = async (operator: string, from: string, to: string, id: BigNumber, amount: BigNumber) => {
+    private transferPartHandler = async (operator: string, from: string, to: string, id: BigNumber, amount: BigNumber) => {
         if (from === await Wallet.loadAddress() && id.eq(this.nurseType)) {
             this.load();
+        }
+    };
+
+    private transferNurseHandler = async (from: string, to: string, id: BigNumber) => {
+        if (from === constants.AddressZero && to === await Wallet.loadAddress()) {
+            const nurse = await CloneNursesContract.getNurse(id);
+            new GetNurseNoti(nurse.nurseType);
         }
     };
 
@@ -70,7 +80,8 @@ export default class NurseFactory extends DomNode {
 
     public delete(): void {
         Wallet.off("connect", this.connectHandler);
-        NursePartContract.off("TransferSingle", this.transferSingleHandler);
+        NursePartContract.off("TransferSingle", this.transferPartHandler);
+        CloneNursesContract.off("Transfer", this.transferNurseHandler);
         super.delete();
     }
 }

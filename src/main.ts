@@ -7,9 +7,6 @@ import Maid from "./view/Maid";
 import MaidCafe from "./view/MaidCafe";
 import Nursefactory from "./view/NurseFactory";
 import NurseRaid from "./view/NurseRaid";
-import TestAdmin from "./view/test/TestAdmin";
-import TestLPToken from "./view/test/TestLPToken";
-import TestMaidCoin from "./view/test/TestMaidCoin";
 
 SkyRouter.route("**", Layout);
 SkyRouter.route("", Dashboard);
