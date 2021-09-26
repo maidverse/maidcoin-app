@@ -9,12 +9,12 @@ import Nursefactory from "./view/NurseFactory";
 import NurseRaid from "./view/NurseRaid";
 
 SkyRouter.route("**", Layout);
-SkyRouter.route("", Dashboard);
-SkyRouter.route("maid", Maid);
-SkyRouter.route(["housekeeper", "housekeeper/{type}"], Housekeeper);
-SkyRouter.route("nurseraid", NurseRaid);
-SkyRouter.route("nursefactory", Nursefactory);
-SkyRouter.route("farm", Farm);
+SkyRouter.route(["", "clonenurses/{nurseId}"], Dashboard);
+SkyRouter.route(["maids", "maids/{id}"], Maid);
+SkyRouter.route(["housekeepers", "housekeepers/{type}", "housekeepers/{type}/{id}"], Housekeeper);
+SkyRouter.route("nurseraids", NurseRaid);
+SkyRouter.route("nursefactories", Nursefactory);
+SkyRouter.route("farms", Farm);
 SkyRouter.route("cafe", MaidCafe);
 
 // test

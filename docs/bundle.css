@@ -1586,6 +1586,23 @@ body {
   padding-top: 8px;
   padding-left: 1px;
 }
+.maid-detail > .content > .tweet-button {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/tweet-button.png);
+  background-size: auto 100%;
+  color: #e7f9ff;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 28px;
+  text-decoration: none;
+}
 @keyframes nurse-raid-show {
   0% {
     transform: translateY(-10px);
@@ -2396,7 +2413,7 @@ body {
 }
 .nurse-detail > .content > .controller {
   position: absolute;
-  right: 20px;
+  right: 16px;
   bottom: 20px;
   z-index: 2;
 }
@@ -2435,6 +2452,23 @@ body {
   font-weight: bold;
   padding-top: 8px;
   padding-left: 1px;
+}
+.nurse-detail > .content > .tweet-button {
+  position: absolute;
+  left: 16px;
+  bottom: 20px;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/tweet-button.png);
+  background-size: auto 100%;
+  color: #e7f9ff;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 28px;
+  text-decoration: none;
 }
 .charge-nurse-popup {
   position: relative;
@@ -2674,7 +2708,7 @@ body {
 }
 .sushigirl-detail > .content > .controller {
   position: absolute;
-  right: 20px;
+  right: 16px;
   bottom: 20px;
   z-index: 2;
 }
@@ -2713,6 +2747,23 @@ body {
   font-weight: bold;
   padding-top: 8px;
   padding-left: 1px;
+}
+.sushigirl-detail > .content > .tweet-button {
+  position: absolute;
+  left: 16px;
+  bottom: 20px;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/tweet-button.png);
+  background-size: auto 100%;
+  color: #e7f9ff;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 28px;
+  text-decoration: none;
 }
 .lingeriegirl {
   position: relative;
@@ -2820,7 +2871,7 @@ body {
 }
 .lingeriegirl-detail > .content > .controller {
   position: absolute;
-  right: 20px;
+  right: 16px;
   bottom: 20px;
   z-index: 2;
 }
@@ -2859,6 +2910,23 @@ body {
   font-weight: bold;
   padding-top: 8px;
   padding-left: 1px;
+}
+.lingeriegirl-detail > .content > .tweet-button {
+  position: absolute;
+  left: 16px;
+  bottom: 20px;
+  width: 112px;
+  height: 33.5px;
+  background-image: url(/images/tweet-button.png);
+  background-size: auto 100%;
+  color: #e7f9ff;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 8px;
+  padding-left: 28px;
+  text-decoration: none;
 }
 .dialogue-background {
   display: flex;

@@ -1,6 +1,5 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
-import superagent from "superagent";
 import CommonUtil from "../../../CommonUtil";
 import LPTokenContract from "../../../contracts/LPTokenContract";
 import NurseRaidContract from "../../../contracts/NurseRaidContract";
@@ -57,12 +56,9 @@ export default class SushiGirlDetail extends Popup {
         const sushiGirlOwner = await SushiGirlsContract.ownerOf(this.id);
         const sushiGirlPower = await NurseRaidContract.powerOfMaids(SushiGirlsContract.address, this.id);
 
-        const result = await superagent.get(`https://api.maidcoin.org/sushigirls/${this.id}`);
-        const tokenInfo = result.body;
-
         this.content.empty().append(
             el("img.image", { src: `https://storage.googleapis.com/maidcoin/SushiGirl/Character/${this.id}.png` }),
-            el(".name", tokenInfo.name),
+            el(".name", sushiGirl.name),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(sushiGirlOwner)}`),
             el(".properties",
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(sushiGirlPower))),
@@ -104,6 +100,10 @@ export default class SushiGirlDetail extends Popup {
                         );
                     },
                 }),
+            ),
+            el("a.tweet-button",
+                "Share",
+                { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin SushiGirl - ${sushiGirl.name}\nhttps://app.maidcoin.org/sushigirls/${this.id}`)}`, target: "_blank" },
             ),
         );
     }

@@ -21,7 +21,7 @@ export default class AnyHousekeeperList extends DomNode {
                 this.zoomButton = el("a.zoom-button",
                     el("img", { src: "/images/view/dashboard/zoom-button.png", height: "27.5" }),
                     "View Housekeepers",
-                    { click: () => ViewUtil.go("/housekeeper") },
+                    { click: () => ViewUtil.go("/housekeepers") },
                 ),
             ),
         );

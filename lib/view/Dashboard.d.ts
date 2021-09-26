@@ -4,9 +4,10 @@ export default class Dashboard implements View {
     private welcomeContainer;
     private startBlockInterval;
     private store;
-    constructor();
+    constructor(params: ViewParams);
     private connectHandler;
     private load;
+    private openNurseDetail;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
 }

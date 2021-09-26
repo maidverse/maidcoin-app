@@ -1,10 +1,9 @@
 {
     "0": {
         "name": "Naru",
-        "external_url": "https://maidcoin.app/lingeriegirls/0",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/0",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/0.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 152
@@ -28,10 +27,9 @@
     },
     "1": {
         "name": "Kiho",
-        "external_url": "https://maidcoin.app/lingeriegirls/1",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/1",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/1.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 152
@@ -55,10 +53,9 @@
     },
     "2": {
         "name": "Kirumi",
-        "external_url": "https://maidcoin.app/lingeriegirls/2",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/2",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/2.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 156
@@ -82,10 +79,9 @@
     },
     "3": {
         "name": "Seria",
-        "external_url": "https://maidcoin.app/lingeriegirls/3",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/3",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/3.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 157
@@ -109,10 +105,9 @@
     },
     "4": {
         "name": "Rukako",
-        "external_url": "https://maidcoin.app/lingeriegirls/4",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/4",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/4.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 149
@@ -136,10 +131,9 @@
     },
     "5": {
         "name": "Moriya",
-        "external_url": "https://maidcoin.app/lingeriegirls/5",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/5",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/5.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 154
@@ -163,10 +157,9 @@
     },
     "6": {
         "name": "Bani",
-        "external_url": "https://maidcoin.app/lingeriegirls/6",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/6",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/6.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 147
@@ -190,10 +183,9 @@
     },
     "7": {
         "name": "Sena",
-        "external_url": "https://maidcoin.app/lingeriegirls/7",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/7",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/7.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 161
@@ -217,10 +209,9 @@
     },
     "8": {
         "name": "Miki",
-        "external_url": "https://maidcoin.app/lingeriegirls/8",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/8",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/8.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 164
@@ -244,10 +235,9 @@
     },
     "9": {
         "name": "Sayaka",
-        "external_url": "https://maidcoin.app/lingeriegirls/9",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/9",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/9.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 148
@@ -271,10 +261,9 @@
     },
     "10": {
         "name": "Lamu",
-        "external_url": "https://maidcoin.app/lingeriegirls/10",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/10",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/10.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 159
@@ -298,10 +287,9 @@
     },
     "11": {
         "name": "Yuzuki",
-        "external_url": "https://maidcoin.app/lingeriegirls/11",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/11",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/11.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 150
@@ -325,10 +313,9 @@
     },
     "12": {
         "name": "Fukawa",
-        "external_url": "https://maidcoin.app/lingeriegirls/12",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/12",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/12.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 149
@@ -352,10 +339,9 @@
     },
     "13": {
         "name": "Chinami",
-        "external_url": "https://maidcoin.app/lingeriegirls/13",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/13",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/13.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 163
@@ -379,10 +365,9 @@
     },
     "14": {
         "name": "Hisame",
-        "external_url": "https://maidcoin.app/lingeriegirls/14",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/14",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/14.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 159
@@ -406,10 +391,9 @@
     },
     "15": {
         "name": "Kaminari",
-        "external_url": "https://maidcoin.app/lingeriegirls/15",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/15",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/15.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 154
@@ -433,10 +417,9 @@
     },
     "16": {
         "name": "Hiyori",
-        "external_url": "https://maidcoin.app/lingeriegirls/16",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/16",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/16.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 151
@@ -460,10 +443,9 @@
     },
     "17": {
         "name": "Hatsune",
-        "external_url": "https://maidcoin.app/lingeriegirls/17",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/17",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/17.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 159
@@ -487,10 +469,9 @@
     },
     "18": {
         "name": "Sakura",
-        "external_url": "https://maidcoin.app/lingeriegirls/18",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/18",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/18.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 151
@@ -514,10 +495,9 @@
     },
     "19": {
         "name": "Yumeno",
-        "external_url": "https://maidcoin.app/lingeriegirls/19",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/19",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/19.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 153
@@ -541,10 +521,9 @@
     },
     "20": {
         "name": "Mayuri",
-        "external_url": "https://maidcoin.app/lingeriegirls/20",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/20",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/20.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 153
@@ -568,10 +547,9 @@
     },
     "21": {
         "name": "Yona",
-        "external_url": "https://maidcoin.app/lingeriegirls/21",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/21",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/21.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 151
@@ -595,10 +573,9 @@
     },
     "22": {
         "name": "Miyu",
-        "external_url": "https://maidcoin.app/lingeriegirls/22",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/22",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/22.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 161
@@ -622,10 +599,9 @@
     },
     "23": {
         "name": "Kiyo",
-        "external_url": "https://maidcoin.app/lingeriegirls/23",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/23",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/23.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 158
@@ -649,10 +625,9 @@
     },
     "24": {
         "name": "Mimi",
-        "external_url": "https://maidcoin.app/lingeriegirls/24",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/24",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/24.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 149
@@ -676,10 +651,9 @@
     },
     "25": {
         "name": "Anzi",
-        "external_url": "https://maidcoin.app/lingeriegirls/25",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/25",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/25.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 151
@@ -703,10 +677,9 @@
     },
     "26": {
         "name": "Shion",
-        "external_url": "https://maidcoin.app/lingeriegirls/26",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/26",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/26.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 164
@@ -730,10 +703,9 @@
     },
     "27": {
         "name": "Misato",
-        "external_url": "https://maidcoin.app/lingeriegirls/27",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/27",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/27.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 151
@@ -757,10 +729,9 @@
     },
     "28": {
         "name": "Rukona",
-        "external_url": "https://maidcoin.app/lingeriegirls/28",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/28",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/28.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 161
@@ -784,10 +755,9 @@
     },
     "29": {
         "name": "Mocha",
-        "external_url": "https://maidcoin.app/lingeriegirls/29",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/29",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/29.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 166
@@ -811,10 +781,9 @@
     },
     "30": {
         "name": "Moria",
-        "external_url": "https://maidcoin.app/lingeriegirls/30",
+        "external_url": "https://app.maidcoin.org/lingeriegirls/30",
         "image": "https://storage.googleapis.com/maidcoin/LingerieGirl/Image/30.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 167

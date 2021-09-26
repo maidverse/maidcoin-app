@@ -1,6 +1,5 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
-import superagent from "superagent";
 import CommonUtil from "../../../CommonUtil";
 import LingerieGirlsContract from "../../../contracts/LingerieGirlsContract";
 import LPTokenContract from "../../../contracts/LPTokenContract";
@@ -57,12 +56,9 @@ export default class LingerieGirlDetail extends Popup {
         const lingerieGirlOwner = await LingerieGirlsContract.ownerOf(this.id);
         const lingerieGirlPower = await NurseRaidContract.powerOfMaids(LingerieGirlsContract.address, this.id);
 
-        const result = await superagent.get(`https://api.maidcoin.org/lingeriegirls/${this.id}`);
-        const tokenInfo = result.body;
-
         this.content.empty().append(
             el("img.image", { src: `https://storage.googleapis.com/maidcoin/LingerieGirl/Character/${this.id}.png` }),
-            el(".name", tokenInfo.name),
+            el(".name", lingerieGirl.name),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(lingerieGirlOwner)}`),
             el(".properties",
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(lingerieGirlPower))),
@@ -104,6 +100,10 @@ export default class LingerieGirlDetail extends Popup {
                         );
                     },
                 }),
+            ),
+            el("a.tweet-button",
+                "Share",
+                { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin LingerieGirl - ${lingerieGirl.name}\nhttps://app.maidcoin.org/lingeriegirls/${this.id}`)}`, target: "_blank" },
             ),
         );
     }

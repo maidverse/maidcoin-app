@@ -1,9 +1,9 @@
 [{
     "allocPoint": 10
 }, {
-    "allocPoint": 60
+    "allocPoint": 9
 }, {
     "allocPoint": 30
 }, {
-    "allocPoint": 0
+    "allocPoint": 51
 }]

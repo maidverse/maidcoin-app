@@ -4,6 +4,7 @@ import SkyStore from "skystore";
 import AnyHousekeeperList from "../component/housekeeper/AnyHousekeeperList";
 import OwnedMaidList from "../component/maid/OwnedMaidList";
 import NursePartList from "../component/nurse-part/NursePartList";
+import NurseDetail from "../component/nurse-pool/NurseDetail";
 import NursePoolList from "../component/nurse-pool/NursePoolList";
 import Config from "../Config";
 import NetworkProvider from "../ethereum/NetworkProvider";
@@ -18,7 +19,7 @@ export default class Dashboard implements View {
 
     private store: SkyStore = new SkyStore("Dashboard");
 
-    constructor() {
+    constructor(params: ViewParams) {
         Layout.current.changeBackground("/images/view/dashboard/background.jpg");
         Layout.current.content.append(this.container = el(".dashboard-view",
             el("header",
@@ -45,6 +46,7 @@ export default class Dashboard implements View {
         ));
         Wallet.on("connect", this.connectHandler);
         this.load();
+        this.openNurseDetail(params.nurseId);
     }
 
     private connectHandler = () => {
@@ -100,7 +102,15 @@ export default class Dashboard implements View {
         }
     }
 
-    public changeParams(params: ViewParams, uri: string): void { }
+    private async openNurseDetail(id: string | undefined) {
+        if (id !== undefined) {
+            new NurseDetail(parseInt(id, 10));
+        }
+    }
+
+    public changeParams(params: ViewParams, uri: string): void {
+        this.openNurseDetail(params.nurseId);
+    }
 
     public close(): void {
         if (this.startBlockInterval !== undefined) {

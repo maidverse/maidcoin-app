@@ -3,23 +3,23 @@
             "uri": "",
             "name": "Dashboard"
         }, {
-            "uri": "maid",
+            "uri": "maids",
             "name": "Maids"
         },
         {
-            "uri": "housekeeper",
+            "uri": "housekeepers",
             "name": "Housekeepers"
         },
         {
-            "uri": "nurseraid",
+            "uri": "nurseraids",
             "name": "Nurse Raids"
         },
         {
-            "uri": "nursefactory",
+            "uri": "nursefactories",
             "name": "Nurse Factories"
         },
         {
-            "uri": "farm",
+            "uri": "farms",
             "name": "Farms"
         },
         {

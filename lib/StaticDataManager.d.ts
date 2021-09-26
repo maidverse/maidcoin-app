@@ -3,6 +3,7 @@ declare class StaticDataManager {
     getMaid(id: number): {
         originPower: number;
         name: string;
+        character_voice: string;
     };
     getLingerieGirl(id: number): {
         originPower: number;

@@ -1,7 +1,7 @@
 {
     "0": {
         "name": "N1",
-        "Illust": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N1.png",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N1.png",
         "partCount": 2,
         "destroyReturn": 6,
         "power": 120,
@@ -12,7 +12,7 @@
     },
     "1": {
         "name": "N2",
-        "Illust": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N2.png",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N2.png",
         "partCount": 3,
         "destroyReturn": 12,
         "power": 215,
@@ -23,7 +23,7 @@
     },
     "2": {
         "name": "N3",
-        "Illust": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N3.png",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N3.png",
         "partCount": 3,
         "destroyReturn": 14,
         "power": 334,
@@ -34,7 +34,7 @@
     },
     "3": {
         "name": "N4",
-        "Illust": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N4.png",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N4.png",
         "partCount": 4,
         "destroyReturn": 32,
         "power": 451,
@@ -45,7 +45,7 @@
     },
     "4": {
         "name": "N5",
-        "Illust": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N5.png",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N5.png",
         "partCount": 4,
         "destroyReturn": 36,
         "power": 537,
@@ -56,7 +56,7 @@
     },
     "5": {
         "name": "N6",
-        "Illust": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N6.png",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N6.png",
         "partCount": 5,
         "destroyReturn": 50,
         "power": 783,
@@ -67,7 +67,7 @@
     },
     "6": {
         "name": "N7",
-        "Illust": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N7.png",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N7.png",
         "partCount": 0,
         "destroyReturn": 0,
         "power": 0,
@@ -78,7 +78,7 @@
     },
     "7": {
         "name": "N8",
-        "Illust": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N8.png",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N8.png",
         "partCount": 0,
         "destroyReturn": 0,
         "power": 0,

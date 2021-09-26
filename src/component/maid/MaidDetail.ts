@@ -1,6 +1,5 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
-import superagent from "superagent";
 import CommonUtil from "../../CommonUtil";
 import LPTokenContract from "../../contracts/LPTokenContract";
 import MaidsContract from "../../contracts/MaidsContract";
@@ -73,15 +72,12 @@ export default class MaidDetail extends Popup {
         const maidOwner = await MaidsContract.ownerOf(this.maidId);
         const maidPower = await NurseRaidContract.powerOfMaids(MaidsContract.address, this.maidId);
 
-        const result = await superagent.get(`https://api.maidcoin.org/maids/${this.maidId}`);
-        const tokenInfo = result.body;
-
         this.content.empty().append(
-            this.image1 = el("img.image", { src: `https://storage.googleapis.com/maidcoin/Maid/Dialogue/${tokenInfo.name}Dialogue.png` }),
-            this.image2 = el("img.image2", { src: `https://storage.googleapis.com/maidcoin/Maid/Ultimate/${tokenInfo.name}Ultimate.png` }),
+            this.image1 = el("img.image", { src: `https://storage.googleapis.com/maidcoin/Maid/Dialogue/${maid.name}Dialogue.png` }),
+            this.image2 = el("img.image2", { src: `https://storage.googleapis.com/maidcoin/Maid/Ultimate/${maid.name}Ultimate.png` }),
             el("header",
-                el(".name", tokenInfo.name),
-                el(".cv", `CV. ${tokenInfo.character_voice}`),
+                el(".name", maid.name),
+                el(".cv", `CV. ${maid.character_voice}`),
             ),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(maidOwner)}`),
             el("a.speak-button",
@@ -90,7 +86,7 @@ export default class MaidDetail extends Popup {
                     click: (event: MouseEvent) => {
                         event.stopPropagation();
                         new Sound({
-                            wav: `https://storage.googleapis.com/maidcoin/Maid/Voice/${tokenInfo.name}/${tokenInfo.name}LobbyTap${this.getRandomInt(1, 2)}.wav`,
+                            wav: `https://storage.googleapis.com/maidcoin/Maid/Voice/${maid.name}/${maid.name}LobbyTap${this.getRandomInt(1, 2)}.wav`,
                         }).play();
                     },
                 },
@@ -135,6 +131,10 @@ export default class MaidDetail extends Popup {
                         );
                     },
                 }),
+            ),
+            el("a.tweet-button",
+                "Share",
+                { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin Maid - ${maid.name}\nhttps://app.maidcoin.org/maids/${this.maidId}`)}`, target: "_blank" },
             ),
         );
 

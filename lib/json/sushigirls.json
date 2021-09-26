@@ -1,10 +1,9 @@
 {
     "0": {
         "name": "Himiko",
-        "external_url": "https://maidcoin.app/sushigirls/0",
+        "external_url": "https://app.maidcoin.org/sushigirls/0",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/0.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 163
@@ -28,10 +27,9 @@
     },
     "1": {
         "name": "Ayaha",
-        "external_url": "https://maidcoin.app/sushigirls/1",
+        "external_url": "https://app.maidcoin.org/sushigirls/1",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/1.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 156
@@ -55,10 +53,9 @@
     },
     "2": {
         "name": "Miyuki",
-        "external_url": "https://maidcoin.app/sushigirls/2",
+        "external_url": "https://app.maidcoin.org/sushigirls/2",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/2.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 154
@@ -82,10 +79,9 @@
     },
     "3": {
         "name": "Satsuki",
-        "external_url": "https://maidcoin.app/sushigirls/3",
+        "external_url": "https://app.maidcoin.org/sushigirls/3",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/3.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 152
@@ -109,10 +105,9 @@
     },
     "4": {
         "name": "Minamo",
-        "external_url": "https://maidcoin.app/sushigirls/4",
+        "external_url": "https://app.maidcoin.org/sushigirls/4",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/4.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 161
@@ -136,10 +131,9 @@
     },
     "5": {
         "name": "Chinami",
-        "external_url": "https://maidcoin.app/sushigirls/5",
+        "external_url": "https://app.maidcoin.org/sushigirls/5",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/5.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 163
@@ -163,10 +157,9 @@
     },
     "6": {
         "name": "Suzuha",
-        "external_url": "https://maidcoin.app/sushigirls/6",
+        "external_url": "https://app.maidcoin.org/sushigirls/6",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/6.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 149
@@ -190,10 +183,9 @@
     },
     "7": {
         "name": "Yurika",
-        "external_url": "https://maidcoin.app/sushigirls/7",
+        "external_url": "https://app.maidcoin.org/sushigirls/7",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/7.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 167
@@ -217,10 +209,9 @@
     },
     "8": {
         "name": "Kasumi",
-        "external_url": "https://maidcoin.app/sushigirls/8",
+        "external_url": "https://app.maidcoin.org/sushigirls/8",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/8.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 159
@@ -244,10 +235,9 @@
     },
     "9": {
         "name": "Natsumi",
-        "external_url": "https://maidcoin.app/sushigirls/9",
+        "external_url": "https://app.maidcoin.org/sushigirls/9",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/9.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 147
@@ -271,10 +261,9 @@
     },
     "10": {
         "name": "Sayuri",
-        "external_url": "https://maidcoin.app/sushigirls/10",
+        "external_url": "https://app.maidcoin.org/sushigirls/10",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/10.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 163
@@ -298,10 +287,9 @@
     },
     "11": {
         "name": "Kanae",
-        "external_url": "https://maidcoin.app/sushigirls/11",
+        "external_url": "https://app.maidcoin.org/sushigirls/11",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/11.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 165
@@ -325,10 +313,9 @@
     },
     "12": {
         "name": "Ririka",
-        "external_url": "https://maidcoin.app/sushigirls/12",
+        "external_url": "https://app.maidcoin.org/sushigirls/12",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/12.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 151
@@ -352,10 +339,9 @@
     },
     "13": {
         "name": "Tsumiki",
-        "external_url": "https://maidcoin.app/sushigirls/13",
+        "external_url": "https://app.maidcoin.org/sushigirls/13",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/13.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 154
@@ -379,10 +365,9 @@
     },
     "14": {
         "name": "Tomoe",
-        "external_url": "https://maidcoin.app/sushigirls/14",
+        "external_url": "https://app.maidcoin.org/sushigirls/14",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/14.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 162
@@ -406,10 +391,9 @@
     },
     "15": {
         "name": "Niziue",
-        "external_url": "https://maidcoin.app/sushigirls/15",
+        "external_url": "https://app.maidcoin.org/sushigirls/15",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/15.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 166
@@ -433,10 +417,9 @@
     },
     "16": {
         "name": "Minase",
-        "external_url": "https://maidcoin.app/sushigirls/16",
+        "external_url": "https://app.maidcoin.org/sushigirls/16",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/16.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 151
@@ -460,10 +443,9 @@
     },
     "17": {
         "name": "Hibiki",
-        "external_url": "https://maidcoin.app/sushigirls/17",
+        "external_url": "https://app.maidcoin.org/sushigirls/17",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/17.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 150
@@ -487,10 +469,9 @@
     },
     "18": {
         "name": "Miho",
-        "external_url": "https://maidcoin.app/sushigirls/18",
+        "external_url": "https://app.maidcoin.org/sushigirls/18",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/18.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 152
@@ -514,10 +495,9 @@
     },
     "19": {
         "name": "Kotoha",
-        "external_url": "https://maidcoin.app/sushigirls/19",
+        "external_url": "https://app.maidcoin.org/sushigirls/19",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/19.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 154
@@ -541,10 +521,9 @@
     },
     "20": {
         "name": "Iori",
-        "external_url": "https://maidcoin.app/sushigirls/20",
+        "external_url": "https://app.maidcoin.org/sushigirls/20",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/20.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 151
@@ -568,10 +547,9 @@
     },
     "21": {
         "name": "Temari",
-        "external_url": "https://maidcoin.app/sushigirls/21",
+        "external_url": "https://app.maidcoin.org/sushigirls/21",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/21.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 149
@@ -595,10 +573,9 @@
     },
     "22": {
         "name": "Nadesiko",
-        "external_url": "https://maidcoin.app/sushigirls/22",
+        "external_url": "https://app.maidcoin.org/sushigirls/22",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/22.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 150
@@ -622,10 +599,9 @@
     },
     "23": {
         "name": "Sato",
-        "external_url": "https://maidcoin.app/sushigirls/23",
+        "external_url": "https://app.maidcoin.org/sushigirls/23",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/23.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 154
@@ -649,10 +625,9 @@
     },
     "24": {
         "name": "Kitsune",
-        "external_url": "https://maidcoin.app/sushigirls/24",
+        "external_url": "https://app.maidcoin.org/sushigirls/24",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/24.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 163
@@ -676,10 +651,9 @@
     },
     "25": {
         "name": "Nozomi",
-        "external_url": "https://maidcoin.app/sushigirls/25",
+        "external_url": "https://app.maidcoin.org/sushigirls/25",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/25.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 158
@@ -703,10 +677,9 @@
     },
     "26": {
         "name": "Akiha",
-        "external_url": "https://maidcoin.app/sushigirls/26",
+        "external_url": "https://app.maidcoin.org/sushigirls/26",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/26.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 157
@@ -730,10 +703,9 @@
     },
     "27": {
         "name": "Rurie",
-        "external_url": "https://maidcoin.app/sushigirls/27",
+        "external_url": "https://app.maidcoin.org/sushigirls/27",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/27.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 156
@@ -757,10 +729,9 @@
     },
     "28": {
         "name": "Haruka",
-        "external_url": "https://maidcoin.app/sushigirls/28",
+        "external_url": "https://app.maidcoin.org/sushigirls/28",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/28.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 157
@@ -784,10 +755,9 @@
     },
     "29": {
         "name": "Yumi",
-        "external_url": "https://maidcoin.app/sushigirls/29",
+        "external_url": "https://app.maidcoin.org/sushigirls/29",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/29.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 160
@@ -811,10 +781,9 @@
     },
     "30": {
         "name": "Setsuna",
-        "external_url": "https://maidcoin.app/sushigirls/30",
+        "external_url": "https://app.maidcoin.org/sushigirls/30",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/30.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 153
@@ -838,10 +807,9 @@
     },
     "31": {
         "name": "Momo",
-        "external_url": "https://maidcoin.app/sushigirls/31",
+        "external_url": "https://app.maidcoin.org/sushigirls/31",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/31.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 144
@@ -865,10 +833,9 @@
     },
     "32": {
         "name": "Chiaki",
-        "external_url": "https://maidcoin.app/sushigirls/32",
+        "external_url": "https://app.maidcoin.org/sushigirls/32",
         "image": "https://storage.googleapis.com/maidcoin/SushiGirl/Image/32.png",
-        "attributes": [
-            {
+        "attributes": [{
                 "display_type": "number",
                 "trait_type": "Height",
                 "value": 160

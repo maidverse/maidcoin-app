@@ -12,11 +12,13 @@ class StaticDataManager {
     public getMaid(id: number): {
         originPower: number,
         name: string,
+        character_voice: string,
     } {
         const raw = (maids as any)[id];
         return {
             originPower: raw.attributes.find((a: any) => a.trait_type === "Power").value,
             name: raw.name,
+            character_voice: raw.character_voice,
         };
     }
 

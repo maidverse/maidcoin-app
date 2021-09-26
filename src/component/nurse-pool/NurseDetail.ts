@@ -1,6 +1,5 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
-import superagent from "superagent";
 import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
@@ -166,6 +165,10 @@ export default class NurseDetail extends Popup {
                             );
                         },
                     }),
+                ),
+                el("a.tweet-button",
+                    "Share",
+                    { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin CloneNurse - ${nurseType.name}\nhttps://app.maidcoin.org/clonenurses/${this.nurseId}`)}`, target: "_blank" },
                 ),
             );
         }

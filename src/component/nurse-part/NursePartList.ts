@@ -19,7 +19,7 @@ export default class NursePartList extends DomNode {
                 this.plusButton = el("a.zoom-button",
                     el("img", { src: "/images/view/dashboard/plus-button.png", height: "23.5" }),
                     "Go to Nurse Raids",
-                    { click: () => ViewUtil.go("/nurseraid") },
+                    { click: () => ViewUtil.go("/nurseraids") },
                 ),
             ),
         );
