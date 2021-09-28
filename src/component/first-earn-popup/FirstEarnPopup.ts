@@ -13,7 +13,7 @@ export default class FirstEarnPopup extends Popup {
             this.content = el(".first-earn-popup",
                 el("h1", "First Earn $MAID !"),
                 el(".amount",
-                    el("span", `+ ${CommonUtil.numberWithCommas(utils.formatEther(amount))}`),
+                    el("span", `+ ${CommonUtil.numberWithCommas(utils.formatEther(amount), 5)}`),
                     el("img.maidcoin", { src: "/images/component/first-earn-popup/maidcoin.png", height: "32" }),
                 ),
                 el("a.close-button", el("img", { src: "/images/component/first-earn-popup/close-button.png", height: "20" }), {

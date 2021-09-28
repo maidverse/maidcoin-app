@@ -4,11 +4,13 @@ import LingerieGirlsContract from "../../contracts/LingerieGirlsContract";
 import SushiGirlsContract from "../../contracts/SushiGirlsContract";
 import Wallet from "../../ethereum/Wallet";
 import ViewUtil from "../../view/ViewUtil";
+import Loading from "../Loading";
 import AnyHousekeeper from "./AnyHousekeeper";
 
 export default class AnyHousekeeperList extends DomNode {
 
     private content: DomNode;
+    private loading: Loading | undefined;
     public selectedHousekeeper: AnyHousekeeper | undefined;
 
     private zoomButton: DomNode | undefined;
@@ -16,6 +18,7 @@ export default class AnyHousekeeperList extends DomNode {
     constructor(private selectable = false) {
         super(".any-housekeeper-list");
         this.append(
+            this.loading = new Loading(),
             el(".background"),
             this.content = el(".content",
                 this.zoomButton = el("a.zoom-button",
@@ -27,13 +30,24 @@ export default class AnyHousekeeperList extends DomNode {
         );
         this.zoomButton.on("delete", () => this.zoomButton = undefined);
         this.loadHousekeepers();
+        Wallet.on("connect", this.connectHandler);
     }
+
+    private connectHandler = () => {
+        if (this.loading === undefined) {
+            this.loadHousekeepers();
+        }
+    };
 
     private async loadHousekeepers() {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
-            this.loadLingerieGirls(owner);
-            this.loadSushiGirls(owner);
+            await this.loadLingerieGirls(owner);
+            await this.loadSushiGirls(owner);
+        }
+        if (this.deleted !== true) {
+            this.loading?.delete();
+            this.loading = undefined;
         }
     }
 
@@ -41,7 +55,7 @@ export default class AnyHousekeeperList extends DomNode {
 
         const count = await LingerieGirlsContract.balanceOf(owner);
 
-        SkyUtil.repeat(count.toNumber(), async (index) => {
+        await SkyUtil.repeatAsync(count.toNumber(), async (index) => {
             const id = (await LingerieGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
 
             if (this.deleted !== true) {
@@ -65,7 +79,7 @@ export default class AnyHousekeeperList extends DomNode {
 
         const count = await SushiGirlsContract.balanceOf(owner);
 
-        SkyUtil.repeat(count.toNumber(), async (index) => {
+        await SkyUtil.repeatAsync(count.toNumber(), async (index) => {
             const id = (await SushiGirlsContract.getTokenOfOwnerByIndex(owner, index)).toNumber();
 
             if (this.deleted !== true) {
@@ -88,5 +102,10 @@ export default class AnyHousekeeperList extends DomNode {
     public deselectHousekeeper() {
         this.selectedHousekeeper?.deselect();
         this.selectedHousekeeper = undefined;
+    }
+
+    public delete(): void {
+        Wallet.off("connect", this.connectHandler);
+        super.delete();
     }
 }

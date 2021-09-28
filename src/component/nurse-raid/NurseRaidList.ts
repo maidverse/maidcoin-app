@@ -1,6 +1,8 @@
 import { DomNode, el } from "@hanul/skynode";
 import SkyUtil from "skyutil";
+import NurseRaidContract from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
+import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
 import Loading from "../Loading";
 import NurseRaid from "./NurseRaid";
@@ -46,6 +48,14 @@ export default class NurseRaidList extends DomNode {
                         new NurseRaid(raidId, currentBlockNumber).appendTo(this.raidContainer);
                     }, index * 50);
                     index += 1;
+                } else {
+                    const owner = await Wallet.loadAddress();
+                    if (owner !== undefined) {
+                        const challenger = await NurseRaidContract.getChallenger(raidId, owner);
+                        if (challenger.enterBlock > 0) {
+                            new NurseRaid(raidId, currentBlockNumber).appendTo(this.raidContainer);
+                        }
+                    }
                 }
             }
         });

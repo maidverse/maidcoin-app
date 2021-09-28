@@ -4,14 +4,27 @@ import CloneNursesContract from "../../contracts/CloneNursesContract";
 import Wallet from "../../ethereum/Wallet";
 import ChargeMultipleNursePopup from "../charge-multiple-nurse-popup/ChargeMultipleNursePopup";
 import DeleteMultipleNursePopup from "../delete-multiple-nurse-popup/DeleteMultipleNursePopup";
+import Loading from "../Loading";
 import NursePool from "./NursePool";
 
 export default class NursePoolList extends DomNode {
 
+    private loading: Loading | undefined;
+
     constructor() {
         super(".nurse-pool-list");
+        this.append(
+            this.loading = new Loading(),
+        );
         this.loadNursePools();
+        Wallet.on("connect", this.connectHandler);
     }
+
+    private connectHandler = () => {
+        if (this.loading === undefined) {
+            this.loadNursePools();
+        }
+    };
 
     private async loadNursePools() {
 
@@ -63,5 +76,15 @@ export default class NursePoolList extends DomNode {
                 }
             }
         }
+
+        if (this.deleted !== true) {
+            this.loading?.delete();
+            this.loading = undefined;
+        }
+    }
+
+    public delete(): void {
+        Wallet.off("connect", this.connectHandler);
+        super.delete();
     }
 }
