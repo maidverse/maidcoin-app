@@ -1,16 +1,21 @@
 import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
+import SkyStore from "skystore";
 import CommonUtil from "../CommonUtil";
+import CloneNursesContract from "../contracts/CloneNursesContract";
 import LPTokenContract from "../contracts/LPTokenContract";
 import MaidCoinContract from "../contracts/MaidCoinContract";
+import TheMasterContract from "../contracts/TheMasterContract";
 import Wallet from "../ethereum/Wallet";
-import ViewUtil from "../view/ViewUtil";
+import FirstEarnPopup from "./first-earn-popup/FirstEarnPopup";
 
 export default class UserInfo extends DomNode {
 
     private ownerPanel: DomNode;
     private maidCoinPanel: DomNode;
     private connectButton: DomNode;
+
+    private store: SkyStore = new SkyStore("UserInfo");
 
     constructor() {
         super(".user-info");
@@ -43,6 +48,13 @@ export default class UserInfo extends DomNode {
         const address = await Wallet.loadAddress();
         if (from === address || to === address) {
             this.loadBalances();
+        }
+        if ((
+            from === TheMasterContract.address ||
+            from === CloneNursesContract.address
+        ) && to === address && this.store.get("first-earn") !== true) {
+            new FirstEarnPopup(amount);
+            this.store.set("first-earn", true);
         }
     };
 

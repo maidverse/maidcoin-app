@@ -94,7 +94,9 @@ export default class Dashboard implements View {
                 const currentBlock = await NetworkProvider.getBlockNumber();
                 if (startBlockTimer.deleted !== true) {
                     const leftBlocks = Config.startBlock - currentBlock;
-                    startBlockTimer.empty().appendText(`Pool Start ${leftBlocks} ${leftBlocks === 1 ? "Block" : "Blocks"} Left`);
+                    if (leftBlocks > 0) {
+                        startBlockTimer.empty().appendText(`Pool Start ${leftBlocks} ${leftBlocks === 1 ? "Block" : "Blocks"} Left`);
+                    }
                 }
             };
             refresh();
