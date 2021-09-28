@@ -113,6 +113,37 @@
             animation: nurse-raid-element-fade-in 0.5s ease-out;
         }
 
+        >.reward {
+            position        : absolute;
+            left            : 8px;
+            bottom          : 6px;
+            z-index         : 1;
+            font-family     : "refrigerator-deluxe";
+            font-size       : 16px;
+            display         : flex;
+            width           : 154.5px;
+            height          : 28px;
+            background-image: url(/images/component/nurse-raid/reward-background.png);
+            background-size : auto 100%;
+
+            >h3 {
+                flex-grow    : 1;
+                line-height  : 28px;
+                text-align   : right;
+                padding-right: 10px;
+            }
+
+            >img {
+                margin-top: -5px;
+            }
+
+            >.count {
+                line-height  : 28px;
+                padding-left : 10px;
+                padding-right: 10px;
+            }
+        }
+
         >.duration {
             position   : absolute;
             right      : 20px;
@@ -144,36 +175,29 @@
 
     >footer {
         position     : absolute;
-        right        : 0;
+        left         : 0;
         bottom       : 5px;
+        width        : 100%;
         height       : 28px;
         padding-right: 3px;
-        display      : flex;
+        .float-wrapper();
 
-        >.reward {
-            font-family     : "refrigerator-deluxe";
-            font-size       : 16px;
-            display         : flex;
-            width           : 154.5px;
-            height          : 28px;
-            background-image: url(/images/component/nurse-raid/reward-background.png);
-            background-size : auto 100%;
+        >.apr {
+            float       : left;
+            padding-top : 2px;
+            padding-left: 26px;
+            font-size   : 20px;
+            font-family : "refrigerator-deluxe";
+            line-height : 26px;
+            text-shadow : #000000 0 0 5px;
 
-            >h3 {
-                flex-grow    : 1;
-                line-height  : 28px;
-                text-align   : right;
-                padding-right: 10px;
-            }
-
-            >.count {
-                line-height  : 28px;
-                padding-left : 10px;
-                padding-right: 10px;
+            >span {
+                color: #ffde00;
             }
         }
 
         >.start-button {
+            float           : right;
             width           : 130px;
             height          : 33.5px;
             background-image: url(/images/component/nurse-raid/start-button.png);

@@ -8,7 +8,8 @@
         "lifetime": 80640,
         "width": 180,
         "left": 0,
-        "top": 0
+        "top": 0,
+        "averagePrice": 11.5
     },
     "1": {
         "name": "N2",
@@ -19,7 +20,8 @@
         "lifetime": 120960,
         "width": 140,
         "left": 0,
-        "top": -10
+        "top": -10,
+        "averagePrice": 22.9
     },
     "2": {
         "name": "N3",
@@ -30,7 +32,8 @@
         "lifetime": 120960,
         "width": 330,
         "left": -40,
-        "top": 0
+        "top": 0,
+        "averagePrice": 26.7
     },
     "3": {
         "name": "N4",
@@ -41,7 +44,8 @@
         "lifetime": 161280,
         "width": 140,
         "left": 0,
-        "top": 0
+        "top": 0,
+        "averagePrice": 48.0
     },
     "4": {
         "name": "N5",
@@ -52,7 +56,8 @@
         "lifetime": 161280,
         "width": 210,
         "left": 0,
-        "top": 0
+        "top": 0,
+        "averagePrice": 54.0
     },
     "5": {
         "name": "N6",
@@ -63,7 +68,8 @@
         "lifetime": 201600,
         "width": 190,
         "left": 0,
-        "top": 0
+        "top": 0,
+        "averagePrice": 75.0
     },
     "6": {
         "name": "N7",
@@ -74,7 +80,8 @@
         "lifetime": 0,
         "width": 140,
         "left": 0,
-        "top": 0
+        "top": 0,
+        "averagePrice": 0
     },
     "7": {
         "name": "N8",
@@ -85,6 +92,7 @@
         "lifetime": 0,
         "width": 140,
         "left": 0,
-        "top": 0
+        "top": 0,
+        "averagePrice": 0
     }
 }

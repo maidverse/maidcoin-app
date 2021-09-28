@@ -59,6 +59,7 @@ class StaticDataManager {
         width: number,
         left: number,
         top: number,
+        averagePrice: number,
     } {
         const raw = (nursetypes as any)[type];
         return {
@@ -70,6 +71,7 @@ class StaticDataManager {
             width: raw.width,
             left: raw.left,
             top: raw.top,
+            averagePrice: raw.averagePrice,
         };
     }
 

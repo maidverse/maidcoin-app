@@ -84,6 +84,26 @@
             animation          : nurse-factory-element-fade-in 0.5s ease-out;
         }
 
+        >.power {
+            position        : absolute;
+            left            : 0;
+            top             : 25px;
+            z-index         : 1;
+            width           : 65px;
+            height          : 20.5px;
+            background-image: url(/images/component/nurse-factory/amount-background.png);
+            background-size : auto 100%;
+            font-family     : "refrigerator-deluxe";
+            color           : #ef4495;
+            text-align      : center;
+            font-size       : 16px;
+            line-height     : 20.5px;
+
+            >span {
+                margin-left: 10px;
+            }
+        }
+
         >.image {
             position           : absolute;
             left               : 30px;
@@ -121,22 +141,17 @@
             }
         }
 
-        >.power {
-            position        : absolute;
-            right           : 0;
-            top             : 0;
-            width           : 65px;
-            height          : 20.5px;
-            background-image: url(/images/component/nurse-factory/amount-background.png);
-            background-size : auto 100%;
-            font-family     : "refrigerator-deluxe";
-            color           : #ef4495;
-            text-align      : center;
-            font-size       : 16px;
-            line-height     : 20.5px;
+        >.destroy-return {
+            position   : absolute;
+            right      : 5px;
+            top        : 0;
+            font-size  : 16px;
+            font-family: "refrigerator-deluxe";
+            line-height: 26px;
+            text-shadow: #000000 0 0 5px;
 
             >span {
-                margin-left: 10px;
+                color: #7a8dff;
             }
         }
     }
@@ -150,7 +165,7 @@
         padding-right: 3px;
         .float-wrapper();
 
-        >.destroy-return {
+        >.apr {
             float       : left;
             padding-top : 2px;
             padding-left: 26px;
@@ -160,7 +175,7 @@
             text-shadow : #000000 0 0 5px;
 
             >span {
-                color: #7a8dff;
+                color: #ffde00;
             }
         }
 

@@ -25,6 +25,7 @@ declare class StaticDataManager {
         width: number;
         left: number;
         top: number;
+        averagePrice: number;
     };
     get raidCount(): number;
     getRaid(id: number): {

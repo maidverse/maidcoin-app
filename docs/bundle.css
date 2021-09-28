@@ -1707,6 +1707,33 @@ body {
   bottom: 34px;
   animation: nurse-raid-element-fade-in 0.5s ease-out;
 }
+.nurse-raid > .content > .reward {
+  position: absolute;
+  left: 8px;
+  bottom: 6px;
+  z-index: 1;
+  font-family: "refrigerator-deluxe";
+  font-size: 16px;
+  display: flex;
+  width: 154.5px;
+  height: 28px;
+  background-image: url(/images/component/nurse-raid/reward-background.png);
+  background-size: auto 100%;
+}
+.nurse-raid > .content > .reward > h3 {
+  flex-grow: 1;
+  line-height: 28px;
+  text-align: right;
+  padding-right: 10px;
+}
+.nurse-raid > .content > .reward > img {
+  margin-top: -5px;
+}
+.nurse-raid > .content > .reward > .count {
+  line-height: 28px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .nurse-raid > .content > .duration {
   position: absolute;
   right: 20px;
@@ -1733,33 +1760,34 @@ body {
 }
 .nurse-raid > footer {
   position: absolute;
-  right: 0;
+  left: 0;
   bottom: 5px;
+  width: 100%;
   height: 28px;
   padding-right: 3px;
-  display: flex;
 }
-.nurse-raid > footer > .reward {
+.nurse-raid > footer:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.nurse-raid > footer > .apr {
+  float: left;
+  padding-top: 2px;
+  padding-left: 26px;
+  font-size: 20px;
   font-family: "refrigerator-deluxe";
-  font-size: 16px;
-  display: flex;
-  width: 154.5px;
-  height: 28px;
-  background-image: url(/images/component/nurse-raid/reward-background.png);
-  background-size: auto 100%;
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
 }
-.nurse-raid > footer > .reward > h3 {
-  flex-grow: 1;
-  line-height: 28px;
-  text-align: right;
-  padding-right: 10px;
-}
-.nurse-raid > footer > .reward > .count {
-  line-height: 28px;
-  padding-left: 10px;
-  padding-right: 10px;
+.nurse-raid > footer > .apr > span {
+  color: #ffde00;
 }
 .nurse-raid > footer > .start-button {
+  float: right;
   width: 130px;
   height: 33.5px;
   background-image: url(/images/component/nurse-raid/start-button.png);
@@ -1885,6 +1913,24 @@ body {
   font-size: 24px;
   animation: nurse-factory-element-fade-in 0.5s ease-out;
 }
+.nurse-factory > .content > .power {
+  position: absolute;
+  left: 0;
+  top: 25px;
+  z-index: 1;
+  width: 65px;
+  height: 20.5px;
+  background-image: url(/images/component/nurse-factory/amount-background.png);
+  background-size: auto 100%;
+  font-family: "refrigerator-deluxe";
+  color: #ef4495;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20.5px;
+}
+.nurse-factory > .content > .power > span {
+  margin-left: 10px;
+}
 .nurse-factory > .content > .image {
   position: absolute;
   left: 30px;
@@ -1918,22 +1964,17 @@ body {
 .nurse-factory > .content > .part-count > .balance {
   color: #d72e62;
 }
-.nurse-factory > .content > .power {
+.nurse-factory > .content > .destroy-return {
   position: absolute;
-  right: 0;
+  right: 5px;
   top: 0;
-  width: 65px;
-  height: 20.5px;
-  background-image: url(/images/component/nurse-factory/amount-background.png);
-  background-size: auto 100%;
-  font-family: "refrigerator-deluxe";
-  color: #ef4495;
-  text-align: center;
   font-size: 16px;
-  line-height: 20.5px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
 }
-.nurse-factory > .content > .power > span {
-  margin-left: 10px;
+.nurse-factory > .content > .destroy-return > span {
+  color: #7a8dff;
 }
 .nurse-factory > footer {
   position: absolute;
@@ -1951,7 +1992,7 @@ body {
   clear: both;
   visibility: hidden;
 }
-.nurse-factory > footer > .destroy-return {
+.nurse-factory > footer > .apr {
   float: left;
   padding-top: 2px;
   padding-left: 26px;
@@ -1960,8 +2001,8 @@ body {
   line-height: 26px;
   text-shadow: #000000 0 0 5px;
 }
-.nurse-factory > footer > .destroy-return > span {
-  color: #7a8dff;
+.nurse-factory > footer > .apr > span {
+  color: #ffde00;
 }
 .nurse-factory > footer > .create-button {
   float: right;

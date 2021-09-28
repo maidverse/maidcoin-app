@@ -83,10 +83,10 @@ export default class MaidCorp extends DomNode {
                 }),
             );
 
-            const apr = await Calculator.apr(1);
+            const apr = await Calculator.poolAPR(1);
             this.footer.empty().append(
                 el(".property.lp-amount", "LP Deposited By Me: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(lpAmount)))),
-                el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(String(apr))}%`)),
+                el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
             );
         }
     }

@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
+import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import NursePartContract from "../../contracts/NursePartContract";
 import Wallet from "../../ethereum/Wallet";
@@ -43,6 +44,10 @@ export default class NurseFactory extends DomNode {
 
         this.content.empty().append(
             el(".name", nurseType.name),
+            el(".power",
+                el("img", { src: "/images/component/nurse-factory/power-icon.png", height: "13.5" }),
+                el("span", String(nurseType.power)),
+            ),
             el(".image", {
                 style: {
                     backgroundImage: `url(https://storage.googleapis.com/maidcoin/Nurse/Illust/${nurseType.name}.png)`,
@@ -52,14 +57,12 @@ export default class NurseFactory extends DomNode {
             }),
             el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${nurseType.name}.png`, height: "60" }),
             balance === undefined ? undefined : el(".part-count", el("span.balance", balance.toString()), ` / ${nurseType.partCount}`),
-            el(".power",
-                el("img", { src: "/images/component/nurse-factory/power-icon.png", height: "13.5" }),
-                el("span", String(nurseType.power)),
-            ),
+            el(".destroy-return", "Destroy Return: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(nurseType.destroyReturn))), " $MAID"),
         );
 
+        const apr = await Calculator.nurseAPR(this.nurseType);
         this.footer.empty().append(
-            el(".destroy-return", "Destroy Return: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(nurseType.destroyReturn))), " $MAID"),
+            el(".apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
             balance === undefined ? undefined : el("a.create-button", "Create", {
                 click: () => {
                     if (balance.toNumber() < nurseType.partCount) {

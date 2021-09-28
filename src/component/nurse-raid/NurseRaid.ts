@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, constants, utils } from "ethers";
+import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import Config from "../../Config";
 import NurseRaidContract, { ChallengerInfo } from "../../contracts/NurseRaidContract";
@@ -86,6 +87,11 @@ export default class NurseRaid extends DomNode {
             el(".character",
                 el("img", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${nurseType.name}Idle.png`, height: "85" }),
             ),
+            el(".reward",
+                el("h3", "Rewards"),
+                el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${nurseType.name}.png`, height: "36" }),
+                el(".count", `x 1 ~ ${raid.maxRewardCount}`),
+            ),
             duration = el(".duration",
                 el("span.title", "Duration "),
                 el("span", CommonUtil.displayBlockDuration(raid.duration)),
@@ -137,12 +143,9 @@ export default class NurseRaid extends DomNode {
                 }
             }
 
+            const apr = await Calculator.nurseAPR(raid.nursePart);
             this.footer.empty().append(
-                el(".reward",
-                    el("h3", "Rewards"),
-                    el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${nurseType.name}.png`, height: "28" }),
-                    el(".count", `x 1 ~ ${raid.maxRewardCount}`),
-                ),
+                el(".apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
                 challenger.enterBlock === 0 ? el("a.start-button",
                     utils.formatEther(raid.entranceFee),
                     el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
