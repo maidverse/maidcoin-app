@@ -34,11 +34,9 @@ class Calculator {
         const blocksPerYear = 365 * 24 * 60 * 60 / Config.blockTimeSecond;
 
         const totalPower = await TheMasterContract.getPoolLPAmount(2);
+        const totalRewardPerYear = utils.parseEther(String(tokenPerBlock * blocksPerYear));
 
-        const result = await sushiData.exchange.pair({ pair_address: "0xc7175038323562cb68e4bbdd379e9fe65134937f" });
-        const totalRewardPricePerYear = utils.parseEther(String(result.token0.derivedETH)).mul(Math.round(tokenPerBlock * blocksPerYear));
-
-        return totalRewardPricePerYear.mul(100).mul(nurseType.power).div(totalPower).div(utils.parseEther(String(nurseType.averagePrice)));
+        return totalRewardPerYear.mul(100).mul(nurseType.power).div(totalPower).div(utils.parseEther(String(nurseType.averagePrice)));
     }
 }
 
