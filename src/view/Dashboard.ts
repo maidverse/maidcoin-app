@@ -15,7 +15,6 @@ export default class Dashboard implements View {
 
     private container: DomNode;
     private welcomeContainer: DomNode;
-    private startBlockInterval: number | undefined;
 
     private store: SkyStore = new SkyStore("Dashboard");
 
@@ -55,19 +54,13 @@ export default class Dashboard implements View {
 
     private async load() {
 
-        if (this.startBlockInterval !== undefined) {
-            clearInterval(this.startBlockInterval);
-            this.startBlockInterval = undefined;
-        }
-
         const connected = await Wallet.connected();
-        if (this.welcomeContainer.deleted !== true/* && this.store.get("close-welcome") !== true*/) {
+        if (this.welcomeContainer.deleted !== true && this.store.get("close-welcome") !== true) {
 
-            let startBlockTimer: DomNode;
             this.welcomeContainer.empty().append(
                 el(".welcome",
                     el("img", { src: "/images/view/dashboard/welcome.png", height: "142.5" }),
-                    /*el("a.close-welcome-button",
+                    el("a.close-welcome-button",
                         el("img", { src: "/images/view/dashboard/close-welcome-button.png", height: "11.25" }),
                         {
                             click: () => {
@@ -75,32 +68,16 @@ export default class Dashboard implements View {
                                 this.welcomeContainer.empty();
                             },
                         },
-                    ),*/
+                    ),
                     el(".info",
                         el("p", "Welcome to MaidCoin"),
                         el("a.document-button", "Read Documnet", { href: "https://shillbo.medium.com/how-to-farm-maidcoin-play-the-game-2ee832a8e91c", target: "_blank" }),
-                        startBlockTimer = el(".start-block-timer"),
                         connected === true ? undefined : el("a.connect-wallet-button", "Connect Wallet", {
                             click: () => Wallet.connect(),
                         }),
                     ),
                 ),
             );
-
-            if (this.startBlockInterval !== undefined) {
-                clearInterval(this.startBlockInterval);
-            }
-            const refresh = async () => {
-                const currentBlock = await NetworkProvider.getBlockNumber();
-                if (startBlockTimer.deleted !== true) {
-                    const leftBlocks = Config.startBlock - currentBlock;
-                    if (leftBlocks > 0) {
-                        startBlockTimer.empty().appendText(`Pool Start ${leftBlocks} ${leftBlocks === 1 ? "Block" : "Blocks"} Left`);
-                    }
-                }
-            };
-            refresh();
-            this.startBlockInterval = setInterval(() => refresh(), Config.blockTimeSecond * 1000) as any;
         }
     }
 
@@ -115,9 +92,6 @@ export default class Dashboard implements View {
     }
 
     public close(): void {
-        if (this.startBlockInterval !== undefined) {
-            clearInterval(this.startBlockInterval);
-        }
         Wallet.off("connect", this.connectHandler);
         this.container.delete();
     }
