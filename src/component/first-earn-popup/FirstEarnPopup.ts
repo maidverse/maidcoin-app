@@ -1,6 +1,7 @@
 import { BigNumber } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
+import CommonUtil from "../../CommonUtil";
 
 export default class FirstEarnPopup extends Popup {
 
@@ -12,7 +13,7 @@ export default class FirstEarnPopup extends Popup {
             this.content = el(".first-earn-popup",
                 el("h1", "First Earn $MAID !"),
                 el(".amount",
-                    el("span", `+ ${utils.formatEther(amount)}`),
+                    el("span", `+ ${CommonUtil.numberWithCommas(utils.formatEther(amount))}`),
                     el("img.maidcoin", { src: "/images/component/first-earn-popup/maidcoin.png", height: "32" }),
                 ),
                 el("a.close-button", el("img", { src: "/images/component/first-earn-popup/close-button.png", height: "20" }), {
