@@ -58,6 +58,12 @@ export default class MaidCorp extends DomNode {
                 el("a.claim-button",
                     el("img.maidcoin", { src: "/images/component/maid-corp/maidcoin.png", height: "29" }),
                     el("span.reward", utils.formatEther(reward)),
+                    {
+                        click: async (event: MouseEvent) => {
+                            event.stopPropagation();
+                            await TheMasterContract.deposit(1, 0);
+                        },
+                    },
                 ),
                 el("a.withdraw-button", "Withdraw", {
                     click: () => new TokenPrompt(

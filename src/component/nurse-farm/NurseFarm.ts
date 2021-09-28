@@ -99,6 +99,12 @@ export default class NurseFarm extends DomNode {
                     el("a.claim-button",
                         el("img.maidcoin", { src: "/images/component/maid-corp/maidcoin.png", height: "29" }),
                         el("span.reward", utils.formatEther(reward)),
+                        {
+                            click: async (event: MouseEvent) => {
+                                event.stopPropagation();
+                                await TheMasterContract.deposit(3, 0);
+                            },
+                        },
                     ),
                     el("a.desupport-button", "Desupport", {
                         click: async () => {
