@@ -51,11 +51,14 @@ export default class NurseFarm extends DomNode {
         if (owner !== undefined) {
 
             const supportingAmount = await TheMasterContract.getSupportingAmount(owner);
+            const totalLPAmount = await TheMasterContract.getPoolLPAmount(3);
+
             if (supportingAmount.eq(0) === true) {
                 this.addClass("empty");
 
                 this.content.empty().append(
                     el(".name", "Clone Nurse"),
+                    el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(totalLPAmount)))),
                     el("a.add-button", el("img", { src: "/images/component/nurse-farm/add-button.png", height: "132.5" }), {
                         click: () => new Alert("Support Nurse", "Supporting Nurse feature is coming soon.", "Confirm"),
                         //click: () => new SelectNursePopup(),
@@ -92,6 +95,7 @@ export default class NurseFarm extends DomNode {
                         },
                     }),
 
+                    el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(totalLPAmount)))),
                     el("a.claim-button",
                         el("img.maidcoin", { src: "/images/component/maid-corp/maidcoin.png", height: "29" }),
                         el("span.reward", utils.formatEther(reward)),

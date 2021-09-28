@@ -49,10 +49,12 @@ export default class MaidCorp extends DomNode {
         if (owner !== undefined) {
 
             const lpAmount = await TheMasterContract.getUserLPAmount(1, owner);
+            const totalLPAmount = await TheMasterContract.getPoolLPAmount(1);
             const reward = await TheMasterContract.getPendingReward(1, owner);
             const lpBalance = await LPTokenContract.balanceOf(owner);
 
             this.content.empty().append(
+                el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(totalLPAmount)))),
                 el("a.claim-button",
                     el("img.maidcoin", { src: "/images/component/maid-corp/maidcoin.png", height: "29" }),
                     el("span.reward", utils.formatEther(reward)),

@@ -1918,6 +1918,23 @@ body {
 .nurse-factory > .content > .part-count > .balance {
   color: #d72e62;
 }
+.nurse-factory > .content > .power {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 65px;
+  height: 20.5px;
+  background-image: url(/images/component/nurse-factory/amount-background.png);
+  background-size: auto 100%;
+  font-family: "refrigerator-deluxe";
+  color: #ef4495;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20.5px;
+}
+.nurse-factory > .content > .power > span {
+  margin-left: 10px;
+}
 .nurse-factory > footer {
   position: absolute;
   left: 0;
@@ -3236,10 +3253,22 @@ body {
   background-size: auto 100%;
   background-position: center center;
 }
+.maid-corp > .content > .total-lp-amount {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  font-size: 16px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
+}
+.maid-corp > .content > .total-lp-amount > span {
+  color: #7a8dff;
+}
 .maid-corp > .content > .claim-button {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 25px;
   z-index: 2;
   width: 161px;
   height: 60px;
@@ -3380,6 +3409,18 @@ body {
   font-weight: bold;
   font-size: 24px;
 }
+.nurse-farm.empty > .content > .total-lp-amount {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  font-size: 16px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
+}
+.nurse-farm.empty > .content > .total-lp-amount > span {
+  color: #7a8dff;
+}
 .nurse-farm.empty > .content > .add-button {
   position: absolute;
   left: calc(50% - 66.75px);
@@ -3426,10 +3467,22 @@ body {
   background-repeat: no-repeat;
   animation: nurse-factory-element-fade-in 0.5s ease-out;
 }
+.nurse-farm:not(.empty) > .content > .total-lp-amount {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  font-size: 16px;
+  font-family: "refrigerator-deluxe";
+  line-height: 26px;
+  text-shadow: #000000 0 0 5px;
+}
+.nurse-farm:not(.empty) > .content > .total-lp-amount > span {
+  color: #7a8dff;
+}
 .nurse-farm:not(.empty) > .content > .claim-button {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 25px;
   z-index: 2;
   width: 161px;
   height: 60px;

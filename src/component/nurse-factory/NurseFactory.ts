@@ -52,6 +52,10 @@ export default class NurseFactory extends DomNode {
             }),
             el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${nurseType.name}.png`, height: "60" }),
             balance === undefined ? undefined : el(".part-count", el("span.balance", balance.toString()), ` / ${nurseType.partCount}`),
+            el(".power",
+                el("img", { src: "/images/component/nurse-factory/power-icon.png", height: "13.5" }),
+                el("span", String(nurseType.power)),
+            ),
         );
 
         this.footer.empty().append(
