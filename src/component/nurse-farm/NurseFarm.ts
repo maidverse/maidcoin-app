@@ -102,7 +102,7 @@ export default class NurseFarm extends DomNode {
                         {
                             click: async (event: MouseEvent) => {
                                 event.stopPropagation();
-                                await TheMasterContract.deposit(3, 0);
+                                await TheMasterContract.support(3, 0, supportingTo);
                             },
                         },
                     ),
