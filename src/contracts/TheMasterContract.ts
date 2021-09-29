@@ -1,9 +1,9 @@
 import { BigNumber, BigNumberish } from "ethers";
 import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
-import TheMasterArtifact from "./maidcoin/artifacts/contracts/TheMaster.sol/TheMaster.json";
 import Contract from "./Contract";
 import LPTokenContract from "./LPTokenContract";
+import TheMasterArtifact from "./maidcoin/artifacts/contracts/TheMaster.sol/TheMaster.json";
 import { TheMaster } from "./maidcoin/typechain";
 
 class TheMasterContract extends Contract<TheMaster> {
@@ -62,16 +62,21 @@ class TheMasterContract extends Contract<TheMaster> {
                     deadline,
                 );
 
-                await contract.supportWithPermit(pid, lpTokenAmount, supportTo, deadline, signed.v, signed.r, signed.s);
+                const estimation = await contract.estimateGas.supportWithPermit(pid, lpTokenAmount, supportTo, deadline, signed.v, signed.r, signed.s);
+                await contract.supportWithPermit(pid, lpTokenAmount, supportTo, deadline, signed.v, signed.r, signed.s, { gasLimit: estimation.mul(11).div(10) });
             } else {
-                await contract.support(pid, lpTokenAmount, supportTo);
+                const estimation = await contract.estimateGas.support(pid, lpTokenAmount, supportTo);
+                await contract.support(pid, lpTokenAmount, supportTo, { gasLimit: estimation.mul(11).div(10) });
             }
         }
     }
 
     public async desupport(pid: BigNumberish, lpTokenAmount: BigNumberish) {
         const contract = await this.connectAndGetWalletContract();
-        await contract?.desupport(pid, lpTokenAmount);
+        if (contract !== undefined) {
+            const estimation = await contract.estimateGas.desupport(pid, lpTokenAmount);
+            await contract.desupport(pid, lpTokenAmount, { gasLimit: estimation.mul(11).div(10) });
+        }
     }
 
     public async deposit(pid: BigNumberish, lpTokenAmount: BigNumberish) {
@@ -95,9 +100,11 @@ class TheMasterContract extends Contract<TheMaster> {
                     deadline,
                 );
 
-                await contract.depositWithPermit(pid, lpTokenAmount, owner, deadline, signed.v, signed.r, signed.s);
+                const estimation = await contract.estimateGas.depositWithPermit(pid, lpTokenAmount, owner, deadline, signed.v, signed.r, signed.s);
+                await contract.depositWithPermit(pid, lpTokenAmount, owner, deadline, signed.v, signed.r, signed.s, { gasLimit: estimation.mul(11).div(10) });
             } else {
-                await contract.deposit(pid, lpTokenAmount, owner);
+                const estimation = await contract.estimateGas.deposit(pid, lpTokenAmount, owner);
+                await contract.deposit(pid, lpTokenAmount, owner, { gasLimit: estimation.mul(11).div(10) });
             }
         }
     }
@@ -106,7 +113,8 @@ class TheMasterContract extends Contract<TheMaster> {
         const contract = await this.connectAndGetWalletContract();
         const owner = await Wallet.loadAddress();
         if (contract !== undefined && owner !== undefined) {
-            await contract.withdraw(pid, lpTokenAmount, owner);
+            const estimation = await contract.estimateGas.withdraw(pid, lpTokenAmount, owner);
+            await contract.withdraw(pid, lpTokenAmount, owner, { gasLimit: estimation.mul(11).div(10) });
         }
     }
 }
