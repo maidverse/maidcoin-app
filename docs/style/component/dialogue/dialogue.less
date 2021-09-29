@@ -1,3 +1,13 @@
+@keyframes dialogue-show {
+    0% {
+        transform: scale(0.9, 0.9);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
 .dialogue-background {
     display       : flex;
     flex-direction: column;
@@ -10,6 +20,7 @@
     height          : 230.5px;
     background-image: url(/images/component/dialogue/background.png);
     background-size : auto 100%;
+    animation       : dialogue-show 0.2s ease-out;
 
     >h1 {
         padding-left: 6px;

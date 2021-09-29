@@ -1,3 +1,13 @@
+@keyframes route-nurse-popup-show {
+    0% {
+        transform: scale(0.9, 0.9);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
 .route-nurse-popup {
     position        : relative;
     width           : 351px;
@@ -5,6 +15,7 @@
     height          : 599px;
     background-image: url(/images/component/route-nurse-popup/background.png);
     background-size : auto 100%;
+    animation       : route-nurse-popup-show 0.2s ease-out;
 
     >h1 {
         padding-left: 6px;

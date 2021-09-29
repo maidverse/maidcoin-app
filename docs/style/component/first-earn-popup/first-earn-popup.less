@@ -1,3 +1,13 @@
+@keyframes first-earn-popup-show {
+    0% {
+        transform: scale(0.9, 0.9);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
 .first-earn-popup {
     position        : relative;
     width           : 346px;
@@ -5,6 +15,7 @@
     height          : 205px;
     background-image: url(/images/component/first-earn-popup/background.png);
     background-size : auto 100%;
+    animation       : first-earn-popup-show 0.2s ease-out;
 
     >h1 {
         text-align : center;

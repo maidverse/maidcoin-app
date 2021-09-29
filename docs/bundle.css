@@ -1001,6 +1001,14 @@ body {
   justify-content: center;
   text-align: center;
 }
+@keyframes popup-background-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .popup-background {
   position: fixed;
   left: 0;
@@ -1011,6 +1019,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   overflow-y: scroll;
   padding: 70px 0;
+  animation: popup-background-fade-in 0.2s ease-out;
 }
 @keyframes noti-show {
   0% {
@@ -3035,6 +3044,14 @@ body {
   padding-left: 28px;
   text-decoration: none;
 }
+@keyframes dialogue-show {
+  0% {
+    transform: scale(0.9, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 .dialogue-background {
   display: flex;
   flex-direction: column;
@@ -3046,6 +3063,7 @@ body {
   height: 230.5px;
   background-image: url(/images/component/dialogue/background.png);
   background-size: auto 100%;
+  animation: dialogue-show 0.2s ease-out;
 }
 .dialogue > h1 {
   padding-left: 6px;
@@ -3156,6 +3174,14 @@ body {
   font-weight: bold;
   padding-top: 6px;
 }
+@keyframes select-maid-popup-show {
+  0% {
+    transform: scale(0.9, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 .select-maid-popup {
   position: relative;
   width: 365px;
@@ -3163,6 +3189,7 @@ body {
   height: 423px;
   background-image: url(/images/component/select-maid-popup/background.png);
   background-size: auto 100%;
+  animation: select-maid-popup-show 0.2s ease-out;
 }
 .select-maid-popup > h1 {
   padding-left: 6px;
@@ -3704,6 +3731,14 @@ body {
 .nurse-farm > footer > .property.apr {
   float: right;
 }
+@keyframes select-nurse-popup-show {
+  0% {
+    transform: scale(0.9, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 .select-nurse-popup {
   position: relative;
   width: 352px;
@@ -3711,6 +3746,7 @@ body {
   height: 601px;
   background-image: url(/images/component/select-nurse-popup/background.png);
   background-size: auto 100%;
+  animation: select-nurse-popup-show 0.2s ease-out;
 }
 .select-nurse-popup > h1 {
   padding-left: 6px;
@@ -3839,6 +3875,14 @@ body {
   padding-top: 8px;
   padding-left: 1px;
 }
+@keyframes route-nurse-popup-show {
+  0% {
+    transform: scale(0.9, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 .route-nurse-popup {
   position: relative;
   width: 351px;
@@ -3846,6 +3890,7 @@ body {
   height: 599px;
   background-image: url(/images/component/route-nurse-popup/background.png);
   background-size: auto 100%;
+  animation: route-nurse-popup-show 0.2s ease-out;
 }
 .route-nurse-popup > h1 {
   padding-left: 6px;
@@ -3990,6 +4035,14 @@ body {
   padding-top: 8px;
   padding-left: 1px;
 }
+@keyframes charge-multiple-nurse-popup-show {
+  0% {
+    transform: scale(0.9, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 .charge-multiple-nurse-popup {
   position: relative;
   width: 352px;
@@ -3997,6 +4050,7 @@ body {
   height: 601px;
   background-image: url(/images/component/charge-multiple-nurse-popup/background.png);
   background-size: auto 100%;
+  animation: charge-multiple-nurse-popup-show 0.2s ease-out;
 }
 .charge-multiple-nurse-popup > h1 {
   padding-left: 6px;
@@ -4148,6 +4202,14 @@ body {
   color: #261130;
   font-weight: bold;
 }
+@keyframes delete-multiple-nurse-popup-show {
+  0% {
+    transform: scale(0.9, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 .delete-multiple-nurse-popup {
   position: relative;
   width: 351px;
@@ -4155,6 +4217,7 @@ body {
   height: 599px;
   background-image: url(/images/component/delete-multiple-nurse-popup/background.png);
   background-size: auto 100%;
+  animation: delete-multiple-nurse-popup-show 0.2s ease-out;
 }
 .delete-multiple-nurse-popup > h1 {
   padding-left: 6px;
@@ -4282,6 +4345,14 @@ body {
 .delete-multiple-nurse-popup .nurse.selected {
   background-color: #dfdbd6;
 }
+@keyframes first-earn-popup-show {
+  0% {
+    transform: scale(0.9, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 .first-earn-popup {
   position: relative;
   width: 346px;
@@ -4289,6 +4360,7 @@ body {
   height: 205px;
   background-image: url(/images/component/first-earn-popup/background.png);
   background-size: auto 100%;
+  animation: first-earn-popup-show 0.2s ease-out;
 }
 .first-earn-popup > h1 {
   text-align: center;

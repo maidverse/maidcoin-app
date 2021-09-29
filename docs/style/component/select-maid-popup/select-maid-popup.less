@@ -1,3 +1,13 @@
+@keyframes select-maid-popup-show {
+    0% {
+        transform: scale(0.9, 0.9);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
 .select-maid-popup {
     position        : relative;
     width           : 365px;
@@ -5,6 +15,7 @@
     height          : 423px;
     background-image: url(/images/component/select-maid-popup/background.png);
     background-size : auto 100%;
+    animation       : select-maid-popup-show 0.2s ease-out;
 
     >h1 {
         padding-left: 6px;
