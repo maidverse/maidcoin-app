@@ -1,7 +1,10 @@
 import sushiData from "@sushiswap/sushi-data";
-import { utils } from "ethers";
+import { BigNumber, utils } from "ethers";
 import Config from "./Config";
+import MaidCafeContract from "./contracts/MaidCafeContract";
+import MaidCoinContract from "./contracts/MaidCoinContract";
 import TheMasterContract from "./contracts/TheMasterContract";
+import NetworkProvider from "./ethereum/NetworkProvider";
 import pools from "./json/pools.json";
 import StaticDataManager from "./StaticDataManager";
 
@@ -24,6 +27,17 @@ class Calculator {
         const totalStakingTokenInPool = totalStaked.mul(utils.parseEther(String(result.reserveETH))).div(utils.parseEther(String(result.totalSupply)));
 
         return totalStakingTokenInPool.eq(0) === true ? 0 : totalRewardPricePerYear.mul(100).div(totalStakingTokenInPool);
+    }
+
+    public async cafeAPR24() {
+        const currentBlock = await NetworkProvider.getBlockNumber();
+        const events = await MaidCoinContract.getTransferEvents(MaidCafeContract.address, currentBlock - 5760, currentBlock);
+        let total24 = BigNumber.from(0);
+        for (const event of events) {
+            total24 = total24.add(event.args[2]);
+        }
+        const maidcoinBalance = await MaidCoinContract.balanceOf(MaidCafeContract.address);
+        return total24.mul(35600).div(maidcoinBalance);
     }
 
     public async nurseAPR(_nurseType: number) {

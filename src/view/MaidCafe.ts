@@ -2,6 +2,7 @@ import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
+import Calculator from "../Calculator";
 import CommonUtil from "../CommonUtil";
 import StakeTab from "../component/maid-cafe/StakeTab";
 import UnstakeTab from "../component/maid-cafe/UnstakeTab";
@@ -52,7 +53,7 @@ export default class MaidCafe implements View {
                     }),
                 ),
                 el(".info",
-                    el(".apr", "APR: ", this.apr = el("span")),
+                    el(".apr", "Yesterday's APR: ", this.apr = el("span")),
                     el(".price", "1 $OMU = ", this.price = el("span"), " $MAID"),
                 ),
                 this.currentTab = new StakeTab(),
@@ -87,9 +88,9 @@ export default class MaidCafe implements View {
     private async loadAPR() {
         const omu = await MaidCafeContract.getTotalSupply();
         const maidcoin = await MaidCoinContract.balanceOf(MaidCafeContract.address);
-        //TODO: calculate apr
-        this.apr.empty().appendText("0%");
-        this.price.empty().appendText(utils.formatEther(maidcoin.mul(BigNumber.from("1000000000000000000")).div(omu)));
+        const apr = await Calculator.cafeAPR24();
+        this.apr.empty().appendText(`${CommonUtil.numberWithCommas(apr.toString())}%`);
+        this.price.empty().appendText(CommonUtil.numberWithCommas(utils.formatEther(maidcoin.mul(BigNumber.from("1000000000000000000")).div(omu)), 5));
     }
 
     private async loadBalances() {
