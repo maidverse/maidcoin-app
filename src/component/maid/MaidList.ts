@@ -26,7 +26,7 @@ export default class MaidList extends DomNode {
             this.append(el(".ready", "There is no Maid yet. Maid will be issued when Shoyu is released on SushiSwap."));
         }
 
-        SkyUtil.repeat(maidCount, async (index) => {
+        SkyUtil.repeat(maidCount, (index) => {
             setTimeout(() => {
                 if (this.deleted !== true) {
                     new MaidBook(maidCount - index - 1).appendTo(this.maidContainer);

@@ -14,8 +14,12 @@ export default class LingerieGirlList extends DomNode {
 
         const count = (await LingerieGirlsContract.getTotalSupply()).toNumber();
 
-        SkyUtil.repeat(count, async (id) => {
-            new LingerieGirl(id).appendTo(this);
+        SkyUtil.repeat(count, (id) => {
+            setTimeout(() => {
+                if (this.deleted !== true) {
+                    new LingerieGirl(id).appendTo(this);
+                }
+            }, id * 50);
         });
     }
 }

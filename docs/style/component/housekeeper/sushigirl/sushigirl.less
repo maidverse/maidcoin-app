@@ -1,3 +1,15 @@
+@keyframes sushigirl-show {
+    0% {
+        transform: scale(0.9, 0.9);
+        opacity  : 0;
+    }
+
+    100% {
+        transform: scale(1, 1);
+        opacity  : 1;
+    }
+}
+
 .sushigirl {
     position        : relative;
     width           : 76.5px;
@@ -5,6 +17,7 @@
     background-image: url(/images/component/housekeeper-list/slot.png);
     background-size : auto 100%;
     cursor          : pointer;
+    animation       : sushigirl-show 0.5s ease-out;
 
     >.image {
         position     : absolute;

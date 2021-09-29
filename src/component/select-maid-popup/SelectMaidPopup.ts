@@ -1,9 +1,11 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
+import MaidCoinContract from "../../contracts/MaidCoinContract";
 import NurseRaidContract from "../../contracts/NurseRaidContract";
 import Wallet from "../../ethereum/Wallet";
 import MaidsContractSelector from "../../MaidsContractSelector";
 import StaticDataManager from "../../StaticDataManager";
+import Alert from "../dialogue/Alert";
 import AnyHousekeeperList from "../housekeeper/AnyHousekeeperList";
 import MaidList from "./MaidList";
 
@@ -73,13 +75,18 @@ export default class SelectMaidPopup extends Popup {
                     "Start",
                     {
                         click: async () => {
-                            let maidsAddress: undefined | string;
-                            const maidsType = this.selectedSupporter?.type;
-                            if (maidsType !== undefined) {
-                                maidsAddress = MaidsContractSelector.typeToAddress(maidsType);
+                            const balance = await MaidCoinContract.balanceOf(owner);
+                            if (balance.lt(raid.entranceFee)) {
+                                new Alert("Error", "Not enough $MAID.", "Confirm");
+                            } else {
+                                let maidsAddress: undefined | string;
+                                const maidsType = this.selectedSupporter?.type;
+                                if (maidsType !== undefined) {
+                                    maidsAddress = MaidsContractSelector.typeToAddress(maidsType);
+                                }
+                                await NurseRaidContract.enter(this.raidId, maidsAddress, this.selectedSupporter?.id);
+                                this.delete();
                             }
-                            await NurseRaidContract.enter(this.raidId, maidsAddress, this.selectedSupporter?.id);
-                            this.delete();
                         },
                     },
                 ),

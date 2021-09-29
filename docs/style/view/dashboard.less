@@ -1,3 +1,13 @@
+@keyframes dashboard-element-fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .dashboard-view {
     >header {
         height             : 40px;
@@ -25,6 +35,7 @@
             background-size : auto 100%;
             margin-top      : 10px;
             position        : relative;
+            animation       : dashboard-element-fade-in 0.5s ease-out;
 
             >.close-welcome-button {
                 position: absolute;
@@ -80,6 +91,7 @@
 
     >section {
         margin-top: 20px;
+        animation : dashboard-element-fade-in 0.5s ease-out;
         .float-wrapper();
 
         >h3 {

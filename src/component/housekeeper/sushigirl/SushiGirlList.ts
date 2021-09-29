@@ -14,8 +14,12 @@ export default class SushiGirlList extends DomNode {
 
         const count = (await SushiGirlsContract.getTotalSupply()).toNumber();
 
-        SkyUtil.repeat(count, async (id) => {
-            new SushiGirl(id).appendTo(this);
+        SkyUtil.repeat(count, (id) => {
+            setTimeout(() => {
+                if (this.deleted !== true) {
+                    new SushiGirl(id).appendTo(this);
+                }
+            }, id * 50);
         });
     }
 }

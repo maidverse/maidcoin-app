@@ -3,10 +3,12 @@ import { BigNumber, constants, utils } from "ethers";
 import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import Config from "../../Config";
+import MaidCoinContract from "../../contracts/MaidCoinContract";
 import NurseRaidContract, { ChallengerInfo } from "../../contracts/NurseRaidContract";
 import NetworkProvider from "../../ethereum/NetworkProvider";
 import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
+import Alert from "../dialogue/Alert";
 import Confirm from "../dialogue/Confirm";
 import SelectMaidPopup from "../select-maid-popup/SelectMaidPopup";
 
@@ -146,11 +148,23 @@ export default class NurseRaid extends DomNode {
             const apr = await Calculator.nurseAPR(raid.nursePart);
             this.footer.empty().append(
                 el(".apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
-                challenger.enterBlock === 0 ? el("a.start-button",
-                    utils.formatEther(raid.entranceFee),
-                    el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
-                    "Start",
-                    { click: () => new SelectMaidPopup(this.raidId) },
+                challenger.enterBlock === 0 ? (
+                    currentBlockNumber >= raid.endBlock ? undefined :
+                        el("a.start-button",
+                            utils.formatEther(raid.entranceFee),
+                            el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
+                            "Start",
+                            {
+                                click: async () => {
+                                    const balance = await MaidCoinContract.balanceOf(owner);
+                                    if (balance.lt(raid.entranceFee)) {
+                                        new Alert("Error", "Not enough $MAID.", "Confirm");
+                                    } else {
+                                        new SelectMaidPopup(this.raidId);
+                                    }
+                                },
+                            },
+                        )
                 ) : (done === true ?
                     el("a.exit-button", "Exit", { click: () => this.exit() }) :
                     el("a.cancel-button", "Cancel", { click: () => this.exit() })

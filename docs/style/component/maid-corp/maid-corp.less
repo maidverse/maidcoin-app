@@ -1,7 +1,30 @@
+@keyframes maid-corp-show {
+    0% {
+        transform: translateY(-10px);
+        opacity  : 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity  : 1;
+    }
+}
+
+@keyframes maid-corp-element-fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .maid-corp {
     position : relative;
     max-width: 403px;
     height   : 257px;
+    animation: maid-corp-show 0.5s ease-out;
 
     >.background {
         position        : absolute;
@@ -49,13 +72,15 @@
         font-family        : "refrigerator-deluxe";
         font-weight        : bold;
         font-size          : 24px;
+        animation          : maid-corp-element-fade-in 0.5s ease-out;
     }
 
     >.ada {
-        position: absolute;
-        left    : calc(50% - 80px);
-        bottom  : 34px;
-        z-index : 1;
+        position : absolute;
+        left     : calc(50% - 80px);
+        bottom   : 34px;
+        z-index  : 1;
+        animation: maid-corp-element-fade-in 0.5s ease-out;
     }
 
     >.content {
