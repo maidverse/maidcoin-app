@@ -37,7 +37,7 @@ class Calculator {
             total24 = total24.add(event.args[2]);
         }
         const maidcoinBalance = await MaidCoinContract.balanceOf(MaidCafeContract.address);
-        return total24.mul(35600).div(maidcoinBalance);
+        return total24.mul(36500).div(maidcoinBalance);
     }
 
     public async nurseAPR(_nurseType: number) {

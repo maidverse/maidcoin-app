@@ -53,7 +53,7 @@ export default class MaidCafe implements View {
                     }),
                 ),
                 el(".info",
-                    el(".apr", "Yesterday's APR: ", this.apr = el("span")),
+                    el(".apr", "Last 24 Hours APR: ", this.apr = el("span")),
                     el(".price", "1 $OMU = ", this.price = el("span"), " $MAID"),
                 ),
                 this.currentTab = new StakeTab(),
