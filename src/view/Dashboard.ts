@@ -71,7 +71,7 @@ export default class Dashboard implements View {
                     ),
                     el(".info",
                         el("p", "Welcome to MaidCoin"),
-                        el("a.document-button", "Read Documnet", { href: "https://shillbo.medium.com/how-to-farm-maidcoin-play-the-game-2ee832a8e91c", target: "_blank" }),
+                        el("a.document-button", "Read Document", { href: "https://shillbo.medium.com/how-to-farm-maidcoin-play-the-game-2ee832a8e91c", target: "_blank" }),
                         connected === true ? undefined : el("a.connect-wallet-button", "Connect Wallet", {
                             click: () => Wallet.connect(),
                         }),
