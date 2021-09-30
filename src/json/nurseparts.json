@@ -2,41 +2,57 @@
     "0": {
         "name": "N1 Part",
         "external_url": "https://app.maidcoin.org/nurseparts/0",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N1.png"
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N1.png",
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "1": {
         "name": "N2 Part",
         "external_url": "https://app.maidcoin.org/nurseparts/1",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N2.png"
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N2.png",
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "2": {
         "name": "N3 Part",
         "external_url": "https://app.maidcoin.org/nurseparts/2",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N3.png"
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N3.png",
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "3": {
         "name": "N4 Part",
         "external_url": "https://app.maidcoin.org/nurseparts/3",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N4.png"
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N4.png",
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "4": {
         "name": "N5 Part",
         "external_url": "https://app.maidcoin.org/nurseparts/4",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N5.png"
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N5.png",
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "5": {
         "name": "N6 Part",
         "external_url": "https://app.maidcoin.org/nurseparts/5",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N6.png"
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N6.png",
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "6": {
         "name": "N7 Part",
         "external_url": "https://app.maidcoin.org/nurseparts/6",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N7.png"
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N7.png",
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "7": {
         "name": "N8 Part",
         "external_url": "https://app.maidcoin.org/nurseparts/7",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N8.png"
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/N8.png",
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     }
 }

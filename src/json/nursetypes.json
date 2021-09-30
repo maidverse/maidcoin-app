@@ -9,7 +9,9 @@
         "width": 180,
         "left": 0,
         "top": 0,
-        "averagePrice": 11.5
+        "averagePrice": 11.5,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "1": {
         "name": "N2",
@@ -21,7 +23,9 @@
         "width": 140,
         "left": 0,
         "top": -10,
-        "averagePrice": 22.9
+        "averagePrice": 22.9,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "2": {
         "name": "N3",
@@ -33,7 +37,9 @@
         "width": 330,
         "left": -40,
         "top": 0,
-        "averagePrice": 26.7
+        "averagePrice": 26.7,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "3": {
         "name": "N4",
@@ -45,7 +51,9 @@
         "width": 140,
         "left": 0,
         "top": 0,
-        "averagePrice": 48.0
+        "averagePrice": 48.0,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "4": {
         "name": "N5",
@@ -57,7 +65,9 @@
         "width": 210,
         "left": 0,
         "top": 0,
-        "averagePrice": 54.0
+        "averagePrice": 54.0,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "5": {
         "name": "N6",
@@ -69,7 +79,9 @@
         "width": 190,
         "left": 0,
         "top": 0,
-        "averagePrice": 75.0
+        "averagePrice": 75.0,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "6": {
         "name": "N7",
@@ -81,7 +93,9 @@
         "width": 140,
         "left": 0,
         "top": 0,
-        "averagePrice": 0
+        "averagePrice": 0,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "7": {
         "name": "N8",
@@ -93,6 +107,8 @@
         "width": 140,
         "left": 0,
         "top": 0,
-        "averagePrice": 0
+        "averagePrice": 0,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     }
 }

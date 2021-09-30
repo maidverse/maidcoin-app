@@ -30,7 +30,9 @@
                 "trait_type": "Power",
                 "value": 100
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "1": {
         "name": "Akina",
@@ -63,7 +65,9 @@
                 "trait_type": "Power",
                 "value": 110
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "2": {
         "name": "Seia",
@@ -96,7 +100,9 @@
                 "trait_type": "Power",
                 "value": 120
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "3": {
         "name": "Arachne",
@@ -129,7 +135,9 @@
                 "trait_type": "Power",
                 "value": 130
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "4": {
         "name": "Gaspard",
@@ -162,7 +170,9 @@
                 "trait_type": "Power",
                 "value": 140
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "5": {
         "name": "Elena",
@@ -195,7 +205,9 @@
                 "trait_type": "Power",
                 "value": 150
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "6": {
         "name": "Undine",
@@ -228,7 +240,9 @@
                 "trait_type": "Power",
                 "value": 160
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "7": {
         "name": "Nightingale",
@@ -261,7 +275,9 @@
                 "trait_type": "Power",
                 "value": 170
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "8": {
         "name": "Hemiola",
@@ -294,7 +310,9 @@
                 "trait_type": "Power",
                 "value": 180
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "9": {
         "name": "Nero",
@@ -327,7 +345,9 @@
                 "trait_type": "Power",
                 "value": 190
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "10": {
         "name": "Yirgacheffe",
@@ -360,7 +380,9 @@
                 "trait_type": "Power",
                 "value": 200
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "11": {
         "name": "Elencia",
@@ -393,7 +415,9 @@
                 "trait_type": "Power",
                 "value": 210
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "12": {
         "name": "Ellan",
@@ -426,7 +450,9 @@
                 "trait_type": "Power",
                 "value": 220
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "13": {
         "name": "Bree",
@@ -459,7 +485,9 @@
                 "trait_type": "Power",
                 "value": 230
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "14": {
         "name": "Nikkie",
@@ -492,7 +520,9 @@
                 "trait_type": "Power",
                 "value": 240
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "15": {
         "name": "Passacaglia",
@@ -525,7 +555,9 @@
                 "trait_type": "Power",
                 "value": 250
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "16": {
         "name": "Panini",
@@ -558,7 +590,9 @@
                 "trait_type": "Power",
                 "value": 260
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "17": {
         "name": "Minuet",
@@ -591,7 +625,9 @@
                 "trait_type": "Power",
                 "value": 270
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "18": {
         "name": "Grace",
@@ -624,7 +660,9 @@
                 "trait_type": "Power",
                 "value": 280
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "19": {
         "name": "Yuki",
@@ -657,7 +695,9 @@
                 "trait_type": "Power",
                 "value": 290
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "20": {
         "name": "Maetel",
@@ -690,7 +730,9 @@
                 "trait_type": "Power",
                 "value": 300
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "21": {
         "name": "Igna",
@@ -723,7 +765,9 @@
                 "trait_type": "Power",
                 "value": 310
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "22": {
         "name": "Chaconne",
@@ -756,7 +800,9 @@
                 "trait_type": "Power",
                 "value": 320
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "23": {
         "name": "Fortuna",
@@ -789,7 +835,9 @@
                 "trait_type": "Power",
                 "value": 330
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "24": {
         "name": "Lasa",
@@ -822,7 +870,9 @@
                 "trait_type": "Power",
                 "value": 340
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "25": {
         "name": "Mei",
@@ -855,7 +905,9 @@
                 "trait_type": "Power",
                 "value": 350
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "26": {
         "name": "Preiya",
@@ -888,7 +940,9 @@
                 "trait_type": "Power",
                 "value": 360
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "27": {
         "name": "Bardiche",
@@ -921,7 +975,9 @@
                 "trait_type": "Power",
                 "value": 370
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "28": {
         "name": "Claymore",
@@ -954,7 +1010,9 @@
                 "trait_type": "Power",
                 "value": 380
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "29": {
         "name": "Flamberge",
@@ -987,6 +1045,8 @@
                 "trait_type": "Power",
                 "value": 390
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     }
 }
