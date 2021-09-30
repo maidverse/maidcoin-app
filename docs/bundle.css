@@ -758,6 +758,7 @@ body {
 .maid-cafe-view > main > .info {
   padding: 10px 0;
   display: flex;
+  align-items: center;
 }
 .maid-cafe-view > main > .info > .apr {
   flex-grow: 1;

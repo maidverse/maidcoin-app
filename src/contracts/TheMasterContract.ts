@@ -63,10 +63,10 @@ class TheMasterContract extends Contract<TheMaster> {
                 );
 
                 const estimation = await contract.estimateGas.supportWithPermit(pid, lpTokenAmount, supportTo, deadline, signed.v, signed.r, signed.s);
-                await contract.supportWithPermit(pid, lpTokenAmount, supportTo, deadline, signed.v, signed.r, signed.s, { gasLimit: estimation.mul(11).div(10) });
+                await contract.supportWithPermit(pid, lpTokenAmount, supportTo, deadline, signed.v, signed.r, signed.s, { gasLimit: estimation.mul(12).div(10) });
             } else {
                 const estimation = await contract.estimateGas.support(pid, lpTokenAmount, supportTo);
-                await contract.support(pid, lpTokenAmount, supportTo, { gasLimit: estimation.mul(11).div(10) });
+                await contract.support(pid, lpTokenAmount, supportTo, { gasLimit: estimation.mul(12).div(10) });
             }
         }
     }
@@ -75,7 +75,7 @@ class TheMasterContract extends Contract<TheMaster> {
         const contract = await this.connectAndGetWalletContract();
         if (contract !== undefined) {
             const estimation = await contract.estimateGas.desupport(pid, lpTokenAmount);
-            await contract.desupport(pid, lpTokenAmount, { gasLimit: estimation.mul(11).div(10) });
+            await contract.desupport(pid, lpTokenAmount, { gasLimit: estimation.mul(12).div(10) });
         }
     }
 
@@ -101,10 +101,10 @@ class TheMasterContract extends Contract<TheMaster> {
                 );
 
                 const estimation = await contract.estimateGas.depositWithPermit(pid, lpTokenAmount, owner, deadline, signed.v, signed.r, signed.s);
-                await contract.depositWithPermit(pid, lpTokenAmount, owner, deadline, signed.v, signed.r, signed.s, { gasLimit: estimation.mul(11).div(10) });
+                await contract.depositWithPermit(pid, lpTokenAmount, owner, deadline, signed.v, signed.r, signed.s, { gasLimit: estimation.mul(12).div(10) });
             } else {
                 const estimation = await contract.estimateGas.deposit(pid, lpTokenAmount, owner);
-                await contract.deposit(pid, lpTokenAmount, owner, { gasLimit: estimation.mul(11).div(10) });
+                await contract.deposit(pid, lpTokenAmount, owner, { gasLimit: estimation.mul(12).div(10) });
             }
         }
     }
@@ -114,7 +114,7 @@ class TheMasterContract extends Contract<TheMaster> {
         const owner = await Wallet.loadAddress();
         if (contract !== undefined && owner !== undefined) {
             const estimation = await contract.estimateGas.withdraw(pid, lpTokenAmount, owner);
-            await contract.withdraw(pid, lpTokenAmount, owner, { gasLimit: estimation.mul(11).div(10) });
+            await contract.withdraw(pid, lpTokenAmount, owner, { gasLimit: estimation.mul(12).div(10) });
         }
     }
 }
