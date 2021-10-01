@@ -60,8 +60,7 @@ export default class NurseFarm extends DomNode {
                     el(".name", "Clone Nurse"),
                     el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(totalLPAmount)))),
                     el("a.add-button", el("img", { src: "/images/component/nurse-farm/add-button.png", height: "132.5" }), {
-                        click: () => new Alert("Support Nurse", "Supporting Nurse feature is coming soon.", "Confirm"),
-                        //click: () => new SelectNursePopup(),
+                        click: () => new SelectNursePopup(),
                     }),
                 );
 
