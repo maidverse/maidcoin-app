@@ -2318,9 +2318,20 @@ body {
   width: 100%;
   display: flex;
 }
+@keyframes nurse-element-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .nurse-pool .nurse {
   text-align: center;
   position: relative;
+}
+.nurse-pool .nurse > .image {
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .nurse-pool .nurse > .claim-button {
   position: absolute;
@@ -2331,6 +2342,7 @@ body {
   background-image: url(/images/component/nurse-pool/claim-button.png);
   background-size: auto 100%;
   padding-top: 2px;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .nurse-pool .nurse > .claim-button > .coin-image {
   display: block;
@@ -2353,6 +2365,7 @@ body {
   background-image: url(/images/component/nurse-detail/battery-bar-background.png);
   background-size: auto 100%;
   text-align: center;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .nurse-pool .nurse > .battery.low {
   background-image: none;
@@ -3430,7 +3443,26 @@ body {
   color: #2e000f;
   font-family: "refrigerator-deluxe";
   font-weight: bold;
+  font-size: 14px;
+}
+.maid-corp > .content > .claim-button > .claim-button {
+  margin-top: 6px;
+  margin-right: 4px;
+  width: 57px;
+  height: 29.5px;
+  background-image: url(/images/claim-button.png);
+  background-size: auto 100%;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: bold;
   font-size: 12px;
+  padding-left: 2px;
+  padding-bottom: 3px;
 }
 .maid-corp > .content > .withdraw-button {
   position: absolute;
@@ -3664,7 +3696,26 @@ body {
   color: #2e000f;
   font-family: "refrigerator-deluxe";
   font-weight: bold;
+  font-size: 14px;
+}
+.nurse-farm:not(.empty) > .content > .claim-button > .claim-button {
+  margin-top: 6px;
+  margin-right: 4px;
+  width: 57px;
+  height: 29.5px;
+  background-image: url(/images/claim-button.png);
+  background-size: auto 100%;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: bold;
   font-size: 12px;
+  padding-left: 2px;
+  padding-bottom: 3px;
 }
 .nurse-farm:not(.empty) > .content > .desupport-button {
   position: absolute;
@@ -3811,6 +3862,14 @@ body {
   padding-left: 1px;
   line-height: 21px;
 }
+@keyframes nurse-element-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .select-nurse-popup .nurse {
   position: relative;
   height: 96px;
@@ -3824,6 +3883,7 @@ body {
   height: 85px;
   background-image: url(/images/component/select-nurse-popup/slot.png);
   background-size: auto 100%;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .select-nurse-popup .nurse > .slot > .image {
   position: absolute;
@@ -3848,6 +3908,7 @@ body {
   font-size: 16px;
   font-family: "refrigerator-deluxe";
   color: #464a54;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .select-nurse-popup .nurse > .lp-amount {
   position: absolute;
@@ -3856,6 +3917,7 @@ body {
   font-size: 20px;
   font-family: "refrigerator-deluxe";
   color: #261130;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .select-nurse-popup .nurse > .lp-amount > span {
   color: #cb2972;
@@ -3875,6 +3937,7 @@ body {
   font-weight: bold;
   padding-top: 8px;
   padding-left: 1px;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 @keyframes route-nurse-popup-show {
   0% {
@@ -3971,6 +4034,14 @@ body {
   padding-left: 1px;
   line-height: 21px;
 }
+@keyframes nurse-element-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .route-nurse-popup .nurse {
   position: relative;
   height: 96px;
@@ -3984,6 +4055,7 @@ body {
   height: 85px;
   background-image: url(/images/component/select-nurse-popup/slot.png);
   background-size: auto 100%;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .route-nurse-popup .nurse > .slot > .image {
   position: absolute;
@@ -4008,6 +4080,7 @@ body {
   font-size: 16px;
   font-family: "refrigerator-deluxe";
   color: #464a54;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .route-nurse-popup .nurse > .lp-amount {
   position: absolute;
@@ -4016,6 +4089,7 @@ body {
   font-size: 20px;
   font-family: "refrigerator-deluxe";
   color: #261130;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .route-nurse-popup .nurse > .lp-amount > span {
   color: #cb2972;
@@ -4035,6 +4109,7 @@ body {
   font-weight: bold;
   padding-top: 8px;
   padding-left: 1px;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 @keyframes charge-multiple-nurse-popup-show {
   0% {
@@ -4116,6 +4191,14 @@ body {
   padding-left: 1px;
   line-height: 21px;
 }
+@keyframes nurse-element-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .charge-multiple-nurse-popup .nurse {
   position: relative;
   height: 96px;
@@ -4129,6 +4212,7 @@ body {
   height: 85px;
   background-image: url(/images/component/charge-multiple-nurse-popup/slot.png);
   background-size: auto 100%;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .charge-multiple-nurse-popup .nurse > .slot > .image {
   position: absolute;
@@ -4153,6 +4237,7 @@ body {
   font-size: 16px;
   font-family: "refrigerator-deluxe";
   color: #464a54;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .charge-multiple-nurse-popup .nurse > .lp-amount {
   position: absolute;
@@ -4161,6 +4246,7 @@ body {
   font-size: 20px;
   font-family: "refrigerator-deluxe";
   color: #261130;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .charge-multiple-nurse-popup .nurse > .lp-amount > span {
   color: #cb2972;
@@ -4172,11 +4258,13 @@ body {
   font-size: 20px;
   font-family: "refrigerator-deluxe";
   color: #1d98a0;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .charge-multiple-nurse-popup .nurse .charge-form {
   position: absolute;
   right: 10px;
   top: 8px;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .charge-multiple-nurse-popup .nurse .charge-form > .part {
   display: block;
@@ -4281,6 +4369,14 @@ body {
   padding-left: 1px;
   line-height: 21px;
 }
+@keyframes nurse-element-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .delete-multiple-nurse-popup .nurse {
   position: relative;
   height: 96px;
@@ -4294,6 +4390,7 @@ body {
   height: 85px;
   background-image: url(/images/component/delete-multiple-nurse-popup/slot.png);
   background-size: auto 100%;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .delete-multiple-nurse-popup .nurse > .slot > .image {
   position: absolute;
@@ -4318,6 +4415,7 @@ body {
   font-size: 16px;
   font-family: "refrigerator-deluxe";
   color: #464a54;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .delete-multiple-nurse-popup .nurse > .lp-amount {
   position: absolute;
@@ -4326,6 +4424,7 @@ body {
   font-size: 20px;
   font-family: "refrigerator-deluxe";
   color: #261130;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .delete-multiple-nurse-popup .nurse > .lp-amount > span {
   color: #cb2972;
@@ -4337,6 +4436,7 @@ body {
   font-size: 20px;
   font-family: "refrigerator-deluxe";
   color: #1d98a0;
+  animation: nurse-element-fade-in 0.5s ease-out;
 }
 .delete-multiple-nurse-popup .nurse > .check {
   position: absolute;

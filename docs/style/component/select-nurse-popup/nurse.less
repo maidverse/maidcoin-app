@@ -1,3 +1,13 @@
+@keyframes nurse-element-fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .select-nurse-popup .nurse {
     position     : relative;
     height       : 96px;
@@ -11,6 +21,7 @@
         height          : 85px;
         background-image: url(/images/component/select-nurse-popup/slot.png);
         background-size : auto 100%;
+        animation       : nurse-element-fade-in 0.5s ease-out;
 
         >.image {
             position     : absolute;
@@ -38,6 +49,7 @@
         font-size  : 16px;
         font-family: "refrigerator-deluxe";
         color      : #464a54;
+        animation  : nurse-element-fade-in 0.5s ease-out;
     }
 
     >.lp-amount {
@@ -47,6 +59,7 @@
         font-size  : 20px;
         font-family: "refrigerator-deluxe";
         color      : #261130;
+        animation  : nurse-element-fade-in 0.5s ease-out;
 
         >span {
             color: #cb2972;
@@ -68,5 +81,6 @@
         font-weight     : bold;
         padding-top     : 8px;
         padding-left    : 1px;
+        animation       : nurse-element-fade-in 0.5s ease-out;
     }
 }

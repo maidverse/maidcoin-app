@@ -20,13 +20,17 @@ export default class NurseList extends DomNode {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 
-            const nurseCount = await CloneNursesContract.balanceOf(owner);
+            const nurseCount = (await CloneNursesContract.balanceOf(owner)).toNumber();
 
             this.empty();
-            SkyUtil.repeat(nurseCount.toNumber(), async (index) => {
-                const nurseId = await CloneNursesContract.getTokenOfOwnerByIndex(owner, index);
-                const nurse = new Nurse(this, nurseId.toNumber(), owner).appendTo(this);
-                nurse.toss("toggle", this);
+            SkyUtil.repeat(nurseCount > 100 ? 100 : nurseCount, (index) => {
+                setTimeout(async () => {
+                    if (this.deleted !== true) {
+                        const nurseId = await CloneNursesContract.getTokenOfOwnerByIndex(owner, index);
+                        const nurse = new Nurse(this, nurseId.toNumber(), owner).appendTo(this);
+                        nurse.toss("toggle", this);
+                    }
+                }, index * 50);
             });
         }
     }

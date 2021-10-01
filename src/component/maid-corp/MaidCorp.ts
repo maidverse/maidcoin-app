@@ -57,7 +57,8 @@ export default class MaidCorp extends DomNode {
                 el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(totalLPAmount)))),
                 el("a.claim-button",
                     el("img.maidcoin", { src: "/images/component/maid-corp/maidcoin.png", height: "29" }),
-                    el("span.reward", utils.formatEther(reward)),
+                    el("span.reward", CommonUtil.numberWithCommas(utils.formatEther(reward), 5)),
+                    el("a.claim-button", "Claim"),
                     {
                         click: async (event: MouseEvent) => {
                             event.stopPropagation();
