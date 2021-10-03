@@ -23,7 +23,9 @@
                 "trait_type": "Power",
                 "value": 79
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "1": {
         "name": "Kiho",
@@ -49,7 +51,9 @@
                 "trait_type": "Power",
                 "value": 75
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "2": {
         "name": "Kirumi",
@@ -75,7 +79,9 @@
                 "trait_type": "Power",
                 "value": 67
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "3": {
         "name": "Seria",
@@ -101,7 +107,9 @@
                 "trait_type": "Power",
                 "value": 78
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "4": {
         "name": "Rukako",
@@ -127,7 +135,9 @@
                 "trait_type": "Power",
                 "value": 71
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "5": {
         "name": "Moriya",
@@ -153,7 +163,9 @@
                 "trait_type": "Power",
                 "value": 72
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "6": {
         "name": "Bani",
@@ -179,7 +191,9 @@
                 "trait_type": "Power",
                 "value": 66
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "7": {
         "name": "Sena",
@@ -205,7 +219,9 @@
                 "trait_type": "Power",
                 "value": 72
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "8": {
         "name": "Miki",
@@ -231,7 +247,9 @@
                 "trait_type": "Power",
                 "value": 68
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "9": {
         "name": "Sayaka",
@@ -257,7 +275,9 @@
                 "trait_type": "Power",
                 "value": 65
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "10": {
         "name": "Lamu",
@@ -283,7 +303,9 @@
                 "trait_type": "Power",
                 "value": 76
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "11": {
         "name": "Yuzuki",
@@ -309,7 +331,9 @@
                 "trait_type": "Power",
                 "value": 69
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "12": {
         "name": "Fukawa",
@@ -335,7 +359,9 @@
                 "trait_type": "Power",
                 "value": 63
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "13": {
         "name": "Chinami",
@@ -361,7 +387,9 @@
                 "trait_type": "Power",
                 "value": 70
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "14": {
         "name": "Hisame",
@@ -387,7 +415,9 @@
                 "trait_type": "Power",
                 "value": 69
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "15": {
         "name": "Kaminari",
@@ -413,7 +443,9 @@
                 "trait_type": "Power",
                 "value": 71
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "16": {
         "name": "Hiyori",
@@ -439,7 +471,9 @@
                 "trait_type": "Power",
                 "value": 67
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "17": {
         "name": "Hatsune",
@@ -465,7 +499,9 @@
                 "trait_type": "Power",
                 "value": 73
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "18": {
         "name": "Sakura",
@@ -491,7 +527,9 @@
                 "trait_type": "Power",
                 "value": 70
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "19": {
         "name": "Yumeno",
@@ -517,7 +555,9 @@
                 "trait_type": "Power",
                 "value": 62
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "20": {
         "name": "Mayuri",
@@ -543,7 +583,9 @@
                 "trait_type": "Power",
                 "value": 74
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "21": {
         "name": "Yona",
@@ -569,7 +611,9 @@
                 "trait_type": "Power",
                 "value": 79
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "22": {
         "name": "Miyu",
@@ -595,7 +639,9 @@
                 "trait_type": "Power",
                 "value": 65
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "23": {
         "name": "Kiyo",
@@ -621,7 +667,9 @@
                 "trait_type": "Power",
                 "value": 75
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "24": {
         "name": "Mimi",
@@ -647,7 +695,9 @@
                 "trait_type": "Power",
                 "value": 64
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "25": {
         "name": "Anzi",
@@ -673,7 +723,9 @@
                 "trait_type": "Power",
                 "value": 69
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "26": {
         "name": "Shion",
@@ -699,7 +751,9 @@
                 "trait_type": "Power",
                 "value": 73
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "27": {
         "name": "Misato",
@@ -725,7 +779,9 @@
                 "trait_type": "Power",
                 "value": 68
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "28": {
         "name": "Rukona",
@@ -751,7 +807,9 @@
                 "trait_type": "Power",
                 "value": 77
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "29": {
         "name": "Mocha",
@@ -777,7 +835,9 @@
                 "trait_type": "Power",
                 "value": 78
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "30": {
         "name": "Moria",
@@ -803,6 +863,8 @@
                 "trait_type": "Power",
                 "value": 60
             }
-        ]
+        ],
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     }
 }

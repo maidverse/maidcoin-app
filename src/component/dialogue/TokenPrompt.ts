@@ -20,10 +20,10 @@ export default class TokenPrompt extends Dialogue {
         super(".token-prompt", title, confirmTitle, () => {
             const value = utils.parseEther(this.input.domElement.value);
             if (value.lt(min)) {
-                new Alert("Error", `Minimum value is ${utils.formatEther(min)}`, "Confirm");
+                new Alert("Error", `Minimum value is ${CommonUtil.displayPrice(min)}`, "Confirm");
                 return false;
             } else if (value.gt(balance)) {
-                new Alert("Error", `Balance is ${utils.formatEther(balance)}`, "Confirm");
+                new Alert("Error", `Balance is ${CommonUtil.displayPrice(balance)}`, "Confirm");
                 return false;
             } else {
                 confirm(value);
@@ -31,7 +31,7 @@ export default class TokenPrompt extends Dialogue {
         });
         this.content.append(
             el("p", message),
-            this.input = el("input.input", { placeholder: `Balance: ${CommonUtil.numberWithCommas(utils.formatEther(balance))}` }),
+            this.input = el("input.input", { placeholder: `Balance: ${CommonUtil.displayPrice(balance)}` }),
             el("a.max-button", "Max", {
                 click: () => this.input.domElement.value = utils.formatEther(balance),
             }),

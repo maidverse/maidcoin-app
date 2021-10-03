@@ -42,7 +42,7 @@ export default class DeleteMultipleNursePopup extends Popup {
         );
 
         nurseList.on("toggle", () => {
-            this.destroyReturn.empty().appendText(`+ ${CommonUtil.numberWithCommas(utils.formatEther(nurseList.totalDestroyReturn))}`);
+            this.destroyReturn.empty().appendText(`+ ${CommonUtil.displayPrice(nurseList.totalDestroyReturn)}`);
         });
     }
 }

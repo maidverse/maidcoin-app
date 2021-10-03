@@ -90,7 +90,7 @@ export default class MaidCafe implements View {
         const maidcoin = await MaidCoinContract.balanceOf(MaidCafeContract.address);
         const apr = await Calculator.cafeAPR24();
         this.apr.empty().appendText(`${CommonUtil.numberWithCommas(apr.toString())}%`);
-        this.price.empty().appendText(CommonUtil.numberWithCommas(utils.formatEther(maidcoin.mul(BigNumber.from("1000000000000000000")).div(omu)), 5));
+        this.price.empty().appendText(CommonUtil.displayPrice(maidcoin.mul(BigNumber.from("1000000000000000000")).div(omu)));
     }
 
     private async loadBalances() {
@@ -101,14 +101,14 @@ export default class MaidCafe implements View {
             this.omuBalance.empty().append(
                 el("img", { src: "/images/view/maid-cafe/omu.png", height: "40" }),
                 el(".amount",
-                    CommonUtil.numberWithCommas(utils.formatEther(lpBalance)),
+                    CommonUtil.numberWithCommas(CommonUtil.displayPrice(lpBalance)),
                     el("span", "$OMU"),
                 ),
             );
             this.maidcoinBalance.empty().append(
                 el("img", { src: "/images/view/maid-cafe/maidcoin.png", height: "41.5" }),
                 el(".amount",
-                    CommonUtil.numberWithCommas(utils.formatEther(maidBalance)),
+                    CommonUtil.numberWithCommas(CommonUtil.displayPrice(maidBalance)),
                     el("span", "$MAID"),
                 ),
             );

@@ -35,7 +35,7 @@ export default class LingerieGirlDetail extends Popup {
             const supportedLP = await LingerieGirlsContract.getSupportedLP(this.id);
             const lingerieGirlPower = await NurseRaidContract.powerOfMaids(LingerieGirlsContract.address, this.id);
             this.additionalPower?.empty().appendText(String(lingerieGirlPower - lingerieGirl.originPower));
-            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+            this.supportedLP?.empty().appendText(CommonUtil.displayPrice(supportedLP));
         }
     };
 
@@ -45,7 +45,7 @@ export default class LingerieGirlDetail extends Popup {
             const supportedLP = await LingerieGirlsContract.getSupportedLP(this.id);
             const lingerieGirlPower = await NurseRaidContract.powerOfMaids(LingerieGirlsContract.address, this.id);
             this.additionalPower?.empty().appendText(String(lingerieGirlPower - lingerieGirl.originPower));
-            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+            this.supportedLP?.empty().appendText(CommonUtil.displayPrice(supportedLP));
         }
     };
 
@@ -64,7 +64,7 @@ export default class LingerieGirlDetail extends Popup {
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(lingerieGirlPower))),
                 el(".property.origin-power", "Origin Power: ", el("span", String(lingerieGirl.originPower))),
                 el(".property.additional-power", "Additional Power: ", this.additionalPower = el("span", String(lingerieGirlPower - lingerieGirl.originPower))),
-                el(".property.lp-amount", "LP Supported: ", this.supportedLP = el("span", utils.formatEther(supportedLP))),
+                el(".property.lp-amount", "LP Supported: ", this.supportedLP = el("span", CommonUtil.displayPrice(supportedLP))),
             ),
             el(".controller",
                 el("a.power-up-button", "Power Up", {

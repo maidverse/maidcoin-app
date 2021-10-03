@@ -58,7 +58,7 @@ export default class NurseDetail extends Popup {
     private changeSupportedPowerHandler = async (id: BigNumber) => {
         if (id.eq(this.nurseId) === true) {
             const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
-            this.supportedPower?.empty().appendText(utils.formatEther(supportedPower));
+            this.supportedPower?.empty().appendText(CommonUtil.displayPrice(supportedPower));
         }
     };
 
@@ -112,7 +112,7 @@ export default class NurseDetail extends Popup {
                     el("img.image", { src: `https://storage.googleapis.com/maidcoin/Nurse/APNG/${nurseType.name}Idle.png`, height: "120" }),
                     owner !== nurseOwner ? undefined : el("a.claim-button",
                         el("img.coin-image", { src: "/images/component/nurse-detail/maidcoin.png", height: "29" }),
-                        this.pendingReward = el(".amount", CommonUtil.numberWithCommas(utils.formatEther(pendingReward))),
+                        this.pendingReward = el(".amount", CommonUtil.displayPrice(pendingReward)),
                         { click: async () => await CloneNursesContract.claim([this.nurseId]) },
                     ),
                 ),
@@ -131,8 +131,8 @@ export default class NurseDetail extends Popup {
                 ),
                 el(".properties",
                     el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(nurseType.power))),
-                    el(".property.lp-amount", "Total LP Supported: ", this.supportedPower = el("span", utils.formatEther(supportedPower))),
-                    el(".property.lp-amount", "LP Supported By Me: ", el("span", utils.formatEther(supportingAmount))),
+                    el(".property.lp-amount", "Total LP Supported: ", this.supportedPower = el("span", CommonUtil.displayPrice(supportedPower))),
+                    el(".property.lp-amount", "LP Supported By Me: ", el("span", CommonUtil.displayPrice(supportingAmount))),
                 ),
                 el(".controller",
                     el("a.support-button", "Support", {

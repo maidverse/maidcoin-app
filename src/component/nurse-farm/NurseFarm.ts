@@ -58,7 +58,7 @@ export default class NurseFarm extends DomNode {
 
                 this.content.empty().append(
                     el(".name", "Clone Nurse"),
-                    el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(totalLPAmount)))),
+                    el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.displayPrice(totalLPAmount))),
                     el("a.add-button", el("img", { src: "/images/component/nurse-farm/add-button.png", height: "132.5" }), {
                         click: () => new SelectNursePopup(),
                     }),
@@ -66,7 +66,7 @@ export default class NurseFarm extends DomNode {
 
                 const apr = await Calculator.poolAPR(3);
                 this.footer.empty().append(
-                    el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
+                    el(".property.apr", "Expected APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
                 );
             }
 
@@ -94,10 +94,10 @@ export default class NurseFarm extends DomNode {
                         },
                     }),
 
-                    el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(totalLPAmount)))),
+                    el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.displayPrice(totalLPAmount))),
                     el("a.claim-button",
                         el("img.maidcoin", { src: "/images/component/maid-corp/maidcoin.png", height: "29" }),
-                        el("span.reward", CommonUtil.numberWithCommas(utils.formatEther(reward), 5)),
+                        el("span.reward", CommonUtil.displayPrice(reward)),
                         el("a.claim-button", "Claim"),
                         {
                             click: async (event: MouseEvent) => {
@@ -137,8 +137,8 @@ export default class NurseFarm extends DomNode {
 
                 const apr = await Calculator.poolAPR(3);
                 this.footer.empty().append(
-                    el(".property.lp-amount", "LP Supported By Me: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(lpAmount)))),
-                    el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
+                    el(".property.lp-amount", "LP Supported By Me: ", el("span", CommonUtil.displayPrice(lpAmount))),
+                    el(".property.apr", "Expected APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
                 );
             }
         }

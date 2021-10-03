@@ -151,7 +151,7 @@ export default class NurseRaid extends DomNode {
                 challenger.enterBlock === 0 ? (
                     currentBlockNumber >= raid.endBlock ? undefined :
                         el("a.start-button",
-                            utils.formatEther(raid.entranceFee),
+                            CommonUtil.displayPrice(raid.entranceFee),
                             el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
                             "Start",
                             {

@@ -43,7 +43,7 @@ export default class MaidSummary extends DomNode {
             const supportedLP = await MaidsContract.getSupportedLP(this.maidId);
             const maidPower = await NurseRaidContract.powerOfMaids(MaidsContract.address, this.maidId);
             this.additionalPower?.empty().appendText(String(maidPower - maid.originPower));
-            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+            this.supportedLP?.empty().appendText(CommonUtil.displayPrice(supportedLP));
         }
     };
 
@@ -53,7 +53,7 @@ export default class MaidSummary extends DomNode {
             const supportedLP = await MaidsContract.getSupportedLP(this.maidId);
             const maidPower = await NurseRaidContract.powerOfMaids(MaidsContract.address, this.maidId);
             this.additionalPower?.empty().appendText(String(maidPower - maid.originPower));
-            this.supportedLP?.empty().appendText(utils.formatEther(supportedLP));
+            this.supportedLP?.empty().appendText(CommonUtil.displayPrice(supportedLP));
         }
     };
 
@@ -90,7 +90,7 @@ export default class MaidSummary extends DomNode {
                 el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(maidPower))),
                 el(".property.origin-power", "Origin Power: ", el("span", String(maid.originPower))),
                 el(".property.additional-power", "Additional Power: ", this.additionalPower = el("span", String(maidPower - maid.originPower))),
-                el(".property.lp-amount", "Supported LP Token Amount: ", this.supportedLP = el("span", utils.formatEther(supportedLP))),
+                el(".property.lp-amount", "Supported LP Token Amount: ", this.supportedLP = el("span", CommonUtil.displayPrice(supportedLP))),
             ),
         );
 

@@ -22,7 +22,7 @@ export default class RouteNursePopup extends Popup {
                 }),
                 el(".supported-lp",
                     "Supported LP: ",
-                    el("span", CommonUtil.numberWithCommas(utils.formatEther(supportedLP))),
+                    el("span", CommonUtil.displayPrice(supportedLP)),
                 ),
                 el("main",
                     el("h2", "Route Nurse"),

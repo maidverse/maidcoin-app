@@ -57,7 +57,7 @@ export default class NurseFactory extends DomNode {
             }),
             el("img.part", { src: `https://storage.googleapis.com/maidcoin/NursePart/${nurseType.name}.png`, height: "60" }),
             balance === undefined ? undefined : el(".part-count", el("span.balance", balance.toString()), ` / ${nurseType.partCount}`),
-            el(".destroy-return", "Destroy Return: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(nurseType.destroyReturn))), " $MAID"),
+            el(".destroy-return", "Destroy Return: ", el("span", CommonUtil.displayPrice(nurseType.destroyReturn)), " $MAID"),
         );
 
         const apr = await Calculator.nurseAPR(this.nurseType);

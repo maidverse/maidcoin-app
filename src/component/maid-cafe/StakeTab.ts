@@ -1,5 +1,6 @@
 import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
+import CommonUtil from "../../CommonUtil";
 import MaidCafeContract from "../../contracts/MaidCafeContract";
 import MaidCoinContract from "../../contracts/MaidCoinContract";
 import Wallet from "../../ethereum/Wallet";
@@ -51,7 +52,7 @@ export default class StakeTab extends DomNode {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
             const balance = await MaidCoinContract.balanceOf(owner);
-            this.input.domElement.placeholder = `Balance: ${utils.formatEther(balance)}`;
+            this.input.domElement.placeholder = `Balance: ${CommonUtil.displayPrice(balance)}`;
         }
     }
 

@@ -2,6 +2,7 @@ import { DomNode, el } from "@hanul/skynode";
 import { BigNumber, utils } from "ethers";
 import { View } from "skyrouter";
 import { ViewParams } from "skyrouter/lib/View";
+import CommonUtil from "../../CommonUtil";
 import TestMaidCoinContract from "../../contracts/test/TestMaidCoinContract";
 import Wallet from "../../ethereum/Wallet";
 import Layout from "../Layout";
@@ -50,11 +51,11 @@ export default class TestMaidCoin implements View {
         const balance = owner === undefined ? undefined : await TestMaidCoinContract.balanceOf(owner);
 
         this.info.empty().append(
-            el(".total-supply", `Total Supply: ${utils.formatEther(totalSupply)}`),
+            el(".total-supply", `Total Supply: ${CommonUtil.displayPrice(totalSupply)}`),
             el(".balance",
                 owner === undefined ?
                     "Your Balance: Please connect to wallet." :
-                    `Your Balance: ${utils.formatEther(balance!)}`),
+                    `Your Balance: ${CommonUtil.displayPrice(balance!)}`),
         );
     }
 

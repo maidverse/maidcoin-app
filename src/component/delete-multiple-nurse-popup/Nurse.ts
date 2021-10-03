@@ -62,7 +62,7 @@ export default class Nurse extends DomNode {
     private changeSupportedPowerHandler = async (id: BigNumber) => {
         if (id.eq(this.nurseId) === true) {
             this.supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
-            this.supportedPowerDisplay?.empty().appendText(utils.formatEther(this.supportedPower));
+            this.supportedPowerDisplay?.empty().appendText(CommonUtil.displayPrice(this.supportedPower));
         }
     };
 
@@ -90,7 +90,7 @@ export default class Nurse extends DomNode {
                 el(".name", nurseType.name),
             ),
             el(".owner", `Owner: ${CommonUtil.shortenAddress(this.owner)}`),
-            el(".lp-amount", "Supported LP : ", this.supportedPowerDisplay = el("span", utils.formatEther(this.supportedPower))),
+            el(".lp-amount", "Supported LP : ", this.supportedPowerDisplay = el("span", CommonUtil.displayPrice(this.supportedPower))),
             this.lifetime = el(".lifetime"),
         );
 

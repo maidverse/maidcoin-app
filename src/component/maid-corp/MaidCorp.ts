@@ -54,10 +54,10 @@ export default class MaidCorp extends DomNode {
             const lpBalance = await LPTokenContract.balanceOf(owner);
 
             this.content.empty().append(
-                el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(totalLPAmount)))),
+                el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.displayPrice(totalLPAmount))),
                 el("a.claim-button",
                     el("img.maidcoin", { src: "/images/component/maid-corp/maidcoin.png", height: "29" }),
-                    el("span.reward", CommonUtil.numberWithCommas(utils.formatEther(reward), 5)),
+                    el("span.reward", CommonUtil.displayPrice(reward)),
                     el("a.claim-button", "Claim"),
                     {
                         click: async (event: MouseEvent) => {
@@ -92,7 +92,7 @@ export default class MaidCorp extends DomNode {
 
             const apr = await Calculator.poolAPR(1);
             this.footer.empty().append(
-                el(".property.lp-amount", "LP Deposited By Me: ", el("span", CommonUtil.numberWithCommas(utils.formatEther(lpAmount)))),
+                el(".property.lp-amount", "LP Deposited By Me: ", el("span", CommonUtil.displayPrice(lpAmount))),
                 el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
             );
         }

@@ -1,3 +1,5 @@
+import { BigNumberish } from "@ethersproject/bignumber";
+import { utils } from "ethers";
 import Config from "./Config";
 
 class CommonUtil {
@@ -37,6 +39,10 @@ class CommonUtil {
         const parts = String(+(+x).toFixed(fractionDigits)).split(".");
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return parts.join(".");
+    }
+
+    public displayPrice(amount: BigNumberish) {
+        return this.numberWithCommas(utils.formatEther(amount), 5);
     }
 }
 

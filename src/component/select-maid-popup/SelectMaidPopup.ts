@@ -1,5 +1,6 @@
 import { DomNode, el, Popup } from "@hanul/skynode";
 import { utils } from "ethers";
+import CommonUtil from "../../CommonUtil";
 import MaidCoinContract from "../../contracts/MaidCoinContract";
 import NurseRaidContract from "../../contracts/NurseRaidContract";
 import Wallet from "../../ethereum/Wallet";
@@ -70,7 +71,7 @@ export default class SelectMaidPopup extends Popup {
 
             this.footer.empty().append(
                 el("a.start-button",
-                    utils.formatEther(raid.entranceFee),
+                    CommonUtil.displayPrice(raid.entranceFee),
                     el("img.icon", { src: "/images/maidcoin.png", height: "20.5" }),
                     "Start",
                     {
