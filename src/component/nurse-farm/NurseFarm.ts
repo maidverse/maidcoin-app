@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { BigNumber, utils } from "ethers";
+import { BigNumber } from "ethers";
 import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
 import CloneNursesContract from "../../contracts/CloneNursesContract";
@@ -7,7 +7,6 @@ import LPTokenContract from "../../contracts/LPTokenContract";
 import TheMasterContract from "../../contracts/TheMasterContract";
 import Wallet from "../../ethereum/Wallet";
 import StaticDataManager from "../../StaticDataManager";
-import Alert from "../dialogue/Alert";
 import TokenPrompt from "../dialogue/TokenPrompt";
 import SelectNursePopup from "../select-nurse-popup/SelectNursePopup";
 
@@ -141,6 +140,24 @@ export default class NurseFarm extends DomNode {
                     el(".property.apr", "Expected APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
                 );
             }
+        }
+
+        else {
+            this.addClass("empty");
+
+            const totalLPAmount = await TheMasterContract.getPoolLPAmount(3);
+            this.content.empty().append(
+                el(".name", "Clone Nurse"),
+                el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.displayPrice(totalLPAmount))),
+                el("a.add-button", el("img", { src: "/images/component/nurse-farm/add-button.png", height: "132.5" }), {
+                    click: () => Wallet.connect(),
+                }),
+            );
+
+            const apr = await Calculator.poolAPR(3);
+            this.footer.empty().append(
+                el(".property.apr", "Expected APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
+            );
         }
     }
 

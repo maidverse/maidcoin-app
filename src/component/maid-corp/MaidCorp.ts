@@ -96,6 +96,25 @@ export default class MaidCorp extends DomNode {
                 el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
             );
         }
+
+        else {
+
+            const totalLPAmount = await TheMasterContract.getPoolLPAmount(1);
+            this.content.empty().append(
+                el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.displayPrice(totalLPAmount))),
+                el("a.withdraw-button", "Withdraw", {
+                    click: () => Wallet.connect(),
+                }),
+                el("a.deposit-button", "Deposit", {
+                    click: () => Wallet.connect(),
+                }),
+            );
+
+            const apr = await Calculator.poolAPR(1);
+            this.footer.empty().append(
+                el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
+            );
+        }
     }
 
     public delete(): void {
