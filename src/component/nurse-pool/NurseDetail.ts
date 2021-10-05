@@ -81,7 +81,7 @@ export default class NurseDetail extends Popup {
             const supportedPower = await CloneNursesContract.getSupportedPower(this.nurseId);
 
             const { supportingTo } = await CloneNursesContract.findSupportingTo(owner);
-            const supportingAmount = supportingTo !== this.nurseId ? BigNumber.from(0) : await TheMasterContract.getSupportingAmount(owner);
+            const supportingAmount = await TheMasterContract.getSupportingAmount(owner);
 
             const pendingReward = await CloneNursesContract.getPendigReward(this.nurseId);
 
@@ -132,10 +132,10 @@ export default class NurseDetail extends Popup {
                 el(".properties",
                     el(".power", el("img", { src: "/images/component/power-icon.png", height: "23" }), el("span", String(nurseType.power))),
                     el(".property.lp-amount", "Total LP Supported: ", this.supportedPower = el("span", CommonUtil.displayPrice(supportedPower))),
-                    el(".property.lp-amount", "LP Supported By Me: ", el("span", CommonUtil.displayPrice(supportingAmount))),
+                    el(".property.lp-amount", "LP Supported By Me: ", el("span", CommonUtil.displayPrice(supportingTo !== this.nurseId ? BigNumber.from(0) : supportingAmount))),
                 ),
                 el(".controller",
-                    el("a.support-button", "Support", {
+                    supportingTo === this.nurseId || supportingAmount.eq(0) ? el("a.support-button", "Support", {
                         click: async (event: MouseEvent) => {
                             event.stopPropagation();
                             const lpBalance = await LPTokenContract.balanceOf(owner);
@@ -145,12 +145,12 @@ export default class NurseDetail extends Popup {
                                 "Support",
                                 0, lpBalance,
                                 async (amount) => {
-                                    await TheMasterContract.support(3, amount, supportingTo);
+                                    await TheMasterContract.support(3, amount, this.nurseId);
                                 },
                             );
                         },
-                    }),
-                    el("a.desupport-button", "Desupport", {
+                    }) : undefined,
+                    supportingTo === this.nurseId ? el("a.desupport-button", "Desupport", {
                         click: async (event: MouseEvent) => {
                             event.stopPropagation();
                             const lpBalance = await LPTokenContract.balanceOf(owner);
@@ -164,7 +164,7 @@ export default class NurseDetail extends Popup {
                                 },
                             );
                         },
-                    }),
+                    }) : undefined,
                 ),
                 el("a.tweet-button",
                     "Share",
