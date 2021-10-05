@@ -42,17 +42,33 @@
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
     "6": {
-        "name": "N7 Part",
-        "external_url": "https://app.maidcoin.org/nurseparts/6",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N7.png",
-        "seller_fee_basis_points": 250,
-        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
+        "name": "Noel Part",
+        "external_url": "https://polygon.maidcoin.app/nurseparts/0",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/Noel.png"
     },
     "7": {
-        "name": "N8 Part",
-        "external_url": "https://app.maidcoin.org/nurseparts/7",
-        "image": "https://storage.googleapis.com/maidcoin/NursePart/N8.png",
-        "seller_fee_basis_points": 250,
-        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
+        "name": "Naomi Part",
+        "external_url": "https://polygon.maidcoin.app/nurseparts/1",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/Naomi.png"
+    },
+    "8": {
+        "name": "Natasha Part",
+        "external_url": "https://polygon.maidcoin.app/nurseparts/2",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/Natasha.png"
+    },
+    "9": {
+        "name": "Nia Part",
+        "external_url": "https://polygon.maidcoin.app/nurseparts/3",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/Nia.png"
+    },
+    "10": {
+        "name": "Nicole Part",
+        "external_url": "https://polygon.maidcoin.app/nurseparts/4",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/Nicole.png"
+    },
+    "11": {
+        "name": "Nora Part",
+        "external_url": "https://polygon.maidcoin.app/nurseparts/5",
+        "image": "https://storage.googleapis.com/maidcoin/NursePart/Nora.png"
     }
 }

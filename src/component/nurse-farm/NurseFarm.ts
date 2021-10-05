@@ -65,7 +65,7 @@ export default class NurseFarm extends DomNode {
 
                 const apr = await Calculator.poolAPR(3);
                 this.footer.empty().append(
-                    el(".property.apr", "Expected APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
+                    el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
                 );
             }
 
@@ -137,7 +137,7 @@ export default class NurseFarm extends DomNode {
                 const apr = await Calculator.poolAPR(3);
                 this.footer.empty().append(
                     el(".property.lp-amount", "LP Supported By Me: ", el("span", CommonUtil.displayPrice(lpAmount))),
-                    el(".property.apr", "Expected APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
+                    el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
                 );
             }
         }
@@ -156,7 +156,7 @@ export default class NurseFarm extends DomNode {
 
             const apr = await Calculator.poolAPR(3);
             this.footer.empty().append(
-                el(".property.apr", "Expected APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
+                el(".property.apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
             );
         }
     }
