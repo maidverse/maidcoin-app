@@ -11,7 +11,7 @@ export default class FirstEarnPopup extends Popup {
         super(".popup-background");
         this.append(
             this.content = el(".first-earn-popup",
-                el("h1", "First Earn $MAID !"),
+                el("h1", "I Earn $MAID !"),
                 el(".amount",
                     el("span", `+ ${CommonUtil.displayPrice(amount)}`),
                     el("img.maidcoin", { src: "/images/component/first-earn-popup/maidcoin.png", height: "32" }),

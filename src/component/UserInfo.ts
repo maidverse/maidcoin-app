@@ -1,5 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import { BigNumber, utils } from "ethers";
+import { BigNumber } from "ethers";
 import SkyStore from "skystore";
 import CommonUtil from "../CommonUtil";
 import CloneNursesContract from "../contracts/CloneNursesContract";
@@ -7,6 +7,7 @@ import LPTokenContract from "../contracts/LPTokenContract";
 import MaidCoinContract from "../contracts/MaidCoinContract";
 import TheMasterContract from "../contracts/TheMasterContract";
 import Wallet from "../ethereum/Wallet";
+import EarnPopup from "./earn-popup/EarnPopup";
 import FirstEarnPopup from "./first-earn-popup/FirstEarnPopup";
 
 export default class UserInfo extends DomNode {
@@ -49,12 +50,11 @@ export default class UserInfo extends DomNode {
         if (from === address || to === address) {
             this.loadBalances();
         }
-        if ((
-            from === TheMasterContract.address ||
-            from === CloneNursesContract.address
-        ) && to === address && this.store.get("first-earn") !== true) {
+        if (from === TheMasterContract.address && to === address) {
             new FirstEarnPopup(amount);
-            this.store.set("first-earn", true);
+        }
+        if (from === CloneNursesContract.address && to === address) {
+            new EarnPopup(amount, BigNumber.from(0));
         }
     };
 

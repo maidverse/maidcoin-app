@@ -12,7 +12,7 @@ export default class EarnPopup extends Popup {
         this.append(
             this.content = el(".earn-popup",
                 el(".amount", `+ ${CommonUtil.displayPrice(amount)}`),
-                el(".apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
+                //el(".apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
                 el("a.close-button", el("img", { src: "/images/component/first-earn-popup/close-button.png", height: "20" }), {
                     click: () => this.delete(),
                 }),
