@@ -103,7 +103,7 @@ export default class LingerieGirlDetail extends Popup {
             ),
             el("a.tweet-button",
                 "Share",
-                { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin LingerieGirl - ${lingerieGirl.name}\nhttps://app.maidcoin.org/lingeriegirls/${this.id}`)}`, target: "_blank" },
+                { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin LingerieGirl - ${lingerieGirl.name}\nhttps://app.maidcoin.org/lingeriegirls/${this.id}`)}\n\n@maid_coin #GameFi #PlayToEarn #DeFi #YieldFarming #NFT #IEarnMaidCoin`, target: "_blank" },
             ),
         );
     }

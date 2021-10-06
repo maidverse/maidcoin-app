@@ -18,7 +18,7 @@ export default class EarnPopup extends Popup {
                 }),
                 el("a.tweet-button",
                     "Share",
-                    { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`I earned ${CommonUtil.displayPrice(amount)} $MAID !\nhttps://app.maidcoin.org`)}`, target: "_blank" },
+                    { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`I EARNED ${CommonUtil.displayPrice(amount)} $MAID from @maid_coin ♥️\n\n#GameFi #PlayToEarn #DeFi #YieldFarming #NFT #IEarnMaidCoin`)}`, target: "_blank" },
                 ),
             ),
         );
