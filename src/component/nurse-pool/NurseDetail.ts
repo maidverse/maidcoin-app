@@ -168,7 +168,7 @@ export default class NurseDetail extends Popup {
                 ),
                 el("a.tweet-button",
                     "Share",
-                    { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin CloneNurse - ${nurseType.name}\nhttps://app.maidcoin.org/clonenurses/${this.nurseId}`)}\n\n@maid_coin #GameFi #PlayToEarn #DeFi #YieldFarming #NFT #IEarnMaidCoin`, target: "_blank" },
+                    { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin CloneNurse - ${nurseType.name}\nhttps://app.maidcoin.org/clonenurses/${this.nurseId}\n\n@maid_coin #GameFi #PlayToEarn #DeFi #YieldFarming #NFT #IEarnMaidCoin`)}`, target: "_blank" },
                 ),
             );
         }

@@ -134,7 +134,7 @@ export default class MaidDetail extends Popup {
             ),
             el("a.tweet-button",
                 "Share",
-                { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin Maid - ${maid.name}\nhttps://app.maidcoin.org/maids/${this.maidId}`)}\n\n@maid_coin #GameFi #PlayToEarn #DeFi #YieldFarming #NFT #IEarnMaidCoin`, target: "_blank" },
+                { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`MaidCoin Maid - ${maid.name}\nhttps://app.maidcoin.org/maids/${this.maidId}\n\n@maid_coin #GameFi #PlayToEarn #DeFi #YieldFarming #NFT #IEarnMaidCoin`)}`, target: "_blank" },
             ),
         );
 
