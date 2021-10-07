@@ -50,6 +50,16 @@ class StaticDataManager {
         return (nurseparts as any)[part];
     }
 
+    public getNurseTypes(): number[] {
+        const entries = Object.entries(nursetypes as any);
+        entries.sort((a: any, b: any) => a[1].power - b[1].power);
+        const types: number[] = [];
+        for (const [type] of entries) {
+            types.push(parseInt(type, 10));
+        }
+        return types;
+    }
+
     public getNurseType(type: number): {
         name: string,
         partCount: number,

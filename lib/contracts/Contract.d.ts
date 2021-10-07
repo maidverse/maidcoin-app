@@ -6,6 +6,7 @@ export default abstract class Contract<CT extends ethers.Contract> extends Event
     protected walletContract: CT | undefined;
     protected contract: CT;
     constructor(address: string, abi: ContractInterface, eventNames: string[]);
+    get interface(): ethers.utils.Interface;
     getWalletContract(): Promise<CT | undefined>;
     connectAndGetWalletContract(): Promise<CT | undefined>;
 }

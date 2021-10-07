@@ -1,8 +1,7 @@
 import { DomNode, el } from "@hanul/skynode";
-import SkyUtil from "skyutil";
-import CloneNursesContract from "../../contracts/CloneNursesContract";
 import NursePartContract from "../../contracts/NursePartContract";
 import Wallet from "../../ethereum/Wallet";
+import StaticDataManager from "../../StaticDataManager";
 import ViewUtil from "../../view/ViewUtil";
 import Loading from "../Loading";
 import NursePart from "./NursePart";
@@ -42,15 +41,15 @@ export default class NursePartList extends DomNode {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
 
-            const nurseTypeCount = (await CloneNursesContract.getNurseTypeCount()).toNumber();
-            await SkyUtil.repeatAsync(nurseTypeCount, async (nurseType) => {
+            const nurseTypes = StaticDataManager.getNurseTypes();
+            for (const nurseType of nurseTypes) {
                 const nursePartCount = (await NursePartContract.balanceOf(owner, nurseType)).toNumber();
 
                 if (this.deleted !== true && nursePartCount > 0) {
                     this.plusButton?.delete();
                     this.content.append(new NursePart(nurseType, nursePartCount));
                 }
-            });
+            }
         }
 
         if (this.deleted !== true) {

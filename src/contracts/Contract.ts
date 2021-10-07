@@ -21,6 +21,10 @@ export default abstract class Contract<CT extends ethers.Contract> extends Event
         Wallet.on("chainChanged", () => this.walletContract = undefined);
     }
 
+    public get interface() {
+        return this.contract.interface;
+    }
+
     public async getWalletContract() {
         if (await Wallet.connected() === true) {
             if (this.walletContract === undefined && Wallet.signer !== undefined) {

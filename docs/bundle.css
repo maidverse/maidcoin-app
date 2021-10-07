@@ -4446,7 +4446,7 @@ body {
 .delete-multiple-nurse-popup .nurse.selected {
   background-color: #dfdbd6;
 }
-@keyframes first-earn-popup-show {
+@keyframes earn-from-farm-popup-show {
   0% {
     transform: scale(0.9, 0.9);
   }
@@ -4454,59 +4454,74 @@ body {
     transform: scale(1, 1);
   }
 }
-.first-earn-popup {
+.earn-from-farm-popup {
   position: relative;
-  width: 346px;
+  width: 397px;
   margin: auto;
-  height: 205px;
-  background-image: url(/images/component/first-earn-popup/background.png);
+  height: 331.5px;
+  background-image: url(/images/component/earn-from-farm-popup/background.png);
   background-size: auto 100%;
-  animation: first-earn-popup-show 0.2s ease-out;
+  animation: earn-from-farm-popup-show 0.2s ease-out;
 }
-.first-earn-popup > h1 {
+.earn-from-farm-popup > h1 {
   text-align: center;
   font-size: 26px;
   line-height: 40px;
   font-family: "refrigerator-deluxe";
   color: #ffffff;
 }
-.first-earn-popup > .amount {
+.earn-from-farm-popup > .amount {
   position: absolute;
-  right: 30px;
-  top: 80px;
+  right: 44px;
+  top: 43px;
   z-index: 2;
   width: 161px;
   height: 60px;
-  background-image: url(/images/component/first-earn-popup/claim-button.png);
-  background-size: auto 100%;
-  background-position: center center;
-  display: flex;
-}
-.first-earn-popup > .amount > span {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 40px;
-  text-align: center;
+  text-align: right;
   color: #2e000f;
   font-family: "refrigerator-deluxe";
   font-weight: bold;
   font-size: 14px;
 }
-.first-earn-popup > .amount > .maidcoin {
-  margin-top: 5px;
-  margin-right: 10px;
-}
-.first-earn-popup > .close-button {
+.earn-from-farm-popup > .dollar {
   position: absolute;
-  right: 4px;
+  right: 20px;
+  top: 80px;
+  z-index: 2;
+  width: 161px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  color: #ec266c;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
+  font-size: 28px;
+}
+.earn-from-farm-popup > .close-button {
+  position: absolute;
+  right: 0;
   top: 0;
 }
-.first-earn-popup > .tweet-button {
+.earn-from-farm-popup > .apr {
   position: absolute;
-  right: 16px;
-  bottom: 14px;
+  right: 6px;
+  top: 160px;
+  font-size: 40px;
+  font-family: "refrigerator-deluxe";
+  color: #000000;
+}
+.earn-from-farm-popup > .apr > span {
+  color: #ffde00;
+}
+.earn-from-farm-popup > .tweet-button {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
   width: 112px;
   height: 33.5px;
   background-image: url(/images/tweet-button.png);
@@ -4520,7 +4535,7 @@ body {
   padding-left: 28px;
   text-decoration: none;
 }
-@keyframes earn-popup-show {
+@keyframes earn-from-nurse-popup-show {
   0% {
     transform: scale(0.9, 0.9);
   }
@@ -4528,55 +4543,71 @@ body {
     transform: scale(1, 1);
   }
 }
-.earn-popup {
+.earn-from-nurse-popup {
   position: relative;
   width: 397px;
   margin: auto;
-  height: 223px;
-  background-image: url(/images/component/earn-popup/background.png);
+  height: 331.5px;
+  background-image: url(/images/component/earn-from-nurse-popup/background.png);
   background-size: auto 100%;
-  animation: earn-popup-show 0.2s ease-out;
+  animation: earn-from-nurse-popup-show 0.2s ease-out;
 }
-.earn-popup > h1 {
+.earn-from-nurse-popup > h1 {
   text-align: center;
   font-size: 26px;
   line-height: 40px;
   font-family: "refrigerator-deluxe";
   color: #ffffff;
 }
-.earn-popup > .amount {
+.earn-from-nurse-popup > .amount {
   position: absolute;
-  right: 20px;
-  top: 78px;
+  right: 44px;
+  top: 43px;
   z-index: 2;
   width: 161px;
   height: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
+  text-align: right;
   color: #2e000f;
   font-family: "refrigerator-deluxe";
   font-weight: bold;
   font-size: 14px;
 }
-.earn-popup > .close-button {
+.earn-from-nurse-popup > .dollar {
+  position: absolute;
+  right: 20px;
+  top: 80px;
+  z-index: 2;
+  width: 161px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  color: #ec266c;
+  font-family: "refrigerator-deluxe";
+  font-weight: bold;
+  font-size: 28px;
+}
+.earn-from-nurse-popup > .close-button {
   position: absolute;
   right: 0;
   top: 0;
 }
-.earn-popup > .apr {
+.earn-from-nurse-popup > .apr {
   position: absolute;
   right: 6px;
-  bottom: 44px;
-  font-size: 20px;
+  top: 160px;
+  font-size: 40px;
   font-family: "refrigerator-deluxe";
   color: #000000;
 }
-.earn-popup > .apr > span {
+.earn-from-nurse-popup > .apr > span {
   color: #ffde00;
 }
-.earn-popup > .tweet-button {
+.earn-from-nurse-popup > .tweet-button {
   position: absolute;
   right: 6px;
   bottom: 4px;

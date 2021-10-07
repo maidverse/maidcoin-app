@@ -1,14 +1,15 @@
-import { DomNode, el } from "@hanul/skynode";
+import { DomNode, el, Popup } from "@hanul/skynode";
 import { BigNumber } from "ethers";
-import SkyStore from "skystore";
+import Calculator from "../Calculator";
 import CommonUtil from "../CommonUtil";
 import CloneNursesContract from "../contracts/CloneNursesContract";
 import LPTokenContract from "../contracts/LPTokenContract";
 import MaidCoinContract from "../contracts/MaidCoinContract";
 import TheMasterContract from "../contracts/TheMasterContract";
+import NetworkProvider from "../ethereum/NetworkProvider";
 import Wallet from "../ethereum/Wallet";
-import EarnPopup from "./earn-popup/EarnPopup";
-import FirstEarnPopup from "./first-earn-popup/FirstEarnPopup";
+import EarnFromFarmPopup from "./earn-from-farm-popup/EarnFromFarmPopup";
+import EarnFromNursePopup from "./earn-from-nurse-popup/EarnFromNursePopup";
 
 export default class UserInfo extends DomNode {
 
@@ -16,7 +17,7 @@ export default class UserInfo extends DomNode {
     private maidCoinPanel: DomNode;
     private connectButton: DomNode;
 
-    private store: SkyStore = new SkyStore("UserInfo");
+    private popup: Popup | undefined;
 
     constructor() {
         super(".user-info");
@@ -38,6 +39,9 @@ export default class UserInfo extends DomNode {
         Wallet.on("connect", this.connectHandler);
         LPTokenContract.on("Transfer", this.transferHandler);
         MaidCoinContract.on("Transfer", this.transferHandler);
+        TheMasterContract.on("Deposit", this.depositHandler);
+        TheMasterContract.on("Support", this.supportHandler);
+        CloneNursesContract.on("Claim", this.claimHandler);
     }
 
     private connectHandler = () => {
@@ -50,11 +54,57 @@ export default class UserInfo extends DomNode {
         if (from === address || to === address) {
             this.loadBalances();
         }
-        if (from === TheMasterContract.address && to === address) {
-            new FirstEarnPopup(amount);
+    };
+
+    private depositHandler = async (userId: BigNumber, pid: BigNumber, amount: BigNumber, event: any) => {
+        const address = await Wallet.loadAddress();
+        if (userId.eq(BigNumber.from(address)) && pid.eq(1) && amount.eq(0)) {
+            const result = await NetworkProvider.provider.getTransactionReceipt(event.transactionHash);
+            for (const log of result.logs) {
+                if (log.address === MaidCoinContract.address) {
+                    const parsed = MaidCoinContract.interface.parseLog(log);
+                    if (parsed.name === "Transfer" && parsed.args[0] === TheMasterContract.address && parsed.args[1] === address) {
+                        const apr = await Calculator.poolAPR(pid.toNumber());
+                        if (this.popup === undefined) {
+                            this.popup = new EarnFromFarmPopup(event.transactionHash, parsed.args[2], apr);
+                            this.popup.on("delete", () => this.popup = undefined);
+                        }
+                        break;
+                    }
+                }
+            }
         }
-        if (from === CloneNursesContract.address && to === address) {
-            new EarnPopup(amount, BigNumber.from(0));
+    };
+
+    private supportHandler = async (supporter: string, pid: BigNumber, amount: BigNumber, event: any) => {
+        const address = await Wallet.loadAddress();
+        if (supporter === address && pid.eq(3) && amount.eq(0)) {
+            const result = await NetworkProvider.provider.getTransactionReceipt(event.transactionHash);
+            for (const log of result.logs) {
+                if (log.address === MaidCoinContract.address) {
+                    const parsed = MaidCoinContract.interface.parseLog(log);
+                    if (parsed.name === "Transfer" && parsed.args[0] === TheMasterContract.address && parsed.args[1] === address) {
+                        const apr = await Calculator.poolAPR(pid.toNumber());
+                        if (this.popup === undefined) {
+                            this.popup = new EarnFromFarmPopup(event.transactionHash, parsed.args[2], apr);
+                            this.popup.on("delete", () => this.popup = undefined);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    };
+
+    private claimHandler = async (nurseId: BigNumber, claimer: string, reward: BigNumber, event: any) => {
+        const address = await Wallet.loadAddress();
+        if (claimer === address) {
+            const nurse = await CloneNursesContract.getNurse(nurseId);
+            const apr = await Calculator.nurseAPR(nurse.nurseType);
+            if (this.popup === undefined) {
+                this.popup = new EarnFromNursePopup(event.transactionHash, reward, apr);
+                this.popup.on("delete", () => this.popup = undefined);
+            }
         }
     };
 
@@ -109,6 +159,9 @@ export default class UserInfo extends DomNode {
         Wallet.off("connect", this.connectHandler);
         LPTokenContract.off("Transfer", this.transferHandler);
         MaidCoinContract.off("Transfer", this.transferHandler);
+        TheMasterContract.off("Deposit", this.depositHandler);
+        TheMasterContract.off("Support", this.supportHandler);
+        CloneNursesContract.off("Claim", this.claimHandler);
 
         super.delete();
     }

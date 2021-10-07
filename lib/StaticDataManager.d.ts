@@ -16,6 +16,7 @@ declare class StaticDataManager {
     getNursePart(part: number): {
         name: string;
     };
+    getNurseTypes(): number[];
     getNurseType(type: number): {
         name: string;
         partCount: number;

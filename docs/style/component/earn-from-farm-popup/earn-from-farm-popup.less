@@ -1,4 +1,4 @@
-@keyframes earn-popup-show {
+@keyframes earn-from-farm-popup-show {
     0% {
         transform: scale(0.9, 0.9);
     }
@@ -8,14 +8,14 @@
     }
 }
 
-.earn-popup {
+.earn-from-farm-popup {
     position        : relative;
     width           : 397px;
     margin          : auto;
-    height          : 223px;
-    background-image: url(/images/component/earn-popup/background.png);
+    height          : 331.5px;
+    background-image: url(/images/component/earn-from-farm-popup/background.png);
     background-size : auto 100%;
-    animation       : earn-popup-show 0.2s ease-out;
+    animation       : earn-from-farm-popup-show 0.2s ease-out;
 
     >h1 {
         text-align : center;
@@ -26,20 +26,37 @@
     }
 
     >.amount {
-        position        : absolute;
-        right           : 20px;
-        top             : 78px;
-        z-index         : 2;
-        width           : 161px;
-        height          : 60px;
-        display         : flex;
-        flex-direction  : column;
-        justify-content : center;
-        text-align      : center;
-        color           : #2e000f;
-        font-family     : "refrigerator-deluxe";
-        font-weight     : bold;
-        font-size       : 14px;
+        position       : absolute;
+        right          : 44px;
+        top            : 43px;
+        z-index        : 2;
+        width          : 161px;
+        height         : 60px;
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        text-align     : right;
+        color          : #2e000f;
+        font-family    : "refrigerator-deluxe";
+        font-weight    : bold;
+        font-size      : 14px;
+    }
+
+    >.dollar {
+        position       : absolute;
+        right          : 20px;
+        top            : 80px;
+        z-index        : 2;
+        width          : 161px;
+        height         : 60px;
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        text-align     : right;
+        color          : #ec266c;
+        font-family    : "refrigerator-deluxe";
+        font-weight    : bold;
+        font-size      : 28px;
     }
 
     >.close-button {
@@ -51,8 +68,8 @@
     >.apr {
         position   : absolute;
         right      : 6px;
-        bottom     : 44px;
-        font-size  : 20px;
+        top        : 160px;
+        font-size  : 40px;
         font-family: "refrigerator-deluxe";
         color      : #000000;
 

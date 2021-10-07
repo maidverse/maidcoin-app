@@ -1,5 +1,6 @@
 import sushiData from "@sushiswap/sushi-data";
 import { BigNumber, utils } from "ethers";
+import superagent from "superagent";
 import Config from "./Config";
 import MaidCafeContract from "./contracts/MaidCafeContract";
 import MaidCoinContract from "./contracts/MaidCoinContract";
@@ -26,7 +27,12 @@ class Calculator {
         const totalRewardPricePerYear = utils.parseEther(String(result.token0.derivedETH)).mul(Math.round(tokenPerBlock * blocksPerYear));
         const totalStakingTokenInPool = totalStaked.mul(utils.parseEther(String(result.reserveETH))).div(utils.parseEther(String(result.totalSupply)));
 
-        return totalStakingTokenInPool.eq(0) === true ? 0 : totalRewardPricePerYear.mul(100).div(totalStakingTokenInPool);
+        return totalStakingTokenInPool.eq(0) === true ? BigNumber.from(0) : totalRewardPricePerYear.mul(100).div(totalStakingTokenInPool);
+    }
+
+    public async dollar(amount: BigNumber) {
+        const result = await superagent.get("https://api.coingecko.com/api/v3/coins/maidcoin");
+        return amount.mul(Math.floor(result.body.market_data.current_price.usd * 10000)).div(utils.parseEther("10000"));
     }
 
     public async cafeAPR24() {

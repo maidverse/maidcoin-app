@@ -1,6 +1,5 @@
 import { DomNode, el } from "@hanul/skynode";
-import SkyUtil from "skyutil";
-import CloneNursesContract from "../../contracts/CloneNursesContract";
+import StaticDataManager from "../../StaticDataManager";
 import Loading from "../Loading";
 import NurseFactory from "./NurseFactory";
 
@@ -20,11 +19,10 @@ export default class NurseFactoryList extends DomNode {
 
     private async loadFactories() {
 
-        const nurseTypeCount = await CloneNursesContract.getNurseTypeCount();
-
-        SkyUtil.repeat(nurseTypeCount.toNumber(), async (nurseType) => {
+        const nurseTypes = StaticDataManager.getNurseTypes();
+        for (const nurseType of nurseTypes) {
             new NurseFactory(nurseType).appendTo(this.factoryContainer);
-        });
+        }
 
         this.loading.delete();
     }
