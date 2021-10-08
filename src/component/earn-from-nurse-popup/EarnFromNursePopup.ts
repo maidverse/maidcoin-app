@@ -1,7 +1,9 @@
 import { BigNumber } from "@ethersproject/bignumber";
 import { DomNode, el, Popup } from "@hanul/skynode";
+import superagent from "superagent";
 import Calculator from "../../Calculator";
 import CommonUtil from "../../CommonUtil";
+import Loading from "../Loading";
 
 export default class EarnFromNursePopup extends Popup {
 
@@ -28,7 +30,15 @@ export default class EarnFromNursePopup extends Popup {
             }),
             el("a.tweet-button",
                 "Share",
-                { href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`I EARNED +${CommonUtil.displayPrice(this.amount)} $MAID ($${CommonUtil.numberWithCommas(dollar.toString())}) from @maid_coin ♥️\nCurrent APR is ${CommonUtil.numberWithCommas(String(this.apr))}%!!!\n\n${this.tx}\n#GameFi #PlayToEarn #DeFi #YieldFarming #NFT #IEarnMaid`)}`, target: "_blank" },
+                {
+                    click: async () => {
+                        const loading = new Loading().appendTo(this);
+                        const result = await superagent.get(`https://api.maidcoin.org/generate-tweet-image?type=nurse&tx=${this.tx}&amount=${CommonUtil.displayPrice(this.amount)}&dollar=${CommonUtil.numberWithCommas(dollar.toString())}&apr=${CommonUtil.numberWithCommas(this.apr.toString())}`);
+                        const url = result.text;
+                        open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`I EARNED +${CommonUtil.displayPrice(this.amount)} $MAID ($${CommonUtil.numberWithCommas(dollar.toString())}) from @maid_coin ♥️\nCurrent APR is ${CommonUtil.numberWithCommas(String(this.apr))}%!!!\n\n#GameFi #PlayToEarn #DeFi #YieldFarming #NFT #IEarnMaid\n${url}`)}`);
+                        loading.delete();
+                    },
+                },
             ),
         );
     }

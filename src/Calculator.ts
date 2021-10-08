@@ -24,7 +24,7 @@ class Calculator {
         const result = await sushiData.exchange.pair({ pair_address: "0xc7175038323562cb68e4bbdd379e9fe65134937f" });
         const totalStaked = await TheMasterContract.getPoolLPAmount(poolId);
 
-        const totalRewardPricePerYear = utils.parseEther(String(result.token0.derivedETH)).mul(Math.round(tokenPerBlock * blocksPerYear));
+        const totalRewardPricePerYear = utils.parseEther(result.token0.derivedETH.toFixed(18)).mul(Math.round(tokenPerBlock * blocksPerYear));
         const totalStakingTokenInPool = totalStaked.mul(utils.parseEther(String(result.reserveETH))).div(utils.parseEther(String(result.totalSupply)));
 
         return totalStakingTokenInPool.eq(0) === true ? BigNumber.from(0) : totalRewardPricePerYear.mul(100).div(totalStakingTokenInPool);
