@@ -96,19 +96,19 @@ export default class MaidCafe implements View {
     private async loadBalances() {
         const owner = await Wallet.loadAddress();
         if (owner !== undefined) {
-            const lpBalance = await MaidCafeContract.balanceOf(owner);
+            const omuBalance = await MaidCafeContract.balanceOf(owner);
             const maidBalance = await MaidCoinContract.balanceOf(owner);
             this.omuBalance.empty().append(
                 el("img", { src: "/images/view/maid-cafe/omu.png", height: "40" }),
                 el(".amount",
-                    CommonUtil.numberWithCommas(CommonUtil.displayPrice(lpBalance)),
+                    CommonUtil.displayPrice(omuBalance),
                     el("span", "$OMU"),
                 ),
             );
             this.maidcoinBalance.empty().append(
                 el("img", { src: "/images/view/maid-cafe/maidcoin.png", height: "41.5" }),
                 el(".amount",
-                    CommonUtil.numberWithCommas(CommonUtil.displayPrice(maidBalance)),
+                    CommonUtil.displayPrice(maidBalance),
                     el("span", "$MAID"),
                 ),
             );
