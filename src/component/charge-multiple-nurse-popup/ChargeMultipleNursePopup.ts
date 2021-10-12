@@ -16,7 +16,7 @@ export default class ChargeMultipleNursePopup extends Popup {
                 el("a.close-button", el("img", { src: "/images/component/charge-multiple-nurse-popup/close-button.png", height: "22.5" }), {
                     click: () => this.delete(),
                 }),
-                nurseList=  new NurseList(),
+                nurseList = new NurseList(),
                 el("footer",
                     el("a.confirm-button",
                         "Close",
@@ -29,8 +29,10 @@ export default class ChargeMultipleNursePopup extends Popup {
                                 const ids: number[] = [];
                                 const parts: number[] = [];
                                 for (const [id, partCount] of Object.entries(nurseList.partCounts)) {
-                                    ids.push(parseInt(id, 10));
-                                    parts.push(partCount);
+                                    if (partCount > 0) {
+                                        ids.push(parseInt(id, 10));
+                                        parts.push(partCount);
+                                    }
                                 }
                                 await CloneNursesContract.elongateLifetime(ids, parts);
                                 this.delete();
