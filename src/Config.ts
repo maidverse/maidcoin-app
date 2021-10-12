@@ -13,7 +13,7 @@ export default {
     blockTimeSecond: 30,*/
 
     startBlock: 13316000,
-    rewardPerBlock: 1,
+    rewardPerBlock: 0.5,
 
     infuraId: INFURA_ID,
 
