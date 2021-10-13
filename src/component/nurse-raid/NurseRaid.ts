@@ -145,7 +145,7 @@ export default class NurseRaid extends DomNode {
                 }
             }
 
-            const apr = this.raidId < 18 ? await Calculator.nurseAPR(raid.nursePart) : await Calculator.nurseFullChargingAPR(raid.nursePart);
+            const apr = raid.nursePart >= 6 ? await Calculator.nurseAPR(raid.nursePart) : await Calculator.nurseFullChargingAPR(raid.nursePart);
 
             this.footer.empty().append(
                 el(".apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
