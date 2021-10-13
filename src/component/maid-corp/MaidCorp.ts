@@ -49,7 +49,7 @@ export default class MaidCorp extends DomNode {
         if (owner !== undefined) {
 
             const lpAmount = await TheMasterContract.getUserLPAmount(1, owner);
-            const totalLPAmount = await TheMasterContract.getPoolLPAmount(1);
+            const totalLPAmount = await TheMasterContract.getPoolAmount(1);
             const reward = await TheMasterContract.getPendingReward(1, owner);
             const lpBalance = await LPTokenContract.balanceOf(owner);
 
@@ -99,7 +99,7 @@ export default class MaidCorp extends DomNode {
 
         else {
 
-            const totalLPAmount = await TheMasterContract.getPoolLPAmount(1);
+            const totalLPAmount = await TheMasterContract.getPoolAmount(1);
             this.content.empty().append(
                 el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.displayPrice(totalLPAmount))),
                 el("a.withdraw-button", "Withdraw", {

@@ -1,5 +1,5 @@
 import sushiData from "@sushiswap/sushi-data";
-import { BigNumber, utils } from "ethers";
+import { BigNumber, constants, utils } from "ethers";
 import superagent from "superagent";
 import Config from "./Config";
 import MaidCafeContract from "./contracts/MaidCafeContract";
@@ -22,7 +22,7 @@ class Calculator {
         const blocksPerYear = 365 * 24 * 60 * 60 / Config.blockTimeSecond;
 
         const result = await sushiData.exchange.pair({ pair_address: "0xc7175038323562cb68e4bbdd379e9fe65134937f" });
-        const totalStaked = await TheMasterContract.getPoolLPAmount(poolId);
+        const totalStaked = await TheMasterContract.getPoolAmount(poolId);
 
         const totalRewardPricePerYear = utils.parseEther(result.token0.derivedETH.toFixed(18)).mul(Math.round(tokenPerBlock * blocksPerYear));
         const totalStakingTokenInPool = totalStaked.mul(utils.parseEther(String(result.reserveETH))).div(utils.parseEther(String(result.totalSupply)));
@@ -50,13 +50,32 @@ class Calculator {
 
         const nurseType = StaticDataManager.getNurseType(_nurseType);
 
-        const tokenPerBlock = Config.rewardPerBlock * pools[2].allocPoint / 100;
         const blocksPerYear = 365 * 24 * 60 * 60 / Config.blockTimeSecond;
+        const tokenPerBlock = Config.rewardPerBlock * pools[2].allocPoint / 100;
 
-        const totalPower = await TheMasterContract.getPoolLPAmount(2);
+        const totalPower = await TheMasterContract.getPoolAmount(2);
         const totalRewardPerYear = utils.parseEther(String(tokenPerBlock * blocksPerYear));
 
         return totalRewardPerYear.mul(100).mul(nurseType.power).div(totalPower).div(utils.parseEther(String(nurseType.averagePrice)));
+    }
+
+    public async nurseFullChargingAPR(_nurseType: number) {
+
+        const nurseType = StaticDataManager.getNurseType(_nurseType);
+
+        const blocksPerYear = 365 * 24 * 60 * 60 / Config.blockTimeSecond;
+
+        const averagePrice = utils.parseEther(String(nurseType.averagePrice));
+        const averagePartPrice = utils.parseEther(String(nurseType.averagePrice)).div(nurseType.partCount);
+
+        const annualCost = averagePrice.add(averagePartPrice.mul(nurseType.partCount - 1).mul(utils.parseEther((blocksPerYear / nurseType.lifetime - 1).toFixed(18))).div(constants.WeiPerEther));
+
+        const tokenPerBlock = Config.rewardPerBlock * pools[2].allocPoint / 100;
+
+        const totalPower = await TheMasterContract.getPoolAmount(2);
+        const totalRewardPerYear = utils.parseEther(String(tokenPerBlock * blocksPerYear));
+
+        return totalRewardPerYear.mul(100).mul(nurseType.power).div(totalPower).div(annualCost);
     }
 }
 

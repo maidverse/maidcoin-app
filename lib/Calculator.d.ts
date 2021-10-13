@@ -5,6 +5,7 @@ declare class Calculator {
     dollar(amount: BigNumber): Promise<BigNumber>;
     cafeAPR24(): Promise<BigNumber>;
     nurseAPR(_nurseType: number): Promise<BigNumber>;
+    nurseFullChargingAPR(_nurseType: number): Promise<BigNumber>;
 }
 declare const _default: Calculator;
 export default _default;

@@ -3,7 +3,7 @@ import Contract from "./Contract";
 import { TheMaster } from "./maidcoin/typechain";
 declare class TheMasterContract extends Contract<TheMaster> {
     constructor();
-    getPoolLPAmount(pid: BigNumberish): Promise<BigNumber>;
+    getPoolAmount(pid: BigNumberish): Promise<BigNumber>;
     getUserLPAmount(pid: BigNumberish, user: string): Promise<BigNumber>;
     getSupportingAmount(user: string): Promise<BigNumber>;
     getPendingReward(pid: BigNumberish, user: string): Promise<BigNumber>;

@@ -23,7 +23,7 @@ class TheMasterContract extends Contract<TheMaster> {
         ]);
     }
 
-    public async getPoolLPAmount(pid: BigNumberish) {
+    public async getPoolAmount(pid: BigNumberish) {
         const [, , , , , , , amount] = await this.contract.poolInfo(pid);
         return amount;
     }

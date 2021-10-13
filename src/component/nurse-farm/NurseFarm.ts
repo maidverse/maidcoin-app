@@ -50,7 +50,7 @@ export default class NurseFarm extends DomNode {
         if (owner !== undefined) {
 
             const supportingAmount = await TheMasterContract.getSupportingAmount(owner);
-            const totalLPAmount = await TheMasterContract.getPoolLPAmount(3);
+            const totalLPAmount = await TheMasterContract.getPoolAmount(3);
 
             if (supportingAmount.eq(0) === true) {
                 this.addClass("empty");
@@ -145,7 +145,7 @@ export default class NurseFarm extends DomNode {
         else {
             this.addClass("empty");
 
-            const totalLPAmount = await TheMasterContract.getPoolLPAmount(3);
+            const totalLPAmount = await TheMasterContract.getPoolAmount(3);
             this.content.empty().append(
                 el(".name", "Clone Nurse"),
                 el(".total-lp-amount", "Total Deposited LP: ", el("span", CommonUtil.displayPrice(totalLPAmount))),

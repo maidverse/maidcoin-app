@@ -166,5 +166,33 @@
         "averagePrice": 24.2,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
+    },
+    "12": {
+        "name": "N7",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N7.png",
+        "partCount": 5,
+        "destroyReturn": 68,
+        "power": 862,
+        "lifetime": 218880,
+        "width": 125,
+        "left": 0,
+        "top": -15,
+        "averagePrice": 188.0,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
+    },
+    "13": {
+        "name": "N8",
+        "image": "https://storage.googleapis.com/maidcoin/Nurse/Illust/N8.png",
+        "partCount": 5,
+        "destroyReturn": 80,
+        "power": 931,
+        "lifetime": 230400,
+        "width": 125,
+        "left": 0,
+        "top": -15,
+        "averagePrice": 206.8,
+        "seller_fee_basis_points": 250,
+        "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     }
 }
