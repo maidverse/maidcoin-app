@@ -60,7 +60,8 @@ export default class NurseFactory extends DomNode {
             el(".destroy-return", "Destroy Return: ", el("span", CommonUtil.displayPrice(nurseType.destroyReturn)), " $MAID"),
         );
 
-        const apr = await Calculator.nurseAPR(this.nurseType);
+        const apr = this.nurseType >= 6 ? await Calculator.nurseAPR(this.nurseType) : await Calculator.nurseFullChargingAPR(this.nurseType);
+
         this.footer.empty().append(
             el(".apr", "APR: ", el("span", `${CommonUtil.numberWithCommas(apr.toString())}%`)),
             balance === undefined ? undefined : el("a.create-button", "Create", {
