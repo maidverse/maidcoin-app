@@ -2,8 +2,10 @@ import sushiData from "@sushiswap/sushi-data";
 import { BigNumber, constants, utils } from "ethers";
 import superagent from "superagent";
 import Config from "./Config";
+import CloneNursesContract from "./contracts/CloneNursesContract";
 import MaidCafeContract from "./contracts/MaidCafeContract";
 import MaidCoinContract from "./contracts/MaidCoinContract";
+import NurseRaidContract from "./contracts/NurseRaidContract";
 import TheMasterContract from "./contracts/TheMasterContract";
 import NetworkProvider from "./ethereum/NetworkProvider";
 import pools from "./json/pools.json";
@@ -42,24 +44,15 @@ class Calculator {
         for (const event of events) {
             total24 = total24.add(event.args[2]);
         }
+        const enterEvents = await MaidCafeContract.getEnterEvents(currentBlock - 5760, currentBlock);
+        for (const event of enterEvents) {
+            total24 = total24.sub(event.args[1]);
+        }
         const maidcoinBalance = await MaidCoinContract.balanceOf(MaidCafeContract.address);
         return total24.mul(36500).div(maidcoinBalance);
     }
 
     public async nurseAPR(_nurseType: number) {
-
-        const nurseType = StaticDataManager.getNurseType(_nurseType);
-
-        const blocksPerYear = 365 * 24 * 60 * 60 / Config.blockTimeSecond;
-        const tokenPerBlock = Config.rewardPerBlock * pools[2].allocPoint / 100;
-
-        const totalPower = await TheMasterContract.getPoolAmount(2);
-        const totalRewardPerYear = utils.parseEther(String(tokenPerBlock * blocksPerYear));
-
-        return totalRewardPerYear.mul(100).mul(nurseType.power).div(totalPower).div(utils.parseEther(String(nurseType.averagePrice)));
-    }
-
-    public async nurseFullChargingAPR(_nurseType: number) {
 
         const nurseType = StaticDataManager.getNurseType(_nurseType);
 

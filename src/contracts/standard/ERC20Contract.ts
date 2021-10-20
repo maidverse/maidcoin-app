@@ -26,6 +26,10 @@ export default abstract class ERC20Contract<CT extends ethers.Contract> extends 
         return await this.contract.balanceOf(owner);
     }
 
+    public async allowance(owner: string, spender: string): Promise<BigNumber> {
+        return await this.contract.allowance(owner, spender);
+    }
+
     public async transfer(to: string, amount: BigNumberish) {
         const contract = await this.connectAndGetWalletContract();
         await contract?.transfer(to, amount);
@@ -39,10 +43,5 @@ export default abstract class ERC20Contract<CT extends ethers.Contract> extends 
     public async approve(spender: string, amount: BigNumberish) {
         const contract = await this.connectAndGetWalletContract();
         await contract?.approve(spender, amount);
-    }
-
-    public async allowance(owner: string, spender: string): Promise<BigNumber> {
-        const contract = await this.connectAndGetWalletContract();
-        return await contract?.allowance(owner, spender);
     }
 }

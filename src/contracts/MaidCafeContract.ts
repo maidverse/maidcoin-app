@@ -47,6 +47,11 @@ class MaidCafeContract extends ERC20Contract<MaidCafe> {
         const contract = await this.connectAndGetWalletContract();
         await contract?.leave(share);
     }
+
+    public async getEnterEvents(startBlock: number, endBlock: number) {
+        const filter = this.contract.filters.Enter(null, null);
+        return await this.contract.queryFilter(filter, startBlock, endBlock);
+    }
 }
 
 export default new MaidCafeContract();
