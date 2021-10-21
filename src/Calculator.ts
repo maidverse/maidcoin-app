@@ -29,7 +29,7 @@ class Calculator {
         const totalRewardPricePerYear = utils.parseEther(result.token0.derivedETH.toFixed(18)).mul(Math.round(tokenPerBlock * blocksPerYear));
         const totalStakingTokenInPool = totalStaked.mul(utils.parseEther(String(result.reserveETH))).div(utils.parseEther(String(result.totalSupply)));
 
-        return totalStakingTokenInPool.eq(0) === true ? BigNumber.from(0) : totalRewardPricePerYear.mul(100).div(totalStakingTokenInPool);
+        return totalStakingTokenInPool.eq(0) === true ? 0 : totalRewardPricePerYear.mul(10000).div(totalStakingTokenInPool).toNumber() / 100;
     }
 
     public async dollar(amount: BigNumber) {
@@ -49,7 +49,7 @@ class Calculator {
             total24 = total24.sub(event.args[1]);
         }
         const maidcoinBalance = await MaidCoinContract.balanceOf(MaidCafeContract.address);
-        return total24.mul(36500).div(maidcoinBalance);
+        return total24.mul(3650000).div(maidcoinBalance).toNumber() / 100;
     }
 
     public async nurseAPR(_nurseType: number) {
@@ -68,7 +68,7 @@ class Calculator {
         const totalPower = await TheMasterContract.getPoolAmount(2);
         const totalRewardPerYear = utils.parseEther(String(tokenPerBlock * blocksPerYear));
 
-        return totalRewardPerYear.mul(100).mul(nurseType.power).div(totalPower).div(annualCost);
+        return totalRewardPerYear.mul(10000).mul(nurseType.power).div(totalPower).div(annualCost).toNumber() / 100;
     }
 }
 
