@@ -9,7 +9,7 @@
         "width": 180,
         "left": 0,
         "top": 0,
-        "averagePrice": 11.5,
+        "averagePrice": 19.1,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -23,7 +23,7 @@
         "width": 140,
         "left": 0,
         "top": -10,
-        "averagePrice": 22.9,
+        "averagePrice": 30.6,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -37,7 +37,7 @@
         "width": 330,
         "left": -40,
         "top": 0,
-        "averagePrice": 26.7,
+        "averagePrice": 38.3,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -51,7 +51,7 @@
         "width": 140,
         "left": 0,
         "top": 0,
-        "averagePrice": 48.0,
+        "averagePrice": 54.1,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -65,7 +65,7 @@
         "width": 210,
         "left": 0,
         "top": 0,
-        "averagePrice": 54.0,
+        "averagePrice": 57.1,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -79,7 +79,7 @@
         "width": 190,
         "left": 0,
         "top": 0,
-        "averagePrice": 75.0,
+        "averagePrice": 75.2,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -107,7 +107,7 @@
         "width": 120,
         "left": 0,
         "top": -20,
-        "averagePrice": 6.9,
+        "averagePrice": 5.8,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -121,7 +121,7 @@
         "width": 160,
         "left": 0,
         "top": -10,
-        "averagePrice": 9.2,
+        "averagePrice": 8.1,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -135,7 +135,7 @@
         "width": 110,
         "left": 15,
         "top": -20,
-        "averagePrice": 15.3,
+        "averagePrice": 11.5,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -149,7 +149,7 @@
         "width": 110,
         "left": 20,
         "top": -40,
-        "averagePrice": 19.1,
+        "averagePrice": 15.3,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     },
@@ -163,7 +163,7 @@
         "width": 125,
         "left": 0,
         "top": -15,
-        "averagePrice": 24.2,
+        "averagePrice": 17.8,
         "seller_fee_basis_points": 250,
         "fee_recipient": "0xD428F1050AdC29976d4339b1ec602832034dF701"
     }

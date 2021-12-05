@@ -4,7 +4,7 @@
         "character_voice": "Konami Yashiro",
         "description": "You find the household chores boring? Let us introduce the chore-expert, Hestia to you!\n\nNamed after the goddess of hearth, she has the expertise particularly at cooking. Knowing 8,196 basic recipes, she can learn additional ones on the internet, as well as adapting them to fit your taste.",
         "external_url": "https://app.maidcoin.org/maids/0",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Hestia.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/HestiaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -28,7 +28,7 @@
             {
                 "display_type": "number",
                 "trait_type": "Power",
-                "value": 100
+                "value": 132
             }
         ],
         "seller_fee_basis_points": 250,
@@ -39,7 +39,7 @@
         "character_voice": "Katagiri yurika",
         "description": "For a long time in the history, there has been little invaders in many homes—cockroaches, flies, mosquitoes.. you name it. Oh, even reading their names is so creepy, isn't it? But what if Akina, the bug exterminator is with you?\n\nOne of her eyes has a thermo sensing camera while the other one has an infrared camera. There are sensors in her ears to detect the sound of an ant walking. With all of those equipment, she is born ready to exterminate the bugs in your home, as well as to prevent them coming from outside.\n\nBring peace to your home with Akina.",
         "external_url": "https://app.maidcoin.org/maids/1",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Akina.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/AkinaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -63,7 +63,7 @@
             {
                 "display_type": "number",
                 "trait_type": "Power",
-                "value": 110
+                "value": 138
             }
         ],
         "seller_fee_basis_points": 250,
@@ -74,7 +74,7 @@
         "character_voice": "Yoshikawa Kaori",
         "description": "Gravity cannon that gravitates wastes, a shredder that grinds any material.. can you believe it if these things were in the cleaning kit? Seia, the cleaning maid, has a very particular set of equipment.\n\n Forget the old-fashioned robot vacuum cleaner! With the additional purchase option, Seia will keep your body clean, too.",
         "external_url": "https://app.maidcoin.org/maids/2",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Seia.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/SeiaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -98,7 +98,7 @@
             {
                 "display_type": "number",
                 "trait_type": "Power",
-                "value": 120
+                "value": 142
             }
         ],
         "seller_fee_basis_points": 250,
@@ -109,7 +109,7 @@
         "character_voice": "Aoto Minamo",
         "description": "Do you want the luxurious life of a wealthy inheritor? With Arachne, it won't be just a dream.\n\nArachne, as her name implies, can make any clothes you want. All you need to do will be to decide what to wear, as she can learn character costumes from anime and movies as well as hot trending fashion.",
         "external_url": "https://app.maidcoin.org/maids/3",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Arachne.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/ArachneDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -133,7 +133,7 @@
             {
                 "display_type": "number",
                 "trait_type": "Power",
-                "value": 130
+                "value": 149
             }
         ],
         "seller_fee_basis_points": 250,
@@ -144,7 +144,7 @@
         "character_voice": "Aoi Chardonnay",
         "description": "Here is Gaspard for your beautiful night. She is very special among all the maids, as she's the only maid who can hurt or bind her master. Be advised that only adults at the age of 19 or above are allowed to have the ownership of her.",
         "external_url": "https://app.maidcoin.org/maids/4",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Gaspard.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/GaspardDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -168,7 +168,7 @@
             {
                 "display_type": "number",
                 "trait_type": "Power",
-                "value": 140
+                "value": 156
             }
         ],
         "seller_fee_basis_points": 250,
@@ -179,7 +179,7 @@
         "character_voice": "Ina",
         "description": "Elena, who gets energy from food, is the fruit of the cutting-edge technology of Maid Corporation. Although she eats quite too much, she can have dinner with you, just like a real family. \n\n However, leaving her and Hestia together at home is not very recommended, the food in your fridge may run out quickly.",
         "external_url": "https://app.maidcoin.org/maids/5",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Elena.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/ElenaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -203,7 +203,7 @@
             {
                 "display_type": "number",
                 "trait_type": "Power",
-                "value": 150
+                "value": 168
             }
         ],
         "seller_fee_basis_points": 250,
@@ -214,7 +214,7 @@
         "character_voice": "Mikoto",
         "description": "Some plants look very easy to grow, but they still need delicate touches. That's when you need Undine the gardener, who can read what flowers and tress need. \n\n The plants that have been loved will grow and express their gratitude to you.",
         "external_url": "https://app.maidcoin.org/maids/6",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Undine.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/UndineDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -238,7 +238,7 @@
             {
                 "display_type": "number",
                 "trait_type": "Power",
-                "value": 160
+                "value": 164
             }
         ],
         "seller_fee_basis_points": 250,
@@ -249,7 +249,7 @@
         "character_voice": "Nonari Yuwa",
         "description": "Everyone knows that the hospital is a must-go place, but no one wants to go there. So now let your own doctor, Nightingale, be with you. Not only accurate diagnosis of symptoms, but simple procedures and drug preparations can be provided. It is no exaggeration to say that she is a walking hospital. \n\n Her eyes are built in with X-ray cameras, so she'll keep them closed until she needs.",
         "external_url": "https://app.maidcoin.org/maids/7",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Nightingale.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/NightingaleDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -273,7 +273,7 @@
             {
                 "display_type": "number",
                 "trait_type": "Power",
-                "value": 170
+                "value": 173
             }
         ],
         "seller_fee_basis_points": 250,
@@ -284,7 +284,7 @@
         "character_voice": "Inuzuka Ichigo",
         "description": "Unlike animal babies that walk and run as soon as they are born, human babies are too small and helpless. But humans have developed intelligence and created Hemiola. \n\n She will take over the role of parents who cannot always be next to their baby in a busy modern society. Of course, even if it's you that want to be a baby, Hemiola will gladly accept it.",
         "external_url": "https://app.maidcoin.org/maids/8",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Hemiola.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/HemiolaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -319,7 +319,7 @@
         "character_voice": "Ogawara Eri",
         "description": "Cats are adorable. They can't stop following any moving objects. They make bizarre postures. Their faces are just so cute, even when they do something stupid.\n\nYou may have wondered, what if they become humans, what would they say? If that's the case for you, we strongly recommend Nero, the cat like pet-android, for you.\n\n* Be advised that she is sometimes arrogant and may try to sit on your face.",
         "external_url": "https://app.maidcoin.org/maids/9",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Nero.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/NeroDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -354,7 +354,7 @@
         "character_voice": "Rukona",
         "description": "No one can skip dessert no matter how full they are. This is because tea time is not for nutrition, but to satisfy the hunger of the soul. \n\n Let yourself fascinated by her, who brews like a strong tea the longer you spend together.",
         "external_url": "https://app.maidcoin.org/maids/10",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Yirgacheffe.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/YirgacheffeDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -389,7 +389,7 @@
         "character_voice": "Kisaragi Iroha",
         "description": "Ordinaryity is a symbol of trust. There may be nothing outstanding about it, but it's easy to do everything. Elencia is recommended for those who want a classical maid who is faithful to the traditional roles of a maid. If there has to be only one maid in your house, she will be the one.",
         "external_url": "https://app.maidcoin.org/maids/11",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Elencia.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/ElenciaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -424,7 +424,7 @@
         "character_voice": "Kisaragi Iroha",
         "description": "No matter how safe where you are, there's still something that may threathen your life and property. If you need a body guard when you're home alone or walking on the streets at night, find Ellan.\n\nShe is aware of the exact extent to which self defense is recognized, so you don't have to worry that she may do more than she should.",
         "external_url": "https://app.maidcoin.org/maids/12",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Ellan.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/EllanDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -459,7 +459,7 @@
         "character_voice": "Kuchitani Aya",
         "description": "There is no such thing as a bad animal. Humans just don't understand their language.\n\nBree knows everything about your pets, like whether they feel lonely, want to play or desire better snack.\n\nBree is for you if you really love animals!",
         "external_url": "https://app.maidcoin.org/maids/13",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Bree.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/BreeDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -494,7 +494,7 @@
         "character_voice": "Tono Yoriko",
         "description": "Nikkie once said, 'I don't work out to be healthy. I stay healthy to work out.'\n\nShe is a little weird. Why does an android like her crave for protein supplements? Find out why while exercising with her. You'll feel your pectoral muscle flutter as well as your heart.",
         "external_url": "https://app.maidcoin.org/maids/14",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Nikkie.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/NikkieDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -529,7 +529,7 @@
         "character_voice": "Yoshikawa Kaori",
         "description": "We recommend Passacaglia for those who need someone to handle the rough work that requires a lot of strength. Unlike other maids, who can produce muscle strength as much as an average adult male, her power can carry up to 500kg.\n\n But don't be too hard on her when she's lazy, she's just saving energy when she doesn't need much of a work.",
         "external_url": "https://app.maidcoin.org/maids/15",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Passacaglia.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/PassacagliaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -564,7 +564,7 @@
         "character_voice": "Yukino Ririka",
         "description": "Are you an important person? If you're worried about the haters who may fire bullets to your face, let Panini be close to you. Her missile defense system, UMBRELLA, has the selective identification feature to take down hostile projectiles while not disturbing your counterattack.",
         "external_url": "https://app.maidcoin.org/maids/16",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Panini.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/PaniniDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -599,7 +599,7 @@
         "character_voice": "Ina",
         "description": "Even the tiniest errors in beat and pitch are all just her quantize options. Minuet is profound as a Stradivarius and accurate as a DAW.\n Her intended inaccuracies, unlike many other androids, let her able to explore the deep world of music, not just copying human musical activities.",
         "external_url": "https://app.maidcoin.org/maids/17",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Minuet.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/MinuetDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -634,7 +634,7 @@
         "character_voice": "Aoyama Yurika",
         "description": "The first prehistoric act that distinguishes humans from animals is whether to honor the deceased. That's why we, as civilized humans, need a maid to serve the dead. \n\n If you want your precious one to rest in peace, please find Grace the maid of death. At the funeral, she will guide the deceased to the eternal sleep, where she'll be for endless consolidation.",
         "external_url": "https://app.maidcoin.org/maids/18",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Grace.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/GraceDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -669,7 +669,7 @@
         "character_voice": "Kuchitani Aya",
         "description": "Air conditioners, refrigerators, ice makers... What if they were all rolled into one and had a cute girl look?  Feel the chill of Antarctica even in the middle of the hot summer. \n\n. Yuki's fast cooling function can even turn your cup of milk into ice cream in a second. Her mysterious appearance and cold personality are a bonus.",
         "external_url": "https://app.maidcoin.org/maids/19",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Yuki.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/YukiDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -704,7 +704,7 @@
         "character_voice": "Nayuki Yuzu",
         "description": "Welding isn't easy, but it's just one of the many skills Maetel has.\n\nYou can count her on anything related to electricity. Not only does she store electricity, but she also serves as a portable generator, so whether you're in the wilds or there's long-term blackouts, it's safe to be with Maetel.",
         "external_url": "https://app.maidcoin.org/maids/20",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Maetel.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/MaetelDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -739,7 +739,7 @@
         "character_voice": "Zakuroishi",
         "description": "Fire is the best tool and the worst disaster created by mankind. That's why we need Igna to control the fire. Igna, who at first glance appears to be just a lively lady, can be beautiful or dangerous. Don't play with fire with her!",
         "external_url": "https://app.maidcoin.org/maids/21",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Igna.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/IgnaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -774,7 +774,7 @@
         "character_voice": "Uduki Hana",
         "description": "Handle the power of the wind freely! Chaconne can generate a wide range of winds, from pleasant breezes to small whirlwinds that will blow everything away. \n\n With Igna, she'll create a hot wind, or a cold wind with Yuki. So spread your imagination freely. Don't be surprised when she tickle your ears with her breath from time to time.",
         "external_url": "https://app.maidcoin.org/maids/22",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Chaconne.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/ChaconneDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -809,7 +809,7 @@
         "character_voice": "Aoi Chardonnay",
         "description": "The rolling dice and the spinning dart board—Fortuna can calculate all these movements and probabilities, but she doesn't. Because it's more fun not to do that.\n\n At the very moment the dice are cast, Fortuna stops all subroutines and leaves everything to fate.",
         "external_url": "https://app.maidcoin.org/maids/23",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Fortuna.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/FortunaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -844,7 +844,7 @@
         "character_voice": "Takeda Eruru",
         "description": "Flapping flags, ringing trumpets... the honor guard makes the viewers' hearts beat. Now, own your own honor guard along with Lasa. \n\nAdditional options will provide more members, helping you to have bigger and grander ceremonies to hold.",
         "external_url": "https://app.maidcoin.org/maids/24",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Lasa.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/LasaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -879,7 +879,7 @@
         "character_voice": "Komahara Hino",
         "description": "It takes a lot of labor to enshrine spirits and pray to them in nature. Someone has to handle miscellaneous tasks so that disciplinants can focus only on sacred and noble goals. \n\nMei will be a great companion to you as you walk along the lonely path.",
         "external_url": "https://app.maidcoin.org/maids/25",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Mei.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/MeiDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -914,7 +914,7 @@
         "character_voice": "Nayuki Yuzu",
         "description": "The act of destroying something as much as the act of making it is deeply embedded in the instinct. Firearms expert Preiya is a maid who will satisfy your destructive instincts. \n\nMake your own big and beautiful things with her, from manufacturing various firearms to customizing them as you wish.",
         "external_url": "https://app.maidcoin.org/maids/26",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Preiya.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/PreiyaDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -949,7 +949,7 @@
         "character_voice": "Tono Yoriko",
         "description": "Humans have always wanted androids to be like themselves, but on the other hand, they also like inhumane charms such as what dolls have.\n\nCan you warm her heart, which is colder than Yuki's ice?",
         "external_url": "https://app.maidcoin.org/maids/27",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Bardiche.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/BardicheDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -984,7 +984,7 @@
         "character_voice": "Ogawara Eri",
         "description": "Do you want to be dominated? Then beg Claymore who dominate even her master\n\nIf you manage to satisfy her, she may give you some rewards.",
         "external_url": "https://app.maidcoin.org/maids/28",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Claymore.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/ClaymoreDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
@@ -1019,7 +1019,7 @@
         "character_voice": "Tsunami Kimura",
         "description": "Have you had enough of maids with animal ears? Then how about one with horns and tails?\n\nMade to counterattack against the nurses, the appearance of the battle maid Flamberge is made worthy of her powerful fighting skills, because sometimes an appearance can bring victory without fighting.",
         "external_url": "https://app.maidcoin.org/maids/29",
-        "image": "https://storage.googleapis.com/maidcoin/Maid/Image/Flamberge.png",
+        "image": "https://storage.googleapis.com/maidcoin/Maid/Dialogue/FlambergeDialogue.png",
         "attributes": [{
                 "display_type": "number",
                 "trait_type": "Grade",
